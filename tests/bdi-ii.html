@@ -1,0 +1,306 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+
+
+#usuario {
+	margin-top:50px;
+	position: relative;
+	}
+#nombre, #edad, #sexo {
+	margin-bottom:10px;
+	}
+input, textarea, select {
+  border: 1;
+  position: absolute;
+  left: 300px;
+  background: #D0D0D0;
+	}
+
+#onombre, #oedad, #osexo {
+	background:none; border:0;
+	color: #BDBDBD;
+	}
+#errores {
+	color: orange;
+	}
+#preguntas {
+	width:100%; float:left
+	}
+#respuestas {
+	text-align: center;
+	font-size: 30px;
+	}
+#preguntas p {
+	margin:0 0 0 40;
+	}
+#preguntas h2 {
+	margin:20 0 5 20;
+	}
+#preguntas input {
+	position: relative;
+	left: 0px;
+	}
+</style>
+
+<body>
+	<div id="menu-icon">
+		<img src="../Entypo/Entypo/menu.svg" width=40 heigth=40 />
+		<div id="menu">
+			<div class="boton"><a href="https://pysdp.github.io/web.html#cv" onclick="document.getElementById('cv').style.display='block';"><img src="../Entypo/Entypo/graduation-cap.svg" /></a></div>
+			<div class="boton"><a href="https://pysdp.github.io/web.html#articles"><img src="../Entypo/Entypo/text-document.svg" width=40 heigth=40 /></a></div>
+			<div class="boton"><a href="https://twitter.com/pysdp"><img src='../Entypo/EntypoSocialExtension/twitter.svg'></a></div>
+			<div class="boton"><a href="https://github.com/pysdp"><img src='../Entypo/EntypoSocialExtension/github.svg'></a></div>
+			<div class="boton"><a href="mailto:jorgealonso@openmailbox.org"><img src='../Entypo/Entypo/mail.svg'></a></div>
+			<div class="boton"><a href="xmpp:pysdp@dukgo.com"><img src='../Entypo/Entypo/chat.svg'></a></div>
+			<div class="boton"><a href="irc://pysdp@irc.freenode.net,isnick"><img src='../Entypo/Entypo/typing.svg' width='32' height='32'></a></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="header">
+		
+	</div>
+	<div id='formulario'>	
+		<form>
+			<h1>Inventario de Depresión de Beck</h1>
+			<p>En este cuestionario aparecen varios grupos de afirmaciones. Por favor, lea con atención cada una. A continuación, señale cuál de las afirmaciones de cada grupo describe mejor cómo se ha sentido durante esta última semana, incluido en el día de hoy. Si dentro de un mismo grupo, hay más de una afirmación que considere aplicable a su caso, márquela también. Asegúrese de leer todas las afirmaciones dentro de cada grupo antes de efectuar la elección.</p>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div id="preguntas">
+				<h2>1.</h2>
+			<p><input type="radio" id="p1a" name="p1">No me siento triste</p>
+			<p><input type="radio" id="p1b" name="p1">Me siento triste.</p>
+			<p><input type="radio" id="p1c" name="p1">Me siento triste continuamente y no puedo dejar de estarlo.</p>
+			<p><input type="radio" id="p1d" name="p1">Me siento tan triste o tan desgraciado que no puedo soportarlo.</p>
+			<h2>2.</h2>
+			<p><input type="radio" id="p2a" name="p2">No me siento especialmente desanimado respecto al futuro</p>
+			<p><input type="radio" id="p2b" name="p2">Me siento desanimado respecto al futuro.</p>
+			<p><input type="radio" id="p2c" name="p2">Siento que no tengo que esperar nada.</p>
+			<p><input type="radio" id="p2d" name="p2">Siento que el futuro es desesperanzador y las cosas no mejorarán.</p>
+			<h2>3.</h2>
+			<p><input type="radio" id="p3a" name="p3">No me siento fracasado</p>
+			<p><input type="radio" id="p3b" name="p3">Creo que he fracasado más que la mayoría de las personas.</p>
+			<p><input type="radio" id="p3c" name="p3">Cuando miro hacia atrás, sólo veo fracaso tras fracaso.</p>
+			<p><input type="radio" id="p3d" name="p3">Me siento una persona totalmente fracasada.</p>
+			<h2>4.</h2>
+			<p><input type="radio" id="p4a" name="p4">Las cosas me satisfacen tanto como antes</p>
+			<p><input type="radio" id="p4b" name="p4">No disfruto de las cosas tanto como antes.</p>
+			<p><input type="radio" id="p4c" name="p4">Ya no obtengo una satisfacción auténtica de las cosas.</p>
+			<p><input type="radio" id="p4d" name="p4">Estoy insatisfecho o aburrido de todo.</p>
+			<h2>5.</h2>
+			<p><input type="radio" id="p5a" name="p5">No me siento especialmente culpable.</p>
+			<p><input type="radio" id="p5b" name="p5">Me siento culpable en bastantes ocasiones.</p>
+			<p><input type="radio" id="p5c" name="p5">Me siento culpable en la mayoría de las ocasiones.</p>
+			<p><input type="radio" id="p5d" name="p5">Me siento culpable constantemente.</p>
+			<h2>6.</h2>
+			<p><input type="radio" id="p6a" name="p6">No creo que esté siento castigado.</p>
+			<p><input type="radio" id="p6b" name="p6">Me siento como si fuese a ser castigado.</p>
+			<p><input type="radio" id="p6c" name="p6">Espero ser castigado.</p>
+			<p><input type="radio" id="p6d" name="p6">Siento que estoy siendo castigado.</p>
+			<h2>7.</h2>
+			<p><input type="radio" id="p7a" name="p7">No estoy decepcionado de mí mismo.</p>
+			<p><input type="radio" id="p7b" name="p7">Estoy decepcionado de mí mismo.</p>
+			<p><input type="radio" id="p7c" name="p7">Me da vergüenza de mí mismo.</p>
+			<p><input type="radio" id="p7d" name="p7">Me detesto.</p>
+			<h2>8.</h2>
+			<p><input type="radio" id="p8a" name="p8">No me considero peor que cualqueir otro.</p>
+			<p><input type="radio" id="p8b" name="p8">Me autocritico por mis debilidades o por mis errores.</p>
+			<p><input type="radio" id="p8c" name="p8">Continuamente me culpo por mis faltas.</p>
+			<p><input type="radio" id="p8d" name="p8">Me culpo por todo lo malo que sudede.</p>
+			<h2>9.</h2>
+			<p><input type="radio" id="p9a" name="p9">No tengo ningún pensamiento de suicidio.</p>
+			<p><input type="radio" id="p9b" name="p9">A veces pienso en suicidarme, pero no lo cometería.</p>
+			<p><input type="radio" id="p9c" name="p9">Desearía suicidarme.</p>
+			<p><input type="radio" id="p9d" name="p9">Me suicidaría si tuviese la oportunidad.</p>
+			<h2>10.</h2>
+			<p><input type="radio" id="p10a" name="p10">No lloro más de lo que solía llorar.</p>
+			<p><input type="radio" id="p10b" name="p10">Ahora lloro más que antes.</p>
+			<p><input type="radio" id="p10c" name="p10">Lloro continuamente.</p>
+			<p><input type="radio" id="p10d" name="p10">Antes era capaz de llorar, pero ahora no puedo, incluso aunque quiera.</p>
+			<h2>11.</h2>
+			<p><input type="radio" id="p11a" name="p11">No estoy más irritado de lo normal en mí.</p>
+			<p><input type="radio" id="p11b" name="p11">Me molesto o rrito más fácilmente que antes.</p>
+			<p><input type="radio" id="p11c" name="p11">Me siento irritado continuamente.</p>
+			<p><input type="radio" id="p11d" name="p11">No me irrito absolutamente nada por las cosas que antes solían irritarme.</p>
+			<h2>12.</h2>
+			<p><input type="radio" id="p12a" name="p12">No he perdido el interés por los demás.</p>
+			<p><input type="radio" id="p12b" name="p12">Estoy menos interesado en los demás que antes.</p>
+			<p><input type="radio" id="p12c" name="p12">He perdido la mayor parte de mi interés por los demás.</p>
+			<p><input type="radio" id="p12d" name="p12">He perdido todo el interés por los demás.</p>
+			<h2>13.</h2>
+			<p><input type="radio" id="p13a" name="p13">Tomo decisiones más o menos como siempre he hecho.</p>
+			<p><input type="radio" id="p13b" name="p13">Evito tomar decisiones más que antes.</p>
+			<p><input type="radio" id="p13c" name="p13">Tomar decisiones me resulta mucho más difícil que antes.</p>
+			<p><input type="radio" id="p13d" name="p13">Ya me es imposible tomar decisiones.</p>
+			<h2>14.</h2>
+			<p><input type="radio" id="p14a" name="p14">No creo tener peor aspecto que antes.</p>
+			<p><input type="radio" id="p14b" name="p14">Me temo que ahora parezco más viejo o poco atractivo.</p>
+			<p><input type="radio" id="p14c" name="p14">Creo que se han producido cambios permanentes en mi aspecto que me hacen parecer poco atractivo.</p>
+			<p><input type="radio" id="p14d" name="p14">Creo que tengo un aspecto horrible.</p>
+			<h2>15.</h2>
+			<p><input type="radio" id="p15a" name="p15">Trabajo igual que antes.</p>
+			<p><input type="radio" id="p15b" name="p15">Me cuesta un esfuerzo extra comenzar a hacer algo.</p>
+			<p><input type="radio" id="p15c" name="p15">Tengo que obligarme mucho para hacer algo.</p>
+			<p><input type="radio" id="p15d" name="p15">No puedo hacer nada en absoluto..</p>
+			<h2>16.</h2>
+			<p><input type="radio" id="p16a" name="p16">Duermo tan bien como siempre.</p>
+			<p><input type="radio" id="p16b" name="p16">No duermo tan bien como antes.</p>
+			<p><input type="radio" id="p16c" name="p16">Me despierto una o dos horas antes de lo habitual y me resulta difícil volver a dormir.</p>
+			<p><input type="radio" id="p16d" name="p16">Me despierto varias horas antes de lo habitual y no puedo volver a dormir.</p>
+			<h2>17.</h2>
+			<p><input type="radio" id="p17a" name="p17">No me siento más cansado de lo normal.</p>
+			<p><input type="radio" id="p17b" name="p17">Me canso más fácilmente que antes.</p>
+			<p><input type="radio" id="p17c" name="p17">Me canso en cuanto hago cualquier cosa.</p>
+			<p><input type="radio" id="p17d" name="p17">Estoy demasiado cansado para hacer nada.</p>
+			<h2>18.</h2>
+			<p><input type="radio" id="p18a" name="p18">Mi apetito no ha disminuido.</p>
+			<p><input type="radio" id="p18b" name="p18">No tengo tan buen apetito como antes.</p>
+			<p><input type="radio" id="p18c" name="p18">Ahora tengo mucho menos apetito.</p>
+			<p><input type="radio" id="p18d" name="p18">He perdido completamente el apetito.</p>
+			<h2>19.</h2>
+			<p><input type="radio" id="p19a" name="p19">Últimamente he perdido poco peso o no he perdido nada.</p>
+			<p><input type="radio" id="p19b" name="p19">He perdido más de 2 kilos y medio.</p>
+			<p><input type="radio" id="p19c" name="p19">He perdido más de 4 kilos.</p>
+			<p><input type="radio" id="p19d" name="p19">He perdido más de 7 kilos.</p>
+			<p><input type="radio" id="p19d" name="p19">Estoy a dieta para no adelgazar.</p>
+			<h2>20.</h2>
+			<p><input type="radio" id="p20a" name="p20">No estoy preocupado por mi salud más de lo normal.</p>
+			<p><input type="radio" id="p20b" name="p20">Estoy preocupado por probleas físicos como dolores, molestias, malestar de estómago o estreñimiento.</p>
+			<p><input type="radio" id="p20c" name="p20">Estoy preocupado por mis problemas físicos y me resulta difícil pensar en algo más..</p>
+			<p><input type="radio" id="p20d" name="p20">Estoy tan preocupado por mis problemas físicos que soy incapaz de pensar en cualquier otra cosa.</p>
+			<h2>21.</h2>
+			<p><input type="radio" id="p21a" name="p21">No he observado ningún cambio reciente en mi interés sexual.</p>
+			<p><input type="radio" id="p21b" name="p21">Estoy menos interesado por el sexo que antes.</p>
+			<p><input type="radio" id="p21c" name="p21">Estoy mucho menos interesado por el sexo.</p>
+			<p><input type="radio" id="p21d" name="p21">He perdido totalmente mi interés por el sexo.</p>
+			</div><div class='clear'></div>
+			<p style="margin-top: 50px;"> </p>
+			<h1>Confirmar y enviar</h1>
+			<p>Presione en <k><a href="#" onClick="mostrar()">confirmar</a></k> para calcular los resultados.</p>
+		</form>
+	</div>
+	<div id="informe">
+		<h1>Inventario de Depresión de Beck (Resultados)</h1>
+		<div id="errores"></div>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input type="text" id="onombre" size="50" READONLY></div>
+			<div id="edad"><label>Edad:</label><input type="text" id="oedad" size="3" READONLY></div>
+			<div id="sexo"><label>Sexo:</label><input id="osexo" size="10" READONLY></div>
+		</div>
+		<h2>Resultados</h2>
+		<div id="respuestas"></div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+	<div id="csv" style="display: none;"></div>
+</body>
+
+<script type="text/javascript"> 
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+
+	function sendMail() {
+		var contenido = document.getElementById("csv").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("BDI-II - " + document.getElementById('inombre').value + " " + document.getElementById("ifecha").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+
+	function mostrar() {
+		console.log('entrando en mostrar()');
+		document.getElementById('onombre').value = document.getElementById('inombre').value
+		document.getElementById('oedad').value = document.getElementById('iedad').value
+		document.getElementById('osexo').value = document.getElementById('isexo').value
+		var i = 21
+		var puntos = 0		
+		var csv = ''
+		var salida = 'Bla'
+		while (i >0){
+			var valor = valuep(i)
+			if (valor < 5){
+				puntos = puntos + valor;
+			}
+			csv = csv + valor + '	';
+			i = i-1;
+		}
+		csv = csv + puntos;
+		console.log(csv);
+		document.getElementById('csv').innerHTML=csv;
+		switch(Math.ceil(puntos/10)){
+			case 0:			
+			case 1:
+				salida = 'Estos altibajos son considerados normales';
+				break;
+			case 2:
+				salida = 'Estados de depresión intermitentes';
+				break
+			case 3:
+				salida = 'Depresión moderada';
+				break
+			case 4:
+				salida = 'Depresión grave';
+				break
+			case 5:
+			case 6:
+			case 7:
+				salida = 'Depresión extrema';
+				break
+			default:
+				salida = 'Error: Compruebe sus respuestas';
+				break
+			}
+		if (puntos > 17){
+			salida = salida + '<br>Su puntuación indica que puede necesitar ayuda profesional'
+			}
+		document.getElementById('respuestas').innerHTML=salida
+
+		document.getElementById('formulario').style.display='none';
+		document.getElementById('informe').style.display='block';
+	}
+
+	function valuep(num) {
+		var ida = 'p' + num + 'a'
+		var idb = 'p' + num + 'b'
+		var idc = 'p' + num + 'c'
+		var idd = 'p' + num + 'd'
+		if (document.getElementById(ida).checked) {
+			return 0;
+		}
+		if (document.getElementById(idb).checked) {
+			return 1;
+		}
+		if (document.getElementById(idc).checked) {
+			return 2;
+		}
+		if (document.getElementById(idd).checked) {
+			return 3;
+		}
+	 	var node = document.createElement("LI");
+		var textnode = document.createTextNode('Asegúrese de que ha respondido a todas las preguntas: Pregunta ' + num + ' en blanco');
+		node.appendChild(textnode);
+		document.getElementById("errores").appendChild(node);
+		return NaN;
+	}
+	
+</script>
+
+</body>
+</html>

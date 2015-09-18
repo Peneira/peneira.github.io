@@ -1,0 +1,208 @@
+
+/* ##### ÁREAS ##### */
+
+body {
+	background: gray url("back3.jpg") no-repeat center center fixed; 
+ 	 -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	font-family: 'Raleway', sans-serif;
+	}
+
+#header, #articles, #aboutme, #cv, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+
+#articles, #cv, #formulario, #informe{
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+.cita{
+	text-align: center;
+	font-size: 90%;
+	font-style: italic;
+	}
+
+#cv, #informe {
+	display: none;
+	}
+.boton {
+	padding: 2px 10px 2px 10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	}
+.boton:hover {
+	padding: 3px 10px 3px 10px;
+	border: 1px solid gray;
+	border-radius: 10px;
+	}
+
+.footBar {   
+	text-align: center;
+	padding: 1ex 2ex 1ex 1ex;
+	font-family: 'Raleway', sans-serif;
+	}
+
+.footBar * {
+	text-decoration: none;
+	font-weight: bold;
+	padding: 1ex 1ex 1ex 1ex;
+	}
+
+.colLong { 
+	width:65%;
+	position: relative;
+	float: left;
+	padding: 0 0 0 0;
+	}
+.colShort {
+	width:33%;
+	position: relative;
+	float: left;
+	padding: 0 0 0 0;
+	}
+.clear {
+	clear: both;
+	padding: 0 0 0 0;
+	}
+
+.title {
+	padding: 0 10px 0 10px;
+	background: green;
+	}
+	
+.boxme {
+	max-width: 270px;
+	height: 250px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	}
+
+#footer {
+	position:fixed;
+	width:100%;
+   	bottom:0;
+	text-align:right;
+	padding: 0 0 0 0;
+	margin: -1ex -1ex -0.5ex -1ex;
+	}
+
+#contact {
+	display: none;
+	}
+
+#footer:hover #contact {
+	display:block;
+	}
+
+#menu-icon {
+	position:fixed;
+	width:50px;
+   	top: 20px;
+	left: 15px;
+	text-align:center;
+	padding: 10 0 10 0;
+	margin: 0 0 0 0;
+	text-decoration: none;
+	z-index:100;
+	}
+
+#menu {
+	display: none;
+	}
+
+#menu-icon:hover #menu {
+	display:block;
+	text-align:center;
+	}
+
+#menu .boton {
+	padding: 10 0 10 0;
+	margin: 10 0 5 0;
+	}
+#menu img {
+	width: 40;
+	height: 40;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	}
+
+#brand {
+	font: 150% Pacifico;
+	color:gray;
+	}
+#popUpDiv {
+	position: relative;
+	background: #FFF;
+  	padding: 20px;
+  	width:auto;
+  	max-width: 500px;
+ 	margin: 20px auto;
+	}
+
+	
+/* ##### COLORES ##### */
+
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);;
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+.boxme {
+	background: none;
+	}
+#boxData{
+	background: rgba(100, 54, 54, 0.7);
+	}
+#boxNeuro{
+	background: rgba(54, 100, 54, 0.7);
+	}
+#boxHack{
+	background: rgba(54, 54, 100, 0.7);
+	}
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #cv, #formulario, #informe {
+	background: rgba(54, 54, 54, 0.7);
+	color: #BDBDBD;
+	}
+#articles h1, #articles h2, #cv h1, #cv h2 , #formulario h1, #formulario h2, #informe h1, #informe h2{ 
+	color: #BDBDBD;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+h1, h2 {
+	color:black;
+	}
+	

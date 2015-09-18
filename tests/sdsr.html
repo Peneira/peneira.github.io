@@ -1,0 +1,2440 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+
+
+	#usuario {
+		margin-top:50px;
+		position: relative;
+		}
+	#aspiraciones {
+		position: relative;
+		}
+	#actividades {
+		position: relative;
+		}
+	#habilidades {
+		position: relative;
+		}
+	#ocupaciones {
+		position: relative;
+		}
+	#autohab {
+		position: relative;
+		float: center;
+		}
+	#actresp {
+		position: absolute;
+		left: 600px;
+		}
+	#auto {
+		position: absolute;
+		left: 200px;
+		}
+	#tabla { width:100%; position: absolute; float: left}
+	.column1 { padding:2px; margin-right:15px; width:10%; float:left; }
+	.column2 { padding:2px; margin-right:15px; width:10%; float:left; }
+	.column3 { padding:2px; margin-right:15px; width:10%; float:left; }
+	.column4 { padding:2px; margin-right:15px; width:10%; float:left; }
+	.column5 { padding:2px; margin-right:15px; width:10%; float:left; }
+	.column6 { padding:2px; margin-right:15px; width:10%; float:left; }
+	.column7 { padding:2px; margin-right:0px; width:10%; float:left; }		
+#nombre, #edad, #sexo {
+	margin-bottom:10px;
+	}
+input, textarea, select {
+  border: 1;
+  position: absolute;
+  left: 300px;
+  background: #D0D0D0;
+	}
+
+#onombre, #oedad, #osexo {
+	background:none; border:0;
+	}
+#oAcR, #oHaR, #oOcR, #oAuR, #oAu2R, #oPTR, #oAcI, #oHaI, #oOcI, #oAuI, #oAu2I, #oPTI, #oAcA, #oHaA, #oOcA, #oAuA, #oAu2A, #oPTA,
+#oAcS, #oHaS, #oOcS, #oAuS, #oAu2S, #oPTS, #oAcE, #oHaE, #oOcE, #oAuE, #oAu2E, #oPTE, #oAcC, #oHaC, #oOcC, #oAuC, #oAu2C, #oPTC { 
+	left:20px; background:none; border:0; size:3
+	}
+#respuestas {
+	width:100%; float:left
+	}
+	.columna1 {padding:2px; margin-right:15px; width:20%; float:left; position:relative;}
+	.columna2, .columna3, .columna4, .columna5, .columna6 {padding:2px; margin-right:15px; width:10%; float:left; position:relative;}
+	.columna7 {padding:2px; margin-right:0px; width:10%; float:left; position:relative;}
+
+</style>
+
+<body>
+	<div id="menu-icon">
+		<img src="../Entypo/Entypo/menu.svg" width=40 heigth=40 />
+		<div id="menu">
+			<div class="boton"><a href="https://pysdp.github.io/web.html#cv" onclick="document.getElementById('cv').style.display='block';"><img src="../Entypo/Entypo/graduation-cap.svg" /></a></div>
+			<div class="boton"><a href="https://pysdp.github.io/web.html#articles"><img src="../Entypo/Entypo/text-document.svg" width=40 heigth=40 /></a></div>
+			<div class="boton"><a href="https://twitter.com/pysdp"><img src='../Entypo/EntypoSocialExtension/twitter.svg'></a></div>
+			<div class="boton"><a href="https://github.com/pysdp"><img src='../Entypo/EntypoSocialExtension/github.svg'></a></div>
+			<div class="boton"><a href="mailto:jorgealonso@openmailbox.org"><img src='../Entypo/Entypo/mail.svg'></a></div>
+			<div class="boton"><a href="xmpp:pysdp@dukgo.com"><img src='../Entypo/Entypo/chat.svg'></a></div>
+			<div class="boton"><a href="irc://pysdp@irc.freenode.net,isnick"><img src='../Entypo/Entypo/typing.svg' width='32' height='32'></a></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="header">
+		
+	</div>
+	<div id='formulario'>	
+		<form>
+			<h1>Cuestionario de Orientación Vocacional</h1>
+			<p>Esta cuestionario puede ayudarle a explorar qué ocupación seguir. Si ha escogido una ocupación,
+			puede apoyar su decisión o sugerir otras posibilidades. Si no está seguro sobre la ocupación que quiere
+			seguir, el cuestionario le puede ayudar a identificar un grupo pequeño de ocupaciones que puede considerar
+			detalladamente. La mayoría de las personas encuentran que el completar este cuestionario les es útil y divertido.
+			Si sigue las instrucciones cuidadosamente, disfrutará la experiencia. No se apresure; sacará más provecho
+			si le presta la debida atención a esta actividad.</p>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<h1>Aspiraciones ocupacionales</h1>
+			<p>A continuación, haga una lista de las ocupaciones que usted ha considerado al pensar en su futuro. Haga
+			una lista de las carreras a las que usted ha aspirado o de las cuales ha hablado con otras personas. Trate
+			de presentar un recuento de sus aspiraciones. En la <k>línea 1</k> coloque la ocupación que ha considerado más
+			recientemente, y continúe anotando en orden inverso, hasta terminar con los trabajos que había considerado
+			inicialmente.</p>
+			<div id="aspiraciones">
+				Ocupación:
+				<!--div id="ocupacion1"><label>1.</label><select id="io1">
+					<option value="bla">blau</option>
+					<option value="Mujer">Hombre</option>
+				</select></div-->
+				<p>1<input type="text" size="50" id="as1"></p>
+				<p>2<input type="text" size="50" id="as2"></p>
+				<p>3<input type="text" size="50" id="as3"></p>
+				<p>4<input type="text" size="50" id="as4"></p>
+				<p>5<input type="text" size="50" id="as5"></p>
+			</div>	
+			<h1>Actividades</h1>
+			<P>Marque la casilla debajo de la <b>G</b> para indicar aquellas actividades que le gustarían hacer. Marque
+			la casilla debajo de la <b>D</b> para indicar aquellas que le desagradarían hacer o le serían indiferentes.</p>
+			<div id="actividades">
+				<h2>R</h2>
+				<div id="actresp">
+					<input type="radio" id="g1" name="r1" style="position: relative; left:0px;">G 
+					<input type="radio" id="d1" name="r1" style="position: relative; left: 0px;">D
+				</div><div>Arreglar aparatos eléctricos</div>
+				<div id="actresp">
+					<input type="radio" id="g2" name="r2" style="position: relative; left:0px;">G
+					<input type="radio" id="d2" name="r2" style="position: relative; left: 0px;">D
+				</div><div>Reparar automóviles</div>
+				<div id="actresp">
+					<input type="radio" id="g3" name="r3" style="position: relative; left:0px;">G
+					<input type="radio" id="d3" name="r3" style="position: relative; left: 0px;">D
+				</div><div>Arreglar aparatos mecánicos</div>
+				<div id="actresp">
+					<input type="radio" id="g4" name="r4" style="position: relative; left:0px;">G
+					<input type="radio" id="d4" name="r4" style="position: relative; left: 0px;">D
+				</div><div>Construir cosas con madera</div>
+				<div id="actresp">
+					<input type="radio" id="g5" name="r5" style="position: relative; left:0px;">G
+					<input type="radio" id="d5" name="r5" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de educación técnica<br> (ej: artes industriales, taller)</div>
+				<div id="actresp">
+					<input type="radio" id="g6" name="r6" style="position: relative; left:0px;">G
+					<input type="radio" id="d6" name="r6" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de dibujo mecánico</div>
+				<div id="actresp">
+					<input type="radio" id="g7" name="r7" style="position: relative; left:0px;">G
+					<input type="radio" id="d7" name="r7" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de carpintería (trabajo en madera)</div>
+				<div id="actresp">
+					<input type="radio" id="g8" name="r8" style="position: relative; left:0px;">G
+					<input type="radio" id="d8" name="r8" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de mecánica automotriz</div>
+				<div id="actresp">
+					<input type="radio" id="g9" name="r9" style="position: relative; left:0px;">G
+					<input type="radio" id="d9" name="r9" style="position: relative; left: 0px;">D
+				</div><div>Trabajar con un mecánico o técnico excelente</div>
+				<div id="actresp">
+					<input type="radio" id="g10" name="r10" style="position: relative; left:0px;">G
+					<input type="radio" id="d10" name="r10" style="position: relative; left: 0px;">D
+				</div><div>Trabajar al aire libre</div>
+				<div id="actresp">
+					<input type="radio" id="g11" name="r11" style="position: relative; left:0px;">G
+					<input type="radio" id="d11" name="r11" style="position: relative; left: 0px;">D
+				</div><div>Operar máquinas o equipos de motor</div>
+				<h2>I</h2>
+				<div id="actresp">
+					<input type="radio" id="g12" name="i1" style="position: relative; left:0px;">G
+					<input type="radio" id="d12" name="i1" style="position: relative; left: 0px;">D
+				</div><div>Leer libros o revistas científicas</div>
+				<div id="actresp">
+					<input type="radio" id="g13" name="i2" style="position: relative; left:0px;">G
+					<input type="radio" id="d13" name="i2" style="position: relative; left: 0px;">D
+				</div><div>Trabajar en un centro de investigación o en un laboratorio</div>
+				<div id="actresp">
+					<input type="radio" id="g14" name="i3" style="position: relative; left:0px;">G
+					<input type="radio" id="d14" name="i3" style="position: relative; left: 0px;">D
+				</div><div>Trabajar en un proyecto científico</div>
+				<div id="actresp">
+					<input type="radio" id="g15" name="i4" style="position: relative; left:0px;">G
+					<input type="radio" id="d15" name="i4" style="position: relative; left: 0px;">D
+				</div><div>Estudiar una teoría científica</div>
+				<div id="actresp">
+					<input type="radio" id="g16" name="i5" style="position: relative; left:0px;">G
+					<input type="radio" id="d16" name="i5" style="position: relative; left: 0px;">D
+				</div><div>Trabajar con productos qímicos</div>
+				<div id="actresp">
+					<input type="radio" id="g17" name="i6" style="position: relative; left:0px;">G
+					<input type="radio" id="d17" name="i6" style="position: relative; left: 0px;">D
+				</div><div>Aplicar matemáticas a los problemas prácticos</div>
+				<div id="actresp">
+					<input type="radio" id="g18" name="i7" style="position: relative; left:0px;">G
+					<input type="radio" id="d18" name="i7" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de física</div>
+				<div id="actresp">
+					<input type="radio" id="g19" name="i8" style="position: relative; left:0px;">G
+					<input type="radio" id="d19" name="i8" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de química</div>
+				<div id="actresp">
+					<input type="radio" id="g20" name="i9" style="position: relative; left:0px;">G
+					<input type="radio" id="d20" name="i9" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de matemáticas</div>
+				<div id="actresp">
+					<input type="radio" id="g21" name="i10" style="position: relative; left:0px;">G
+					<input type="radio" id="d21" name="i10" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de biología</div>
+				<div id="actresp">
+					<input type="radio" id="g22" name="i11" style="position: relative; left:0px;">G
+					<input type="radio" id="d22" name="i11" style="position: relative; left: 0px;">D
+				</div><div>Estudiar problemas académicos o técnicos</div>
+				<h2>A</h2>
+				<div id="actresp">
+					<input type="radio" id="g23" name="a1" style="position: relative; left:0px;">G
+					<input type="radio" id="d23" name="a1" style="position: relative; left: 0px;">D
+				</div><div>Trazar, dibujar o pintar</div>
+				<div id="actresp">
+					<input type="radio" id="g24" name="a2" style="position: relative; left:0px;">G
+					<input type="radio" id="d24" name="a2" style="position: relative; left: 0px;">D
+				</div><div>Diseñar muebles, ropa o carteles</div>
+				<div id="actresp">
+					<input type="radio" id="g25" name="a3" style="position: relative; left:0px;">G
+					<input type="radio" id="d25" name="a3" style="position: relative; left: 0px;">D
+				</div><div>Ser integrante de una banda, grupo u orquesta</div>
+				<div id="actresp">
+					<input type="radio" id="g26" name="a4" style="position: relative; left:0px;">G
+					<input type="radio" id="d26" name="a4" style="position: relative; left: 0px;">D
+				</div><div>Tocar un instrumento musical</div>
+				<div id="actresp">
+					<input type="radio" id="g27" name="a5" style="position: relative; left:0px;">G
+					<input type="radio" id="d27" name="a5" style="position: relative; left: 0px;">D
+				</div><div>Pintar retratos o tomar fotografías</div>
+				<div id="actresp">
+					<input type="radio" id="g28" name="a6" style="position: relative; left:0px;">G
+					<input type="radio" id="d28" name="a6" style="position: relative; left: 0px;">D
+				</div><div>Escribir novelas u obras de teatro</div>
+				<div id="actresp">
+					<input type="radio" id="g29" name="a7" style="position: relative; left:0px;">G
+					<input type="radio" id="d29" name="a7" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de arte</div>
+				<div id="actresp">
+					<input type="radio" id="g30" name="a8" style="position: relative; left:0px;">G
+					<input type="radio" id="d30" name="a8" style="position: relative; left: 0px;">D
+				</div><div>Arreglar o componer música de cualquier tipo</div>
+				<div id="actresp">
+					<input type="radio" id="g31" name="a9" style="position: relative; left:0px;">G
+					<input type="radio" id="d31" name="a9" style="position: relative; left: 0px;">D
+				</div><div>Trabajar con un artista, escritor o escultor talentoso</div>
+				<div id="actresp">
+					<input type="radio" id="g32" name="a10" style="position: relative; left:0px;">G
+					<input type="radio" id="d32" name="a10" style="position: relative; left: 0px;">D
+				</div><div>Actuar para otros (bailar, cantar, actuar,etc.)</div>
+				<div id="actresp">
+					<input type="radio" id="g33" name="a11" style="position: relative; left:0px;">G
+					<input type="radio" id="d33" name="a11" style="position: relative; left: 0px;">D
+				</div><div>Leer artículos de arte, literatura o música</div>
+				<h2>S</h2>
+				<div id="actresp">
+					<input type="radio" id="g34" name="s1" style="position: relative; left:0px;">G
+					<input type="radio" id="d34" name="s1" style="position: relative; left: 0px;">D
+				</div><div>Conocer educadores o terapeutas importantes</div>
+				<div id="actresp">
+					<input type="radio" id="g35" name="s2" style="position: relative; left:0px;">G
+					<input type="radio" id="d35" name="s2" style="position: relative; left: 0px;">D
+				</div><div>Leer artículos o libros de sociología</div>
+				<div id="actresp">
+					<input type="radio" id="g36" name="s3" style="position: relative; left:0px;">G
+					<input type="radio" id="d36" name="s3" style="position: relative; left: 0px;">D
+				</div><div>Trabajar para una obra de caridad</div>
+				<div id="actresp">
+					<input type="radio" id="g37" name="s4" style="position: relative; left:0px;">G
+					<input type="radio" id="d37" name="s4" style="position: relative; left: 0px;">D
+				</div><div>Ayudar a otros con sus problemas personales</div>
+				<div id="actresp">
+					<input type="radio" id="g38" name="s5" style="position: relative; left:0px;">G
+					<input type="radio" id="d38" name="s5" style="position: relative; left: 0px;">D
+				</div><div>Estudiar sobre delincuencia juvenil</div>
+				<div id="actresp">
+					<input type="radio" id="g39" name="s6" style="position: relative; left:0px;">G
+					<input type="radio" id="d39" name="s6" style="position: relative; left: 0px;">D
+				</div><div>Leer artículos o libros de psicología</div>
+				<div id="actresp">
+					<input type="radio" id="g40" name="s7" style="position: relative; left:0px;">G
+					<input type="radio" id="d40" name="s7" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso sobre relaciones humanas</div>
+				<div id="actresp">
+					<input type="radio" id="g41" name="s8" style="position: relative; left:0px;">G
+					<input type="radio" id="d41" name="s8" style="position: relative; left: 0px;">D
+				</div><div>Enseñar en una escuela secundaria</div>
+				<div id="actresp">
+					<input type="radio" id="g42" name="s9" style="position: relative; left:0px;">G
+					<input type="radio" id="d42" name="s9" style="position: relative; left: 0px;">D
+				</div><div>Supervisar actividades de pacientes con enfermedades mentales</div>
+				<div id="actresp">
+					<input type="radio" id="g43" name="s10" style="position: relative; left:0px;">G
+					<input type="radio" id="d43" name="s10" style="position: relative; left: 0px;">D
+				</div><div>Enseñar a los adultos</div>
+				<div id="actresp">
+					<input type="radio" id="g44" name="s11" style="position: relative; left:0px;">G
+					<input type="radio" id="d44" name="s11" style="position: relative; left: 0px;">D
+				</div><div>Trabajar como voluntario</div>
+				<h2>E</h2>
+				<div id="actresp">
+					<input type="radio" id="g45" name="e1" style="position: relative; left:0px;">G
+					<input type="radio" id="d45" name="e1" style="position: relative; left: 0px;">D
+				</div><div>Aprender estrategias para el éxito en los negocios</div>
+				<div id="actresp">
+					<input type="radio" id="g46" name="e2" style="position: relative; left:0px;">G
+					<input type="radio" id="d46" name="e2" style="position: relative; left: 0px;">D
+				</div><div>Administrar mi propio negocio</div>
+				<div id="actresp">
+					<input type="radio" id="g47" name="e3" style="position: relative; left:0px;">G
+					<input type="radio" id="d47" name="e3" style="position: relative; left: 0px;">D
+				</div><div>Asistir a conferencias de ventas</div>
+				<div id="actresp">
+					<input type="radio" id="g48" name="e4" style="position: relative; left:0px;">G
+					<input type="radio" id="d48" name="e4" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso corto de administración o liderazgo</div>
+				<div id="actresp">
+					<input type="radio" id="g49" name="e5" style="position: relative; left:0px;">G
+					<input type="radio" id="d49" name="e5" style="position: relative; left: 0px;">D
+				</div><div>Actuar como oficial/director de un grupo</div>
+				<div id="actresp">
+					<input type="radio" id="g50" name="e6" style="position: relative; left:0px;">G
+					<input type="radio" id="d50" name="e6" style="position: relative; left: 0px;">D
+				</div><div>Supervisar el trabajo de otros</div>
+				<div id="actresp">
+					<input type="radio" id="g51" name="e7" style="position: relative; left:0px;">G
+					<input type="radio" id="d51" name="e7" style="position: relative; left: 0px;">D
+				</div><div>Conocer ejecutivos y líderes importantes</div>
+				<div id="actresp">
+					<input type="radio" id="g52" name="e8" style="position: relative; left:0px;">G
+					<input type="radio" id="d52" name="e8" style="position: relative; left: 0px;">D
+				</div><div>Dirigir a un grupo para alcanzar una meta</div>
+				<div id="actresp">
+					<input type="radio" id="g53" name="e9" style="position: relative; left:0px;">G
+					<input type="radio" id="d53" name="e9" style="position: relative; left: 0px;">D
+				</div><div>Participar en una campaña política</div>
+				<div id="actresp">
+					<input type="radio" id="g54" name="e10" style="position: relative; left:0px;">G
+					<input type="radio" id="d54" name="e10" style="position: relative; left: 0px;">D
+				</div><div>Actuar como un asesor de empresas o negocios</div>
+				<div id="actresp">
+					<input type="radio" id="g55" name="e11" style="position: relative; left:0px;">G
+					<input type="radio" id="d55" name="e11" style="position: relative; left: 0px;">D
+				</div><div>Leer artículos o revistas de negocios</div>
+				<h2>C</h2>
+				<div id="actresp">
+					<input type="radio" id="g56" name="c1" style="position: relative; left:0px;">G
+					<input type="radio" id="d56" name="c1" style="position: relative; left: 0px;">D
+				</div><div>Llenar declaraciones o formularios de impuestos</div>
+				<div id="actresp">
+					<input type="radio" id="g57" name="c2" style="position: relative; left:0px;">G
+					<input type="radio" id="d57" name="c2" style="position: relative; left: 0px;">D
+				</div><div>Sumar, restar, multiplicar y dividir números<br> relacionados con negocios o contabilidad</div>
+				<div id="actresp">
+					<input type="radio" id="g58" name="c3" style="position: relative; left:0px;">G
+					<input type="radio" id="d58" name="c3" style="position: relative; left: 0px;">D
+				</div><div>Utilizar equipos de oficina</div>
+				<div id="actresp">
+					<input type="radio" id="g59" name="c4" style="position: relative; left:0px;">G
+					<input type="radio" id="d59" name="c4" style="position: relative; left: 0px;">D
+				</div><div>Llevar cuentas detalladas de gastos</div>
+				<div id="actresp">
+					<input type="radio" id="g60" name="c5" style="position: relative; left:0px;">G
+					<input type="radio" id="d60" name="c5" style="position: relative; left: 0px;">D
+				</div><div>Establecer un sistema para llevar cuentas</div>
+				<div id="actresp">
+					<input type="radio" id="g61" name="c6" style="position: relative; left:0px;">G
+					<input type="radio" id="d61" name="c6" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de contabilidad</div>
+				<div id="actresp">
+					<input type="radio" id="g62" name="c7" style="position: relative; left:0px;">G
+					<input type="radio" id="d62" name="c7" style="position: relative; left: 0px;">D
+				</div><div>Tomar un curso de matemáticas comerciales</div>
+				<div id="actresp">
+					<input type="radio" id="g63" name="c8" style="position: relative; left:0px;">G
+					<input type="radio" id="d63" name="c8" style="position: relative; left: 0px;">D
+				</div><div>Llevar un inventario de suministros o productos</div>
+				<div id="actresp">
+					<input type="radio" id="g64" name="c9" style="position: relative; left:0px;">G
+					<input type="radio" id="d64" name="c9" style="position: relative; left: 0px;">D
+				</div><div>Verificar documentos o productos para <br>detectar errores o fallas</div>
+				<div id="actresp">
+					<input type="radio" id="g65" name="c10" style="position: relative; left:0px;">G
+					<input type="radio" id="d65" name="c10" style="position: relative; left: 0px;">D
+				</div><div>Actualizar archivos</div>
+				<div id="actresp">
+					<input type="radio" id="g66" name="c11" style="position: relative; left:0px;">G
+					<input type="radio" id="d66" name="c11" style="position: relative; left: 0px;">D
+				</div><div>Trabajar en una oficina</div>
+			</div>
+			<h1>Habilidades</h1>
+			<p>Marque la casilla detrás de la S <k>(Sí)</k> para indicar aquellas actividades que puede hacer
+			bien o de manera competente. Marque la casilla detrás de la N <k>(No)</k> para indicar aquellas
+			actividades que nunca ha realizado o que realiza de manera deficiente.</p>
+			<div id="habilidades">
+				<h2>R</h2>
+				<div id="actresp">
+					<input type="radio" id="si1" name="hr1" style="position: relative; left:0px;">S
+					<input type="radio" id="no1" name="hr1" style="position: relative; left: 0px;">N
+				</div><div>He usado herramientas eléctricas para trabajos en madera tales como<br>la sierra, el torno, o la lijadora</div>
+				<div id="actresp">
+					<input type="radio" id="si2" name="hr2" style="position: relative; left:0px;">S
+					<input type="radio" id="no2" name="hr2" style="position: relative; left: 0px;">N
+				</div><div>Puedo hacer un dibujo a escala</div>
+				<div id="actresp">
+					<input type="radio" id="si3" name="hr3" style="position: relative; left:0px;">S
+					<input type="radio" id="no3" name="hr3" style="position: relative; left: 0px;">N
+				</div><div>Puedo cambiar el aceite o la llanta de un automóvil</div>
+				<div id="actresp">
+					<input type="radio" id="si4" name="hr4" style="position: relative; left:0px;">S
+					<input type="radio" id="no4" name="hr4" style="position: relative; left: 0px;">N
+				</div><div>He usado herramientas eléctricas tales como una prensa<br>
+				taladradora, una afiladora, o máquina de cosar</div>
+				<div id="actresp">
+					<input type="radio" id="si5" name="hr5" style="position: relative; left:0px;">S
+					<input type="radio" id="no5" name="hr5" style="position: relative; left: 0px;">N
+				</div><div>Puedo restaurar muebles o artículos de madera</div>
+				<div id="actresp">
+					<input type="radio" id="si6" name="hr6" style="position: relative; left:0px;">S
+					<input type="radio" id="no6" name="hr6" style="position: relative; left: 0px;">N
+				</div><div>Puedo hacer reparaciones eléctricas sencillas</div>
+				<div id="actresp">
+					<input type="radio" id="si7" name="hr7" style="position: relative; left:0px;">S
+					<input type="radio" id="no7" name="hr7" style="position: relative; left: 0px;">N
+				</div><div>Puedo reparar muebles</div>
+				<div id="actresp">
+					<input type="radio" id="si8" name="hr8" style="position: relative; left:0px;">S
+					<input type="radio" id="no8" name="hr8" style="position: relative; left: 0px;">N
+				</div><div>Puedo usar muchas herramientas de carpintería</div>
+				<div id="actresp">
+					<input type="radio" id="si9" name="hr9" style="position: relative; left:0px;">S
+					<input type="radio" id="no9" name="hr9" style="position: relative; left: 0px;">N
+				</div><div>Puedo hacer reparaciones de plomería sencillas</div>
+				<div id="actresp">
+					<input type="radio" id="si10" name="hr10" style="position: relative; left:0px;">S
+					<input type="radio" id="no10" name="hr10" style="position: relative; left: 0px;">N
+				</div><div>Puedo construir artículos sencillos de madera</div>
+				<div id="actresp">
+					<input type="radio" id="si11" name="hr11" style="position: relative; left:0px;">S
+					<input type="radio" id="no11" name="hr11" style="position: relative; left: 0px;">N
+				</div><div>Puedo pintar las habitaciones de una casa o un apartamento</div>
+				<h2>I</h2>
+				<div id="actresp">
+					<input type="radio" id="si12" name="hi1" style="position: relative; left:0px;">S
+					<input type="radio" id="no12" name="hr1" style="position: relative; left: 0px;">N
+				</div><div>Puedo usar álgebra para solucionar problemas matemáticos</div>
+				<div id="actresp">
+					<input type="radio" id="si13" name="hi2" style="position: relative; left:0px;">S
+					<input type="radio" id="no13" name="hr2" style="position: relative; left: 0px;">N
+				</div><div>Puedo realizar un experimento o una encuesta científico</div>
+				<div id="actresp">
+					<input type="radio" id="si14" name="hi3" style="position: relative; left:0px;">S
+					<input type="radio" id="no14" name="hr3" style="position: relative; left: 0px;">N
+				</div><div>Entiendo la "vida media" de un elemento radioactivo</div>
+				<div id="actresp">
+					<input type="radio" id="si15" name="hi4" style="position: relative; left:0px;">S
+					<input type="radio" id="no15" name="hr4" style="position: relative; left: 0px;">N
+				</div><div>Puedo usar tablas de logaritmos</div>
+				<div id="actresp">
+					<input type="radio" id="si16" name="hi5" style="position: relative; left:0px;">S
+					<input type="radio" id="no16" name="hi5" style="position: relative; left: 0px;">N
+				</div><div>Puedo usar una computadora para estudiar un problema científico</div>
+				<div id="actresp">
+					<input type="radio" id="si17" name="hi6" style="position: relative; left:0px;">S
+					<input type="radio" id="no17" name="hr6" style="position: relative; left: 0px;">N
+				</div><div>Puedo describir la función de los glóbulos blancos</div>
+				<div id="actresp">
+					<input type="radio" id="si18" name="hi7" style="position: relative; left:0px;">S
+					<input type="radio" id="no18" name="hr7" style="position: relative; left: 0px;">N
+				</div><div>Puedo interpretar fórmulas químicas sencillas</div>
+				<div id="actresp">
+					<input type="radio" id="si19" name="hi8" style="position: relative; left:0px;">S
+					<input type="radio" id="no19" name="hr8" style="position: relative; left: 0px;">N
+				</div><div>Entiendo por qué los satélites artificiales no caen a la tierra</div>
+				<div id="actresp">
+					<input type="radio" id="si20" name="hi9" style="position: relative; left:0px;">S
+					<input type="radio" id="no20" name="hr9" style="position: relative; left: 0px;">N
+				</div><div>Puedo escribir un informe científico</div>
+				<div id="actresp">
+					<input type="radio" id="si21" name="hi10" style="position: relative; left:0px;">S
+					<input type="radio" id="no21" name="hr10" style="position: relative; left: 0px;">N
+				</div><div>Entiendo la teoría universal del "Gran estallido" o "Big Bang"</div>
+				<div id="actresp">
+					<input type="radio" id="si22" name="hi11" style="position: relative; left:0px;">S
+					<input type="radio" id="no22" name="hr11" style="position: relative; left: 0px;">N
+				</div><div>Entiedo la función del ADN en la genética</div>
+				<h2>A</h2>
+				<div id="actresp">
+					<input type="radio" id="si23" name="ha1" style="position: relative; left:0px;">S
+					<input type="radio" id="no23" name="ha1" style="position: relative; left: 0px;">N
+				</div><div>Puedo tocar un instrumento musical</div>
+				<div id="actresp">
+					<input type="radio" id="si24" name="ha2" style="position: relative; left:0px;">S
+					<input type="radio" id="no24" name="ha2" style="position: relative; left: 0px;">N
+				</div><div>Puedo participar en un coro de dos o cuatro personas</div>
+				<div id="actresp">
+					<input type="radio" id="si25" name="ha3" style="position: relative; left:0px;">S
+					<input type="radio" id="no25" name="ha3" style="position: relative; left: 0px;">N
+				</div><div>Puedo cantar un solo musical</div>
+				<div id="actresp">
+					<input type="radio" id="si26" name="ha4" style="position: relative; left:0px;">S
+					<input type="radio" id="no26" name="ha4" style="position: relative; left: 0px;">N
+				</div><div>Puedo actuar en una obra de teatro</div>
+				<div id="actresp">
+					<input type="radio" id="si27" name="ha5" style="position: relative; left:0px;">S
+					<input type="radio" id="no27" name="ha5" style="position: relative; left: 0px;">N
+				</div><div>Puedo hacer lecturas interpretativas</div>
+				<div id="actresp">
+					<input type="radio" id="si28" name="ha6" style="position: relative; left:0px;">S
+					<input type="radio" id="no28" name="ha6" style="position: relative; left: 0px;">N
+				</div><div>Puedo pintar, usar acuarelas, o hacer esculturas</div>
+				<div id="actresp">
+					<input type="radio" id="si29" name="ha7" style="position: relative; left:0px;">S
+					<input type="radio" id="no29" name="ha7" style="position: relative; left: 0px;">N
+				</div><div>Puedo arreglar o componer música</div>
+				<div id="actresp">
+					<input type="radio" id="si30" name="ha8" style="position: relative; left:0px;">S
+					<input type="radio" id="no30" name="ha8" style="position: relative; left: 0px;">N
+				</div><div>Puedo diseñar roa, carteles o muebles</div>
+				<div id="actresp">
+					<input type="radio" id="si31" name="ha9" style="position: relative; left:0px;">S
+					<input type="radio" id="no31" name="ha9" style="position: relative; left: 0px;">N
+				</div><div>Soy bueno(a) para escribir cuentos o poesía</div>
+				<div id="actresp">
+					<input type="radio" id="si32" name="ha10" style="position: relative; left:0px;">S
+					<input type="radio" id="no32" name="ha10" style="position: relative; left: 0px;">N
+				</div><div>Puedo escribir un discurso</div>
+				<div id="actresp">
+					<input type="radio" id="si33" name="ha11" style="position: relative; left:0px;">S
+					<input type="radio" id="no33" name="ha11" style="position: relative; left: 0px;">N
+				</div><div>Puedo tomar fotografías atractivas</div>
+				<h2>S</h2>
+				<div id="actresp">
+					<input type="radio" id="si34" name="hs1" style="position: relative; left:0px;">S
+					<input type="radio" id="no34" name="hs1" style="position: relative; left: 0px;">N
+				</div><div>Se me hace facil hablar con todo tipo de personas</div>
+				<div id="actresp">
+					<input type="radio" id="si35" name="hs2" style="position: relative; left:0px;">S
+					<input type="radio" id="no35" name="hs2" style="position: relative; left: 0px;">N
+				</div><div>Soy bueno(a) explicando cosas a otras personas</div>
+				<div id="actresp">
+					<input type="radio" id="si36" name="hs3" style="position: relative; left:0px;">S
+					<input type="radio" id="no36" name="hs3" style="position: relative; left: 0px;">N
+				</div><div>Podría trabajar como organizador del vecindario</div>
+				<div id="actresp">
+					<input type="radio" id="si37" name="hs4" style="position: relative; left:0px;">S
+					<input type="radio" id="no37" name="hs4" style="position: relative; left: 0px;">N
+				</div><div>Las personas me buscan para contarme sus preocupaciones</div>
+				<div id="actresp">
+					<input type="radio" id="si38" name="hs5" style="position: relative; left:0px;">S
+					<input type="radio" id="no38" name="hs5" style="position: relative; left: 0px;">N
+				</div><div>Puedo enseñar a niños fácilmente</div>
+				<div id="actresp">
+					<input type="radio" id="si39" name="hs6" style="position: relative; left:0px;">S
+					<input type="radio" id="no39" name="hs6" style="position: relative; left: 0px;">N
+				</div><div>Puedo enseñar a adultos fácilmente</div>
+				<div id="actresp">
+					<input type="radio" id="si40" name="hs7" style="position: relative; left:0px;">S
+					<input type="radio" id="no40" name="hs7" style="position: relative; left: 0px;">N
+				</div><div>Soy bueno(a) para ayudar a personas que están aflingidas o preocupadas</div>
+				<div id="actresp">
+					<input type="radio" id="si41" name="hs8" style="position: relative; left:0px;">S
+					<input type="radio" id="no41" name="hs8" style="position: relative; left: 0px;">N
+				</div><div>Entiendo bien las relaciones sociales</div>
+				<div id="actresp">
+					<input type="radio" id="si42" name="hs9" style="position: relative; left:0px;">S
+					<input type="radio" id="no42" name="hs9" style="position: relative; left: 0px;">N
+				</div><div>Soy bueno(a) para enseñar a otros</div>
+				<div id="actresp">
+					<input type="radio" id="si43" name="hs10" style="position: relative; left:0px;">S
+					<input type="radio" id="no43" name="hs10" style="position: relative; left: 0px;">N
+				</div><div>Soy bueno(a) para hacer sentir a gusto a las personas</div>
+				<div id="actresp">
+					<input type="radio" id="si44" name="hs11" style="position: relative; left:0px;">S
+					<input type="radio" id="no44" name="hs11" style="position: relative; left: 0px;">N
+				</div><div>Trabajo mucho mejor con personas que con cosas o ideas</div>
+				<h2>E</h2>
+				<div id="actresp">
+					<input type="radio" id="si45" name="he1" style="position: relative; left:0px;">S
+					<input type="radio" id="no45" name="he1" style="position: relative; left: 0px;">N
+				</div><div>Sé como ser un líder exitoso</div>
+				<div id="actresp">
+					<input type="radio" id="si46" name="he2" style="position: relative; left:0px;">S
+					<input type="radio" id="no46" name="he2" style="position: relative; left: 0px;">N
+				</div><div>Soy un buen orador público</div>
+				<div id="actresp">
+					<input type="radio" id="si47" name="he3" style="position: relative; left:0px;">S
+					<input type="radio" id="no47" name="he3" style="position: relative; left: 0px;">N
+				</div><div>Puedo administrar una campaña de ventas</div>
+				<div id="actresp">
+					<input type="radio" id="si48" name="he4" style="position: relative; left:0px;">S
+					<input type="radio" id="no48" name="he4" style="position: relative; left: 0px;">N
+				</div><div>Puedo organizar el trabajo de otros</div>
+				<div id="actresp">
+					<input type="radio" id="si49" name="he5" style="position: relative; left:0px;">S
+					<input type="radio" id="no49" name="he5" style="position: relative; left: 0px;">N
+				</div><div>Soy una persona ambiciosa y asertiva</div>
+				<div id="actresp">
+					<input type="radio" id="si50" name="he6" style="position: relative; left:0px;">S
+					<input type="radio" id="no50" name="he6" style="position: relative; left: 0px;">N
+				</div><div>Soy bueno(a) en lograr que las personas hagan las cosas a mi manera</div>
+				<div id="actresp">
+					<input type="radio" id="si51" name="he7" style="position: relative; left:0px;">S
+					<input type="radio" id="no51" name="he7" style="position: relative; left: 0px;">N
+				</div><div>Soy un buen vendedor</div>
+				<div id="actresp">
+					<input type="radio" id="si52" name="he8" style="position: relative; left:0px;">S
+					<input type="radio" id="no52" name="he8" style="position: relative; left: 0px;">N
+				</div><div>Soy un buen arumentador</div>
+				<div id="actresp">
+					<input type="radio" id="si53" name="he9" style="position: relative; left:0px;">S
+					<input type="radio" id="no53" name="he9" style="position: relative; left: 0px;">N
+				</div><div>Puedo ser muy persuasivo</div>
+				<div id="actresp">
+					<input type="radio" id="si54" name="he10" style="position: relative; left:0px;">S
+					<input type="radio" id="no54" name="he10" style="position: relative; left: 0px;">N
+				</div><div>Tengo buenas destrezas para planificar</div>
+				<div id="actresp">
+					<input type="radio" id="si55" name="he11" style="position: relative; left:0px;">S
+					<input type="radio" id="no55" name="he11" style="position: relative; left: 0px;">N
+				</div><div>Tengo algunas destrezas de liderazgo</div>
+				<h2>C</h2>
+				<div id="actresp">
+					<input type="radio" id="si56" name="hc1" style="position: relative; left:0px;">S
+					<input type="radio" id="no56" name="hc1" style="position: relative; left: 0px;">N
+				</div><div>Puedo archivar correspondencia y otros papeles</div>
+				<div id="actresp">
+					<input type="radio" id="si57" name="hc2" style="position: relative; left:0px;">S
+					<input type="radio" id="no57" name="hc2" style="position: relative; left: 0px;">N
+				</div><div>He tenido un trabajo de oficina</div>
+				<div id="actresp">
+					<input type="radio" id="si58" name="hc3" style="position: relative; left:0px;">S
+					<input type="radio" id="no58" name="hc3" style="position: relative; left: 0px;">N
+				</div><div>Puedo usar una máquina de correo automática</div>
+				<div id="actresp">
+					<input type="radio" id="si59" name="hc4" style="position: relative; left:0px;">S
+					<input type="radio" id="no59" name="hc4" style="position: relative; left: 0px;">N
+				</div><div>Puedo completar mucho trabajo en papeles en poco tiempo</div>
+				<div id="actresp">
+					<input type="radio" id="si60" name="hc5" style="position: relative; left:0px;">S
+					<input type="radio" id="no60" name="hc5" style="position: relative; left: 0px;">N
+				</div><div>Puedo usar equipos sencillos de procesamiento de datos</div>
+				<div id="actresp">
+					<input type="radio" id="si61" name="hc6" style="position: relative; left:0px;">S
+					<input type="radio" id="no61" name="hc6" style="position: relative; left: 0px;">N
+				</div><div>Puedo registrar débitos y créditos en los libros</div>
+				<div id="actresp">
+					<input type="radio" id="si62" name="hc7" style="position: relative; left:0px;">S
+					<input type="radio" id="no62" name="hc7" style="position: relative; left: 0px;">N
+				</div><div>Puedo mantener récords precisos de pagos o ventas</div>
+				<div id="actresp">
+					<input type="radio" id="si63" name="hc8" style="position: relative; left:0px;">S
+					<input type="radio" id="no63" name="hc8" style="position: relative; left: 0px;">N
+				</div><div>Puedo registrar información en un terminal de computadora</div>
+				<div id="actresp">
+					<input type="radio" id="si64" name="hc9" style="position: relative; left:0px;">S
+					<input type="radio" id="no64" name="hc9" style="position: relative; left: 0px;">N
+				</div><div>Puedo escribir correspondencia de negocios</div>
+				<div id="actresp">
+					<input type="radio" id="si65" name="hc10" style="position: relative; left:0px;">S
+					<input type="radio" id="no65" name="hc10" style="position: relative; left: 0px;">N
+				</div><div>Puedo realizar algunas actividades rutinarias de oficina</div>
+				<div id="actresp">
+					<input type="radio" id="si66" name="hc11" style="position: relative; left:0px;">S
+					<input type="radio" id="no66" name="hc11" style="position: relative; left: 0px;">N
+				</div><div>Soy una persona cuidadosa y ordenada</div>
+			</div>
+			<h1>Ocupaciones</h1>
+			<p>Este es un inventario de sus sentimientos y actitudes hacia muchos tipos de trabajo. Indique las ocupaciones
+			que le <k>interesan</k> o <k>le llaman la atención</k> marcando la casilla debajo de la <b>S</b> <k>(Sí)</k>.
+			Indique las ocupaciones que le <k>desagradan</k> o <k>no le interesan</k>, marcando la casilla debajo de la <b>N</b> <k>(No)</k>.</p>
+			<h2>R</h2>
+			<div id="ocupaciones">
+				<div id="actresp">
+					<input type="radio" id="osi1" name="or1" style="position: relative; left:0px;">S
+					<input type="radio" id="ono1" name="or1" style="position: relative; left: 0px;">N
+				</div><div>Mecánico de aviación</div>
+				<div id="actresp">
+					<input type="radio" id="osi2" name="or2" style="position: relative; left:0px;">S
+					<input type="radio" id="ono2" name="or2" style="position: relative; left: 0px;">N
+				</div><div>Mecánico automotriz</div>
+				<div id="actresp">
+					<input type="radio" id="osi3" name="or3" style="position: relative; left:0px;">S
+					<input type="radio" id="ono3" name="or3" style="position: relative; left: 0px;">N
+				</div><div>Carpintero</div>
+				<div id="actresp">
+					<input type="radio" id="osi4" name="or4" style="position: relative; left:0px;">S
+					<input type="radio" id="ono4" name="or4" style="position: relative; left: 0px;">N
+				</div><div>Conductor de caminón</div>
+				<div id="actresp">
+					<input type="radio" id="osi5" name="or5" style="position: relative; left:0px;">S
+					<input type="radio" id="ono5" name="or5" style="position: relative; left: 0px;">N
+				</div><div>Agrimensor</div>
+				<div id="actresp">
+					<input type="radio" id="osi6" name="or6" style="position: relative; left:0px;">S
+					<input type="radio" id="ono6" name="or6" style="position: relative; left: 0px;">N
+				</div><div>Inspector de construcción</div>
+				<div id="actresp">
+					<input type="radio" id="osi7" name="or7" style="position: relative; left:0px;">S
+					<input type="radio" id="ono7" name="or7" style="position: relative; left: 0px;">N
+				</div><div>Mecánico de radio</div>
+				<div id="actresp">
+					<input type="radio" id="osi8" name="or8" style="position: relative; left:0px;">S
+					<input type="radio" id="ono8" name="or8" style="position: relative; left: 0px;">N
+				</div><div>Ingeniero de ferrocarril</div>
+				<div id="actresp">
+					<input type="radio" id="osi9" name="or9" style="position: relative; left:0px;">S
+					<input type="radio" id="ono9" name="or9" style="position: relative; left: 0px;">N
+				</div><div>Maquinista</div>
+				<div id="actresp">
+					<input type="radio" id="osi10" name="or10" style="position: relative; left:0px;">S
+					<input type="radio" id="ono10" name="or10" style="position: relative; left: 0px;">N
+				</div><div>Electricista</div>
+				<div id="actresp">
+					<input type="radio" id="osi11" name="or11" style="position: relative; left:0px;">S
+					<input type="radio" id="ono11" name="or11" style="position: relative; left: 0px;">N
+				</div><div>Agricultor</div>
+				<div id="actresp">
+					<input type="radio" id="osi12" name="or12" style="position: relative; left:0px;">S
+					<input type="radio" id="ono12" name="or12" style="position: relative; left: 0px;">N
+				</div><div>Piloto de helicóptero</div>
+				<div id="actresp">
+					<input type="radio" id="osi13" name="or13" style="position: relative; left:0px;">S
+					<input type="radio" id="ono13" name="or13" style="position: relative; left: 0px;">N
+				</div><div>Técnico electrónico</div>
+				<div id="actresp">
+					<input type="radio" id="osi14" name="or14" style="position: relative; left:0px;">S
+					<input type="radio" id="ono14" name="or14" style="position: relative; left: 0px;">N
+				</div><div>Soldador</div>
+				<h2>I</h2>
+				<div id="actresp">
+					<input type="radio" id="osi29" name="oi1" style="position: relative; left:0px;">S
+					<input type="radio" id="ono29" name="oi1" style="position: relative; left: 0px;">N
+				</div><div>Meteorólogo</div>
+				<div id="actresp">
+					<input type="radio" id="osi30" name="oi2" style="position: relative; left:0px;">S
+					<input type="radio" id="ono30" name="oi2" style="position: relative; left: 0px;">N
+				</div><div>Biólogo</div>
+				<div id="actresp">
+					<input type="radio" id="osi31" name="oi3" style="position: relative; left:0px;">S
+					<input type="radio" id="ono31" name="oi3" style="position: relative; left: 0px;">N
+				</div><div>Astrónomo</div>
+				<div id="actresp">
+					<input type="radio" id="osi32" name="oi4" style="position: relative; left:0px;">S
+					<input type="radio" id="ono32" name="oi4" style="position: relative; left: 0px;">N
+				</div><div>Técnico de laboratorio médico</div>
+				<div id="actresp">
+					<input type="radio" id="osi33" name="oi5" style="position: relative; left:0px;">S
+					<input type="radio" id="ono33" name="oi5" style="position: relative; left: 0px;">N
+				</div><div>Antropólogo</div>
+				<div id="actresp">
+					<input type="radio" id="osi34" name="oi6" style="position: relative; left:0px;">S
+					<input type="radio" id="ono34" name="oi6" style="position: relative; left: 0px;">N
+				</div><div>Químico</div>
+				<div id="actresp">
+					<input type="radio" id="osi35" name="oi7" style="position: relative; left:0px;">S
+					<input type="radio" id="ono35" name="oi7" style="position: relative; left: 0px;">N
+				</div><div>Investigador científico independiente</div>
+				<div id="actresp">
+					<input type="radio" id="osi36" name="oi8" style="position: relative; left:0px;">S
+					<input type="radio" id="ono36" name="oi8" style="position: relative; left: 0px;">N
+				</div><div>Autor de artículos científicos</div>
+				<div id="actresp">
+					<input type="radio" id="osi37" name="oi9" style="position: relative; left:0px;">S
+					<input type="radio" id="ono37" name="oi9" style="position: relative; left: 0px;">N
+				</div><div>Geólogo</div>
+				<div id="actresp">
+					<input type="radio" id="osi38" name="oi10" style="position: relative; left:0px;">S
+					<input type="radio" id="ono38" name="oi10" style="position: relative; left: 0px;">N
+				</div><div>Botánico</div>
+				<div id="actresp">
+					<input type="radio" id="osi39" name="oi11" style="position: relative; left:0px;">S
+					<input type="radio" id="ono39" name="oi11" style="position: relative; left: 0px;">N
+				</div><div>Investigador científico contratado</div>
+				<div id="actresp">
+					<input type="radio" id="osi40" name="oi12" style="position: relative; left:0px;">S
+					<input type="radio" id="ono40" name="oi12" style="position: relative; left: 0px;">N
+				</div><div>Físico</div>
+				<div id="actresp">
+					<input type="radio" id="osi41" name="oi13" style="position: relative; left:0px;">S
+					<input type="radio" id="ono41" name="oi13" style="position: relative; left: 0px;">N
+				</div><div>Investigador de ciencias sociales</div>
+				<div id="actresp">
+					<input type="radio" id="osi42" name="oi14" style="position: relative; left:0px;">S
+					<input type="radio" id="ono42" name="oi14" style="position: relative; left: 0px;">N
+				</div><div>Analista ambiental</div>
+				<h2>A</h2>
+				<div id="actresp">
+					<input type="radio" id="osi15" name="oa1" style="position: relative; left:0px;">S
+					<input type="radio" id="ono15" name="oa1" style="position: relative; left: 0px;">N
+				</div><div>Poeta</div>
+				<div id="actresp">
+					<input type="radio" id="osi16" name="oa2" style="position: relative; left:0px;">S
+					<input type="radio" id="ono16" name="oa2" style="position: relative; left: 0px;">N
+				</div><div>Músico</div>
+				<div id="actresp">
+					<input type="radio" id="osi17" name="oa3" style="position: relative; left:0px;">S
+					<input type="radio" id="ono17" name="oa3" style="position: relative; left: 0px;">N
+				</div><div>Novelista</div>
+				<div id="actresp">
+					<input type="radio" id="osi18" name="oa4" style="position: relative; left:0px;">S
+					<input type="radio" id="ono18" name="oa4" style="position: relative; left: 0px;">N
+				</div><div>Actor/Actriz</div>
+				<div id="actresp">
+					<input type="radio" id="osi19" name="oa5" style="position: relative; left:0px;">S
+					<input type="radio" id="ono19" name="oa5" style="position: relative; left: 0px;">N
+				</div><div>Escritor independiente</div>
+				<div id="actresp">
+					<input type="radio" id="osi20" name="oa6" style="position: relative; left:0px;">S
+					<input type="radio" id="ono20" name="oa6" style="position: relative; left: 0px;">N
+				</div><div>Arreglista de música</div>
+				<div id="actresp">
+					<input type="radio" id="osi21" name="oa7" style="position: relative; left:0px;">S
+					<input type="radio" id="ono21" name="oa7" style="position: relative; left: 0px;">N
+				</div><div>Periodista</div>
+				<div id="actresp">
+					<input type="radio" id="osi22" name="oa8" style="position: relative; left:0px;">S
+					<input type="radio" id="ono22" name="oa8" style="position: relative; left: 0px;">N
+				</div><div>Artista</div>
+				<div id="actresp">
+					<input type="radio" id="osi23" name="oa9" style="position: relative; left:0px;">S
+					<input type="radio" id="ono23" name="oa9" style="position: relative; left: 0px;">N
+				</div><div>Cantante</div>
+				<div id="actresp">
+					<input type="radio" id="osi24" name="oa10" style="position: relative; left:0px;">S
+					<input type="radio" id="ono24" name="oa10" style="position: relative; left: 0px;">N
+				</div><div>Compositor</div>
+				<div id="actresp">
+					<input type="radio" id="osi25" name="oa11" style="position: relative; left:0px;">S
+					<input type="radio" id="ono25" name="oa11" style="position: relative; left: 0px;">N
+				</div><div>Escultor</div>
+				<div id="actresp">
+					<input type="radio" id="osi26" name="oa12" style="position: relative; left:0px;">S
+					<input type="radio" id="ono26" name="oa12" style="position: relative; left: 0px;">N
+				</div><div>Autor de obras de teatro</div>
+				<div id="actresp">
+					<input type="radio" id="osi27" name="oa13" style="position: relative; left:0px;">S
+					<input type="radio" id="ono27" name="oa13" style="position: relative; left: 0px;">N
+				</div><div>Caricaturista</div>
+				<div id="actresp">
+					<input type="radio" id="osi28" name="oa14" style="position: relative; left:0px;">S
+					<input type="radio" id="ono28" name="oa14" style="position: relative; left: 0px;">N
+				</div><div>Animador</div>
+				<h2>S</h2>
+				<div id="actresp">
+					<input type="radio" id="osi44" name="os1" style="position: relative; left:0px;">S
+					<input type="radio" id="ono44" name="os1" style="position: relative; left: 0px;">N
+				</div><div>Consejero vocacional</div>
+				<div id="actresp">
+					<input type="radio" id="osi45" name="os2" style="position: relative; left:0px;">S
+					<input type="radio" id="ono45" name="os2" style="position: relative; left: 0px;">N
+				</div><div>Sociólogo</div>
+				<div id="actresp">
+					<input type="radio" id="osi46" name="os3" style="position: relative; left:0px;">S
+					<input type="radio" id="ono46" name="os3" style="position: relative; left: 0px;">N
+				</div><div>Profesor de secundaria</div>
+				<div id="actresp">
+					<input type="radio" id="osi47" name="os4" style="position: relative; left:0px;">S
+					<input type="radio" id="ono47" name="os4" style="position: relative; left: 0px;">N
+				</div><div>Consejero de abuso de sustancias</div>
+				<div id="actresp">
+					<input type="radio" id="osi48" name="os5" style="position: relative; left:0px;">S
+					<input type="radio" id="ono48" name="os5" style="position: relative; left: 0px;">N
+				</div><div>Experto en delincuencia juvenil</div>
+				<div id="actresp">
+					<input type="radio" id="osi49" name="os6" style="position: relative; left:0px;">S
+					<input type="radio" id="ono49" name="os6" style="position: relative; left: 0px;">N
+				</div><div>Terapéuta lingüístico</div>
+				<div id="actresp">
+					<input type="radio" id="osi50" name="os7" style="position: relative; left:0px;">S
+					<input type="radio" id="ono50" name="os7" style="position: relative; left: 0px;">N
+				</div><div>Consejero matrimonial</div>
+				<div id="actresp">
+					<input type="radio" id="osi51" name="os8" style="position: relative; left:0px;">S
+					<input type="radio" id="ono51" name="os8" style="position: relative; left: 0px;">N
+				</div><div>Psicólogo clínico</div>
+				<div id="actresp">
+					<input type="radio" id="osi52" name="os9" style="position: relative; left:0px;">S
+					<input type="radio" id="ono52" name="os9" style="position: relative; left: 0px;">N
+				</div><div>Profesor de ciencias sociales</div>
+				<div id="actresp">
+					<input type="radio" id="osi53" name="os10" style="position: relative; left:0px;">S
+					<input type="radio" id="ono53" name="os10" style="position: relative; left: 0px;">N
+				</div><div>Consejero personal</div>
+				<div id="actresp">
+					<input type="radio" id="osi54" name="os11" style="position: relative; left:0px;">S
+					<input type="radio" id="ono54" name="os11" style="position: relative; left: 0px;">N
+				</div><div>Director de campamento juvenil</div>
+				<div id="actresp">
+					<input type="radio" id="osi55" name="os12" style="position: relative; left:0px;">S
+					<input type="radio" id="ono55" name="os12" style="position: relative; left: 0px;">N
+				</div><div>Trabajador social</div>
+				<div id="actresp">
+					<input type="radio" id="osi56" name="os13" style="position: relative; left:0px;">S
+					<input type="radio" id="ono56" name="os13" style="position: relative; left: 0px;">N
+				</div><div>Consejero rehabilitación</div>
+				<div id="actresp">
+					<input type="radio" id="osi57" name="os14" style="position: relative; left:0px;">S
+					<input type="radio" id="ono57" name="os14" style="position: relative; left: 0px;">N
+				</div><div>Director de jardín infantil</div>
+				<h2>E</h2>
+				<div id="actresp">
+					<input type="radio" id="osi58" name="oe1" style="position: relative; left:0px;">S
+					<input type="radio" id="ono58" name="oe1" style="position: relative; left: 0px;">N
+				</div><div>Comprador</div>
+				<div id="actresp">
+					<input type="radio" id="osi59" name="oe2" style="position: relative; left:0px;">S
+					<input type="radio" id="ono59" name="oe2" style="position: relative; left: 0px;">N
+				</div><div>Ejecutivo de publicidad</div>
+				<div id="actresp">
+					<input type="radio" id="osi60" name="oe3" style="position: relative; left:0px;">S
+					<input type="radio" id="ono60" name="oe3" style="position: relative; left: 0px;">N
+				</div><div>Representante de fábricas</div>
+				<div id="actresp">
+					<input type="radio" id="osi61" name="oe4" style="position: relative; left:0px;">S
+					<input type="radio" id="ono61" name="oe4" style="position: relative; left: 0px;">N
+				</div><div>Ejecutivo empresarial</div>
+				<div id="actresp">
+					<input type="radio" id="osi62" name="oe5" style="position: relative; left:0px;">S
+					<input type="radio" id="ono62" name="oe5" style="position: relative; left: 0px;">N
+				</div><div>Maestro de ceremonias</div>
+				<div id="actresp">
+					<input type="radio" id="osi63" name="oe6" style="position: relative; left:0px;">S
+					<input type="radio" id="ono63" name="oe6" style="position: relative; left: 0px;">N
+				</div><div>Vendedor</div>
+				<div id="actresp">
+					<input type="radio" id="osi64" name="oe7" style="position: relative; left:0px;">S
+					<input type="radio" id="ono64" name="oe7" style="position: relative; left: 0px;">N
+				</div><div>Vendedor de bienes raíces</div>
+				<div id="actresp">
+					<input type="radio" id="osi65" name="oe8" style="position: relative; left:0px;">S
+					<input type="radio" id="ono65" name="oe8" style="position: relative; left: 0px;">N
+				</div><div>Gerente de tienda por departamentos</div>
+				<div id="actresp">
+					<input type="radio" id="osi66" name="oe9" style="position: relative; left:0px;">S
+					<input type="radio" id="ono66" name="oe9" style="position: relative; left: 0px;">N
+				</div><div>Gerente de ventas</div>
+				<div id="actresp">
+					<input type="radio" id="osi67" name="oe10" style="position: relative; left:0px;">S
+					<input type="radio" id="ono67" name="oe10" style="position: relative; left: 0px;">N
+				</div><div>Ejecutivo de relaciones públicas</div>
+				<div id="actresp">
+					<input type="radio" id="osi68" name="oe11" style="position: relative; left:0px;">S
+					<input type="radio" id="ono68" name="oe11" style="position: relative; left: 0px;">N
+				</div><div>Gerente de un canal de televisión</div>
+				<div id="actresp">
+					<input type="radio" id="osi69" name="oe12" style="position: relative; left:0px;">S
+					<input type="radio" id="ono69" name="oe12" style="position: relative; left: 0px;">N
+				</div><div>Dueño de pequeño negocio</div>
+				<div id="actresp">
+					<input type="radio" id="osi70" name="oe13" style="position: relative; left:0px;">S
+					<input type="radio" id="ono70" name="oe13" style="position: relative; left: 0px;">N
+				</div><div>Legislador</div>
+				<div id="actresp">
+					<input type="radio" id="osi71" name="oe14" style="position: relative; left:0px;">S
+					<input type="radio" id="ono71" name="oe14" style="position: relative; left: 0px;">N
+				</div><div>Gerente de aeropuerto</div>
+				<h2>C</h2>
+				<div id="actresp">
+					<input type="radio" id="osi72" name="oc1" style="position: relative; left:0px;">S
+					<input type="radio" id="ono72" name="oc1" style="position: relative; left: 0px;">N
+				</div><div>Tenedor de libros ("bookkeeper")</div>
+				<div id="actresp">
+					<input type="radio" id="osi73" name="oc2" style="position: relative; left:0px;">S
+					<input type="radio" id="ono73" name="oc2" style="position: relative; left: 0px;">N
+				</div><div>Revisor de presupuesto</div>
+				<div id="actresp">
+					<input type="radio" id="osi74" name="oc3" style="position: relative; left:0px;">S
+					<input type="radio" id="ono74" name="oc3" style="position: relative; left: 0px;">N
+				</div><div>Contador Público Certificado "CPA"</div>
+				<div id="actresp">
+					<input type="radio" id="osi75" name="oc4" style="position: relative; left:0px;">S
+					<input type="radio" id="ono75" name="oc4" style="position: relative; left: 0px;">N
+				</div><div>Investigador de crédito</div>
+				<div id="actresp">
+					<input type="radio" id="osi76" name="oc5" style="position: relative; left:0px;">S
+					<input type="radio" id="ono76" name="oc5" style="position: relative; left: 0px;">N
+				</div><div>Cajero de banco</div>
+				<div id="actresp">
+					<input type="radio" id="osi77" name="oc6" style="position: relative; left:0px;">S
+					<input type="radio" id="ono77" name="oc6" style="position: relative; left: 0px;">N
+				</div><div>Experto en impuestos</div>
+				<div id="actresp">
+					<input type="radio" id="osi78" name="oc7" style="position: relative; left:0px;">S
+					<input type="radio" id="ono78" name="oc7" style="position: relative; left: 0px;">N
+				</div><div>Controlador de invetarios</div>
+				<div id="actresp">
+					<input type="radio" id="osi79" name="oc8" style="position: relative; left:0px;">S
+					<input type="radio" id="ono79" name="oc8" style="position: relative; left: 0px;">N
+				</div><div>Operador de computadora</div>
+				<div id="actresp">
+					<input type="radio" id="osi80" name="oc9" style="position: relative; left:0px;">S
+					<input type="radio" id="ono80" name="oc9" style="position: relative; left: 0px;">N
+				</div><div>Analista financiero</div>
+				<div id="actresp">
+					<input type="radio" id="osi81" name="oc10" style="position: relative; left:0px;">S
+					<input type="radio" id="ono81" name="oc10" style="position: relative; left: 0px;">N
+				</div><div>Tasador de costos</div>
+				<div id="actresp">
+					<input type="radio" id="osi82" name="oc11" style="position: relative; left:0px;">S
+					<input type="radio" id="ono82" name="oc11" style="position: relative; left: 0px;">N
+				</div><div>Auxiliar de nómina</div>
+				<div id="actresp">
+					<input type="radio" id="osi83" name="oc12" style="position: relative; left:0px;">S
+					<input type="radio" id="ono83" name="oc12" style="position: relative; left: 0px;">N
+				</div><div>Examinador bancario</div>
+				<div id="actresp">
+					<input type="radio" id="osi84" name="oc13" style="position: relative; left:0px;">S
+					<input type="radio" id="ono84" name="oc13" style="position: relative; left: 0px;">N
+				</div><div>Auxiliar de contabilidad</div>
+				<div id="actresp">
+					<input type="radio" id="osi85" name="oc14" style="position: relative; left:0px;">S
+					<input type="radio" id="ono85" name="oc14" style="position: relative; left: 0px;">N
+				</div><div>Auxiliar de auditoría</div>
+			</div>
+			<h1>Auto-evaluaciones</h1>
+			<p>Evalúese a sí mismo(a) en cada una de las siguientes características <k>en comparación con
+			otras personas de su misma edad</k>. Proporcione la evaluación más exacta de cómo usted se ve a
+			sí mismo. Marque el número apropiado y <k>evite darse la misma puntuación en cada habilidad</k>.</p>
+			<div id="autohab">	
+				<div id="tabla">
+					<div class="column1">
+						Habilidad Mecánica
+					</div> 
+					<div class="column2">
+						Habilidad Científica
+					</div> 
+					<div class="column3">
+						Habilidad Artística
+					</div>
+					<div class="column4">
+						Habilidad para Enseñar
+					</div>
+					<div class="column5">
+						Habilidad en Ventas
+					</div>
+					<div class="column6">
+						Habilidad de Oficina
+					</div>
+				</div><br>
+				<div id="tabla" style="top: 70px;">
+					<div class="column1">
+						<p><input type="radio" id="hm7" name="hm" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="hm6" name="hm" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="hm5" name="hm" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="hm4" name="hm" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="hm3" name="hm" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="hm2" name="hm" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="hm1" name="hm" style="position: relative; left: 0px;">1</p>
+					</div> 
+					<div class="column2">
+						<p><input type="radio" id="hc7" name="hc" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="hc6" name="hc" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="hc5" name="hc" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="hc4" name="hc" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="hc3" name="hc" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="hc2" name="hc" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="hc1" name="hc" style="position: relative; left: 0px;">1</p>
+					</div> 
+					<div class="column3">
+						<p><input type="radio" id="ha7" name="ha" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="ha6" name="ha" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="ha5" name="ha" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="ha4" name="ha" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="ha3" name="ha" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="ha2" name="ha" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="ha1" name="ha" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column4">
+						<p><input type="radio" id="he7" name="he" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="he6" name="he" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="he5" name="he" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="he4" name="he" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="he3" name="he" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="he2" name="he" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="he1" name="he" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column5">
+						<p><input type="radio" id="hv7" name="hv" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="hv6" name="hv" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="hv5" name="hv" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="hv4" name="hv" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="hv3" name="hv" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="hv2" name="hv" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="hv1" name="hv" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column6">
+						<p><input type="radio" id="ho7" name="ho" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="ho6" name="ho" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="ho5" name="ho" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="ho4" name="ho" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="ho3" name="ho" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="ho2" name="ho" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="ho1" name="ho" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column7">
+						<p style="position: relative; top: 0px;">Alto</p>
+						<p style="position: relative; top: 70px;">Promedio</p>
+						<p style="position: relative; top: 140px;">Bajo</p>
+					</div>
+				</div>
+			</div>
+			<div id="autohab" style="top: 370px;">	
+				<div id="tabla">
+					<div class="column1">
+						Destrezas Manuales
+					</div> 
+					<div class="column2">
+						Habilidad Matemática
+					</div> 
+					<div class="column3">
+						Habilidad Musical
+					</div>
+					<div class="column4">
+						Entendimiento de otros
+					</div>
+					<div class="column5">
+						Habilidad Gerencial
+					</div>
+					<div class="column6">
+						Destrezas de Oficina
+					</div>
+				</div><br>
+				<div id="tabla" style="top: 70px;">
+					<div class="column1">
+						<p><input type="radio" id="dm7" name="dm" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="dm6" name="dm" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="dm5" name="dm" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="dm4" name="dm" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="dm3" name="dm" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="dm2" name="dm" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="dm1" name="dm" style="position: relative; left: 0px;">1</p>
+					</div> 
+					<div class="column2">
+						<p><input type="radio" id="hma7" name="hma" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="hma6" name="hma" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="hma5" name="hma" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="hma4" name="hma" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="hma3" name="hma" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="hma2" name="hma" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="hma1" name="hma" style="position: relative; left: 0px;">1</p>
+					</div> 
+					<div class="column3">
+						<p><input type="radio" id="hmu7" name="hmu" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="hmu6" name="hmu" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="hmu5" name="hmu" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="hmu4" name="hmu" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="hmu3" name="hmu" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="hmu2" name="hmu" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="hmu1" name="hmu" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column4">
+						<p><input type="radio" id="eo7" name="eo" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="eo6" name="eo" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="eo5" name="eo" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="eo4" name="eo" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="eo3" name="eo" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="eo2" name="eo" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="eo1" name="eo" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column5">
+						<p><input type="radio" id="hg7" name="hg" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="hg6" name="hg" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="hg5" name="hg" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="hg4" name="hg" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="hg3" name="hg" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="hg2" name="hg" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="hg1" name="hg" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column6">
+						<p><input type="radio" id="do7" name="do" style="position: relative; left: 0px;">7</p>
+						<p><input type="radio" id="do6" name="do" style="position: relative; left: 0px;">6</p>
+						<p><input type="radio" id="do5" name="do" style="position: relative; left: 0px;">5</p>
+						<p><input type="radio" id="do4" name="do" style="position: relative; left: 0px;">4</p>
+						<p><input type="radio" id="do3" name="do" style="position: relative; left: 0px;">3</p>
+						<p><input type="radio" id="do2" name="do" style="position: relative; left: 0px;">2</p>
+						<p><input type="radio" id="do1" name="do" style="position: relative; left: 0px;">1</p>
+					</div>
+					<div class="column7">
+						<p style="position: relative; top: 0px;">Alto</p>
+						<p style="position: relative; top: 70px;">Promedio</p>
+						<p style="position: relative; top: 140px;">Bajo</p>
+					</div>
+				</div>
+			</div>
+			<p style="margin-top: 700px;"> </p>
+			<h1>Confirmar y enviar</h1>
+			<p>Presione en <k><a href="#" onClick="mostrar()">confirmar</a></k> para calcular los resultados.</p>
+		</form>
+	</div>
+	<div id="informe">
+		<h1>Cuestionario de Orientación Vocacional (Resultados)</h1>
+		<p>El propósito de estos resultados es ayudarle a usted a aprender más sobre sí mismo, sus selecciones
+		de trabajos y su carrera.</p>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input type="text" id="onombre" size="50" READONLY></div>
+			<div id="edad"><label>Edad:</label><input type="text" id="oedad" size="3" READONLY></div>
+			<div id="sexo"><label>Sexo:</label><input id="osexo" size="10" READONLY></div>
+		</div>
+		<h2>Resultados</h2>
+		<div id="respuestas">
+			<div class="columna1">
+				<p>Actividades</p>
+				<p>Habilidades</p>
+				<p>Ocupaciones</p>
+				<p>Auto-evaluación</p>
+				<p>- - -</p>
+				<p><b>Puntuaje total</b></p>
+			</div> 
+			<div class="columna2">
+				<p><input type="text" id="oAcR" READONLY>R</p>
+				<p><input type="text" id="oHaR" READONLY>R</p>
+				<p><input type="text" id="oOcR" READONLY>R</p>
+				<p><input type="text" id="oAuR" READONLY>R</p>
+				<p><input type="text" id="oAu2R" READONLY>R</p>
+				<p><b><input type="text" id="oPTR" READONLY>R</b></p>
+			</div> 
+			<div class="columna3">
+				<p><input type="text" id="oAcI" READONLY>I</p>
+				<p><input type="text" id="oHaI" READONLY>I</p>
+				<p><input type="text" id="oOcI" READONLY>I</p>
+				<p><input type="text" id="oAuI" READONLY>I</p>
+				<p><input type="text" id="oAu2I" READONLY>I</p>
+				<p><b><input type="text" id="oPTI" READONLY>I</b></p>
+			</div>
+			<div class="columna4">
+				<p><input type="text" id="oAcA" READONLY>A</p>
+				<p><input type="text" id="oHaA" READONLY>A</p>
+				<p><input type="text" id="oOcA" READONLY>A</p>
+				<p><input type="text" id="oAuA" READONLY>A</p>
+				<p><input type="text" id="oAu2A" READONLY>A</p>
+				<p><b><input type="text" id="oPTA" READONLY>A</b></p>
+			</div>
+			<div class="columna5">
+				<p><input type="text" id="oAcS" READONLY>S</p>
+				<p><input type="text" id="oHaS" READONLY>S</p>
+				<p><input type="text" id="oOcS" READONLY>S</p>
+				<p><input type="text" id="oAuS" READONLY>S</p>
+				<p><input type="text" id="oAu2S" READONLY>S</p>
+				<p><b><input type="text" id="oPTS" READONLY>S</b></p>
+			</div>
+			<div class="columna6">
+				<p><input type="text" id="oAcE" READONLY>E</p>
+				<p><input type="text" id="oHaE" READONLY>E</p>
+				<p><input type="text" id="oOcE" READONLY>E</p>
+				<p><input type="text" id="oAuE" READONLY>E</p>
+				<p><input type="text" id="oAu2E" READONLY>E</p>
+				<p><b><input type="text" id="oPTE" READONLY>E</b></p>
+			</div>
+			<div class="columna7">
+				<p><input type="text" id="oAcC" READONLY>C</p>
+				<p><input type="text" id="oHaC" READONLY>C</p>
+				<p><input type="text" id="oOcC" READONLY>C</p>
+				<p><input type="text" id="oAuC" READONLY>C</p>
+				<p><input type="text" id="oAu2C" READONLY>C</p>
+				<p><b><input type="text" id="oPTC" READONLY>C</b></p>
+			</div>
+		</div><br><br>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte a interpretar
+		cómo esta información puede serte útil para elegir un camino profesional.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+	<div id="csv" style="display: none;"></div>
+</body>
+
+<script type="text/javascript"> 
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+
+	function sendMail() {
+		var contenido = document.getElementById("csv").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("SDSR - " + document.getElementById('inombre').value + " " + document.getElementById("ifecha").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+
+	function mostrar() {
+		var nom=document.getElementById('inombre').value;
+		var eda=document.getElementById('iedad').value;
+		var sex=document.getElementById('isexo').value;
+		
+		var actR=numActR(), actI=numActI(), actA=numActA(), actS=numActS(), actE=numActE(), actC=numActC();
+		var habR=numHabR(), habI=numHabI(), habA=numHabA(), habS=numHabS(), habE=numHabE(), habC=numHabC();
+		var ocR=numOcR(), ocI=numOcI(), ocA=numOcA(), ocS=numOcS(), ocE=numOcE(), ocC=numOcC();
+		var auR=numAuR(), auI=numAuI(), auA=numAuA(), auS=numAuS(), auE=numAuE(), auC=numAuC();
+		var au2R=numAu2R(), au2I=numAu2I(), au2A=numAu2A(), au2S=numAu2S(), au2E=numAu2E(), au2C=numAu2C();
+		
+		var totR=actR+habR+ocR+auR+au2R;
+		var totI=actI+habI+ocI+auI+au2I;
+		var totA=actA+habA+ocA+auA+au2A;
+		var totS=actS+habS+ocS+auS+au2S;
+		var totE=actE+habE+ocE+auE+au2E;
+		var totC=actC+habC+ocC+auC+au2C;
+
+		var as1=document.getElementById('as1').value;
+		var as2=document.getElementById('as2').value;
+		var as3=document.getElementById('as3').value;
+		var as4=document.getElementById('as4').value;
+		var as5=document.getElementById('as5').value;
+		
+		var csv = nom + "," + eda + "," + sex + "," + actR + "," + actI + "," + actA + "," + actS + "," + actE + "," + actC + ","
+			+ habR + "," + habI + "," + habA + "," + habS + "," + habE + "," + habC + ","
+			+ ocR + "," + ocI + "," + ocA + "," + ocS + "," + ocE + "," + ocC + ","
+			+ auR + "," + auI + "," + auA + "," + auS + "," + auE + "," + auC + ","
+			+ au2R + "," + au2I + "," + au2A + "," + au2S + "," + au2E + "," + au2C + ","
+			+ totR + "," + totI + "," + totA + "," + totS + "," + totE + "," + totC + ","
+			+ as1 + "," + as2 + "," + as3 + "," + as4 + "," + as5;
+		console.log(csv);
+		document.getElementById('csv').innerHTML=csv;
+	
+	  document.getElementById('formulario').style.display='none';
+	  document.getElementById('informe').style.display='block';
+	  
+	  document.getElementById('onombre').value=nom;
+	  document.getElementById('oedad').value=eda;
+	  document.getElementById('osexo').value=sex;
+	  
+	  document.getElementById('oAcR').value=actR;
+	  document.getElementById('oAcI').value=actI;
+	  document.getElementById('oAcA').value=actA;
+	  document.getElementById('oAcS').value=actS;
+	  document.getElementById('oAcE').value=actE;
+	  document.getElementById('oAcC').value=actC;
+	  
+	  document.getElementById('oHaR').value=habR;
+	  document.getElementById('oHaI').value=habI;
+	  document.getElementById('oHaA').value=habA;
+	  document.getElementById('oHaS').value=habS;
+	  document.getElementById('oHaE').value=habE;
+	  document.getElementById('oHaC').value=habC;
+	  
+	  document.getElementById('oOcR').value=ocR;
+	  document.getElementById('oOcI').value=ocI;
+	  document.getElementById('oOcA').value=ocA;
+	  document.getElementById('oOcS').value=ocS;
+	  document.getElementById('oOcE').value=ocE;
+	  document.getElementById('oOcC').value=ocC;
+	  
+	  document.getElementById('oAuR').value=auR;
+	  document.getElementById('oAuI').value=auI;
+	  document.getElementById('oAuA').value=auA;
+	  document.getElementById('oAuS').value=auS;
+	  document.getElementById('oAuE').value=auE;
+	  document.getElementById('oAuC').value=auC;
+	  
+	  document.getElementById('oAu2R').value=au2R;
+	  document.getElementById('oAu2I').value=au2I;
+	  document.getElementById('oAu2A').value=au2A;
+	  document.getElementById('oAu2S').value=au2S;
+	  document.getElementById('oAu2E').value=au2E;
+	  document.getElementById('oAu2C').value=au2C;
+	  
+	  document.getElementById('oPTR').value=totR;
+	  document.getElementById('oPTI').value=totI;
+	  document.getElementById('oPTA').value=totA;
+	  document.getElementById('oPTS').value=totS;
+	  document.getElementById('oPTE').value=totE;
+	  document.getElementById('oPTC').value=totC;
+	  
+
+	  
+	  /* document.write(nom + '<br>' + eda + '<br>' + sex + '<br> ACTIVIDADES <br>Total R: ' + actR);
+	  document.write('<br> Total I: ' + actI);
+	  document.write('<br> Total A: ' + actA);
+	  document.write('<br> Total S: ' + actS);
+	  document.write('<br> Total E: ' + actE);
+	  document.write('<br> Total C: ' + actC);
+	  document.write('<br>HABILIDADES <br>Total R: ' + habR);
+	  document.write('<br> Total I: ' + habI);
+	  document.write('<br> Total A: ' + habA);
+	  document.write('<br> Total S: ' + habS);
+	  document.write('<br> Total E: ' + habE);
+	  document.write('<br> Total C: ' + habC);
+	  document.write('<br>OCUPACIONES <br>Total R: ' + ocR);
+	  document.write('<br> Total I: ' + ocI);
+	  document.write('<br> Total A: ' + ocA);
+	  document.write('<br> Total S: ' + ocS);
+	  document.write('<br> Total E: ' + ocE);
+	  document.write('<br> Total C: ' + ocC);
+	  document.write('<br>AUTOEVALUACIONES <br>Puntuación R: ' + auR);
+	  document.write('<br> Puntuación I: ' + auI);
+	  document.write('<br> Puntuación A: ' + auA);
+	  document.write('<br> Puntuación S: ' + auS);
+	  document.write('<br> Puntuación E: ' + auE);
+	  document.write('<br> Puntuación C: ' + auC);
+	  document.write('<br> Puntuación R(2): ' + au2R);
+	  document.write('<br> Puntuación I(2): ' + au2I);
+	  document.write('<br> Puntuación A(2): ' + au2A);
+	  document.write('<br> Puntuación S(2): ' + au2S);
+	  document.write('<br> Puntuación E(2): ' + au2E);
+	  document.write('<br> Puntuación C(2): ' + au2C);
+	  document.write('<br> --------------------------------------');
+	  document.write('<br> Global R: ' + totR);
+	  document.write('<br> Global I: ' + totI);
+	  document.write('<br> Global A: ' + totA);
+	  document.write('<br> Global S: ' + totS);
+	  document.write('<br> Global E: ' + totE);
+	  document.write('<br> Global C: ' + totC); 
+	  alert('Debería estar calculando'); */
+	}
+	function numActR() {
+		var total = 0;
+		if (document.getElementById('g1').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g2').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g3').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g4').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g5').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g6').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g7').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g8').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g9').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g10').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g11').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numActI() {
+		var total = 0;
+		if (document.getElementById('g12').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g13').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g14').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g15').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g16').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g17').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g18').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g19').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g20').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g21').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g22').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numActA() {
+		var total = 0;
+		if (document.getElementById('g23').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g24').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g25').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g26').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g27').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g28').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g29').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g30').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g31').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g32').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g33').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numActS() {
+		var total = 0;
+		if (document.getElementById('g34').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g35').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g36').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g37').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g38').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g39').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g40').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g41').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g42').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g43').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g44').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numActE() {
+		var total = 0;
+		if (document.getElementById('g45').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g46').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g47').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g48').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g49').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g50').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g51').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g52').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g53').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g54').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g55').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numActC() {
+		var total = 0;
+		if (document.getElementById('g56').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g57').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g58').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g59').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g60').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g61').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g62').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g63').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g64').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g65').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('g66').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numHabR() {
+		var total = 0;
+		if (document.getElementById('si1').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si2').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si3').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si4').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si5').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si6').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si7').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si8').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si9').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si10').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si11').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numHabI() {
+		var total = 0;
+		if (document.getElementById('si12').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si13').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si14').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si15').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si16').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si17').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si18').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si19').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si20').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si21').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si22').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numHabA() {
+		var total = 0;
+		if (document.getElementById('si23').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si24').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si25').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si26').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si27').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si28').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si29').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si30').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si31').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si32').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si33').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numHabS() {
+		var total = 0;
+		if (document.getElementById('si34').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si35').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si36').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si37').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si38').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si39').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si40').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si41').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si42').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si43').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si44').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numHabE() {
+		var total = 0;
+		if (document.getElementById('si45').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si46').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si47').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si48').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si49').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si50').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si51').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si52').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si53').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si54').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si55').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numHabC() {
+		var total = 0;
+		if (document.getElementById('si56').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si57').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si58').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si59').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si60').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si61').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si62').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si63').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si64').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si65').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('si66').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numOcR() {
+		var total = 0;
+		if (document.getElementById('osi1').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi2').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi3').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi4').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi5').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi6').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi7').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi8').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi9').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi10').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi11').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi12').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi13').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi14').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numOcA() {
+		var total = 0;
+		if (document.getElementById('osi15').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi16').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi17').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi18').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi19').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi20').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi21').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi22').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi23').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi24').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi25').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi26').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi27').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi28').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numOcI() {
+		var total = 0;
+		if (document.getElementById('osi29').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi30').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi31').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi32').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi33').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi34').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi35').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi36').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi37').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi38').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi39').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi40').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi41').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi42').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numOcS() {
+		var total = 0;
+		if (document.getElementById('osi44').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi45').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi46').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi47').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi48').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi49').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi50').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi51').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi52').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi53').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi54').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi55').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi56').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi57').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numOcE() {
+		var total = 0;
+		if (document.getElementById('osi58').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi59').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi60').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi61').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi62').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi63').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi64').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi65').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi66').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi67').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi68').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi69').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi70').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi71').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numOcC() {
+		var total = 0;
+		if (document.getElementById('osi72').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi73').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi74').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi75').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi76').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi77').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi78').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi79').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi80').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi81').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi82').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi83').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi84').checked) {
+			total = total + 1;
+		}
+		if (document.getElementById('osi85').checked) {
+			total = total + 1;
+		}
+		return total;
+	}
+	function numAuR() {
+		var salida = 0;
+		if (document.getElementById('hm7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('hm6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('hm5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('hm4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('hm3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('hm2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('hm1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAuI() {
+		var salida = 0;
+		if (document.getElementById('hc7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('hc6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('hc5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('hc4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('hc3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('hc2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('hc1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAuA() {
+		var salida = 0;
+		if (document.getElementById('ha7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('ha6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('ha5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('ha4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('ha3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('ha2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('ha1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAuS() {
+		var salida = 0;
+		if (document.getElementById('he7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('he6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('he5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('he4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('he3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('he2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('he1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAuE() {
+		var salida = 0;
+		if (document.getElementById('hv7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('hv6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('hv5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('hv4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('hv3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('hv2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('hv1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAuC() {
+		var salida = 0;
+		if (document.getElementById('ho7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('ho6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('ho5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('ho4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('ho3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('ho2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('ho1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAu2R() {
+		var salida = 0;
+		if (document.getElementById('dm7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('dm6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('dm5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('dm4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('dm3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('dm2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('dm1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAu2I() {
+		var salida = 0;
+		if (document.getElementById('hma7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('hma6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('hma5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('hma4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('hma3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('hma2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('hma1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAu2A() {
+		var salida = 0;
+		if (document.getElementById('hmu7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('hmu6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('hmu5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('hmu4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('hmu3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('hmu2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('hmu1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAu2S() {
+		var salida = 0;
+		if (document.getElementById('eo7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('eo6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('eo5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('eo4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('eo3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('eo2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('eo1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAu2E() {
+		var salida = 0;
+		if (document.getElementById('hg7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('hg6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('hg5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('hg4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('hg3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('hg2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('hg1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+	function numAu2C() {
+		var salida = 0;
+		if (document.getElementById('do7').checked) {
+			salida = 7;
+		}
+		if (document.getElementById('do6').checked) {
+			salida = 6;
+		}
+		if (document.getElementById('do5').checked) {
+			salida = 5;
+		}
+		if (document.getElementById('do4').checked) {
+			salida = 4;
+		}
+		if (document.getElementById('do3').checked) {
+			salida = 3;
+		}
+		if (document.getElementById('do2').checked) {
+			salida = 2;
+		}
+		if (document.getElementById('do1').checked) {
+			salida = 1;
+		}
+		return salida;
+	}
+</script>
+
+</body>
+</html>

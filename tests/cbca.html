@@ -1,0 +1,800 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+	
+div.topright, #nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+#icaso {	background: yellow;}
+	
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+	
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p7-2, #p7-3, #p7-4,#p7-5, #p7-6, #test, #usuario {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color: gray;
+	padding: 10px 10px 20px 10px;	
+	}
+#usuario{
+	margin: 0px 0px 20px 0px;
+	}
+	
+div.left, div.center, div.right	{
+	width: 30%; 
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-l	{
+	width: 20%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	text-align: center;
+	}
+
+div.test-r	{
+	width: 70%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-qs{
+	column-count: 2;
+	column-gap: 20px;
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+	}
+
+div.lik1, div.lik2, div.lik3, div.lik4	{
+	width: 24.5%; 
+	float:left; 
+	text-align: center;
+	}
+	
+div.preg	{
+	width: 100%; 
+	height: 110px;
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+
+p.preg	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+	
+div.clear {	clear: both;}
+</style>
+
+<body>
+	<div id="menu-icon">
+		<img src="../Entypo/Entypo/menu.svg" width=40 heigth=40 />
+		<div id="menu">
+			<div class="boton"><a href="https://pysdp.github.io/web.html#cv" onclick="document.getElementById('cv').style.display='block';"><img src="../Entypo/Entypo/graduation-cap.svg" /></a></div>
+			<div class="boton"><a href="https://pysdp.github.io/web.html#articles"><img src="../Entypo/Entypo/text-document.svg" width=40 heigth=40 /></a></div>
+			<div class="boton"><a href="https://twitter.com/pysdp"><img src='../Entypo/EntypoSocialExtension/twitter.svg'></a></div>
+			<div class="boton"><a href="https://github.com/pysdp"><img src='../Entypo/EntypoSocialExtension/github.svg'></a></div>
+			<div class="boton"><a href="mailto:jorgealonso@openmailbox.org"><img src='../Entypo/Entypo/mail.svg'></a></div>
+			<div class="boton"><a href="xmpp:pysdp@dukgo.com"><img src='../Entypo/Entypo/chat.svg'></a></div>
+			<div class="boton"><a href="irc://pysdp@irc.freenode.net,isnick"><img src='../Entypo/Entypo/typing.svg' width='32' height='32'></a></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="header">
+		
+	</div>
+
+	<div id='formulario'>	
+		<form>
+			<h1>Cuestionario de Conducta en Niños</h1>
+			<p>Por favor, cubra este cuestionario tratando de reflejar <i>su visión</i> acerca de la conducta del 
+			niño o niña incluso aunque otras personas pudieran no estar de acuerdo. Siéntase libre para añadir
+			comentarios a mayores en el espacio reservado para ello.</p>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div class='clear'></div>
+			<div id='p1'>
+				<div class='left'>
+					<div class='preg'><b>Por favor, haga un listado con los deportes en los que tu niño/a quiere participar</b>. Por
+					ejemplo: natación, baloncesto, skate o patín, andar en bicicleta, pesca, etc.</div>
+					<div class='opc'>Ninguno <input type="checkbox" id="inone" onclick=""></div>
+					<div class='opc'>a. <input class='opc' type="text" id="iA" size="30"></div>
+					<div class='opc'>b. <input class='opc' type="text" id="iB" size="30"></div>
+					<div class='opc'>c. <input class='opc' type="text" id="iC" size="30"></div>
+				</div>
+				<div class='center'>
+					<div class='preg'><b>En comparación con otros niños/as de la misma edad, ¿cuánto tiempo le dedica?</b></div>
+					<div class='opc'>
+						<div class='lik1'>Menos</div>
+						<div class='lik2'>Igual</div>
+						<div class='lik3'>Más</div>
+						<div class='lik4'>No se</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iA3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iA4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iB3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iB4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iC3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iC4" onclick=""></div>
+					</div>
+				</div>
+				<div class='right'>
+					<div class='preg'><b>En comparación con otros niños/as de la misma edad, ¿qué tal se de le da cada uno?</b></div>
+					<div class='opc'>
+						<div class='lik1'>Bajo la media</div>
+						<div class='lik2'>En la media</div>
+						<div class='lik3'>Sobre la media</div>
+						<div class='lik4'>No se</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iAA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iAA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iAA3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iAA4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iBB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iBB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iBB3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iBB4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iCC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iCC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iCC3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iCC4" onclick=""></div>
+					</div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p2'>
+				<div class='left'>
+					<div class='preg'><b>Por favor, haga un listado con los juegos o actividades diferentes a deportes favoritos en los que tu niño/a participa</b>. Por
+					ejemplo: sellos, muñecas, libros, piano, coches, ordenadores, cantar, etc. <i>(No incluir escuchar la radio o ver la televisión)</i></div>
+					<div class='opc'>Ninguno <input type="checkbox" id="iinone" onclick=""></div>
+					<div class='opc'>a. <input class='opc' type="text" id="iiA" size="30"></div>
+					<div class='opc'>b. <input class='opc' type="text" id="iiB" size="30"></div>
+					<div class='opc'>c. <input class='opc' type="text" id="iiC" size="30"></div>
+				</div>
+				<div class='center'>
+					<div class='preg'><b>En comparación con otros niños/as de la misma edad, ¿cuánto tiempo le dedica?</b></div>
+					<div class='opc'>
+						<div class='lik1'>Menos</div>
+						<div class='lik2'>Igual</div>
+						<div class='lik3'>Más</div>
+						<div class='lik4'>No se</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiA3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiA4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiB3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiB4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiC3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiC4" onclick=""></div>
+					</div>
+				</div>
+				<div class='right'>
+					<div class='preg'><b>En comparación con otros niños/as de la misma edad, ¿qué tal se de le da cada uno?</b></div>
+					<div class='opc'>
+						<div class='lik1'>Bajo la media</div>
+						<div class='lik2'>En la media</div>
+						<div class='lik3'>Sobre la media</div>
+						<div class='lik4'>No se</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiAA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiAA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiAA3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiAA4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiBB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiBB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiBB3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiBB4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiCC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiCC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiCC3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiCC4" onclick=""></div>
+					</div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p3'>
+				<div class='left'>
+					<div class='preg'><b>Por favor, haga un listado de las organizaciones, clubs, equipos o grupos a los que pertenece su niño/a.</b></div>
+					<div class='opc'>Ninguno <input type="checkbox" id="iinone" onclick=""></div>
+					<div class='opc'>a. <input class='opc' type="text" id="iiiA" size="30"></div>
+					<div class='opc'>b. <input class='opc' type="text" id="iiiB" size="30"></div>
+					<div class='opc'>c. <input class='opc' type="text" id="iiiC" size="30"></div>
+				</div>
+				<div class='center'>
+					<div class='preg'><b>En comparación con otros niños/as de la misma edad, ¿cómo de activo es en cada una?</b></div>
+					<div class='opc'>
+						<div class='lik1'>Menos</div>
+						<div class='lik2'>Igual</div>
+						<div class='lik3'>Más</div>
+						<div class='lik4'>No se</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiiA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiiA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiiA3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiiA4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiiB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiiB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiiB3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiiB4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="iiiC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="iiiC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="iiiC3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="iiiC4" onclick=""></div>
+					</div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p4'>
+				<div class='left'>
+					<div class='preg'><b>Por favor, haga un listado de los trabajos o tareas que tiene su niño/a.</b> Por ejemplo, hacer la cama, recados, etc. (Incluye ambos, pagados y no pagados)</div>
+					<div class='opc'>Ninguno <input type="checkbox" id="iinone" onclick=""></div>
+					<div class='opc'>a. <input class='opc' type="text" id="ivA" size="30"></div>
+					<div class='opc'>b. <input class='opc' type="text" id="ivB" size="30"></div>
+					<div class='opc'>c. <input class='opc' type="text" id="ivC" size="30"></div>
+				</div>
+				<div class='center'>
+					<div class='preg'><b>En comparación con otros niños/as de la misma edad, ¿Cuán bueno es en el desempeño de cada una?</b></div>
+					<div class='opc'>
+						<div class='lik1'>Menos</div>
+						<div class='lik2'>Igual</div>
+						<div class='lik3'>Más</div>
+						<div class='lik4'>No se</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="ivA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="ivA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="ivA3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="ivA4" onclick=""></div>
+					</div>	
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="ivB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="ivB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="ivB3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="ivB4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="ivC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="ivC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="ivC3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="ivC4" onclick=""></div>
+					</div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p5'>
+				<p class='preg'><b>¿Cuántos amigos cercanos tiene su niño/a?</b> (No incluye hermanos o hermanas)</p>
+				<div class='opc'>
+					<div class='lik1'><input type="checkbox" id="v1A" onclick="">Ninguno</div>
+					<div class='lik2'><input type="checkbox" id="v1B" onclick="">1</div>
+					<div class='lik3'><input type="checkbox" id="v1C" onclick="">2 o 3</div>
+					<div class='lik4'><input type="checkbox" id="v1D" onclick="">4 o más</div>
+				</div>
+				<p class='preg'><b>¿Cuántas veces a la semana pasa tiempo su niño/a con algún amigo fuera del horario 
+				de la rutina escolar?</b> (No incluye hermanos o hermanas)</p>
+				<div class='opc'>
+					<div class='lik1'><input type="checkbox" id="v2A" onclick="">Menos de 1</div>
+					<div class='lik2'><input type="checkbox" id="v2B" onclick="">1 o 2</div>
+					<div class='lik3'><input type="checkbox" id="v2C" onclick="">3 o más</div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p6'>
+				<p class='preg'><b>En comparación con otros chicos/as de su edad, ¿cómo de bueno es su niño/a¿</b></p>
+				<div class='left'>
+					<div class='opc'>-</div>
+					<div class='opc'>a. Relacionarse con su(s) hermano/a(s)</div>
+					<div class='opc'>b. Relacionarse con otros niños/as</div>
+					<div class='opc'>c. Comportarse con sus padres</div>
+					<div class='opc'>d. Jugar y trabajar a solas</div>
+				</div>
+				<div class='center'>
+					<div class='opc'>
+						<div class='lik1'>Peor</div>
+						<div class='lik2'>Igual</div>
+						<div class='lik3'>Mejor</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viA3" onclick=""></div>
+					</div>	
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viB3" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viC3" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viD1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viD2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viD3" onclick=""></div>
+					</div>
+				</div>
+				<div class='right'>
+					<div class='opc'>-</div>
+					<div class='opc'><input type="checkbox" id="viE" onclick="">No tiene hermano/a(s)</div>	
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p7'>
+				<div class='left'>
+					<div class='preg'><b>1. Ejecución en las asignaturas escolares</b></div>
+					<div class='opc'></div>
+					<div class='opc'>a. Lectura, lengua, inglés</div>
+					<div class='opc'>b. Historia o ciencias sociales</div>
+					<div class='opc'>c. Matemáticas</div>
+					<div class='opc'>d. Ciencias naturales</div>
+					<div class='opc'>e. <input class='opc' type="text" id="viiE" size="30"></div>
+					<div class='opc'>f. <input class='opc' type="text" id="viiF" size="30"></div>
+					<div class='opc'>g. <input class='opc' type="text" id="viiG" size="30"></div>
+				</div>
+				<div class='center'>
+					<div class='preg'><input type="checkbox" id="viiE" onclick="">No asiste al colegio</div>
+					<div class='opc'>
+						<div class='lik1'>Deficiente</div>
+						<div class='lik2'>Necesita mejorar</div>
+						<div class='lik3'>Suficiente</div>
+						<div class='lik4'>Sobresale</div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viiA1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viiA2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viiA3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="viiA4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viiB1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viiB2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viiB3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="viiB4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viiC1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viiC2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viiC3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="viiC4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viiD1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viiD2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viiD3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="viiD4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viiE1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viiE2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viiE3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="viiE4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viiF1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viiF2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viiF3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="viiF4" onclick=""></div>
+					</div>
+					<div class='opc'>
+						<div class='lik1'><input type="checkbox" id="viiG1" onclick=""></div>
+						<div class='lik2'><input type="checkbox" id="viiG2" onclick=""></div>
+						<div class='lik3'><input type="checkbox" id="viiG3" onclick=""></div>
+						<div class='lik4'><input type="checkbox" id="viiG4" onclick=""></div>
+					</div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p7-2'>
+				<div class='left'>
+					<div class='preg'><b>2. ¿Recibe tu niño/a educación especial o apoyo extraescolar?</b></div>
+					<div class='opc'></div>
+				</div>
+				<div class='center'>
+					<div class='opc'><input type="checkbox" id="vii2a" onclick="">No</div>
+					<div class='opc'><input type="checkbox" id="vii2b" onclick="">Sí <input class='opc' type="text" id="vii2c" value="--Tipo de asistencia o escuela/academia--" size="40"></div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p7-3'>
+				<div class='left'>
+					<div class='preg'><b>3. ¿Ha repetido tu niño/a algún curso?</b></div>
+					<div class='opc'></div>
+				</div>
+				<div class='center'>
+					<div class='opc'><input type="checkbox" id="vii3a" onclick="">No</div>
+					<div class='opc'><input type="checkbox" id="vii3b" onclick="">Sí <input class='opc' type="text" id="vii3c" value="--Curso y motivos.--" size="40"></div>
+				</div>
+				<div class='clear'></div>
+			</div>
+			<div id='p7-4'>
+				<div class='left'>
+					<div class='preg'><b>4. ¿Tiene tu niño/a algún problema académico u otros problemas en la escuala?</b></div>
+				</div>
+				<div class='center'>
+					<div class='opc'><input type="checkbox" id="vii4a" onclick="">No</div>
+					<div class='opc'><input type="checkbox" id="vii4b" onclick="">Sí <input class='opc' type="text" id="vii4c" value="--Por favor, descríbalos--" size="40"></div>
+				</div>
+				<div class='clear'></div>
+				<div class='opc'>¿Cuándo empezaron estos problemas? <input class='opc' type="text" id="vii4d" value="--Completar--" size="50"></div>
+				<div class='opc'>¿Han acabado ya estos problemas? <input type="checkbox" id="vii4e" onclick="">No <input type="checkbox" id="vii4f" onclick="">Sí <input class='opc' type="text" id="vii4g" value="--¿Cuándo?--" size="50"></div>
+			</div>
+			<div id='p7-5'>
+				<div class='preg'>
+					<p><b>¿Tiene su hijo alguna enfermedad o discapacidad (física o mental)? </b><input type="checkbox" id="vii5a" onclick="">No <input type="checkbox" id="vii5b" onclick="">Sí <input class='opc' type="text" id="vii5c" value="--¿Por favor, descríbala?--" size="50"></p>
+				</div>
+			</div>
+			<div id='test'>
+				<div class='preg'>
+					<p>A continuación se presenta una lista de afirmaciones que describen niños y jóvenes. Por favor, rodee el número <b><i>2</i></b> para cada afirmación que describe a su niño/a <i><b>ahora o en los últimos 6 meses</b></i>. Rodee el número <b><i>1</i></b> para cada afirmación que describe a su niño/a <i><b>algunas veces o de alguna forma</b></i>. Si la afirmación es <i><b>falsa</b></i> respecto a su niño/a, rodee el número <b><i>0</i></b>.</p>
+				</div>
+				<div class='test-qs' id='preguntas'></div>
+			</div>
+			<p><a href="#" onclick="mostrar()" />Continuar</a></p>
+		</form>
+		<!--p><a href="#" onclick="sendMail()" />Enviar</a></p-->
+	</div>
+	<div id="informe">
+		<h1>Cuestionario de Conducta en Niños (Resultados)</h1>
+		<p>Se ha completado el cuestionario.</p>
+		<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+</body>
+
+<script type="text/javascript"> 
+
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+	loadPreguntas();
+
+	function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("CBCA - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+	
+	function mostrar() {
+		var nom=document.getElementById('inombre').value;
+		var eda=document.getElementById('iedad').value;
+		var sex=document.getElementById('isexo').value;
+
+		var dep1 = document.getElementById('iA').value;
+		var dep2 = document.getElementById('iB').value;
+		var dep3 = document.getElementById('iC').value;
+	
+		var dep1tiemp = lik4check('iA1', 'iA2', 'iA3', 'iA4');
+		var dep2tiemp = lik4check('iB1', 'iB2', 'iB3', 'iB4');
+		var dep3tiemp = lik4check('iC1', 'iC2', 'iC3', 'iC4');
+
+		var dep1ejec = lik4check('iAA1', 'iAA2', 'iAA3', 'iAA4');
+		var dep2ejec = lik4check('iBB1', 'iBB2', 'iBB3', 'iBB4');
+		var dep3ejec = lik4check('iCC1', 'iCC2', 'iCC3', 'iCC4');
+
+		var jueg1 = document.getElementById('iiA').value;
+		var jueg2 = document.getElementById('iiB').value;
+		var jueg3 = document.getElementById('iiC').value;
+	
+		var jueg1tiemp = lik4check('iiA1', 'iiA2', 'iiA3', 'iiA4');
+		var jueg2tiemp = lik4check('iiB1', 'iiB2', 'iiB3', 'iiB4');
+		var jueg3tiemp = lik4check('iiC1', 'iiC2', 'iiC3', 'iiC4');
+
+		var jueg1ejec = lik4check('iiAA1', 'iiAA2', 'iiAA3', 'iiAA4');
+		var jueg2ejec = lik4check('iiBB1', 'iiBB2', 'iiBB3', 'iiBB4');
+		var jueg3ejec = lik4check('iiCC1', 'iiCC2', 'iiCC3', 'iiCC4');
+		
+		var act1 = document.getElementById('iiiA').value;
+		var act2 = document.getElementById('iiiB').value;
+		var act3 = document.getElementById('iiiC').value;
+	
+		var act1activ = lik4check('iiiA1', 'iiiA2', 'iiiA3', 'iiiA4');
+		var act2activ = lik4check('iiiB1', 'iiiB2', 'iiiB3', 'iiiB4');
+		var act3activ = lik4check('iiiC1', 'iiiC2', 'iiiC3', 'iiiC4');
+
+		var tar1 = document.getElementById('ivA').value;
+		var tar2 = document.getElementById('ivB').value;
+		var tar3 = document.getElementById('ivC').value;
+	
+		var tar1activ = lik4check('ivA1', 'ivA2', 'ivA3', 'ivA4');
+		var tar2activ = lik4check('ivB1', 'ivB2', 'ivB3', 'ivB4');
+		var tar3activ = lik4check('ivC1', 'ivC2', 'ivC3', 'ivC4');
+
+		var amigos = lik4check('v1A', 'v1B', 'v1C', 'v1D');
+		var amigosTiemp = lik3check('v2A', 'v2B', 'v2C');
+
+		var relHer = lik4check('viA1', 'viA2', 'viA3', 'viE');
+		var relNin = lik3check('viB1', 'viB2', 'viB3');
+		var relPad = lik3check('viC1', 'viC2', 'viC3');
+		var relSol = lik3check('viD1', 'viD2', 'viD3');
+
+		var col = 1
+		if (document.getElementById('viiE').checked) {col = 2}
+
+		var asigA = lik4check('viiA1', 'viiA2', 'viiA3', 'viiA4');
+		var asigB = lik4check('viiB1', 'viiB2', 'viiB3', 'viiB4');
+		var asigC = lik4check('viiC1', 'viiC2', 'viiC3', 'viiC4');
+		var asigD = lik4check('viiD1', 'viiD2', 'viiD3', 'viiD4');
+		var asigE = lik4check('viiE1', 'viiE2', 'viiE3', 'viiE4');
+		var asigF = lik4check('viiF1', 'viiF2', 'viiF3', 'viiF4');
+		var asigG = lik4check('viiG1', 'viiG2', 'viiG3', 'viiG4');
+		var asig_e = document.getElementById('viiE').value;
+		var asig_f = document.getElementById('viiF').value;
+		var asig_g = document.getElementById('viiG').value;
+
+		var edEsp = yn('vii2a', 'vii2b');
+		var edEspMore = document.getElementById('vii2c').value;
+
+		var rep = yn('vii3a', 'vii3b');
+		var repMore = document.getElementById('vii3c').value;
+
+		var prob = yn('vii4a', 'vii4b');
+		var probMore = document.getElementById('vii4c').value +','+ document.getElementById('vii4d').value;
+		var probFin = yn('vii4e', 'vii4f');
+		var probFinMore = document.getElementById('vii4g').value
+
+		var enf = yn('vii5a', 'vii5b');
+		var enfMore = document.getElementById('vii5c').value;
+
+		var test = testCompleto();
+		console.log(test);
+
+		var csvLong = nom+','+eda+','+sex+','+dep1+','+dep1tiemp +','+ dep1ejec+','+ dep2+','+dep2tiemp +','+ dep2ejec+','+ dep3+','+dep3tiemp +','+ dep3ejec+','+ jueg1+','+jueg1tiemp +','+ jueg1ejec+','+ jueg2+','+jueg2tiemp +','+ jueg2ejec+','+ jueg3+','+jueg3tiemp +','+ jueg3ejec+','+ act1+','+act1activ+','+ act2+','+act2activ+','+ act3+','+act3activ+','+ tar1+','+tar1activ+','+ tar2+','+tar2activ+','+ tar3+','+tar3activ+','+ amigos+','+amigosTiemp+','+ relHer+','+relNin+','+relPad+','+relSol+','+ col+','+asigA+','+asigB+','+asigC+','+asigD+','+asigE+','+asigF+','+asigG+','+asig_e+','+asig_f+','+asig_g+','+ edEsp+','+edEspMore+','+rep+','+repMore+','+prob+','+probMore+','+probFin+','+probFinMore+','+enf+','+enfMore + test;
+
+		var csv = nom+','+eda+','+sex+','+dep1tiemp +','+ dep1ejec+','+dep2tiemp +','+ dep2ejec+','+dep3tiemp +','+ dep3ejec+','+jueg1tiemp +','+ jueg1ejec+','+jueg2tiemp +','+ jueg2ejec+','+jueg3tiemp +','+ jueg3ejec+','+act1activ+','+act2activ+','+act3activ+','+tar1activ+','+tar2activ+','+tar3activ+','+ amigos+','+amigosTiemp+','+ relHer+','+relNin+','+relPad+','+relSol+','+ col+','+asigA+','+asigB+','+asigC+','+asigD+','+asigE+','+asigF+','+asigG+','+ edEsp+','+rep+','+prob+','+probFin+','+enf+','+ test;
+
+		document.getElementById('csvp').innerHTML = csvLong
+		document.getElementById('formulario').style.display='none';
+		document.getElementById('informe').style.display='block';
+
+	}
+
+	function lik4check(val1, val2, val3, val4) {
+		var salida = 0
+		if (document.getElementById(val1).checked) {salida = 1}
+		if (document.getElementById(val2).checked) {salida = 2}
+		if (document.getElementById(val3).checked) {salida = 3}
+		if (document.getElementById(val4).checked) {salida = 4}
+		return salida
+		}
+	function lik3check(val1, val2, val3) {
+		var salida = 0
+		if (document.getElementById(val1).checked) {salida = 1}
+		if (document.getElementById(val2).checked) {salida = 2}
+		if (document.getElementById(val3).checked) {salida = 3}
+		return salida
+		}
+	function yn(val1, val2) {
+		var salida = 0
+		if (document.getElementById(val1).checked) {salida = 1}
+		if (document.getElementById(val2).checked) {salida = 2}
+		return salida
+		}
+	function testCheck(radioGroupName) {
+  		var rads = document.getElementsByName(radioGroupName),
+       		i;
+   		for (i=0; i < rads.length; i++) {
+			if (rads[i].checked){return rads[i].value;}
+			}
+		return 4; 
+		}
+	function testCompleto() {
+		salida = ''
+		for (i=1; i < 113; i++) {
+			pregName = 't'+ i;
+			salida = salida +','+ testCheck(pregName);
+			}
+		return salida;
+		}
+
+
+	function pregunta(num, preg) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'><input type='radio' name='t" + num + "' value='0'>0<input type='radio' name='t" + num + "' value='1'>1<input type='radio' name='t" + num + "' value='2'>2</div><div class='test-r'> " + preg + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	function apartado(num, texto) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'></div><div class='test-r'> " + texto + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	
+	
+	function loadPreguntas() {
+		pregunta(1, "Se comporta de una forma infantil para su edad");
+		pregunta(2, "Bebe alcohol sin permiso paterno.");
+		pregunta(3, "Discute mucho");
+		pregunta(4, "Fracasa a la hora de terminar aquello que ha empezado.");
+		pregunta(5, "Hay pocas cosas que disfruta.");
+		pregunta(6, "Hace sus necesidades fuera del servicio.");
+		pregunta(7, "Fanfarronea y presume.");
+		pregunta(8, "No se puede concentrar o prestar atención un largo período de tiempo.");
+		pregunta(9, "No puede apartar su mente de ciertos pensamientos u obsesiones");
+		pregunta(10, "No puede permanecer sentado, es inquieto o hiperactivo");
+		pregunta(11, "Se adhiere a los adultos o es muy dependiente.");
+		pregunta(12, "Se queja de soledad");
+		pregunta(13, "Está confuso");
+		pregunta(14, "Llora mucho");
+		pregunta(15, "Es cruel con los animales");
+		pregunta(16, "Manifiesta crueldad, bullying o insensibilidad hacia otros");
+		pregunta(17, "Sueña despierto o se pierde en sus pensamientos");
+		pregunta(18, "Se autolesiona voluntariamente o ha tenido intentos de suicidio");
+		pregunta(19, "Demanda mucha atención");
+		pregunta(20, "Destroza sus propias cosas");
+		pregunta(21, "Destroza cosas cosas de su familia u otras personas");
+		pregunta(22, "Es desobediente en casa");
+		pregunta(23, "Es desobediente en la escuela");
+		pregunta(24, "No come bien");
+		pregunta(25, "No se relaciona con otros niños/as");
+		pregunta(26, "No se siente culpable tras portarse mal");
+		pregunta(27, "Se cela fácilmente");
+		pregunta(28, "Rompe las reglas en casa, clase o en otros ambientes");
+		pregunta(29, "Tiene miedo a ciertos animales, situaciones o espacios/lugares diferentes de la escuela");
+		pregunta(30, "Tiene miedo a ir a la escuela");
+		pregunta(31, "Tiene miedo a hacer algo malo");
+		pregunta(32, "Cree que tiene que ser perfecto");
+		pregunta(33, "Se queja o siente que nadie le/la quiere");
+		pregunta(34, "??");
+		pregunta(35, "Se siente inferior o sin valor.");
+		pregunta(36, "Se lastima mucho, es propenso a los accidentes.");
+		pregunta(37, "Tiene muchas peleas");
+		pregunta(38, "Hace muchas burlas");
+		pregunta(39, "Se relaciona con compañeros/as problemáticos");
+		pregunta(40, "Escucha voces o ruídos que no están presentes");
+		pregunta(41, "Reacciona impulsivamente o sin pensar");
+		pregunta(42, "Prefiere estar sólo a estar con otras personas");
+		pregunta(43, "Miente o engaña");
+		pregunta(44, "Se muerde las uñas");
+		pregunta(45, "Es nervioso o está tenso");
+		pregunta(46, "Tiene movimientos nerviosos o crispados");
+		pregunta(47, "Tiene pesadillas");
+		pregunta(48, "No es como los otros niños");
+		pregunta(49, "Se resfría o tiene problemas intestinales");
+		pregunta(50, "Es demasiado miedoso o ansioso");
+		pregunta(51, "Se siente mareado o aturdido");
+		pregunta(52, "Se siente demasiado culpable");
+		pregunta(53, "Come demasiado");
+		pregunta(54, "Está demasiado cansado sin motivo aparente");
+		pregunta(55, "Tiene sobrepeso");
+		apartado(56, "Problemas físicos <b>sin causa médica conocida</b>");
+		pregunta("56a", "a. Dolores (<b>sin incluir</b> tripas o cabeza)");
+		pregunta("56b", "b. Dolores de cabeza");
+		pregunta("56c", "c. Nauseas, sentirse enfermo");
+		pregunta("56d", "d. Problemas de visión (<b>sin incluir</b> visión corregida con lentes)");
+		pregunta("56e", "f. Picores, eccemas u otros problemas de piel");
+		pregunta("56f", "g. Dolores de tripa");
+		pregunta("56g", "h. Vómitos");
+		pregunta("56h", "i. Otros");
+		pregunta(57, "Ataca físicamente a la gente");
+		pregunta(58, "??? Se perfora la nariz, piel u otras partes del cuerpo");
+		pregunta(59, "Juega con sus órganos sexuales en público");
+		pregunta(60, "Juega con sus órganos sexuales demasiado");
+		pregunta(61, "Trabaja poco en clase");
+		pregunta(62, "Se cordina mal o es torpe");
+		pregunta(63, "Prefiere estar con chicos/as mayores");
+		pregunta(64, "Prefiere estar con chicos/as más jóvenes");
+		pregunta(65, "Se niega a hablar");
+		pregunta(66, "Repite ciertas acciones constantemente; tiene compulsiones");
+		pregunta(67, "Escapa de casa");
+		pregunta(68, "Grita mucho");
+		pregunta(69, "Es reservado, se guarda las cosas para sí mismo");
+		pregunta(70, "Ve cosas que no están presentes");
+		pregunta(71, "Es tímido/a o se ve avergonzado/a fácilmente");
+		pregunta(72, "Provoca fuegos");
+		pregunta(73, "Tiene problemas sexuales");
+		pregunta(74, "Hace payasadas");
+		pregunta(75, "Es demasiado tímido");
+		pregunta(76, "Duerme menos que la mayoría de los niños/as");
+		pregunta(77, "Duerme más que la mayoría de los niños/as por el día o por la noche");
+		pregunta(78, "Es inatento o se distrae fácilmente");
+		pregunta(79, "Tiene problemas de lenguaje");
+		pregunta(80, "Se queda mirando fijamente");
+		pregunta(81, "Roba en casa");
+		pregunta(82, "Roba fuera de casa");
+		pregunta(83, "Guarda demasiadas cosas que no necesita");
+		pregunta(84, "Tiene comportamientos extraños");
+		pregunta(85, "Tiene ideas extrañas");
+		pregunta(86, "Es terco/a, hosco/a o irritable");
+		pregunta(87, "Tiene cambios de humor o ánimo repentinos");
+		pregunta(88, "Se pone de muy mal humor");
+		pregunta(89, "Es suspicaz");
+		pregunta(50, "Jura o tiene lenguaje obsceno");
+		pregunta(91, "Habla sobre suicidarse");
+		pregunta(92, "Habla o camina dormido");
+		pregunta(93, "Habla demasiado");
+		pregunta(94, "Se burla mucho");
+		pregunta(95, "Tiene rabietas o temperamento fuerte");
+		pregunta(96, "Piensa demasiado acerca del sexo");
+		pregunta(97, "Amenaza a la gente");
+		pregunta(98, "Se chupa el pulgar");
+		pregunta(99, "Fuma, masca o esnifa tabaco");
+		pregunta(100, "Tiene problemas de sueño");
+		pregunta(101, "Falta a clase, absentismo");
+		pregunta(102, "Es lento de movimientos o falto de energía");
+		pregunta(103, "Es infeliz, está triste o depremido/a");
+		pregunta(104, "Es raramente fuerte");
+		pregunta(105, "Usa medicamentos para fines no médicos (<b><i>no incluye</i></b> alcohol o tabaco)");
+		pregunta(106, "Comete vandalismo");
+		pregunta(107, "Se hace pis encima durante el día");
+		pregunta(108, "Moja la cama");
+		pregunta(109, "Gimotea");
+		pregunta(110, "Desearía ser del sexo opuesto");
+		pregunta(111, "Es introvertido, no se relaciona con los demás");
+		pregunta(112, "Tiene procupaciones");
+		}
+</script>
+
+
+</body>
+</html>
