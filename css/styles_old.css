@@ -81,22 +81,14 @@ body {
 	}
 	
 .boxme {
-	max-width: 29%;
-	min-width: 290px;
+	max-width: 270px;
 	height: 250px;
 	position: relative;
 	float: left;
-	margin: 15px auto 15px auto;
+	margin: 15px 15px 15px 15px;
 	border: 1px solid gray;
 	border-radius: 5px;
 	padding: 1ex 2ex 1ex 1ex;
-	}
-.sep {
-	width: 1%;
-	position: relative;
-	margin: 15px auto 15px auto;
-	border: 1px solid none;
-	float: left;
 	}
 
 #footer {
