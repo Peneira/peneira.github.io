@@ -6,6 +6,7 @@
 	<script src="./js/jquery-latest.js"></script>
 	<script src="./js/md5-min.js"></script>
 	<script src="./js/personal.js"></script>
+	<script src="./js/palabros.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
@@ -100,6 +101,20 @@
 			</div>
 			<div class="clear"></div>
 		</div>
+		<div id="palabros">
+			<h1>Sabías que...</h1>
+			<div id="pnom">
+				Por favor, active el javascript para funcionar.
+			</div>
+			<div id="pdef">
+				Por favor, active el javascript para funcionar.
+			</div>
+			<script>
+				$(pnom).html(entry["palabra"]);
+				$(pdef).html(entry["definicion"]);
+				$(palabros).show();
+			</script>
+		</div>
 		<div id="articles">
 			<h1>Blog</h1>
 			<p>Filtrar por temas:
@@ -108,7 +123,7 @@
 				<a href="#articles" onclick="$('.articulo').hide();$('.hack').show()"><span id='pro'>Programación y Software</span></a>
 
 			</p>
-			<div class="articulo datos hack" id="b151104">
+			<div class="articulo datos hack", id="b151104">
 				<h2>Presentando JASP: Un software estadístico libre e intuitivo que podría remplazar finalmente al SPSS</h2>
 				<p>¿No estáis cansados de los confusos menús del SPSS y esas feas tablas que genera?, ¿no te frustra tener el software estadístico únicamente en los ordenadores de la universidad?, ¿te gustaría utilizar técnicas avanzadas como los estadísticos de Bayes, pero no quieres dedicar más tiempo a aprender un lenguaje de programación (como R o Python) por que prefieres centrarte en tu investigación?</p>
 				<p>A pesar de que no ha existido una solución real a este problema desde hace mucho tiempo, tenemos buenas noticias para ti procedentes desde la <a href="http://blog.efpsa.org/2015/09/01/introducing-jasp-a-free-and-intuitive-statistics-software-that-might-finally-replace-spss/">Journal of European Psychology Students</a>. Un grupo de investigadores de la Universidad de Amsterdam están desarrollando <a href="https://jasp-stats.org/">JASP, un paquete estadístico de código abierto</a> que incluye tanto las técnicas habituales como otras más avanzadas y pone especial énfasis en proveer una interfaz de usuario intuitiva.</p>

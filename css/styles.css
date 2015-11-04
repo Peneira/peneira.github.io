@@ -10,7 +10,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 	}
 
-#header, #articles, #aboutme, #cv, #formulario, #informe {
+#header, #articles, #aboutme, #cv, #formulario, #informe, #palabros {
 	float: center;
 	margin-top:40px;
 	margin-left:auto;
@@ -21,7 +21,7 @@ body {
 	min-width: 600px;
 	}
 
-#articles, #cv, #formulario, #informe{
+#articles, #cv, #formulario, #informe, #palabros {
 	border: 1px solid gray;
 	border-radius: 5px;
 	margin-bottom: 100px;
@@ -32,7 +32,7 @@ body {
 	font-style: italic;
 	}
 
-#cv, #informe {
+#cv, #informe, #palabros{
 	display: none;
 	}
 .boton {
@@ -150,6 +150,17 @@ h1, h2 {
 	font-family: 'Roboto Slab', serif;
 	}
 
+#pnom {
+	font-family: 'Roboto Slab', serif;
+	margin-left: 150px;
+	}
+#pdef {
+	text-align:center;
+	padding: 10 0 10 0;
+	margin-bottom: 70px;
+	font-family: 'Raleway', sans-serif;
+	}
+
 #brand {
 	font: 150% Pacifico;
 	color:gray;
@@ -195,11 +206,11 @@ h1, h2 {
 	background: gray;
 	color: white;
 	}
-#articles, #cv, #formulario, #informe {
+#articles, #cv, #formulario, #informe, #palabros{
 	background: rgba(54, 54, 54, 0.7);
 	color: #BDBDBD;
 	}
-#articles h1, #articles h2, #cv h1, #cv h2 , #formulario h1, #formulario h2, #informe h1, #informe h2{ 
+#articles h1, #articles h2, #cv h1, #cv h2 , #formulario h1, #formulario h2, #informe h1, #informe h2, #palabros h1{ 
 	color: #BDBDBD;
 	}
 #aboutme {
