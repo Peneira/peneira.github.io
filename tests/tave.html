@@ -1,0 +1,421 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+	
+div.topright, #nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+#icaso {	background: yellow;}
+	
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+	
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p7-2, #p7-3, #p7-4,#p7-5, #p7-6, #test, #usuario {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color: gray;
+	padding: 10px 10px 20px 10px;	
+	}
+#usuario{
+	margin: 0px 0px 20px 0px;
+	}
+	
+div.left, div.center, div.right	{
+	width: 30%; 
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-l	{
+	width: 30%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	text-align: center;
+	}
+
+div.test-r	{
+	width: 60%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-qs{
+	column-count: 2;
+	column-gap: 20px;
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+	}
+
+div.lik1	{
+	width: 24.5%; 
+	float:left; 
+	text-align: center;
+	}
+	
+div.preg	{
+	width: 100%; 
+	height: 110px;
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+
+p.preg	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+	
+div.clear {	clear: both;}
+</style>
+
+<body>
+	<div id="menu-icon">
+		<img src="../Entypo/Entypo/menu.svg" width=40 heigth=40 />
+		<div id="menu">
+			<div class="boton"><a href="https://pysdp.github.io/web.html#cv" onclick="document.getElementById('cv').style.display='block';"><img src="../Entypo/Entypo/graduation-cap.svg" /></a></div>
+			<div class="boton"><a href="https://pysdp.github.io/web.html#articles"><img src="../Entypo/Entypo/text-document.svg" width=40 heigth=40 /></a></div>
+			<div class="boton"><a href="https://twitter.com/pysdp"><img src='../Entypo/EntypoSocialExtension/twitter.svg'></a></div>
+			<div class="boton"><a href="https://github.com/pysdp"><img src='../Entypo/EntypoSocialExtension/github.svg'></a></div>
+			<div class="boton"><a href="mailto:jorgealonso@openmailbox.org"><img src='../Entypo/Entypo/mail.svg'></a></div>
+			<div class="boton"><a href="xmpp:pysdp@dukgo.com"><img src='../Entypo/Entypo/chat.svg'></a></div>
+			<div class="boton"><a href="irc://pysdp@irc.freenode.net,isnick"><img src='../Entypo/Entypo/typing.svg' width='32' height='32'></a></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="header">
+		
+	</div>
+
+	<div id='formulario'>	
+		<form>
+			<h1>Test de Acoso y Violencia Escolar</h1>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div class='clear'></div>
+			<div id='test'>
+				<div class='preg'>
+					<p>Señala con que frecuencia se producen estos comportamientos en el colegio.</p>
+				</div>
+				<div>
+					<div class = 'lik1'>
+						<p><strong>1. </strong>Nunca.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>2. </strong>Pocas veces.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>3. </strong>Muchas veces.</p>
+					</div>
+				</div>
+				<div class='clear'></div>
+				<div class='test-qs' id='preguntas'></div>
+			</div>
+			<p><a href="#" onclick="mostrar()" />Continuar</a></p>
+		</form>
+		<!--p><a href="#" onclick="sendMail()" />Enviar</a></p-->
+	</div>
+	<div id="informe">
+		<h1>Test de Acoso y Violencia Escolar (Resultados)</h1>
+		<p>Se ha completado el cuestionario.</p>
+		<h2>Índices</h2>
+		<div class="test-qs">
+			<p>Índice Global de Acoso (M): <span id='oM'></span>, Percentil: <span id='bM'></span></p>
+			<p>Escala de Intensidad de Acoso (I): <span id='oI'></span>, Percentil: <span id='bI'></span></p>
+			<p>Desprecio-Ridiculización (A): <span id='oA'></span>, Percentil: <span id='bA'></span></p>
+			<p>Coacción (B): <span id='oB'></span>, Percentil: <span id='bB'></span></p>
+			<p>Restricción Comunicación (C): <span id='oC'></span>, Percentil: <span id='bC'></span></p>
+			<p>Agresiones (D): <span id='oD'></span>, Percentil: <span id='bD'></span></p>
+			<p>Intimidación-Amenazas (E): <span id='oE'></span>, Percentil: <span id='bE'></span></p>
+			<p>Exclusión Social-Bloqueo (F): <span id='oF'></span>, Percentil: <span id='bF'></span></p>
+			<p>Hostigamiento Verbal (G): <span id='oG'></span>, Percentil: <span id='bG'></span></p>
+			<p>Robos (H): <span id='oH'></span>, Percentil: <span id='bH'></span></p>
+		</div>
+		<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+</body>
+
+<script type="text/javascript"> 
+
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+	loadPreguntas();
+
+	function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("IPA - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+	
+	function mostrar() {
+		var secuencia = [];
+		for (var i = 1; i != 51; ++i) secuencia.push(i)		
+
+		var nom=document.getElementById('inombre').value;
+		var eda=document.getElementById('iedad').value;
+		var sex=document.getElementById('isexo').value;
+
+		var escalaM = pcategoria(secuencia); //Índice Global de Acoso (sumatorio total)
+		var escalaI = pcategoriaIntensidad(secuencia, 3); //Éscala de intensidad de acoso
+		var escalaA = pcategoria([2,3,6,9,19,20,26,27,31,32,33,34,35,36,44,46,50]);
+		var escalaB = pcategoria([7,8,11,12,13,14,47,48]);
+		var escalaC = pcategoria([1,2,4,5,10]);
+		var escalaD = pcategoria([15,19,23,24,28,29,39]);
+		var escalaE = pcategoria([28,29,39,40,41,42,43,47,48,49]);
+		var escalaF = pcategoria([10,17,18,21,22,31,38,41,45]);
+		var escalaG = pcategoria([3,6,17,19,20,24,25,26,27,30,37,38]);
+		var escalaH = pcategoria([13,14,15,16]);
+
+		document.getElementById('oM').innerHTML = escalaM;
+		document.getElementById('oI').innerHTML = escalaI;
+		document.getElementById('oA').innerHTML = escalaA;
+		document.getElementById('oB').innerHTML = escalaB;
+		document.getElementById('oC').innerHTML = escalaC;
+		document.getElementById('oD').innerHTML = escalaD;
+		document.getElementById('oE').innerHTML = escalaE;
+		document.getElementById('oF').innerHTML = escalaF;
+		document.getElementById('oG').innerHTML = escalaG;
+		document.getElementById('oH').innerHTML = escalaH;
+
+		document.getElementById('bM').innerHTML = baremo("M", escalaM);
+		document.getElementById('bI').innerHTML = baremo("I", escalaI);
+		document.getElementById('bA').innerHTML = baremo("A", escalaA);
+		document.getElementById('bB').innerHTML = baremo("B", escalaB);
+		document.getElementById('bC').innerHTML = baremo("C", escalaC);
+		document.getElementById('bD').innerHTML = baremo("D", escalaD);
+		document.getElementById('bE').innerHTML = baremo("E", escalaE);
+		document.getElementById('bF').innerHTML = baremo("F", escalaF);
+		document.getElementById('bG').innerHTML = baremo("G", escalaG);
+		document.getElementById('bH').innerHTML = baremo("H", escalaH);
+
+		var csvLong = nom+','+eda+','+sex+','+ testCompleto() +','+ escalaM +','+ escalaI +','+ escalaA +','+ escalaB +','+ escalaC +','+ escalaD +','+ escalaE +','+ escalaF +','+ escalaG +','+ escalaH;
+		console.log(csvLong);
+
+		document.getElementById('csvp').innerHTML = csvLong
+		document.getElementById('formulario').style.display='none';
+		document.getElementById('informe').style.display='block';
+	}
+
+	function testCheck(radioGroupName) {
+  		var rads = document.getElementsByName(radioGroupName),
+       		i;
+   		for (i=0; i < rads.length; i++) {
+			if (rads[i].checked){return rads[i].value;}
+			}
+		return 0; 
+		}
+
+	function pcategoria(vector) {
+		salida = 0
+		for (var i in vector)  {
+			pregName = 't'+ i;
+			salida = salida + parseInt(testCheck(pregName));
+			}
+		return salida;
+		}
+
+	function pcategoriaIntensidad(vector, intensidad) {
+		salida = 0
+		for (var i in vector)  {
+			pregName = 't'+ i;
+			if (testCheck(pregName) == intensidad) {
+				salida = salida + 1;
+				}
+			}
+		return salida;
+		}
+
+	function testCompleto() {
+		salida = ''
+		for (i=1; i < 51; i++) {
+			pregName = 't'+ i;
+			salida = salida +','+ testCheck(pregName);
+			}
+		return salida;
+		}
+
+	function baremo(escala, puntos) {
+		switch (escala) {
+			case "M":
+				if (puntos < 51) {return "1-20";}
+				else if (puntos < 55) {return "21-40";}
+				else if (puntos < 59) {return "41-60";}
+				else if (puntos < 69) {return "61-80";}
+				else if (puntos < 89) {return "81-95";}
+				else if (puntos < 151) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "I":
+				if (puntos < 2) {return "1-60";}
+				else if (puntos < 3) {return "61-80";}
+				else if (puntos < 11) {return "81-95";}
+				else if (puntos < 51) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "A":
+				if (puntos < 20) {return "1-40";}
+				else if (puntos < 23) {return "41-60";}
+				else if (puntos < 26) {return "61-80";}
+				else if (puntos < 36) {return "81-95";}
+				else if (puntos < 52) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "B":
+				if (puntos < 8) {return "1-60";}
+				else if (puntos < 9) {return "61-80";}
+				else if (puntos < 12) {return "81-95";}
+				else if (puntos < 25) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "C":
+				if (puntos < 6) {return "1-40";}
+				else if (puntos < 8) {return "41-60";}
+				else if (puntos < 9) {return "61-80";}
+				else if (puntos < 12) {return "81-95";}
+				else if (puntos < 16) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "D":
+				if (puntos < 8) {return "1-40";}
+				else if (puntos < 11) {return "41-60";}
+				else if (puntos < 12) {return "61-80";}
+				else if (puntos < 15) {return "81-95";}
+				else if (puntos < 22) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "E":
+				if (puntos < 11) {return "1-60";}
+				else if (puntos < 15) {return "61-80";}
+				else if (puntos < 16) {return "81-95";}
+				else if (puntos < 31) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "F":
+				if (puntos < 10) {return "1-60";}
+				else if (puntos < 12) {return "61-80";}
+				else if (puntos < 17) {return "81-95";}
+				else if (puntos < 28) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "G":
+				if (puntos < 16) {return "1-40";}
+				else if (puntos < 18) {return "41-60";}
+				else if (puntos < 21) {return "61-80";}
+				else if (puntos < 27) {return "81-95";}
+				else if (puntos < 137) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			case "H":
+				if (puntos < 5) {return "1-40";}
+				else if (puntos < 6) {return "41-60";}
+				else if (puntos < 7) {return "61-80";}
+				else if (puntos < 8) {return "81-95";}
+				else if (puntos < 13) {return "96-99";}
+				else {return "Desconocido";}
+				break;
+			}
+		}
+
+	function pregunta(num, preg) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'><input type='radio' name='t" + num + "' value=1>1<input type='radio' name='t" + num + "' value=2>2<input type='radio' name='t" + num + "' value=3>3</div><div class='test-r'> " + preg + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	function apartado(num, texto) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'></div><div class='test-r'> " + texto + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	
+	
+	function loadPreguntas() {
+		pregunta(1, "No me hablan.");
+		pregunta(2, "Me ignoran, me hacen el vacío.");
+		pregunta(3, "Me ponen en ridículo ante los demás.");
+		pregunta(4, "No me dejan hablar.");
+		pregunta(5, "No me dejan jugar con ellos.");
+		pregunta(6, "Me llaman por motes.");
+		pregunta(7, "Me amenazan para que haga cosas que no quiero.");
+		pregunta(8, "Me obligan a hacer cosas que están mal.");
+		pregunta(9, "Me tienen manía.");
+		pregunta(10, "No me dejan que participe, me excluyen.");
+		pregunta(11, "Me obligan a hacer cosas peligrosas para mi.");
+		pregunta(12, "Me obligan a hacer cosas que me ponen malo.");
+		pregunta(13, "Me obligan a darles mis cosas o dinero.");
+		pregunta(14, "Rompen mis cosas a propósito.");
+		pregunta(15, "Me esconden las cosas.");
+		pregunta(16, "Roban mis cosas.");
+		pregunta(17, "Les dicen a otros que no estén o que no hablen conmigo.");
+		pregunta(18, "Les prohiben a otros que jueguen conmigo.");
+		pregunta(19, "Me insultan.");
+		pregunta(20, "Hacen gestos de burla o desprecio hacia mi.");
+		pregunta(21, "No me dejan que hable o que me relacione con otros.");
+		pregunta(22, "Me impiden que juegue con otros.");
+		pregunta(23, "Me pegan collejas, puñetazos, patadas...");
+		pregunta(24, "Me chillan o gritan.");
+		pregunta(25, "Me acusan de cosas que no he dicho o hecho.");
+		pregunta(26, "Me critican por todo lo que hago.");
+		pregunta(27, "Se ríen de mí cuando me equivoco.");
+		pregunta(28, "Me amenazan con pegarme.");
+		pregunta(29, "Me pegan con objetos.");
+		pregunta(30, "Cambian el significado de lo que digo.");
+		pregunta(31, "Se meten conmigo para hacerme llorar.");
+		pregunta(32, "Me imitan para burlarse de mi.");
+		pregunta(33, "Se meten conmigo por mi forma de ser.");
+		pregunta(34, "Se meten conmigo por mi forma de hablar.");
+		pregunta(35, "Se meten conmigo por ser diferente.");
+		pregunta(36, "Se burlan de mi apariencia física.");
+		pregunta(37, "Van contando por ahí mentiras acerca de mi.");
+		pregunta(38, "Procuran que les caiga mal a otros.");
+		pregunta(39, "Me amenazan.");
+		pregunta(40, "Me esperan a la salida para meterse conmigo.");
+		pregunta(41, "Me hacen gestos para darme miedo.");
+		pregunta(42, "Me envían mensajes para amenazarme.");
+		pregunta(43, "Me zarandean o empujan para intimidarme.");
+		pregunta(44, "Se portan cruelmente conmigo.");
+		pregunta(45, "Intentan que me castiguen.");
+		pregunta(46, "Me desprecian.");
+		pregunta(47, "Me amenazan con armas.");
+		pregunta(48, "Amenazan con dañar a mi familia.");
+		pregunta(49, "Intentan perjudicarme en todo.");
+		pregunta(50, "Me odian sin razón.");
+		}
+</script>
+
+
+</body>
+</html>

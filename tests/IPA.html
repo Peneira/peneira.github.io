@@ -1,0 +1,330 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+	
+div.topright, #nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+#icaso {	background: yellow;}
+	
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+	
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p7-2, #p7-3, #p7-4,#p7-5, #p7-6, #test, #usuario {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color: gray;
+	padding: 10px 10px 20px 10px;	
+	}
+#usuario{
+	margin: 0px 0px 20px 0px;
+	}
+	
+div.left, div.center, div.right	{
+	width: 30%; 
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-l	{
+	width: 30%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	text-align: center;
+	}
+
+div.test-r	{
+	width: 60%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-qs{
+	column-count: 2;
+	column-gap: 20px;
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+	}
+
+div.lik1	{
+	width: 24.5%; 
+	float:left; 
+	text-align: center;
+	}
+	
+div.preg	{
+	width: 100%; 
+	height: 110px;
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+
+p.preg	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+	
+div.clear {	clear: both;}
+</style>
+
+<body>
+	<div id="menu-icon">
+		<img src="../Entypo/Entypo/menu.svg" width=40 heigth=40 />
+		<div id="menu">
+			<div class="boton"><a href="https://pysdp.github.io/web.html#cv" onclick="document.getElementById('cv').style.display='block';"><img src="../Entypo/Entypo/graduation-cap.svg" /></a></div>
+			<div class="boton"><a href="https://pysdp.github.io/web.html#articles"><img src="../Entypo/Entypo/text-document.svg" width=40 heigth=40 /></a></div>
+			<div class="boton"><a href="https://twitter.com/pysdp"><img src='../Entypo/EntypoSocialExtension/twitter.svg'></a></div>
+			<div class="boton"><a href="https://github.com/pysdp"><img src='../Entypo/EntypoSocialExtension/github.svg'></a></div>
+			<div class="boton"><a href="mailto:jorgealonso@openmailbox.org"><img src='../Entypo/Entypo/mail.svg'></a></div>
+			<div class="boton"><a href="xmpp:pysdp@dukgo.com"><img src='../Entypo/Entypo/chat.svg'></a></div>
+			<div class="boton"><a href="irc://pysdp@irc.freenode.net,isnick"><img src='../Entypo/Entypo/typing.svg' width='32' height='32'></a></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="header">
+		
+	</div>
+
+	<div id='formulario'>	
+		<form>
+			<h1>Inventario de Pensamientos Automáticos (Ruíz y Lujan 1991)</h1>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div class='clear'></div>
+			<div id='test'>
+				<div class='preg'>
+					<p>A continuación encontrarás una lista de pensamientos que suelen presentar las personas ante diversas situaciones. Se trata de que valores la frecuencia con la  que sueles pensarlos, siguiendo la esca la que se presenta a continuación.</p>
+				</div>
+				<div>
+					<div class = 'lik1'>
+						<p><strong>0. </strong>Nunca pienso eso.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>1. </strong>Algunas veces lo pienso.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>2. </strong>Bastantes veces lo pienso.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>3. </strong>Con mucha frecuencia lo pienso.</p>
+					</div>
+				</div>
+				<div class='clear'></div>
+				<div class='test-qs' id='preguntas'></div>
+			</div>
+			<p><a href="#" onclick="mostrar()" />Continuar</a></p>
+		</form>
+		<!--p><a href="#" onclick="sendMail()" />Enviar</a></p-->
+	</div>
+	<div id="informe">
+		<h1>Inventario de Pensamientos Automáticos (Resultados)</h1>
+		<p>Se ha completado el cuestionario.</p>
+		<h2>Ìndices de distorsión</h2>
+		<div class="test-qs">
+			<p>Filtraje: <span id='ofiltraje'></span></p>
+			<p>Pensamiento Polarizado: <span id='openPol'></span></p>
+			<p>Sobregeneralización: <span id='osobregen'></span></p>
+			<p>Interpretación del Pensamiento: <span id='ointPen'></span></p>
+			<p>Vision Catastrófica: <span id='ovisCat'></span></p>
+			<p>Personalización: <span id='operson'></span></p>
+			<p>Falacia de Control: <span id='ofalContr'></span></p>
+			<p>Falacia de Justicia: <span id='ofalJust'></span></p>
+			<p>Razonamiento Emocional: <span id='orazEmoc'></span></p>
+			<p>Falacia de Cambio: <span id='ofalCamb'></span></p>
+			<p>Etiquetas Globales: <span id='oetiqGlob'></span></p>
+			<p>Culpabilidad: <span id='oculpa'></span></p>
+			<p>Los 'Debería': <span id='odeber'></span></p>
+			<p>Falacia de Razón: <span id='ofalRaz'></span></p>
+			<p>Falacia de Recompensa Divina: <span id='ofalRecDiv'></span></p>
+		</div>
+		<p>Una puntuación de 2 o más para cada pensamiento automático suele indicar que  este, está afectando actualmente de manera importante al sujeto. Una puntuación  de 6 o más en el total de cada distorsión puede ser indicativa de que la persona  tiene cierta tendencia a "padecer" por determinada forma de interpretar- los  hechos de su vida</p>
+		<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+</body>
+
+<script type="text/javascript"> 
+
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+	loadPreguntas();
+
+	function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("IPA - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+	
+	function mostrar() {
+		var nom=document.getElementById('inombre').value;
+		var eda=document.getElementById('iedad').value;
+		var sex=document.getElementById('isexo').value;
+
+		
+
+		var filtraje = pcategoria([1, 16, 31]);
+		var penPol = pcategoria([2,17,32]);
+		var sobregen = pcategoria([3,18,33]);
+		var intPen = pcategoria([4,19,34]);
+		var visCat = pcategoria([5,20,35]);
+		var person = pcategoria([6,21,36]);
+		var falContr = pcategoria([7,22,37]);
+		var falJust = pcategoria([8,23,38]);
+		var razEmoc = pcategoria([9,24,39]);
+		var falCamb = pcategoria([10,25,40]);
+		var etiqGlob = pcategoria([11,26,41]);
+		var culpa = pcategoria([12,27,42]);
+		var deber = pcategoria([13,28,43]);
+		var falRaz = pcategoria([14,29,44]);
+		var falRecDiv = pcategoria([15,30,45]);
+
+		document.getElementById('ofiltraje').innerHTML = filtraje;
+		document.getElementById('openPol').innerHTML = penPol;
+		document.getElementById('osobregen').innerHTML = sobregen;
+		document.getElementById('ointPen').innerHTML = intPen;
+		document.getElementById('ovisCat').innerHTML = visCat;
+		document.getElementById('operson').innerHTML = person;
+		document.getElementById('ofalContr').innerHTML = falContr;
+		document.getElementById('ofalJust').innerHTML = falJust;
+		document.getElementById('orazEmoc').innerHTML = razEmoc;
+		document.getElementById('ofalCamb').innerHTML = falCamb;
+		document.getElementById('oetiqGlob').innerHTML = etiqGlob;
+		document.getElementById('oculpa').innerHTML = culpa;
+		document.getElementById('odeber').innerHTML = deber;
+		document.getElementById('ofalRaz').innerHTML = falRaz;
+		document.getElementById('ofalRecDiv').innerHTML = falRecDiv;
+
+		var csvLong = nom+','+eda+','+sex+','+ testCompleto();
+		console.log(csvLong);
+
+		document.getElementById('csvp').innerHTML = csvLong
+		document.getElementById('formulario').style.display='none';
+		document.getElementById('informe').style.display='block';
+	}
+
+	function testCheck(radioGroupName) {
+  		var rads = document.getElementsByName(radioGroupName),
+       		i;
+   		for (i=0; i < rads.length; i++) {
+			if (rads[i].checked){return rads[i].value;}
+			}
+		return 100; 
+		}
+
+	function pcategoria(vector) {
+		salida = 0
+		for (var i in vector)  {
+			pregName = 't'+ i;
+			salida = salida + testCheck(pregName);
+			}
+		return salida;
+		}
+
+	function testCompleto() {
+		salida = ''
+		for (i=1; i < 46; i++) {
+			pregName = 't'+ i;
+			salida = salida +','+ testCheck(pregName);
+			}
+		return salida;
+		}
+
+	function pregunta(num, preg) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'><input type='radio' name='t" + num + "' value='0'>0<input type='radio' name='t" + num + "' value='1'>1<input type='radio' name='t" + num + "' value='2'>2<input type='radio' name='t" + num + "' value='3'>3</div><div class='test-r'> " + preg + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	function apartado(num, texto) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'></div><div class='test-r'> " + texto + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	
+	
+	function loadPreguntas() {
+		pregunta(1, "No puedo soportar ciertas cosas que me pasan.");
+		pregunta(2, "Sólamente me pasan cosas malas.");
+		pregunta(3, "Todo lo que hago me sale mal.");
+		pregunta(4, "Sé que piensan mal de mi.");
+		pregunta(5, "¿Y si todos piensan que soy raro(a)?");
+		pregunta(6, "Soy inferior a la gente en casi todo.");
+		pregunta(7, "Si otros cambiaran su actitud yo me sentiría mejor.");
+		pregunta(8, "¡No hay derecho a que me traten así!.");
+		pregunta(9, "Si me siento triste es por que soy un enfermo mental.");
+		pregunta(10, "Mis problemas dependen de los que me rodeen.");
+		pregunta(11, "Soy un desastre como persona.");
+		pregunta(12, "Yo tengo la culpa de todo lo que me pasa.");
+		pregunta(13, "Debería de estar bien y no tener estos problemas.");
+		pregunta(14, "Sé que tengo razón y que no me entienden.");
+		pregunta(15, "Aunque ahora sufra, algún día tendré mi recompensa.");
+		pregunta(16, "Es horrible que me pase esto.");
+		pregunta(17, "Mi vida es un continuo fracaso.");
+		pregunta(18, "Siempre tendré ese problema.");
+		pregunta(19, "Sé que me están mintiendo y engañando.");
+		pregunta(20, "Esta situación me está volviendo loco(a).");
+		pregunta(21, "Soy superior a la gente en casi todo.");
+		pregunta(22, "Yo soy responsable del sufrimiento de los que me rodean.");
+		pregunta(23, "Si me quisieran de verdad no me tratarían así.");
+		pregunta(24, "Me siento culpable, y es por que he hecho algo malo.");
+		pregunta(25, "Si tuviera más apoyo, no tendría estos problemas.");
+		pregunta(26, "Conozco a alguien que no es agradable.");
+		pregunta(27, "Otros tienen la culpa de lo que me pasa.");
+		pregunta(28, "No debería cometer estos errores.");
+		pregunta(29, "No quiere reconocer que estoy en lo cierto.");
+		pregunta(30, "Ya vendrán mejores tiempos.");
+		pregunta(31, "Es insoportable, no puedo aguantar más.");
+		pregunta(32, "Soy incompetente e inútil.");
+		pregunta(33, "Nunca podré salir de esta situación.");
+		pregunta(34, "Quieren hacerme daño.");
+		pregunta(35, "Me voy a quedar sólo(a)..");
+		pregunta(36, "La gente hace las cosas mejor que yo.");
+		pregunta(37, "Soy la víctima de todo lo que me pasa.");
+		pregunta(38, "No me tratan como deberían hacerlo y me merezco.");
+		pregunta(39, "Si me siento así e sporque algo está mal en mi.");
+		pregunta(40, "Si tuviera mejor situación económica no tendría estos problemas.");
+		pregunta(41, "Soy alguien extraño, no soy como mi grupo de compañeros.");
+		pregunta(42, "Lo que me pasa es un castigo que me merezco.");
+		pregunta(43, "Debería recibir más atención y cariño de otros.");
+		pregunta(44, "Tengo razón, y voy a hacer lo que me da la gana.");
+		pregunta(45, "Tarde o temprano me irán las cosas mejor.");
+		}
+</script>
+
+
+</body>
+</html>
