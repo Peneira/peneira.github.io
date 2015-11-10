@@ -1,0 +1,253 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+	
+div.topright, #nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+#icaso {	background: yellow;}
+	
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+	
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p7-2, #p7-3, #p7-4,#p7-5, #p7-6, #test, #usuario {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color: gray;
+	padding: 10px 10px 20px 10px;	
+	}
+#usuario{
+	margin: 0px 0px 20px 0px;
+	}
+	
+div.left, div.center, div.right	{
+	width: 30%; 
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-l	{
+	width: 20%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	text-align: center;
+	}
+
+div.test-r	{
+	width: 70%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-qs{
+	column-count: 2;
+	column-gap: 20px;
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+	}
+
+div.lik1, div.lik2, div.lik3, div.lik4	{
+	width: 24.5%; 
+	float:left; 
+	text-align: center;
+	}
+	
+div.preg	{
+	width: 100%; 
+	height: 110px;
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+
+p.preg	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+	
+div.clear {	clear: both;}
+</style>
+
+<body>
+	<div id="menu-icon">
+		<img src="../Entypo/Entypo/menu.svg" width=40 heigth=40 />
+		<div id="menu">
+			<div class="boton"><a href="https://pysdp.github.io/web.html#cv" onclick="document.getElementById('cv').style.display='block';"><img src="../Entypo/Entypo/graduation-cap.svg" /></a></div>
+			<div class="boton"><a href="https://pysdp.github.io/web.html#articles"><img src="../Entypo/Entypo/text-document.svg" width=40 heigth=40 /></a></div>
+			<div class="boton"><a href="https://twitter.com/pysdp"><img src='../Entypo/EntypoSocialExtension/twitter.svg'></a></div>
+			<div class="boton"><a href="https://github.com/pysdp"><img src='../Entypo/EntypoSocialExtension/github.svg'></a></div>
+			<div class="boton"><a href="mailto:jorgealonso@openmailbox.org"><img src='../Entypo/Entypo/mail.svg'></a></div>
+			<div class="boton"><a href="xmpp:pysdp@dukgo.com"><img src='../Entypo/Entypo/chat.svg'></a></div>
+			<div class="boton"><a href="irc://pysdp@irc.freenode.net,isnick"><img src='../Entypo/Entypo/typing.svg' width='32' height='32'></a></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="header">
+		
+	</div>
+
+	<div id='formulario'>	
+		<form>
+			<h1>Cuestionario de Asertividad (R. Lazarus, 1980)</h1>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div class='clear'></div>
+			<div id='test'>
+				<div class='preg'>
+					<p>Conteste <i>Sí</i> o <i>No</i>.</p>
+				</div>
+				<div class='test-qs' id='preguntas'></div>
+			</div>
+			<p><a href="#" onclick="mostrar()" />Continuar</a></p>
+		</form>
+	</div>
+	<div id="informe">
+		<h1>Cuestionario de Asertividad (Resultados)</h1>
+		<p>Se ha completado el cuestionario.</p>
+		<div id='resultado'></div>
+		<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+</body>
+
+<script type="text/javascript"> 
+
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+	loadPreguntas();
+
+	function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("CBCA - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+	
+	function mostrar() {
+		var nom=document.getElementById('inombre').value;
+		var eda=document.getElementById('iedad').value;
+		var sex=document.getElementById('isexo').value;
+
+		var test = testCompleto();
+		var asertivos = nasertivos();
+		var noasertivos = 20 - asertivos 
+		console.log(test);
+		console.log('Puntuación de asertividad:' + asertivos);
+		document.getElementById('resultado').innerHTML = 'Puntuación de asertividad: <strong>' + asertivos + '</strong>';
+
+		var csvLong = nom+ ',' +eda+ ',' +sex+ ',' + test +','+ asertivos;
+
+		document.getElementById('csvp').innerHTML = csvLong
+		document.getElementById('formulario').style.display='none';
+		document.getElementById('informe').style.display='block';
+
+	}
+
+	function testCheck(radioGroupName) {
+  		var rads = document.getElementsByName(radioGroupName),
+       		i;
+   		for (i=0; i < rads.length; i++) {
+			if (rads[i].checked){return rads[i].value;}
+			}
+		return 4; 
+		}
+	function testCompleto() {
+		salida = ''
+		for (i=1; i < 20; i++) {
+			pregName = 't'+ i;
+			salida = salida +','+ testCheck(pregName);
+			}
+		return salida;
+		}
+	
+	function nasertivos() {
+		salida = '';
+		rasertiva = [1,0,0,1,1,1,0,0,1,0,0,1,1,1,1,1,1,1,1,1];
+		puntos = 0;
+
+		for (i=1; i < 20; i++) {
+			pregName = 't'+ i;
+			escorrecto = rasertiva[i-1] == testCheck(pregName);
+			if (escorrecto) {
+				salida = salida +','+ '1';
+				puntos = puntos + 1
+			} else {
+				salida = salida +','+ '0';
+				}
+			}
+		return puntos;
+		
+		}
+
+	function pregunta(num, preg) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'><input type='radio' name='t" + num + "' value='1'>Sí <input type='radio' name='t" + num + "' value='0'>No</div><div class='test-r'> " + preg + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	function apartado(num, texto) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'></div><div class='test-r'> " + texto + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	
+	
+	function loadPreguntas() {
+		pregunta(1, "Cuando una persona es abiertamente injusta, ¿Tiende usted a no decirle nada al respecto...?");
+		pregunta(2, "¿Siempre hace lo posible por evitar problemas con otras personas?");
+		pregunta(3, "¿Suele evitar contactos sociales por temor a hacer o decir algo inadecuado?");
+		pregunta(4, "Si un amigo le ha traicionado revelando algún secreto suyo, ¿le dice lo que piensa realmente?");
+		pregunta(5, "Si compartiera habitación con otra persona, ¿insistiría en que él o ella, haga parte de la limpieza?");
+		pregunta(6, "Cuando un empleado en un comercio atiende primero a una persona que llegó después de usted, ¿se lo hace notar?");
+		pregunta(7, "¿Conoce pocas personas con las que pueda sentirse relajado y pasarlo bien?");
+		pregunta(8, "¿Dudaría antes de pedirle a un amigo dinero?");
+		pregunta(9, "Si usted prestó una suma de dinero de importancia a una persona que parece habérsele olvidado de ello, ¿se lo recordaría?");
+		pregunta(10, "Si una persona se burla de usted constantemente, ¿tiene dificultad para expresarle su irritación o desagrado?");
+		pregunta(11, "¿Prefiere permanecer de pie al fondo de un salón de actos con tal de no buscar asiento adelante?");
+		pregunta(12, "Si alguien pateara continuamente el respaldo de su butaca en el cine, ¿le pediría que dejara de hacerlo?");
+		pregunta(13, "Si un amigo o amiga le llamara todos los días a altas horas de la noche, ¿le pediría que no llamara más tarde de cierta hora?");
+		pregunta(14, "Si usted estuviera hablando con otra persona que de pronto interrumpe la conversación para dirigirse a un tercero, ¿expresaría su irritación?");
+		pregunta(15, "Si usted está en un restaurante elegante y su bistec está demasiado crudo, ¿le pediría al camareo que lo pida cocinar un rato más?");
+		pregunta(16, "Si el propietario de un piso que usted alquila no ha hecho ciertos arreglos a los que se comprometió, ¿usted le instaría en que los hiciera?");
+		pregunta(17, "¿Devolvería una prenda con errores que compró unos días antes?");
+		pregunta(18, "Si una persona a quien usted respeta expresara opiniones contrarias a las suyas, ¿se atrevería a exponer su propio punto de vista?");
+		pregunta(19, "¿Puede decir 'no' cuando le piden cosas poco razonables?");
+		pregunta(20, "¿Considera que cada persona debe de defender sus propios derechos?");
+		}
+</script>
+
+
+</body>
+</html>
