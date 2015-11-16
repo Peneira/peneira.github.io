@@ -98,6 +98,30 @@ var data =[
   {
     "palabra": "Asertividad de aceptación",
     "definicion": "Supone la capacidad para hacer comentarios positivos, elogios, aprobaciones... de la conducta del otro o de alguna de sus características cuando está justificado.",
+  },
+  {
+    "palabra": "Feedback (en comunicación)",
+    "definicion": "La información que recoge el emisor de una comunicación sobre los efectos de la misma en el sujeto que la recibe.",
+  },
+  {
+    "palabra": "Filtraje (Pensamientos automáticos en comunicación)",
+    "definicion": "De una situación o experiencia se repara sólo en los detalles negativos y se magnifican, no teniendo en consideración los positivos.",
+  },
+  {
+    "palabra": "Personalización (Pensamientos automáticos en comunicación)",
+    "definicion": "Pensar que lo que los demás hacen o dicen tiene una estrecha relación conmigo. Refleja un pensamiento infantil y egocéntrico.",
+  },
+  {
+    "palabra": "Culpabilidad (Pensamientos automáticos en comunicación)",
+    "definicion": "Cuando los demás son responsables de lo malo que me ocurre a mi o de mi sufrimiento, o por el contrario, cuando me asumo como responsable de todos os problemas y desgracias ajenas.",
+  },
+  {
+    "palabra": "Falacia del cambio",
+    "definicion": "Suponer que una persona cambiará de conducta para adaptarse a nosotros, si se la presiona lo suficiente. El resultado habitualmente es que el otro se siente atacado y no cambia en absoluto.",
+  },
+  {
+    "palabra": "La Escucha Activa",
+    "definicion": "Es el esfuerzo físico y mental de querer captar con atención la totalidad del mensaje que se emite, tratando de interpretar el significado correcto del mismo, a través de comunicación verbal y no verbal, que realiza el emisor e indicándole mediante la retroalimentación lo que creemos que hemos entendido.",
   }
 ]
 		var entry = data[Math.floor(Math.random()*data.length)];
