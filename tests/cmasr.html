@@ -86,7 +86,10 @@ div.preg	{
 p.preg	{
 	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
 	}
-	
+div.error	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
 div.clear {	clear: both;}
 </style>
 
@@ -115,8 +118,8 @@ div.clear {	clear: both;}
 				<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
 				<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
 				<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
-							<option value="Hombre">Niño</option>
-							<option value="Mujer">Niña</option>
+							<option value="Niño">Niño</option>
+							<option value="Niña">Niña</option>
 						</select></div>
 				<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
 			</div>
@@ -137,13 +140,13 @@ div.clear {	clear: both;}
 		<h1>Escala de ansiedad manifiesta en niños (revisada) CMAS-R (Resultados)</h1>
 		<p>Se ha completado el cuestionario.</p>
 		<h2>Índices</h2>
-		<div>
-			<p>Ansiedad Total (28 reactivos): <span id='oAT'></span>, Percentil: <span id='bAT'></span>, Puntuación escalar: <span id='tAT'></span></p>
-			<p>I. Ansiedad fisiológica (10 reactivos): <span id='oI'></span>, Percentil: <span id='bI'></span>, Puntuación escalar: <span id='tI'></span</p>
-			<p>II. Inquietud/hipersensibilidad (11 reactivos): <span id='oII'></span>, Percentil: <span id='bII'></span>, Puntuación escalar: <span id='tII'></span</p>
-			<p>III. Preocupaciones sociales/concentración (7 reactivos): <span id='oIII'></span>, Percentil: <span id='bIII'></span>, Puntuación escalar: <span id='tIII'></span</p>
-			<p>M. Mentira (9 reactivos): <span id='oM'></span>, Percentil: <span id='bM'></span>, Puntuación escalar: <span id='tM'></span</p>
-		</div>
+		<ul>
+			<li>Ansiedad Total (28 reactivos): <span id='oAT'></span>, Percentil: <span id='bAT'></span></li>
+			<li>I. Ansiedad fisiológica (10 reactivos): <span id='oI'></span>, Percentil: <span id='bI'></span></li>
+			<li>II. Inquietud/hipersensibilidad (11 reactivos): <span id='oII'></span>, Percentil: <span id='bII'></span></li>
+			<li>III. Preocupaciones sociales/concentración (7 reactivos): <span id='oIII'></span>, Percentil: <span id='bIII'></span></li>
+			<li>M. Mentira (9 reactivos): <span id='oM'></span>, Percentil: <span id='bM'></span></li>
+		</ul>
 		<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
 		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
 		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
@@ -173,6 +176,15 @@ div.clear {	clear: both;}
 		var nom=document.getElementById('inombre').value;
 		var eda=document.getElementById('iedad').value;
 		var sex=document.getElementById('isexo').value;
+		
+		edades = [6,7,8,9,10,11,12,13,14,15,16,17];
+		if(edades.indexOf(parseInt(eda)) == -1)
+		{  
+			var edaer = document.createElement('div.error');
+			edaer.innerHTML = "<div class='error'>La edad del niño se encuentra fuera del rango. El test sólo es aplicable a niños(as) entre 6 y 17 años.</div>";
+			document.getElementById("test").appendChild(edaer);
+			return
+		}
 
 		var escalaAT = pcategoria([1,2,3,5,6,7,9,10,11,13,14,15,17,18,19,21,22,23,25,26,27,29,30,31,33,34,35,37]);
 		var escalaI = pcategoria([1,5,9,13,17,19,21,25,29,33]);
@@ -180,20 +192,25 @@ div.clear {	clear: both;}
 		var escalaIII = pcategoria([3,11,15,23,27,31,35]);
 		var escalaM = pcategoria([4,8,10,16,20,24,28,32,36]);
 
+		var bAT = baremoAT(escalaAT, eda, sex);
+		var bI = baremoI (escalaI, eda, sex);
+		var bII = baremoII(escalaII, eda, sex);
+		var bIII = baremoIII(escalaIII, eda, sex);
+		var bM = baremoM(escalaM, eda, sex);
+
 		document.getElementById('oAT').innerHTML = escalaAT;
 		document.getElementById('oI').innerHTML = escalaI;
 		document.getElementById('oII').innerHTML = escalaII;
 		document.getElementById('oIII').innerHTML = escalaIII;
 		document.getElementById('oM').innerHTML = escalaM;
-		
-		//document.getElementById('bAT').innerHTML = baremoAT(escalaAT, eda);
-		//document.getElementById('bI').innerHTML = baremo(I, escalaI, eda);
-		//document.getElementById('bII').innerHTML = baremo(II, escalaII, eda);
-		//document.getElementById('bIII').innerHTML = baremo(III, escalaIII, eda);
-		//document.getElementById('bM').innerHTML = baremo(M, escalaM, eda);
 
+		document.getElementById('bAT').innerHTML = bAT;
+		document.getElementById('bI').innerHTML = bI;
+		document.getElementById('bII').innerHTML = bII;
+		document.getElementById('bIII').innerHTML = bIII;
+		document.getElementById('bM').innerHTML = bM;
 
-		var csvLong = nom+','+eda+','+sex+','+ escalaAT +','+ escalaI +','+ escalaII +','+ escalaIII +','+ escalaM;
+		var csvLong = nom+','+eda+','+sex+','+ escalaAT +','+ escalaI +','+ escalaII +','+ escalaIII +','+ escalaM +','+ bAT +','+ bI +','+ bII +','+ bIII +','+ bM;
 		console.log(csvLong);
 
 		document.getElementById('csvp').innerHTML = csvLong
@@ -219,92 +236,184 @@ div.clear {	clear: both;}
 		return salida;
 		}
 
-	function baremoAT(puntos, edad) {
-		percentil = [
-				[1,1,1,3,4,6,8,12,18,24,29,33,39,45,52,60,68,75,79,84,88,90,90,91,93,95,97,98,99], // edad 6
+	function baremoAT(puntos, edad, sexo) {
+		percentilATH = [	[1,1,1,3,4,6,8,12,18,24,29,33,39,45,52,60,68,75,79,84,88,90,90,91,93,95,97,98,99], // edad 6
 [1,1,2,4,6,9,11,14,18,23,30,36,42,47,52,58,63,69,76,82,87,89,92,95,97,99,99,99,99], // 7
 [1,3,4,6,8,10,14,19,24,29,36,42,49,55,61,66,72,77,81,85,89,92,94,95,97,98,98,99,99], // 8
-			]
-		switch (edad) { //Hay que hacer una tabla de baremos con las edades!!! apufff
-			case "M":
-				if (puntos < 51) {return "1-20";}
-				else if (puntos < 55) {return "21-40";}
-				else if (puntos < 59) {return "41-60";}
-				else if (puntos < 69) {return "61-80";}
-				else if (puntos < 89) {return "81-95";}
-				else if (puntos < 151) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "I":
-				if (puntos < 2) {return "1-60";}
-				else if (puntos < 3) {return "61-80";}
-				else if (puntos < 11) {return "81-95";}
-				else if (puntos < 51) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "A":
-				if (puntos < 20) {return "1-40";}
-				else if (puntos < 23) {return "41-60";}
-				else if (puntos < 26) {return "61-80";}
-				else if (puntos < 36) {return "81-95";}
-				else if (puntos < 52) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "B":
-				if (puntos < 8) {return "1-60";}
-				else if (puntos < 9) {return "61-80";}
-				else if (puntos < 12) {return "81-95";}
-				else if (puntos < 25) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "C":
-				if (puntos < 6) {return "1-40";}
-				else if (puntos < 8) {return "41-60";}
-				else if (puntos < 9) {return "61-80";}
-				else if (puntos < 12) {return "81-95";}
-				else if (puntos < 16) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "D":
-				if (puntos < 8) {return "1-40";}
-				else if (puntos < 11) {return "41-60";}
-				else if (puntos < 12) {return "61-80";}
-				else if (puntos < 15) {return "81-95";}
-				else if (puntos < 22) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "E":
-				if (puntos < 11) {return "1-60";}
-				else if (puntos < 15) {return "61-80";}
-				else if (puntos < 16) {return "81-95";}
-				else if (puntos < 31) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "F":
-				if (puntos < 10) {return "1-60";}
-				else if (puntos < 12) {return "61-80";}
-				else if (puntos < 17) {return "81-95";}
-				else if (puntos < 28) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "G":
-				if (puntos < 16) {return "1-40";}
-				else if (puntos < 18) {return "41-60";}
-				else if (puntos < 21) {return "61-80";}
-				else if (puntos < 27) {return "81-95";}
-				else if (puntos < 137) {return "96-99";}
-				else {return "Desconocido";}
-				break;
-			case "H":
-				if (puntos < 5) {return "1-40";}
-				else if (puntos < 6) {return "41-60";}
-				else if (puntos < 7) {return "61-80";}
-				else if (puntos < 8) {return "81-95";}
-				else if (puntos < 13) {return "96-99";}
-				else {return "Desconocido";}
-				break;
+[1,2,4,8,13,17,21,26,31,36,43,48,53,57,62,68,73,78,83,87,90,93,95,96,97,98,99,99,99], // 9
+[1,3,6,9,12,15,19,22,26,32,38,44,51,59,66,71,77,81,84,88,92,94,97,98,99,99,99,99,99], // 10
+[1,3,7,11,17,24,30,35,39,44,51,57,62,67,73,77,80,83,86,90,92,94,97,98,99,99,99,99,99], // 11
+[1,3,6,10,14,19,26,32,37,43,49,55,60,65,70,74,77,81,86,90,92,94,95,97,97,98,99,99,99], // 12
+[1,3,6,13,20,26,31,35,41,49,58,67,73,77,80,85,88,90,91,94,97,99,99,99,99,99,99,99,99], // 13
+[2,6,11,17,23,29,35,42,49,54,59,63,70,77,81,83,85,88,91,93,96,98,99,99,99,99,99,99,99], // 14
+[1,5,8,13,20,28,35,42,49,56,63,69,74,79,82,84,87,90,93,96,98,98,99,99,99,99,99,99,99], //15
+[1,3,6,11,18,27,37,45,52,58,63,67,72,78,83,87,89,91,93,94,95,96,98,99,99,99,99,99,99], // 16
+[2,6,12,18,26,35,42,50,57,64,71,77,81,85,88,90,93,95,97,98,99,99,99,99,99,99,99,99,99] // 17
+			];
+		percentilATM = [
+[1,1,2,3,4,5,6,9,13,17,21,25,30,36,44,50,55,60,65,70,76,81,84,88,91,94,96,97,99],
+[1,1,3,4,5,6,9,11,13,15,19,24,29,34,39,46,55,64,73,79,83,86,88,92,94,96,97,98,99],
+[1,1,1,2,3,6,9,13,16,20,24,29,34,38,43,49,56,63,70,75,80,85,90,93,96,98,99,99,99],
+[1,1,3,6,9,11,14,18,23,27,32,38,45,52,58,63,66,72,77,82,86,90,94,96,98,99,99,99,99],
+[1,4,6,9,12,15,19,23,28,32,37,43,49,55,60,64,69,73,77,81,84,88,91,94,96,98,99,99,99],
+[1,3,5,7,10,13,17,22,26,32,38,43,49,53,58,63,69,73,78,82,85,87,90,92,94,96,97,99,99],
+[1,3,6,8,12,18,24,28,32,38,43,47,51,56,60,63,68,73,76,79,84,88,92,94,95,97,99,99,99],
+[1,4,7,11,14,18,24,30,35,40,47,55,62,68,72,76,80,84,86,88,90,92,95,96,98,99,99,99,99],
+[1,1,3,8,13,16,21,27,32,38,44,51,57,62,66,72,77,82,87,91,94,96,97,98,99,99,99,99,99],
+[1,1,4,7,12,16,21,28,38,47,54,59,64,70,76,81,84,88,90,93,95,96,96,97,98,98,99,99,99],
+[1,1,2,5,9,15,20,24,30,38,44,50,57,64,70,75,79,83,88,92,95,97,98,99,99,99,99,99,99],
+[1,2,4,6,10,15,21,28,35,43,50,58,65,72,77,82,86,89,91,93,94,96,97,99,99,99,99,99,99]
+			];
+		if (sexo == "Niño") {
+			return percentilATH[(edad-6)][puntos];
+		} else {
+			return percentilATM[(edad-6)][puntos];
 			}
 		}
+
+	function baremoI(puntos, edad, sexo) {
+		percentilIH = [
+			[1,4,9,18,32,49,64,77,88,96,99], // edad 6
+			[1,3,7,14,26,43,62,78,88,95,99], //7
+			[2,6,13,24,38,54,69,83,92,96,99], //8
+			[2,7,16,29,43,57,70,83,92,98,99], //9
+			[3,9,17,28,42,60,75,87,94,99,99], //10
+			[5,16,29,42,54,68,82,91,96,99,99], //11
+			[4,14,26,41,56,70,82,89,94,97,99], //12
+			[6,21,41,61,76,85,90,94,98,99,99], //13
+			[7,23,40,55,68,79,87,93,98,99,99], //14
+			[7,24,44,61,75,86,94,97,99,99,99], //15
+			[6,22,42,63,78,87,92,96,99,99,99], //16
+			[9,28,49,68,83,92,97,99,99,99,99] //17
+			];
+		percentilIM = [
+			[1,5,11,19,28,40,54,71,84,92,98], //edad 6
+			[2,5,9,15,25,40,55,70,83,93,98], 
+			[1,4,9,17,29,42,56,71,85,95,99],
+			[1,6,13,24,38,53,69,81,90,96,99],
+			[4,12,20,32,47,62,75,85,92,96,99],
+			[3,11,22,37,51,65,75,84,91,96,99],
+			[4,14,26,40,53,65,75,84,92,96,99],
+			[6,18,30,43,57,73,85,93,97,99,99],
+			[5,16,31,47,62,77,90,98,99,99,99],
+			[4,16,34,55,73,85,92,96,98,99,99],
+			[5,15,31,51,69,82,91,97,99,99,99],
+			[4,15,31,51,69,83,91,96,99,99,99]
+			];		
+		if (sexo == "Niño") {
+			return percentilIH[(edad-6)][puntos];		
+		} else {
+			return percentilIM[(edad-6)][puntos];
+		}
+	}
+
+	function baremoII(puntos, edad, sexo) {
+		percentilIIH = [
+			[2,7,13,20,30,45,61,73,79,84,90,97],
+			[3,11,19,27,37,49,60,70,78,88,96,99],
+			[3,11,21,32,43,54,66,76,84,90,95,98],
+			[6,18,28,39,49,60,71,80,87,93,96,99],
+			[4,14,23,34,46,60,73,82,87,92,96,99],
+			[6,18,31,45,57,67,76,84,90,94,97,99],
+			[5,16,27,36,48,62,74,84,91,95,98,99],
+			[4,14,25,39,53,65,77,87,94,98,99,99],
+			[8,24,39,53,64,75,83,89,94,99,99,99],
+			[6,18,31,46,61,72,80,86,92,96,98,99],
+			[8,25,40,52,63,72,80,87,92,97,99,99], 
+			[8,24,39,52,65,76,84,90,95,98,99,99] 
+			];
+		percentilIIM = [
+			[1,5,10,18,28,38,45,54,64,76,87,97],
+			[2,6,10,16,23,32,45,57,70,82,92,98],
+			[2,7,12,17,26,36,47,59,72,84,92,98],
+			[4,11,20,29,37,45,56,69,81,90,95,99],
+			[3,10,17,25,34,43,55,67,77,85,92,98],
+			[3,9,16,25,35,45,56,66,76,85,92,98],
+			[4,12,21,30,39,49,58,66,75,84,92,98], 
+			[5,13,21,32,45,58,68,76,83,89,94,98],
+			[3,10,17,26,38,51,65,75,82,88,93,99],
+			[3,9,19,30,43,54,65,75,84,91,95,99],
+			[2,8,15,25,35,45,55,67,77,86,94,99],
+			[3,10,17,27,39,52,65,77,84,90,94,98]
+			];		
+		if (sexo == "Niño") {
+			return percentilIIH[(edad-6)][puntos];		
+		} else {
+			return percentilIIM[(edad-6)][puntos];
+		}
+	}
+
+	function baremoIII(puntos, edad, sexo) {
+		percentilIIIH = [
+			[1,14,29,49,68,83,92,98],
+			[6,19,35,51,68,84,94,99],
+			[6,20,37,54,69,82,92,99],
+			[7,22,38,55,69,81,91,97],
+			[7,21,38,55,70,84,94,99],
+			[9,26,43,59,73,84,92,98],
+			[9,26,41,55,70,84,94,98],
+			[9,27,45,62,78,91,97,99],
+			[6,21,40,59,74,85,93,98],
+			[8,26,45,62,76,87,95,99],
+			[6,21,40,60,76,87,94,98],
+			[9,28,49,69,83,92,97,99] 
+			];
+		percentilIIIM = [
+			[4,14,28,46,63,77,88,97],
+			[5,17,31,47,65,81,91,98],
+			[4,15,30,48,67,82,93,98],
+			[7,23,39,55,69,82,93,99],
+			[8,24,40,55,70,83,92,97],
+			[7,22,38,53,66,79,89,97],
+			[8,25,40,54,69,82,92,98],
+			[9,28,46,63,77,87,93,99],
+			[7,22,39,56,72,86,94,98],
+			[10,31,56,68,80,90,97,99],
+			[8,26,45,63,79,90,97,99],
+			[10,28,48,68,85,95,98,99]
+			];		
+		if (sexo == "Niño") {
+			return percentilIIIH[(edad-6)][puntos];		
+		} else {
+			return percentilIIIM[(edad-6)][puntos];
+		}
+	}
+	
+	function baremoM(puntos, edad, sexo) {
+		percentilMH = [
+			[1,2,4,7,14,26,46,70,89,97],
+			[2,5,9,15,22,33,52,75,92,99],
+			[4,13,23,32,42,54,68,83,93,99],
+			[7,21,35,48,61,71,80,90,96,99],
+			[10,29,46,61,74,84,90,95,98,99],
+			[14,39,59,73,82,88,93,96,98,99],
+			[15,42,61,72,81,87,93,96,98,99],
+			[17,45,63,74,82,88,92,95,97,98],
+			[14,38,53,65,75,82,88,93,97,98],
+			[17,46,64,75,81,87,91,94,96,98],
+			[18,49,68,78,85,89,93,96,98,98],
+			[14,40,60,73,82,89,95,98,99,99] 
+			];
+		percentilMM = [
+			[1,2,6,11,15,23,40,65,85,96],
+			[1,3,7,13,21,33,50,71,88,98],
+			[3,10,18,28,39,52,67,82,92,98],
+			[8,22,36,48,59,70,81,91,98,99],
+			[9,27,42,55,68,79,87,93,97,99],
+			[12,35,53,68,80,88,93,96,99,99],
+			[14,40,57,67,75,82,90,95,97,97],
+			[17,47,63,71,78,84,89,92,94,96],
+			[15,40,56,67,78,87,94,97,98,98],
+			[15,42,61,72,81,89,94,97,99,99],
+			[13,36,52,63,73,82,90,95,98,99],
+			[16,46,66,78,86,90,93,95,97,98]
+			];		
+		if (sexo == "Niño") {
+			return percentilIIIH[(edad-6)][puntos];		
+		} else {
+			return percentilIIIM[(edad-6)][puntos];
+		}
+	}
 
 	function pregunta(num, preg) {
 		var contenido = document.createElement('div.test-li');
