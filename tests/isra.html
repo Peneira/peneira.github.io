@@ -1,0 +1,291 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+	
+div.topright, #nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+#icaso {	background: yellow;}
+	
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+	
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p7-2, #p7-3, #p7-4,#p7-5, #p7-6, #test, #usuario {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color: gray;
+	padding: 10px 10px 20px 10px;	
+	}
+#usuario{
+	margin: 0px 0px 20px 0px;
+	}
+	
+div.left, div.center, div.right	{
+	width: 30%; 
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-l	{
+	width: 30%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	text-align: center;
+	}
+
+div.test-r	{
+	width: 60%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-qs{
+	
+	}
+
+div.lik1	{
+	width: 19.5%; 
+	float:left; 
+	text-align: center;
+	}
+	
+div.preg	{
+	width: 100%; 
+	height: 110px;
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+
+p.preg	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+div.error	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+div.clear {	clear: both;}
+</style>
+
+<body>
+	<div id="header">
+		
+	</div>
+
+	<div id='formulario'>	
+		<form>
+			<h1>Inventario de Situaciones y Respuestas de Ansiedad (ISRA1)</h1>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+							<option value="Niño">Niño</option>
+							<option value="Niña">Niña</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div class='clear'></div>
+			<div id='test'>
+				<div class='preg'>
+					<p>En las páginas siguientes encontrará una serie de frases que presentan <b>situaciones</b> en que usted podría encontrarse y otras que se refieren a <b>respuestas</b> que usted podría dar ante esas situaciones o reacciones que le producirían.</p>
+					<p>Las situaciones aparecen numeradas en la parte izquierda de la página y las respuestas posibles están indicadas en la parte superior.</p>
+					<p>Su tarea consiste en valorar de 0 a 4 la <b>frecuencia</b> con que se da en usted cada respuesta o reacción  que está considerando, según la siguiente escala:</p>
+				</div>
+				<div>
+					<div class = 'lik1'><p><strong>0. </strong>Casi nunca.</p></div>
+					<div class = 'lik1'><p><strong>1. </strong>Pocas veces.</p></div>
+					<div class = 'lik1'><p><strong>2. </strong>Unas veces sí, otras veces no.</p></div>
+					<div class = 'lik1'><p><strong>3. </strong>Muchas veces.</p></div>
+					<div class = 'lik1'><p><strong>4. </strong>Casi siempre.</p></div>
+				</div>
+				<div class= 'clear'></div>
+				<div class='preg'>
+					<p style="text-align:center;">CONTESTE A TODAS LAS CASILLAS EN BLANCO</p>
+					<P>La última cuestión (la número 23) se utilizará cólo cuando exista una situación especilamente perturbadora para usted y no esté incluída en las 22 anteriores. En ese caso, escriba la situación en el lugar correspondiente y ponga su valoración en las casillas que crea conveniente.</p>
+				</div>
+				<div class='test-qs' id='preguntas'></div>
+			</div>
+			<p><a href="#" onclick="mostrar()" />Continuar</a></p>
+		</form>
+		<!--p><a href="#" onclick="sendMail()" />Enviar</a></p-->
+	</div>
+	<div id="informe">
+		<h1>Escala de ansiedad manifiesta en niños (revisada) CMAS-R (Resultados)</h1>
+		<p>Se ha completado el cuestionario.</p>
+		<h2>Índices</h2>
+		<ul>
+			<li>Ansiedad Total (28 reactivos): <span id='oAT'></span>, Percentil: <span id='bAT'></span></li>
+			<li>I. Ansiedad fisiológica (10 reactivos): <span id='oI'></span>, Percentil: <span id='bI'></span></li>
+			<li>II. Inquietud/hipersensibilidad (11 reactivos): <span id='oII'></span>, Percentil: <span id='bII'></span></li>
+			<li>III. Preocupaciones sociales/concentración (7 reactivos): <span id='oIII'></span>, Percentil: <span id='bIII'></span></li>
+			<li>M. Mentira (9 reactivos): <span id='oM'></span>, Percentil: <span id='bM'></span></li>
+		</ul>
+		<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+</body>
+
+<script type="text/javascript"> 
+
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+	loadPreguntas();
+
+	function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("IPA - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+	
+	function mostrar() {
+		var secuencia = [];
+		for (var i = 1; i != 51; ++i) secuencia.push(i)		
+
+		var nom=document.getElementById('inombre').value;
+		var eda=document.getElementById('iedad').value;
+		var sex=document.getElementById('isexo').value;
+		
+		edades = [6,7,8,9,10,11,12,13,14,15,16,17];
+		if(edades.indexOf(parseInt(eda)) == -1)
+		{  
+			var edaer = document.createElement('div.error');
+			edaer.innerHTML = "<div class='error'>La edad del niño se encuentra fuera del rango. El test sólo es aplicable a niños(as) entre 6 y 17 años.</div>";
+			document.getElementById("test").appendChild(edaer);
+			return
+		}
+
+		var escalaAT = pcategoria([1,2,3,5,6,7,9,10,11,13,14,15,17,18,19,21,22,23,25,26,27,29,30,31,33,34,35,37]);
+		var escalaI = pcategoria([1,5,9,13,17,19,21,25,29,33]);
+		var escalaII = pcategoria([2,6,7,10,14,18,22,26,30,34,37]);
+		var escalaIII = pcategoria([3,11,15,23,27,31,35]);
+		var escalaM = pcategoria([4,8,10,16,20,24,28,32,36]);
+
+		var bAT = baremoAT(escalaAT, eda, sex);
+		var bI = baremoI (escalaI, eda, sex);
+		var bII = baremoII(escalaII, eda, sex);
+		var bIII = baremoIII(escalaIII, eda, sex);
+		var bM = baremoM(escalaM, eda, sex);
+
+		document.getElementById('oAT').innerHTML = escalaAT;
+		document.getElementById('oI').innerHTML = escalaI;
+		document.getElementById('oII').innerHTML = escalaII;
+		document.getElementById('oIII').innerHTML = escalaIII;
+		document.getElementById('oM').innerHTML = escalaM;
+
+		document.getElementById('bAT').innerHTML = bAT;
+		document.getElementById('bI').innerHTML = bI;
+		document.getElementById('bII').innerHTML = bII;
+		document.getElementById('bIII').innerHTML = bIII;
+		document.getElementById('bM').innerHTML = bM;
+
+		var csvLong = nom+','+eda+','+sex+','+ escalaAT +','+ escalaI +','+ escalaII +','+ escalaIII +','+ escalaM +','+ bAT +','+ bI +','+ bII +','+ bIII +','+ bM;
+		console.log(csvLong);
+
+		document.getElementById('csvp').innerHTML = csvLong
+		document.getElementById('formulario').style.display='none';
+		document.getElementById('informe').style.display='block';
+	}
+
+	function testCheck(radioGroupName) {
+  		var rads = document.getElementsByName(radioGroupName),
+       		i;
+   		for (i=0; i < rads.length; i++) {
+			if (rads[i].checked){return rads[i].value;}
+			}
+		return 0; 
+		}
+
+	function pcategoria(vector) {
+		salida = 0
+		for (var i in vector)  {
+			pregName = 't'+ i;
+			salida = salida + parseInt(testCheck(pregName));
+			}
+		return salida;
+		}
+
+
+	function pregunta(num, preg, opciones) {
+		var contenido = document.createElement('div.test-li');
+		var opciones = ""
+		if 
+		contenido.innerHTML = "<div class='test-l'><b>"+ num + ". </b>"+ preg + "</div><div class='test-r'> " + opciones + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	function apartado(num, texto) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'></div><div class='test-r'> " + texto + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	
+	
+	function loadPreguntas() {
+		pregunta(1, "Me cuesta trabajo tomar decisiones.");
+		pregunta(2, "Me pongo nervioso(a) cuando las cosas no me salen como quiero.");
+		pregunta(3, "Parece que las cosas son más fáciles para los demás que para mí.");
+		pregunta(4, "Todas las personas que conozco me caen bien.");
+		pregunta(5, "Muchas veces siento que me falta el aire.");
+		pregunta(6, "Casi todo el tiempo estoy preocupado(a).");
+		pregunta(7, "Muchas cosas me dan miedo.");
+		pregunta(8, "Siempre soy amable.");
+		pregunta(9, "Me enfado con mucha facilidad.");
+		pregunta(10, "Me preocupa lo que mis papás me vayan a decir.");
+		pregunta(11, "Siento que a los demás no les gusta cómo hago las cosas.");
+		pregunta(12, "Siempre me porto bien.");
+		pregunta(13, "En las noches, me cuesta trabajo quedarme dormido(a).");
+		pregunta(14, "Me procupa lo que la gente piense de mi.");
+		pregunta(15, "Me siento sólo(a) aunque esté acompañado(a).");
+		pregunta(16, "Siempre soy bueno(a).");
+		pregunta(17, "Muchas veces siento asco o náuseas.");
+		pregunta(18, "Soy muy sentimental.");
+		pregunta(19, "Me sudan las manos.");
+		pregunta(20, "Siempre soy agradable con todos.");
+		pregunta(21, "Me canso mucho.");
+		pregunta(22, "Me preocupa el futuro.");
+		pregunta(23, "Los demás son más felices que yo.");
+		pregunta(24, "Siempre digo la verdad.");
+		pregunta(25, "Tengo pesadillas.");
+		pregunta(26, "Me siento muy mal cuando se enfadan conmigo.");
+		pregunta(27, "Siento que alguien me va a decir que hago las cosas mal.");
+		pregunta(28, "Nunca me enojo.");
+		pregunta(29, "Algunas veces me despierto asustado(a).");
+		pregunta(30, "Me siento preocupado(a) cuando me voy a dormir.");
+		pregunta(31, "Me cuesta trabajo concentrarme en mis tareas escolares.");
+		pregunta(32, "Nunca digo cosas que no debo decir.");
+		pregunta(33, "Me muevo mucho en mi asiento.");
+		pregunta(34, "Soy muy nervioso(a).");
+		pregunta(35, "Muchas personas están contra mi.");
+		pregunta(36, "Nunca digo mentiras.");
+		pregunta(37, "Muchas veces me preocupa que algo malo me pase.");
+		}
+</script>
+
+
+</body>
+</html>

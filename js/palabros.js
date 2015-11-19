@@ -122,6 +122,76 @@ var data =[
   {
     "palabra": "La Escucha Activa",
     "definicion": "Es el esfuerzo físico y mental de querer captar con atención la totalidad del mensaje que se emite, tratando de interpretar el significado correcto del mismo, a través de comunicación verbal y no verbal, que realiza el emisor e indicándole mediante la retroalimentación lo que creemos que hemos entendido.",
+  },
+  {
+    "palabra": "Redes sociales",
+    "definicion": "Formas de interacción social, espacios sociales de convivencia y conectividad que se definen fundamentalmente por los intercambios dinámicos entre los individuos que las forman. Se trata de sistemas abiertos y horizontales que agrupan a conjuntos de personas que se identifican con las mismas necesidades y problemáticas.",
+  },
+  {
+    "palabra": "Globalización (Bauman, Z., 2005)",
+    "definicion": "Una transformación que ha afectado a las estructuras estatales, a las condiciones laborales, a las relaciones interestatales, a la subjetividad colectiva, a la producción cultural, a la vida cotidiana y a las relaciones entre el ser y el otro.",
+  },
+  {
+    "palabra": "Aprendizaje (Squire, 1987)",
+    "definicion": "Adquisición de nueva información o adquisición de nuevos conocimientos.",
+  },
+  {
+    "palabra": "Memoria",
+    "definicion": "Retención y conservación de la información adquirida en forma de recuerdos y sus modificaciones y reconsolidaciones.",
+  },
+  {
+    "palabra": "Memoria a Corto Plazo (MCP)",
+    "definicion": "<p>La memoria a corto plazo actúa en el procesamiento temprano de la información, es de tipo sensorial o perceptual, limitada, frágil y de naturaleza electroquímica, se nutre de micromemorias sensoperceptuales y alimenta al sistema de memoria a largo plazo.</p><p>La memoria a corto plazo probablemente es una memoria que desde el punto de vista neurofisiológico refleja la activación temporal de “circuitos reverberantes” basados en procesos de fosforilación sináptica.</p>",
+  },
+  {
+    "palabra": "Memoria Sensorial",
+    "definicion": "Es la memoria más temprana que interviene en el procesamiento de la información que se registra en el cerebro procedente de los órganos de los sentidos, es ultracorta y resistente al daño cerebral excepto si hay daño del área sensorial primaria.<ul><li>La <b>memoria ecoica</b> se refiere a una forma de memoria sensorial auditiva que se requiere para hablar.</li><li>El equivalente visual es la <b>memoria icónica</b>.</ul>",
+  },
+  {
+    "palabra": "Memoria perceptual (priming)",
+    "definicion": "Es una memoria de preparación o activación de tipo perceptual e implícita que se conserva intacta en los amnésicos.",
+  },
+  {
+    "palabra": "Memoria de trabajo",
+    "definicion": "La memoria de trabajo es una MCP, del presente, temporal, de capacidad limitada, que permite manejar varios elementos de información simultáneos. Es el equivalente a una memoria RAM transitoria en los sistemas físicos.",
+  },
+  {
+    "palabra": "Memoria declarativa",
+    "definicion": "La memoria declarativa es una memoria de hechos y eventos, que puede ser verbalizable, consciente y dependiente del lóbulo temporal medial. La memoria de hechos es la memoria semántica, del <i>'saber qué'</i>, desligada de un contexto temporal y espacial y la memoria de eventos es la memoria episódica y autobiográfica o la memoria del '<i>saber dónde y cuándo</i>'.",
+  },
+  {
+    "palabra": "Memoria implícita",
+    "definicion": "La memoria implícita es una memoria automática, no consciente, no verbalizable. es una memoria de procedimientos, es la memoria del '<i>cómo</i>'. Incluye la memoria motora y condicionada y depende de ganglios basales y cerebelo.",
+  },
+  {
+    "palabra": "Palinopsia y palinestesia",
+    "definicion": "La palinopsia y la palinestesia son trastornos de la memoria sensorial que se presentan como una hipermemoria o memoria sensorial anormalmente prolongada dando lugar a una ilusión visual o táctil respectivamente.",
+  },
+  {
+    "palabra": "Proceso de consolidación (memoria)",
+    "definicion": "La consolidación es el proceso por medio del cual una huella en la corteza cerebral en el sistema de memoria a corto plazo es transformada en huella a largo plazo por efecto de la acción de las estructuras del lóbulo temporal medial (LTM), hipocampo y diencéfalo, que terminan almacenando la huella de manera definitiva e independiente del hipcampo en la corteza cerebral.",
+  },
+  {
+    "palabra": "Amnesia anterógrada",
+    "definicion": "La amnesia anterógrada es un trastorno de memoria que se caracteriza por una imposibilidad de consolidad nuevas huellas de memoria de las experiencias vividas luego de un daño cerebral.",
+  },
+  {
+    "palabra": "Amnesia retrógrada",
+    "definicion": "La amnesia retrógrada es un tratorno de la memoria que se caracteriza por la dficultad de recuperar o evocar información previamente almacenada antes de un daño cerebral. Generalmente presenta un gradiente temporal que significa que las memorias más antiguas son más fáciles de recordar porque están más consolidadas que las huellas menos antiguas.",
+  },
+  {
+    "palabra": "Amnesia retrógrada aislada",
+    "definicion": "Es un trastorno selectivo de la memoria autobiogrica o eventos vividos antes del momento de n daño cerebral en el contexto de una buena capacidad para construir nuevas huellas de memoria y cognición normal.",
+  },
+  {
+    "palabra": "Amnesia postraumatica",
+    "definicion": "El trauma de cráneo es la principal causa de amnesia y esa amnesia postraumática se caracteriza fundamentalmente por una amnesia anterógrada con un componente menos importante de amnesia retrógrada y un período de laguna amnésica, dependiendo de la severidad del trauma.",
   }
 ]
-		var entry = data[Math.floor(Math.random()*data.length)];
+
+function acPal(){
+	var entry = data[Math.floor(Math.random()*data.length)];
+	$(pnom).html(entry["palabra"]);
+	$(pdef).html(entry["definicion"]);
+	$(palabros).show();
+	}

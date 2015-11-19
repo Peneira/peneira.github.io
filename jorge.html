@@ -102,7 +102,9 @@
 			<div class="clear"></div>
 		</div>
 		<div id="palabros">
+			<p class="boton" style="float:right;" ><a onclick="acPal();"><img src="./Entypo/Entypo/quote.svg" width=30 heigth=30></a></p>
 			<h1>Sabías que...</h1>
+			
 			<div id="pnom">
 				Por favor, active el javascript para funcionar.
 			</div>
@@ -110,9 +112,10 @@
 				Por favor, active el javascript para funcionar.
 			</div>
 			<script>
-				$(pnom).html(entry["palabra"]);
-				$(pdef).html(entry["definicion"]);
-				$(palabros).show();
+			//	$(pnom).html(entry["palabra"]);
+			//	$(pdef).html(entry["definicion"]);
+			//	$(palabros).show();
+				acPal();
 			</script>
 		</div>
 		<div id="articles">
