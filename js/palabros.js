@@ -186,6 +186,38 @@ var data =[
   {
     "palabra": "Amnesia postraumatica",
     "definicion": "El trauma de cráneo es la principal causa de amnesia y esa amnesia postraumática se caracteriza fundamentalmente por una amnesia anterógrada con un componente menos importante de amnesia retrógrada y un período de laguna amnésica, dependiendo de la severidad del trauma.",
+  },
+  {
+    "palabra": "Ley de Ribot",
+    "definicion": "Se llama así al gradiente temporal que se presenta en la perdida de memoria de la enfermedad de Alzheimer, en ella se observa una relativa conservación de los recuerdos más antiguos y una pérdida de los recuerdos más recientes.",
+  },
+  {
+    "palabra": "Amnesia post terapia electroconvulsiva",
+    "definicion": "La terapia electroconvulsiva o electrochoques se usa para el tratamiento de depresión melancólica severa sin respuesta a los antidepresivos y con alto riesgo suicida. Produce como secuela una amnesia anterógrada y retrógrada de pocos meses de duración.",
+  },
+  {
+    "palabra": "Amnesia del desarrollo",
+    "definicion": "La amnesia del desarrollo es un trastorno de la memoria que se presenta en sujetos con lesiones hipocampales muy tempranas en la vida, que llevan a un severo trastorno de la memoria eisódica con conservación relativa de la memoria semántica. Este modelo de amnesia enseña que es posible '<i>saber sin recordar</i>'.",
+  },
+  {
+    "palabra": "Amnesia global transitoria (AGT)",
+    "definicion": "La AGT es una amnesia anterógrada global producida por la disfunción transitoria de ambos hipocampos. Las causas más comunes son migrañas, epilepsia y sustancias químicas.",
+  },
+  {
+    "palabra": "Amnesia de Korsakoff",
+    "definicion": "El diencéfalo que incluye tálamo, hipotálamo, fórnix, cuerpos familiares, forma parte del lóbulo temporal medial y sus estructuras anatómicas están involucradas en la memoria declarativa. La amnesia de Korsakoff es el modelo por excelencia de la amnesia diencefálica que es similar a la amnesia anterógrada hipocampal pero asociada al fenómeno de confabulaciones.",
+  },
+  {
+    "palabra": "Amnesia semántica",
+    "definicion": "La amnesia semántica forma parte de la demencia semántica en la cual se pierden las huellas de memoria semántica y episódica más antiguas conservándose las más recientes. La recuperación de las huellas de memoria semántica depende de la actividad de la corteza prefrontal izquierda.",
+  },
+  {
+    "palabra": "Prosopamnesia (Amnesia para las caras)",
+    "definicion": "La prosopamnesia es un trastorno selectivo para el reconocimiento de caras familiares por vía visual, aunque la identidad de las personas puede ser reconocida por la voz. Se presenta por lesión bilateral del giro fusiforme en la región temporo-occipital medio basal.",
+  },
+  {
+    "palabra": "Amnesia disociativa",
+    "definicion": "La amnesia disociativa es un trastorno funcional de la memoria caracterizado por pérdida de la memoria autobiográfica sin alteración de la memoria semántica y sin amnesia anterógrada, generalmente desencadenada por una situación de estres emocional agudo.",
   }
 ]
 
