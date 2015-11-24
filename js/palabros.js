@@ -218,6 +218,22 @@ var data =[
   {
     "palabra": "Amnesia disociativa",
     "definicion": "La amnesia disociativa es un trastorno funcional de la memoria caracterizado por pérdida de la memoria autobiográfica sin alteración de la memoria semántica y sin amnesia anterógrada, generalmente desencadenada por una situación de estres emocional agudo.",
+  },
+  {
+    "palabra": "Actividades de la Vida Diaria (AVD)",
+    "definicion": "Las actividades de la vida diaria (AVD) son un conjunto de tareas o conductas que una persona realiza de forma diaria y que le permiten vivir de forma autónoma e integrada en su entorno y cumplir su rol o roles dentro de la sociedad. Tradicionalmente se han dividido en AVDs Básicas e Instrumentales.",
+  },
+  {
+    "palabra": "Actividades Básicas de la Vida Diaria (AVDs Básicas)",
+    "definicion": "Las Actividades Básicas de la Vida Diaria son las tareas más sencillas y fundamentales para la supervivencia y el autocuidado como la alimentación, el vestido o el aseo personal.",
+  },
+  {
+    "palabra": "Lóbulo Frontal",
+    "definicion": "El lóbulo frontal es la región anterior del cerebro, situada detrás de la frente y que desarrolla un amplio repertorio de funciones cognitivas asociadas al funcionamiento humano y que se conocen como Funciones Ejecutivas. Es también un área muy importante en el aprendizaje y la memoria ya que cumple funciones de atención, codificación y recuperación de información.",
+  },
+  {
+    "palabra": "Mediación Intercultural (Carlos Giménez Romero, 1997)",
+    "definicion": "<p>Entendemos la mediación intercultural como una modalidad de intervención de terceras partes en y sobre situaciones sociales de multiculturalidad significativa orientada hacia la consecución del reconocimiento del otro y el acercamiento de las partes, la comunicación o la comprensión mutua, el aprendizaje y desarrollo de la convivencia, la regulación de conflictos y la adecuación institucional entre actores sociales o instituciones etnoculturalmente diferentes</p><p>Es un proceso de cambio en un contexto de conflicto o de prevención del mismo, que persigue la transformación en los marcos relacionales de personas, grupos e instituciones con diferencias etnoculturales significativas, donde interviene una tercera persona propuesta de las partes, que guiando el proceso, permite a éstos crear y generar nuevas formas de comunicación y de convivencia intercutural, que beneficie a todos.</p><p>Concebimos la mediación intercultural como un recurso al alcance de personas de culturas diversas, que actúa como puente, con el fin de facilitar las relaciones, fomentar la comunicación y promover la integración entre personas y grupos, pertenecientes a una o varias culturas. Dicho proceso es realizado por una persona, grupo o institución, de manera imparcial, a través de una metodología y funciones determinadas.</p>",
   }
 ]
 
