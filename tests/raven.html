@@ -21,6 +21,9 @@
 	max-width: 1000px;
 	min-width: 600px;
 	}
+#articles {
+	margin-bottom: 300px ;  
+	}
 
 #articles, #formulario, #informe, {
 	border: 1px solid gray;
@@ -105,7 +108,7 @@ div.clear {
 	background: none;
 	}
 #contenidos a:hover, #formulario a:hover, #informe a:hover {
-	color:rgba(54, 54, 54, 0.7);;
+	color:rgba(54, 54, 54, 0.7);
 	}
 #contenidos a, #formulario a, #informe a {
 	color: orange;
@@ -116,11 +119,7 @@ div.clear {
 	color: white;
 	}
 #articles, #formulario, #informe {
-	background: rgba(54, 54, 54, 0.7);
-	color: #BDBDBD;
-	}
-#articles h1, #articles h2, #formulario h1, #formulario h2, #informe h1, #informe h2 { 
-	color: #BDBDBD;
+	color: black;
 	}
 #aboutme {
 	background: none;
@@ -137,17 +136,19 @@ div.clear {
 	position: relative;
 	float: left;
 	margin: 15px 15px 15px 15px;
-	border: 1px solid #BDBDBD;
+	border: 1px solid orange;
 	border-radius: 5px;
 	padding: 1ex 2ex 1ex 1ex;
 	text-align: center;
 	font-family: "Poiret One", cursive;
 	font-size: 15pt;
-	color: #BDBDBD;
-	background-color: rgba(54, 100, 54, 0.7);
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
 	}
 .boxtst:hover {
-	color:orange;
+	color: white;
+	background-color: orange;
 	border: 1px solid orange;
 	}
 </style>
@@ -228,7 +229,7 @@ function loadNext() {
 function sendMail() {
 		var contenido = document.getElementById("csvp").innerHTML;
 		var link = "mailto:jorgealonso@openmailbox.org"
-		     + "?subject=" + escape("Raven - " + document.getElementById("inombre").value)
+		     + "?subject=" + escape("Raven (SPM) - " + document.getElementById("inombre").value)
 		     + "&body=" + escape(contenido);
 
 		window.location.href = link;
@@ -239,7 +240,7 @@ function sendMail() {
 
 <body>
 	<div id="header">
-		<h1>Test de Matrices Progresivas de Raven</h1>
+		<h1>Test de Matrices Progresivas de Raven General</h1>
 		<div id="usuario">
 			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
 			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
@@ -258,12 +259,44 @@ function sendMail() {
 	</div>
 	<div id='contenidos'>
 		<div id="articles">
-			<p>"Seleccione la correcta" [Ampliar]</p>
+			<p>Los tests de Matrices Progresivas de Raven se desarrollaron inicialmente para su uso en el estudio de los orígenes genéticos y ambientales de la conducta inteligente. Su finalidad era medir uno de los componentes del factor 'g' identificado por Spearman, la capacidad de educción de relaciones.</p>
+			<p>Nacieron en la mitad de la década de los 30 y tuvieron una revisión y tipificación en 1938, conocida como PM 1938; las sucesivas revisiones han recibido las siglas de PM-47, PM-56, etc. que aludían a una determinada Escala.</p>
+			<p>En primer lugar se creó la Escala General (SPM), destinada a cubrir todo el ámbito de aplicabilidad, desde los niños o los sujetos con baja dotación a los adultos de dotación elevada.</p>
+			<p> La escala SPM (Standard Progressive Matrices') o Escala General; consta de un Cuadernillo con seis conjuntos (A a E) de 12 elementos cada uno.</p>
+			<p>Mire esto</p>
+			<div class='m6r'>
+				<div class='mbig'>
+					<img src='../content/raven/A1.png' />
+				</div>
+				<div class='mresps'>
+					<div class = 'mpeq6'>
+						<img src='../content/raven/A1-1.png' />
+					</div>
+					<div class = 'mpeq6'>
+						<img src='../content/raven/A1-2.png' />
+					</div>
+					<div class = 'mpeq6'>
+						<img src='../content/raven/A1-3.png' />
+					</div>
+					<div class = 'mpeq6'>
+						<img src='../content/raven/A1-4.png' />
+					</div>
+					<div class = 'mpeq6'>
+						<img src='../content/raven/A1-5.png' />
+					</div>
+					<div class = 'mpeq6'>
+						<img src='../content/raven/A1-6.png' />
+					</div>
+					<div class='clear'></div>
+				</div>
+			</div>
+			<p>Vea, es un dibujo y le falta un trozo. Estas piezas de aquí debajo tienen igual forma que el hueco de arriva, pero sólo una tiene el dibujo correcto.</p>
+			<p>El número 1 tiene igual forma, pero el dibujo no es correcto. Tampoco sirve el número 2, por que no tiene dentro ningún dibujo. El número 3 tiene un dibujo distinto. El número  6 casi es correcto pero le falta un trozo. Sólo uno es correcto. Señale Vd. cuál es.</p>
 			<p>Cuando esté listo, pulse sobre el set que desea comenzar:</p>
 			<div class="boxtst", onClick="comenzar('A')">
 				<p>Set A</p>
 			</div>
-			<div class="boxtst", onClick="comenzar('B)">
+			<div class="boxtst", onClick="comenzar('B')">
 				<p>Set B</p>
 			</div>
 			<div class="boxtst", onClick="comenzar('C')">
