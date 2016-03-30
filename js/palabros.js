@@ -234,7 +234,111 @@ var data =[
   {
     "palabra": "Mediación Intercultural (Carlos Giménez Romero, 1997)",
     "definicion": "<p>Entendemos la mediación intercultural como una modalidad de intervención de terceras partes en y sobre situaciones sociales de multiculturalidad significativa orientada hacia la consecución del reconocimiento del otro y el acercamiento de las partes, la comunicación o la comprensión mutua, el aprendizaje y desarrollo de la convivencia, la regulación de conflictos y la adecuación institucional entre actores sociales o instituciones etnoculturalmente diferentes</p><p>Es un proceso de cambio en un contexto de conflicto o de prevención del mismo, que persigue la transformación en los marcos relacionales de personas, grupos e instituciones con diferencias etnoculturales significativas, donde interviene una tercera persona propuesta de las partes, que guiando el proceso, permite a éstos crear y generar nuevas formas de comunicación y de convivencia intercutural, que beneficie a todos.</p><p>Concebimos la mediación intercultural como un recurso al alcance de personas de culturas diversas, que actúa como puente, con el fin de facilitar las relaciones, fomentar la comunicación y promover la integración entre personas y grupos, pertenecientes a una o varias culturas. Dicho proceso es realizado por una persona, grupo o institución, de manera imparcial, a través de una metodología y funciones determinadas.</p>",
+  },
+  {
+    "palabra": "Agresión",
+    "definicion": "La agresión hace referencia a cualquier comportamiento dirigido hacia otra persona u objeto que se realiza con la intención de producir lesiones, daño o sufrimiento. El agresor sonsidera que su conducta producirá daños en la víctima y que ésta intentará evitarlos.",
+  },
+  {
+    "palabra": "Violencia",
+    "definicion": "Concepto usualmente superpuesto al de agresión pero que no es un sinónimo de éste. La violencia es una estrategia que, de forma intencionada -al igual que la agresión- pretende obtener la sumisión de otra persona, dominarla para alcanzar beneficios directos, inmediatos o indirectos por medio de distintas tácticas. La violencia puede utilizar la agresión (en sus diferentes formas: directa, física, sexual...) pero también puede ejercerse por medio de la negligencia, la manipulación y las coacciones, sus efectos se notan y van desde las simples lesiones y daños físicos pasando por las consecuencias psicológicas y horales hasta la alteración de los procesos de desarrollo y adaptación social de las víctimas. La agresión es una de las tácticas que la violencia puede emplear para obtener sus fines.",
+  },
+  {
+    "palabra": "Agresividad",
+    "definicion": "La agresividad es una disposición temperamental que forma parte del repertorio de características básicas de la personalidad de un sujeto. Su peculiaridad, además de influir directamente en la ejecución de conductas agresivas, es que aparece muy precozmente en el desarrollo individual, se mantiene a lo largo de toda la vida con un nivel de estabilidad notable y es independiente del contexto donde se encuentra el sujeto.",
+  },
+  {
+    "palabra": "Acoso escolar o <i>bullying</i>",
+    "definicion": "Se trata de un tipo específico de violencia que es ejercido o sufrido por un alumno. Se diferencia de otras conductas violentas por que forma parte de un proceso con cuatro características que aumentan su gravedad:<ol><li>No se limita a un suceso aislado, sino que <b>se repite</b> y se prolonga en el tiempo, aumentando su intensidad.</li><li>Tiene lugar en una situación de <b>desigualdad entre acosador y víctima</b>, pues generalmente el acosador suele contar con el apoyo de un grupo que anima su conducta violenta, mientras que la víctima suele presentarse indefensa y aislada</li><li><b>Se perpetúa en el tiempo</b>, a causa de la ignorancia o pasividad de las personas que rodean al agresor y víctima</li><li>Suele implicar <b>más de un tipo de conducta violenta</b>, iniciándose por lo general con agresiones sociales y verbales, e incluyendo después coacciones y agresiones de carácter físico.</li><ol>",
+  },
+  {
+    "palabra": "Racismo",
+    "definicion": "Sentimiento o comportamiento que consiste en la exacerbación del sentido racial de un grupo étnico. Esta situación suele manifestarse como el menosprecio de otro grupo y supone una forma de discriminación.",
+  },
+  {
+    "palabra": "Xenofobia",
+    "definicion": "Se refiere al odio, recelo, hostilidad y rechazo hacia los extranjeros.",
+  },
+  {
+    "palabra": "Homofobia",
+    "definicion": "Se refiere al rechazo, miedo, repudio, prejuicio o discriminación hacia mujeres u hombres que se reconocen a si mismos como homosexuales.",
+  },
+  {
+    "palabra": "Sexismo",
+    "definicion": "Se trata de la discriminación que se ejerce sobre un individuo por su sexo. Esto quiere decir que la persona es discriminada en un cierto ámbito, ya que se consdera que su sexo, por sus características, resulta inferior al otro.",
+  },
+  {
+    "palabra": "Género",
+    "definicion": "Se entiende por género la construcción social y cultural que define las diferentes características emocionales, afectivas, intelectuales, así como los comportamientos que cada sociedad asigna como propios y naturales de hombres o mujeres. Se diferencia del cncepto sexo en que este segundo viene determinado por la naturaleza, una persona nace con sexo masculino o femenino. En cambio, el género, varón o mujer, se aprende, puede ser educado, cambiado y manipulado.",
+  },
+  {
+    "palabra": "Chivo expiatorio",
+    "definicion": "Es la denominación que se le da a una persona o grupo a quien se quiere hacer culpable de algo de lo que no lo es, sirviendo así de excusa a los fines del inculpador.",
+  },
+  {
+    "palabra": "Cyberbullying o ciber-acoso",
+    "definicion": "Se trata de emplear cualqueira de las posibilidades de uso de las nuevas tecnologías de la información y de la comunicación para hostigar con ensañamiento a su víctima, bajo las mismas bases que el acoso escolar. Las víctimas reciben malos tratos de sus iguales, sea a traǘes de ridiculaciones, amenazas, chantajes, discriminaciones, etc., muchas veces de forma anónima, para que no sea fácilmente identificable el agresor.",
+  },
+  {
+    "palabra": "Sexting (en cyberbullying)",
+    "definicion": "Difusión o publicación de contenidos de tipo sexual producidos por el mismo remitente utilizando un dispositivo tecnológico. Dicha conducta puede derivar en un ciberacoso como medio de presión, chantaje o ridiculización contra la persona.",
+  },
+  {
+    "palabra": "Happy Slapping (en cyberbullying)",
+    "definicion": "Es una acción realizada por un grupo de adolescentes que abordan a un peatón y, sin motivo aparente, lo agreden mientras filman la acción con sus teléfonos móviles. Este ataque se hace público en la Red a posteriori.",
+  },
+  {
+    "palabra": "Grooming (en cyberbullying)",
+    "definicion": "El ciberacoso ejercido de forma deliberada por un adulto para establecer una relación y un control emocional sobre un menor con el fin de prepapar el terreno para su abuso sexual.",
+  },
+  {
+    "palabra": "Techo de Cristal (en Violencia de Género)",
+    "definicion": "Hace referencia a la barrera invisible que encuentran las mujeres para el desarrollo de su carrera profesional y las causas provienen tanto de los prejuicios sobre la capacidad de las mujeres para desempeñar puestos de responsabilidad como de las dificultades de conciliación de la vida laboral y familiar.",
+  },
+  {
+    "palabra": "Angustia aguda",
+    "definicion": "Se utiliza para describir impactos psicológicos no especificados después de un hecho angustiante. No está asociado a un diagnóstico especificado pero implican sentimientos de ansiedad, llanto, problemas de sueño, flata de apetito, introversión y problemas de concentración, todos los cuales desaparecerán poco a poco con un cuidado adecuado.",
+  },
+  {
+    "palabra": "Emergencia",
+    "definicion": "Unsa situación en la cual las vidas, el bienestar físico y mental o las oportunidades de desarrollo para los niños y niñas se ven amenazados como resultado de un conflicto armado, un desastre o el colapso del orden social o legal en la cual la capacidad local para lidiar con esto se ve rebasada o es inadecuada.",
+  },
+  {
+    "palabra": "Crisis",
+    "definicion": "Situación estresante en la que las experiencias previas y las estrategias de afrontamiento de una persona no son adecuadas para afrontar la situación. Una crisis puede ser repentina y abrupta pero también se puede desarrollar de forma gradual.",
+  },
+  {
+    "palabra": "Trauma",
+    "definicion": "Describe el estado emocional de malestar y estrés. Es causado por los recuerdos de una experiencia catastrófica inusual o caontecimiento traumático que ha vulnerado la sensación de seguridad de la persona y afectado su sensación de integridad. Al estar en trauma, las estrategias de afrontamiento existentes de la persona no son adecuadas para afrontar la experiencia nueva.",
+  },
+  {
+    "palabra": "Techo de Cristal (en Violencia de Género)",
+    "definicion": "Hace referencia a la barrera invisible que encuentran las mujeres para el desarrollo de su carrera profesional y las causas provienen tanto de los prejuicios sobre la capacidad de las mujeres para desempeñar puestos de responsabilidad como de las dificultades de conciliación de la vida laboral y familiar.",
+  },
+  {
+    "palabra": "Trastorno de Estrés Postraumático (TEPT)",
+    "definicion": "Es el diagnóstico utilizado para el estrés mental y emocional persistente producido como resultado de un shock psicológico grave después de uno o más acontecimientos traumáticos. Se caracteriza por un patrón determinado de síntomas y no debe utilizarse de forma casual.",
+  },
+  {
+    "palabra": "Trastorno por Estrés Agudo (TEA)",
+    "definicion": "Se puede presentar durante el primer mes después de un trauma. Los síntomas que definen el TEA pueden superponerse con los de TEPT y generalmente involucran sensaciones como no saber donde se encuentra o como si estuviera fuera del cuerpo.",
+  },
+  {
+    "palabra": "Cinemática",
+    "definicion": "Parte de la mecánica que trata del movimiento en sus condicinoes de espacio y tiempo, sin tener en cuenta las causas que lo producen.",
+    "area": "Robótica",
+  },
+  {
+    "palabra": "Espacio de trabajo",
+    "definicion": "Está definido como el grupo de puntos que pueden ser alcanzados por su efector final.",
+    "area": "Robótica",
+  },
+  {
+    "palabra": "Grados de libertad",
+    "definicion": "Número y tipos de movimientos del manipulador.",
+    "area": "Robótica",
   }
+
 ]
 
 function acPal(){
