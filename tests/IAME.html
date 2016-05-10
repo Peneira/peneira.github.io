@@ -1,0 +1,287 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+	
+div.topright, #nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+#icaso {	background: yellow;}
+	
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+	
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p7-2, #p7-3, #p7-4,#p7-5, #p7-6, #test, #usuario {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color: gray;
+	padding: 10px 10px 20px 10px;	
+	}
+#usuario{
+	margin: 0px 0px 20px 0px;
+	}
+	
+div.left, div.center, div.right	{
+	width: 30%; 
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-l	{
+	width: 30%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	text-align: center;
+	}
+
+div.test-r	{
+	width: 60%;
+	float:left; 
+	padding: 10px 10px 10px 10px;			
+	margin: 0 0 0 0;
+	}
+
+div.test-qs{
+	column-count: 2;
+	column-gap: 20px;
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+	}
+
+div.lik1	{
+	width: 24.5%; 
+	float:left; 
+	text-align: center;
+	}
+	
+div.preg	{
+	width: 100%; 
+	height: 110px;
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+
+p.preg	{
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	}
+	
+div.clear {	clear: both;}
+</style>
+
+<body>
+	<div id="header">
+		
+	</div>
+
+	<div id='formulario'>	
+		<form>
+			<h1>Inventario de Autoconcepto en el Medio Escolar -Versión Reducida- (García Gómez y Cabezas Moreno, 1998)</h1>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div class='clear'></div>
+			<div id='test'>
+				<div class='preg'>
+					<p>A continuación encontrarás una serie de frases en las cuáles se hacen afirmaciones relacionadas con tu forma de ser y sentirte. Después de leer cada frase, selecciona la opción de respuesta que esprese mejor tu grado de acuerdo con lo que, en cada frase se dice..</p>
+				</div>
+				<div>
+					<div class = 'lik1'>
+						<p><strong>A. </strong>Muy de acuerdo.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>B. </strong>Algo de acuerdo.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>C. </strong>Algo en desacuerdo.</p>
+					</div>
+					<div class = 'lik1'>
+						<p><strong>D. </strong>Muy en desacuerdo.</p>
+					</div>
+				</div>
+				<div class='clear'></div>
+				<div class='test-qs' id='preguntas'></div>
+			</div>
+			<p><a href="#" onclick="mostrar()" />Continuar</a></p>
+		</form>
+		<!--p><a href="#" onclick="sendMail()" />Enviar</a></p-->
+	</div>
+	<div id="informe">
+		<h1>Inventario de Autoconcepto en el medio escolar -Versión Reducida- (Resultados)</h1>
+		<p>Se ha completado el cuestionario.</p>
+		<p><b>AUTOESTIMA</b> (Puntuación global): <span id='ototal'></span> (de 16 a 64) Z: <span id='oztotal'></span></p>
+		<h2>Ìndices de autoestima</h2>
+		<div class="test-qs">
+			<p>Autoestima física: <span id='ofisica'></span> Z: <span id='ozfisica'></span></p>
+			<p>Autoestima general: <span id='ogeneral'></span> Z: <span id='ozgeneral'></span></p>
+			<p>Autoestima de competencia intelectual/académica: <span id='ointelectual'> Z: </span><span id='ozintelectual'></span></p>
+			<p>Autoestima emocional: <span id='oemocional'></span> Z: <span id='ozemocional'></span></p>
+			<p>Autoestima de relaciones con los otros significativos: <span id='ootros'></span> Z: <span id='ozotros'></span></p>
+			<p>Escala independiente de autocrítica (Deseabilidad Social o Mentira): <span id='omentira'></span> (de 3 a 12) Z: <span id='ozmentira'></span></p>
+
+		</div>
+		<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+</body>
+
+<script type="text/javascript"> 
+
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+	loadPreguntas();
+
+	function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("IAME - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+	
+	function mostrar() {
+		var nom=document.getElementById('inombre').value;
+		var eda=document.getElementById('iedad').value;
+		var sex=document.getElementById('isexo').value;
+
+		var mentira = pcategoria([3, 7, 11]);
+		var fisica = pcategoria([4, 5, 14, 15]);
+		var general = pcategoria([1, 4, 16, 18, 19]);
+		var intelectual = pcategoria([10, 12, 13]);
+		var emocional = pcategoria([9, 14, 17]);
+		var otros = pcategoria([2, 6, 8]);
+		var total = pcategoria([1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19]);
+
+		document.getElementById('omentira').innerHTML = mentira;
+		document.getElementById('ofisica').innerHTML = fisica;
+		document.getElementById('ogeneral').innerHTML = general;
+		document.getElementById('ointelectual').innerHTML = intelectual;
+		document.getElementById('oemocional').innerHTML = emocional;
+		document.getElementById('ootros').innerHTML = otros;
+		document.getElementById('ototal').innerHTML = total;
+
+		var zmentira = (mentira-8.89)/1.84;
+		var zfisica = (fisica-9.90)/2.73;
+		var zgeneral = (general-14.78)/2.70;
+		var zintelectual = (intelectual-7.54)/2.01;
+		var zemocional = (emocional-6.06)/2.26;
+		var zotros = (otros-8.40)/1.89;
+		var ztotal = (total-46.68)/7.63;
+
+		document.getElementById('ozmentira').innerHTML = zmentira.toFixed(2);
+		document.getElementById('ozfisica').innerHTML = zfisica.toFixed(2);
+		document.getElementById('ozgeneral').innerHTML = zgeneral.toFixed(2);
+		document.getElementById('ozintelectual').innerHTML = zintelectual.toFixed(2);
+		document.getElementById('ozemocional').innerHTML = zemocional.toFixed(2);
+		document.getElementById('ozotros').innerHTML = zotros.toFixed(2);
+		document.getElementById('oztotal').innerHTML = ztotal.toFixed(2);
+
+		var csvLong = nom+','+eda+','+sex+','+mentira+','+fisica+','+general+','+intelectual+','+emocional+','+otros+','+total;
+		console.log(csvLong);
+		
+		if (mentira < 100 || fisica < 100 || general < 100 || intelectual < 100 || emocional < 100 || otros < 100 || total < 100) {
+			document.getElementById('csvp').innerHTML = csvLong
+			document.getElementById('formulario').style.display='none';
+			document.getElementById('informe').style.display='block';
+			}
+		else {
+			alert("Debes responder a todas las preguntas")
+			}
+	}
+
+	function testCheck(radioGroupName) {
+  		var rads = document.getElementsByName(radioGroupName);
+   		for (i=0; i < rads.length; i++) {
+			if (rads[i].checked){
+				return parseInt(rads[i].value);
+				}
+			}
+		return 100;
+		}
+
+	function pcategoria(vector) {
+		salida = 0
+		for (var i in vector)  {
+			pregName = 't'+ vector[i];
+			salida = salida + testCheck(pregName);
+			}
+		return salida;
+		}
+
+	function testCompleto() {
+		salida = ''
+		for (i=1; i < 20; i++) {
+			pregName = 't'+ i;
+			salida = salida +','+ testCheck(pregName);
+			}
+		return salida;
+		}
+
+	function pregunta(num, preg) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'><input type='radio' name='t" + num + "' value=1>A<input type='radio' name='t" + num + "' value=2>B<input type='radio' name='t" + num + "' value=3>C<input type='radio' name='t" + num + "' value=4>D</div><div class='test-r'> " + preg + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	function apartado(num, texto) {
+		var contenido = document.createElement('div.test-li');
+		contenido.innerHTML = "<div class='test-l'></div><div class='test-r'> " + texto + "</div><div class='clear'></div>";
+		document.getElementById("preguntas").appendChild(contenido);
+		}
+	
+	
+	function loadPreguntas() {
+		pregunta(1, "Hago muchas cosas mal.");
+		pregunta(2, "A menudo el profesor me llama la atención sin razón.");
+		pregunta(3, "Me enfado algunas veces.");
+		pregunta(4, "En conjunto, me siento satisfecho conmigo mismo/a.");
+		pregunta(5, "Soy un chico/a guapo/a.");
+		pregunta(6, "Mis padres están contentos con mis notas.");
+		pregunta(7, "Me gusta toda la gente que conozco.");
+		pregunta(8, "Mis padres me exigen demasiado en los estudios.");
+		pregunta(9, "Me pongo nervioso cuando tenemos examen.");
+		pregunta(10, "Pienso que soy un chico/a listo/a.");
+		pregunta(11, "A veces tengo ganas de decir tacos y palabrotas.");
+		pregunta(12, "Creo que tengo un buen número de buenas cualidades.");
+		pregunta(13, "Soy bueno para las matemáticas y los cálculos.");
+		pregunta(14, "Me gustaría cambiar algunas partes de mi cuerpo.");
+		pregunta(15, "Creo que tengo un(a) buen(a) tipo/a.");
+		pregunta(16, "Muchos de mis compañeros dicen que soy torpe para los estudios.");
+		pregunta(17, "Me pongo nervioso/a cuando pregunta el profesor(a).");
+		pregunta(18, "Me siento inclunado a pensar que soy un/a fracasado/a en todo.");
+		pregunta(19, "Normalmente olvido los que aprendo.");
+		}
+</script>
+
+
+</body>
+</html>
