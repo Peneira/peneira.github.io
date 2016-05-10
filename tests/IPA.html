@@ -236,7 +236,7 @@ div.clear {	clear: both;}
 	function pcategoria(vector) {
 		salida = 0
 		for (var i in vector)  {
-			pregName = 't'+ i;
+			pregName = 't'+ vector[i];
 			salida = salida + testCheck(pregName);
 			}
 		return salida;
