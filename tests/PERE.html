@@ -130,7 +130,7 @@ div.clear {
 	background-color: white; 
 	}
 
-.boxtst {
+.boxtst{
 	width: 100px;
 	height: 100px;
 	position: relative;
@@ -146,11 +146,31 @@ div.clear {
 	background-color: rgba(54, 54, 54, 0.9);
 	
 	}
-.boxtst:hover {
+.boxtst:hover{
 	color: white;
 	background-color: orange;
 	border: 1px solid orange;
 	}
+
+.opcion {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
 </style>
 <script>
 data = 'El nombre'
@@ -167,27 +187,17 @@ function anota(valor){
 	document.getElementById("matrices").innerHTML = "";
 	loadNext();
 	}
-function matriz6r(num, mset) {
+function matriz6r(num) {
 	respuestas = ""
+	emociones = ["Alegría", "Tristeza", "Enfado", "Sorpresa", "Miedo", "Asco", "Neutra"]
 	for (i = 1; i<7; i++){
-		matemp = "<div class = 'mpeq6'><a onclick = anota(" +i+ ")><img src='../content/raven/"+ mset + num +"-"+i+".png' /></a></div>"
+		matemp = "<div class = 'opcion' onclick = anota(" +i+ ")><p>" + emociones[i-1] + "</p></div>"
 		respuestas = respuestas + matemp;
 	}
-		
-	var contenido = document.createElement('m6r');
-	contenido.innerHTML = "<div class='m6r'><h2>"+ mset + " " + num + "</h2><div class='mbig'><img src='../content/raven/" + mset + num + ".png' /></div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
-	document.getElementById("matrices").appendChild(contenido);
-	}
+	respuestas = respuestas + "<div class = 'opcion' onclick = anota(0)><p>" + emociones[6] + "</p></div>"
 
-function matriz8r(num, mset) {
-	respuestas = ""
-	for (i = 1; i<9; i++){
-		matemp = "<div class = 'mpeq8'><a onclick = anota(" +i+ ")><img src='../content/raven/"+ mset + num +"-"+i+".png' /></a></div>"
-		respuestas = respuestas + matemp;
-	}
-		
 	var contenido = document.createElement('m6r');
-	contenido.innerHTML = "<div class='m8r'><h2>"+ mset + " " + num + "</h2><div class='mbig'><img src='../content/raven/" + mset + num + ".png' /></div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><img src='../content/PERE/Item" + num + ".jpg' /></div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
 	document.getElementById("matrices").appendChild(contenido);
 	}
 
@@ -197,21 +207,15 @@ function comenzar(setM) {
 	var eda=document.getElementById('iedad').value;
 	var sex=document.getElementById('isexo').value;
 	loadedMatrix = 1;
-	selectedSet = setM;
 	data = nom + "," + eda + "," + sex;
 	$(articles).hide();
-	$(header).hide();
-	if (type6.indexOf(selectedSet) != -1){  
-	   	matriz6r(loadedMatrix.toString(), selectedSet);
-	} else {
-		matriz8r(loadedMatrix.toString(), selectedSet);
-		}
-	data = data + ","+ selectedSet
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
 	lastTimestamp = Math.round(+new Date());
 	}
 function loadNext() {
 	loadedMatrix++;
-	if (loadedMatrix < 13){
+	if (loadedMatrix < 57){
 		if (type6.indexOf(selectedSet) != -1){  
 		   	matriz6r(loadedMatrix.toString(), selectedSet);
 		} else {
@@ -229,7 +233,7 @@ function loadNext() {
 function sendMail() {
 		var contenido = document.getElementById("csvp").innerHTML;
 		var link = "mailto:jorgealonso@openmailbox.org"
-		     + "?subject=" + escape("Raven (SPM) - " + document.getElementById("inombre").value)
+		     + "?subject=" + escape("PERE - " + document.getElementById("inombre").value)
 		     + "&body=" + escape(contenido);
 
 		window.location.href = link;
@@ -240,13 +244,13 @@ function sendMail() {
 
 <body>
 	<div id="header">
-		<h1>Test de Matrices Progresivas de Raven General</h1>
+		<h1>Prueba de Evaluación del Reconocimiento de Emociones (PERE)</h1>
 		<div id="usuario">
 			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
 			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
 			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
-						<option value="Niño">Niño</option>
-						<option value="Niña">Niña</option>
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
 					</select></div>
 			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
 			<script>
@@ -259,54 +263,11 @@ function sendMail() {
 	</div>
 	<div id='contenidos'>
 		<div id="articles">
-			<p>Los tests de Matrices Progresivas de Raven se desarrollaron inicialmente para su uso en el estudio de los orígenes genéticos y ambientales de la conducta inteligente. Su finalidad era medir uno de los componentes del factor 'g' identificado por Spearman, la capacidad de educción de relaciones.</p>
-			<p>Nacieron en la mitad de la década de los 30 y tuvieron una revisión y tipificación en 1938, conocida como PM 1938; las sucesivas revisiones han recibido las siglas de PM-47, PM-56, etc. que aludían a una determinada Escala.</p>
-			<p>En primer lugar se creó la Escala General (SPM), destinada a cubrir todo el ámbito de aplicabilidad, desde los niños o los sujetos con baja dotación a los adultos de dotación elevada.</p>
-			<p> La escala SPM (Standard Progressive Matrices') o Escala General; consta de un Cuadernillo con seis conjuntos (A a E) de 12 elementos cada uno.</p>
-			<p>Mire esto</p>
-			<div class='m6r'>
-				<div class='mbig'>
-					<img src='../content/raven/A1.png' />
-				</div>
-				<div class='mresps'>
-					<div class = 'mpeq6'>
-						<img src='../content/raven/A1-1.png' />
-					</div>
-					<div class = 'mpeq6'>
-						<img src='../content/raven/A1-2.png' />
-					</div>
-					<div class = 'mpeq6'>
-						<img src='../content/raven/A1-3.png' />
-					</div>
-					<div class = 'mpeq6'>
-						<img src='../content/raven/A1-4.png' />
-					</div>
-					<div class = 'mpeq6'>
-						<img src='../content/raven/A1-5.png' />
-					</div>
-					<div class = 'mpeq6'>
-						<img src='../content/raven/A1-6.png' />
-					</div>
-					<div class='clear'></div>
-				</div>
-			</div>
-			<p>Vea, es un dibujo y le falta un trozo. Estas piezas de aquí debajo tienen igual forma que el hueco de arriba, pero sólo una tiene el dibujo correcto.</p>
-			<p>El número 1 tiene igual forma, pero el dibujo no es correcto. Tampoco sirve el número 2, por que no tiene dentro ningún dibujo. El número 3 tiene un dibujo distinto. El número  6 casi es correcto pero le falta un trozo. Sólo uno es correcto. Señale Vd. cuál es.</p>
-			<p>Cuando esté listo, pulse sobre el set que desea comenzar:</p>
-			<div class="boxtst", onClick="comenzar('A')">
-				<p>Set A</p>
-			</div>
-			<div class="boxtst", onClick="comenzar('B')">
-				<p>Set B</p>
-			</div>
-			<div class="boxtst", onClick="comenzar('C')">
-				<p>Set C</p>
-			</div>
-			<div class="boxtst", onClick="comenzar('D')">
-				<p>Set D</p>
-			</div>
-			<div class="boxtst", onClick="comenzar('E')">
-				<p>Set E</p>
+			<p>A continuación verás 56 fotografías</p>
+			<p>Debes indicar la emoción que crees que representan.</p>
+			<p>Cuando esté listo, pulse sobre el botón para comenzar:</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
 			</div>
 			<div class='clear'></div>
 		</div>
@@ -316,7 +277,7 @@ function sendMail() {
 		<div id="informe">
 			<h2>Resultados</h2>
 			<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
-			<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+			<p>Has finalizado. Muchas gracias.</p>
 			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
 		</div>
 	</div>
