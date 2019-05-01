@@ -1,0 +1,418 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<style type="text/css">
+
+
+#usuario {
+	margin-top:50px;
+	position: relative;
+	}
+#nombre, #edad, #sexo {
+	margin-bottom:10px;
+	}
+input, textarea, select {
+  border: 1;
+  position: absolute;
+  left: 300px;
+  background: #D0D0D0;
+	}
+
+#onombre, #oedad, #osexo {
+	background:none; border:0;
+	color: #BDBDBD;
+	}
+#errores {
+	color: orange;
+	}
+#preguntas {
+	width:100%; float:left
+	}
+#respuestas {
+	text-align: center;
+	font-size: 30px;
+	}
+#preguntas p {
+	margin:0 0 0 40;
+	}
+#preguntas h2 {
+	margin:20 0 5 20;
+	}
+#preguntas input {
+	position: relative;
+	left: 0px;
+	}
+</style>
+
+<body>
+	<div id="header">
+		
+	</div>
+	<div id='formulario'>	
+		<form>
+			<h1>Perfil Motivacional - Cuestionario McClelland</h1>
+			<p>El siguiente cuestionario tiene por objeto conocer aspectos de motivación. Usted encontrará una serie de opiniones, situaciones, actividades, cualidades o características personales, seguidas cada una por tres alternativas. Escoja una sola de esas posibilidades marcando con una equis (X) en la hoja de respuestas, la que más se adecue o se asemeje a lo que usted haría, opine, o mejor se parezca a su auténtica forma de ser o actuar.</p>
+			<p>En este cuestionario NO existen respuestas correctas o incorrectas. Lo importante es lo que usted piense, NO lo que debería pensar.</p>
+			<p>Responda todos los numerales aún cuando se trate de situaciones imaginarias por las que no ha pasado; en estos casos escoja la alternativa más aproximada a lo que usted haría.</p>
+			<div id="usuario">
+				<div id="nombre"><label>Nombre:</label><input type="text" id="inombre" size="50"></div>
+				<div id="edad"><label>Edad:</label><input type="text" id="iedad" size="3"></div>
+				<div id="sexo"><label>Sexo:</label><select id="isexo">
+							<option value="Hombre">Hombre</option>
+							<option value="Mujer">Mujer</option>
+						</select></div>
+				<div id="fecha"><label>Fecha:</label><input type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			</div>
+			<div id="preguntas">
+			<h2>1. En mi actividad principal me gusta rodearme de:</h2>
+			<p><input type="radio" id="p1a" name="p1">a. Amigos</p>
+			<p><input type="radio" id="p1b" name="p1">b. Personas que conozcan el trabajo</p>
+			<p><input type="radio" id="p1c" name="p1">c. Personas influyentes</p>
+			
+			<h2>2. Las veces que más me divierto es cuando:</h2>
+			<p><input type="radio" id="p2a" name="p2">a. Tengo una buena discusión</p>
+			<p><input type="radio" id="p2b" name="p2">b. Estoy conversando agradablemente</p>
+			<p><input type="radio" id="p2c" name="p2">c. Gano un juego en el que se necesita habilidad</p>
+			
+			<h2>3. Las veces que me he sentido más triste ha sido porque:</h2>
+			<p><input type="radio" id="p3a" name="p3">a. Fracasé en alguna tarea que me había impuesto </p>
+			<p><input type="radio" id="p3b" name="p3">b. Tuve disgustos con familiares o amigos</p>
+			<p><input type="radio" id="p3c" name="p3">c. Creía haber perdido una discusión</p>
+			
+			<h2>4. Yo creo que el pecado de Adán fue debido a:</h2>
+			<p><input type="radio" id="p4a" name="p4">a. Falta de voluntad y carácter</p>
+			<p><input type="radio" id="p4b" name="p4">b. Sus relaciones de afecto hacia Eva</p>
+			<p><input type="radio" id="p4c" name="p4">c. Falta de responsabilidad</p>
+			
+			<h2>5. Cuando intercambio ideas, ante todo:</h2>
+			<p><input type="radio" id="p5a" name="p5">a. Controlo la discusión</p>
+			<p><input type="radio" id="p5b" name="p5">b. Escucho para mejorar mi punto de vista</p>
+			<p><input type="radio" id="p5c" name="p5">c. Evito llegar a herir a otra persona</p>
+			
+			<h2>6. En la vida yo:</h2>
+			<p><input type="radio" id="p6a" name="p6">a. Haría amigos</p>
+			<p><input type="radio" id="p6b" name="p6">b. Lucharía</p>
+			<p><input type="radio" id="p6c" name="p6">c. Mandaría</p>
+			
+			<h2>7. Si tengo tres reuniones en el mismo día y sólo puedo asistir a una de ellas, iría a:</h2>
+			<p><input type="radio" id="p7a" name="p7">a. El cumpleaños de un amigo al que no quiero enojar</p>
+			<p><input type="radio" id="p7b" name="p7">b. Una reunión política en la cual puedo llegar a ser  elegido</p>
+			<p><input type="radio" id="p7c" name="p7">c. Una conferencia útil para desempeñar mejor mi trabajo</p>
+			
+			<h2>8. Al ver un retrato donde hay dos personas que desconozco, imagino que son:</h2>
+			<p><input type="radio" id="p8a" name="p8">a. Dos amigos</p>
+			<p><input type="radio" id="p8b" name="p8">b. Un jefe y un empleado</p>
+			<p><input type="radio" id="p8c" name="p8">c. Dos empresarios</p>
+			
+			<h2>9. Yo tengo más facilidad para:</h2>
+			<p><input type="radio" id="p9a" name="p9">a. Ordenar o dirigir</p>
+			<p><input type="radio" id="p9b" name="p9">b. Hacer amigos</p>
+			<p><input type="radio" id="p9c" name="p9">c. Obtener resultados</p>
+			
+			<h2>10. El material que más me gusta por su apariencia es el:</h2>
+			<p><input type="radio" id="p10a" name="p10">a. Oro</p>
+			<p><input type="radio" id="p10b" name="p10">b. Cobre</p>
+			<p><input type="radio" id="p10c" name="p10">c. Hierro</p>
+			
+			<h2>11. Cuando yo aprendo lo hago para:</h2>
+			<p><input type="radio" id="p11a" name="p11">a. Defenderme en una discusión</p>
+			<p><input type="radio" id="p11b" name="p11">b. Tener recompensas posteriores</p>
+			<p><input type="radio" id="p11c" name="p11">c. Colaborar con los demás</p>
+			
+			<h2>12. Lo que más admiro de la gente es:</h2>
+			<p><input type="radio" id="p12a" name="p12">a. Su confianza en si misma</p>
+			<p><input type="radio" id="p12b" name="p12">b. Su bondad y cooperación</p>
+			<p><input type="radio" id="p12c" name="p12">c. Que sepa escuchar</p>
+			
+			<h2>13. Yo tengo la tendencia a:</h2>
+			<p><input type="radio" id="p13a" name="p13">a. No darme por vencido fácilmente</p>
+			<p><input type="radio" id="p13b" name="p13">b. Nunca demostrar que he sido vencido</p>
+			<p><input type="radio" id="p13c" name="p13">c. Ayudar al vencido</p>
+			
+			<h2>14. Yo admiro más a:</h2>
+			<p><input type="radio" id="p14a" name="p14">a. Una enfermera</p>
+			<p><input type="radio" id="p14b" name="p14">b. Un negociante</p>
+			<p><input type="radio" id="p14c" name="p14">c. Un político</p>
+			
+			<h2>15. Por lo general soy más capaz de:</h2>
+			<p><input type="radio" id="p15a" name="p15">a. Ser un buen líder</p>
+			<p><input type="radio" id="p15b" name="p15">b. Tener el trabajo al día</p>
+			<p><input type="radio" id="p15c" name="p15">c. Mantener buenas relaciones</p>
+			
+			<h2>16. En el colegio o escuela yo:</h2>
+			<p><input type="radio" id="p16a" name="p16">a. Organizaba los juegos</p>
+			<p><input type="radio" id="p16b" name="p16">b. Competía para ganar</p>
+			<p><input type="radio" id="p16c" name="p16">c. Jugaba únicamente con mis amigos</p>
+			
+			<h2>17. Para mí el sol significa:</h2>
+			<p><input type="radio" id="p17a" name="p17">a. Amor y vida</p>
+			<p><input type="radio" id="p17b" name="p17">b. Dominio y poder</p>
+			<p><input type="radio" id="p17c" name="p17">c. Actividad y energía</p>
+			
+			<h2>18. Cuando hago algo difícil, generalmente lo hago por:</h2>
+			<p><input type="radio" id="p18a" name="p18">a. El reto</p>
+			<p><input type="radio" id="p18b" name="p18">b. Demostrar capacidad</p>
+			<p><input type="radio" id="p18c" name="p18">c. Caer bien</p>
+			
+			<h2>19. Yo creo que la vida sirve para:</h2>
+			<p><input type="radio" id="p19a" name="p19">a. Vivir en paz y armonía</p>
+			<p><input type="radio" id="p19b" name="p19">b. Ser una persona importante</p>
+			<p><input type="radio" id="p19c" name="p19">c. Realizar algo</p>
+			
+			<h2>20. La mayor parte de mi vida la he dedicado a:</h2>
+			<p><input type="radio" id="p20a" name="p20">a. Aprovechar mejor el tiempo</p>
+			<p><input type="radio" id="p20b" name="p20">b. Estar en compañías agradables</p>
+			<p><input type="radio" id="p20c" name="p20">c. Luchar por adquirir posición</p>
+			
+			<h2>21. Las veces que practico algún juego o deporte me preocupo más por:</h2>
+			<p><input type="radio" id="p21a" name="p21">a. Poder hacerlo como lo hace el mejor</p>
+			<p><input type="radio" id="p21b" name="p21">b. Salir peleando con alguien</p>
+			<p><input type="radio" id="p21c" name="p21">c. Poder derrotarlos a todos</p>
+			
+			<h2>22. Cuando acabo de cometer un error me siento incómodo porque:</h2>
+			<p><input type="radio" id="p22a" name="p22">a. Voy a perder influencia ante mis colegas</p>
+			<p><input type="radio" id="p22b" name="p22">b. La demás gente se va a disgustar conmigo</p>
+			<p><input type="radio" id="p22c" name="p22">c. El trabajo no me quedo como quería</p>
+			
+			<h2>23. Generalmente cuando estoy en grupo</h2>
+			<p><input type="radio" id="p23a" name="p23">a. Tomo las decisiones</p>
+			<p><input type="radio" id="p23b" name="p23">b. Me adelanto a los acontecimientos</p>
+			<p><input type="radio" id="p23c" name="p23">c. Me voy bien con la gente</p>
+			
+			<h2>24. Con frecuencia siento:</h2>
+			<p><input type="radio" id="p24a" name="p24">a. Rebote y náuseas</p>
+			<p><input type="radio" id="p24b" name="p24">b. Malestar general</p>
+			<p><input type="radio" id="p24c" name="p24">c. Que gozo de buena salud</p>
+			
+			<h2>25. El tiempo es para mí:</h2>
+			<p><input type="radio" id="p25a" name="p25">a. Un pájaro que vuela</p>
+			<p><input type="radio" id="p25b" name="p25">b. Una fuerza que domina</p>
+			<p><input type="radio" id="p25c" name="p25">c. Un lago en calma</p>
+			
+			<h2>26. En el colegio me sentía satisfecho cuando:</h2>
+			<p><input type="radio" id="p26a" name="p26">a. Me comentaban el resultado de mis tareas</p>
+			<p><input type="radio" id="p26b" name="p26">b. Pegaba o insultaba a quien me ofendía</p>
+			<p><input type="radio" id="p26c" name="p26">c. Jugaba en los recreos con mis colegas</p>
+			
+			<h2>27. Cuando estoy con otras personas:</h2>
+			<p><input type="radio" id="p27a" name="p27">a. Me es fácil pensar sobre qué hablar</p>
+			<p><input type="radio" id="p27b" name="p27">b. Me esfuerzo por hacer amigos</p>
+			<p><input type="radio" id="p27c" name="p27">c. Fácilmente influyo sobre lo que hablan</p>
+			
+			<h2>28. Creo que la gente generalmente</h2>
+			<p><input type="radio" id="p28a" name="p28">a. Se preocupa por la forma como se sienten los demás</p>
+			<p><input type="radio" id="p28b" name="p28">b. Pretende que uno haga lo que ella quiere</p>
+			<p><input type="radio" id="p28c" name="p28">c. Prefiere saber los resultados de su trabajo</p>
+			
+			<h2>29. Una de las metas de mi vida es:</h2>
+			<p><input type="radio" id="p29a" name="p29">a. Ganar el respeto de los demás</p>
+			<p><input type="radio" id="p29b" name="p29">b. Tener ayuda y cariño de alguien</p>
+			<p><input type="radio" id="p29c" name="p29">c. Ser alguien de mérito por su trabajo</p>
+			
+			<h2>30. Tengo grandes cualidades para:</h2>
+			<p><input type="radio" id="p30a" name="p30">a. Convencer a la gente</p>
+			<p><input type="radio" id="p30b" name="p30">b. Agradar con buenos chistes</p>
+			<p><input type="radio" id="p30c" name="p30">c. Aventajar a otras personas</p>
+			
+			<h2>31. Lo que más deseo en mi vida es:</h2>
+			<p><input type="radio" id="p31a" name="p31">a. Ser querido y aceptado por la gente</p>
+			<p><input type="radio" id="p31b" name="p31">b. Tener éxito en el mundo</p>
+			<p><input type="radio" id="p31c" name="p31">c. Ser una persona de influencia</p>
+			
+			<h2>32. La mujer ante todo debe ser:</h2>
+			<p><input type="radio" id="p32a" name="p32">a. Cariñosa</p>
+			<p><input type="radio" id="p32b" name="p32">b. Respetuosa</p>
+			<p><input type="radio" id="p32c" name="p32">c. Independiente</p>
+			
+			<h2>33. En todas las acciones de la vida lo más importante es:</h2>
+			<p><input type="radio" id="p33a" name="p33">a. Tener mucha dedicación y responsabilidad</p>
+			<p><input type="radio" id="p33b" name="p33">b. Tener mucho orden y control</p>
+			<p><input type="radio" id="p33c" name="p33">c. Evitar herir sentimientos ajenos</p>
+			
+			<h2>34. Al estudiar lo hago por:</h2>
+			<p><input type="radio" id="p34a" name="p34">a. Obtener recompensa posterior</p>
+			<p><input type="radio" id="p34b" name="p34">b. Estar con otras personas</p>
+			<p><input type="radio" id="p34c" name="p34">c. Convencer más tarde a otros</p>
+			
+			<h2>35. Creo que la religión es más que todo:</h2>
+			<p><input type="radio" id="p35a" name="p35">a. Una necesidad interna del hombre</p>
+			<p><input type="radio" id="p35b" name="p35">b. Un medio para armonizar la sociedad</p>
+			<p><input type="radio" id="p35c" name="p35">c. Una forma de controlar la gente</p>
+			
+			<h2>36. Al entrar a un sitio donde hay varias personas, de las cuales conozco tres, buscaría la compañía del:</h2>
+			<p><input type="radio" id="p36a" name="p36">a. Negociante famoso</p>
+			<p><input type="radio" id="p36b" name="p36">b. Más amigable</p>
+			<p><input type="radio" id="p36c" name="p36">c. Que me admira</p>
+			
+			<h2>37. Si pudiera elegir mi compañero para un viaje, preferiría:</h2>
+			<p><input type="radio" id="p37a" name="p37">a. Alguien a quien le pueda contar mis problemas íntimos</p>
+			<p><input type="radio" id="p37b" name="p37">b. Alguien a quien tenga que dar instrucciones</p>
+			<p><input type="radio" id="p37c" name="p37">c. Alguien con quien analizar mis opiniones </p>
+			
+			<h2>38. En la vida se consigue más por:</h2>
+			<p><input type="radio" id="p38a" name="p38">a. Influencia</p>
+			<p><input type="radio" id="p38b" name="p38">b. Amabilidad</p>
+			<p><input type="radio" id="p38c" name="p38">c. Esfuerzo</p>
+			
+			<h2>39. A mí me gusta jugar:</h2>
+			<p><input type="radio" id="p39a" name="p39">a. Contra personas hábiles</p>
+			<p><input type="radio" id="p39b" name="p39">b. Para estar con gente agradable</p>
+			<p><input type="radio" id="p39c" name="p39">c. Siempre y cuando gane</p>
+			
+			<h2>40. Cuando alguien me dice que soy incapaz de hacer algo:</h2>
+			<p><input type="radio" id="p40a" name="p40">a. Me disgusto porque ven mi debilidad</p>
+			<p><input type="radio" id="p40b" name="p40">b. Me esfuerzo por hacer lo mejor</p>
+			<p><input type="radio" id="p40c" name="p40">c. M siento herido</p>
+			
+			<h2>41. Yo disfrutaría más:</h2>
+			<p><input type="radio" id="p41a" name="p41">a. Si tuviera autoridad sobre otros</p>
+			<p><input type="radio" id="p41b" name="p41">b. Si mantuviera buenas amistades</p>
+			<p><input type="radio" id="p41c" name="p41">c. Si hiciera planes a largo plazo</p>
+			
+			<h2>42. La moral sirve:</h2>
+			<p><input type="radio" id="p42a" name="p42">a. Para la paz y unión entre la gente</p>
+			<p><input type="radio" id="p42b" name="p42">b. Para trabajar más efectivamente</p>
+			<p><input type="radio" id="p42c" name="p42">c. Para controlar a la gente</p>
+			
+			<h2>43. A mí me produce una emoción más fuerte la:</h2>
+			<p><input type="radio" id="p43a" name="p43">a. Oscuridad</p>
+			<p><input type="radio" id="p43b" name="p43">b. Altura</p>
+			<p><input type="radio" id="p43c" name="p43">c. Velocidad</p>
+			
+			<h2>44. A menudo deseo que:</h2>
+			<p><input type="radio" id="p44a" name="p44">a. La gente me apruebe</p>
+			<p><input type="radio" id="p44b" name="p44">b. Otras personas hagan lo que yo quiero</p>
+			<p><input type="radio" id="p44c" name="p44">c. Mis propósitos se logren</p>
+			
+			<h2>45. Si yo viajara lejos lo haría para:</h2>
+			<p><input type="radio" id="p45a" name="p45">a. Conocer el mundo y salir de la rutina</p>
+			<p><input type="radio" id="p45b" name="p45">b. Visitar amigos y parientes</p>
+			<p><input type="radio" id="p45c" name="p45">c. Sentirme importante y poderoso</p>
+			
+			<h2>46. Uno debe estar orientado hacia:</h2>
+			<p><input type="radio" id="p46a" name="p46">a. El futuro</p>
+			<p><input type="radio" id="p46b" name="p46">b. La amistad</p>
+			<p><input type="radio" id="p46c" name="p46">c. El poder</p>
+			
+			<h2>47. Lo que más le gusta a la gente es:</h2>
+			<p><input type="radio" id="p47a" name="p47">a. Mandar</p>
+			<p><input type="radio" id="p47b" name="p47">b. Ayudar</p>
+			<p><input type="radio" id="p47c" name="p47">c. Tener éxito</p>
+			
+			<h2>48. Hago un trabajo en casa y daño lo que estoy haciendo, entonces:</h2>
+			<p><input type="radio" id="p48a" name="p48">a. Busco un culpable</p>
+			<p><input type="radio" id="p48b" name="p48">b. Pido disculpas y explico</p>
+			<p><input type="radio" id="p48c" name="p48">c. Intento mejorarlo</p>
+			
+			<h2>49. En mi actividad lo que más me gusta es:</h2>
+			<p><input type="radio" id="p49a" name="p49">a. Que me digan si lo hago bien</p>
+			<p><input type="radio" id="p49b" name="p49">b. Decir cómo se debe hacer</p>
+			<p><input type="radio" id="p49c" name="p49">c. Ayudar a mis compañeros</p>
+			
+			<h2>50. Me gustaría que la gente:</h2>
+			<p><input type="radio" id="p50a" name="p50">a. Ayudara a quien lo necesite</p>
+			<p><input type="radio" id="p50b" name="p50">b. Fueran tan convincentes como yo</p>
+			<p><input type="radio" id="p50c" name="p50">c. Planeara sus actividades</p>
+			
+			<h2>51. La radio ha servido más para:</h2>
+			<p><input type="radio" id="p51a" name="p51">a. Que la gente piense más y progrese</p>
+			<p><input type="radio" id="p51b" name="p51">b. Tener ratos de alegría y unión</p>
+			<p><input type="radio" id="p51c" name="p51">c. Que la gente aprenda a discutir</p>
+			
+			<h2>52. Cuando hago alguna cosa</h2>
+			<p><input type="radio" id="p52a" name="p52">a. Nunca me arrepiento</p>
+			<p><input type="radio" id="p52b" name="p52">b. Me esfuerzo</p>
+			<p><input type="radio" id="p52c" name="p52">c. Me gusta hacerlo acompañado</p>
+			
+			<h2>53. Los buenos profesores</h2>
+			<p><input type="radio" id="p53a" name="p53">a. Ponen metas de aprendizaje</p>
+			<p><input type="radio" id="p53b" name="p53">b. Dan trato cordial a sus alumnos</p>
+			<p><input type="radio" id="p53c" name="p53">c. Establecen controles estrictos</p>
+			</div><div class='clear'></div>
+			<p style="margin-top: 50px;"> </p>
+			<h1>Confirmar y enviar</h1>
+			<p>Presione en <k><a href="#" onClick="mostrar()">confirmar</a></k> para calcular los resultados.</p>
+		</form>
+	</div>
+	<div id="informe">
+		<h1>Inventario de Depresión de Beck (Resultados)</h1>
+		<div id="errores"></div>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input type="text" id="onombre" size="50" READONLY></div>
+			<div id="edad"><label>Edad:</label><input type="text" id="oedad" size="3" READONLY></div>
+			<div id="sexo"><label>Sexo:</label><input id="osexo" size="10" READONLY></div>
+		</div>
+		<h2>Resultados</h2>
+		<div id="respuestas"></div>
+		<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+		<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+	</div>
+	<div id="csv" style="display: none;"></div>
+</body>
+
+<script type="text/javascript"> 
+	var fecha = new Date()
+	document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+
+	function sendMail() {
+		var contenido = document.getElementById("csv").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("McClelland - " + document.getElementById('inombre').value + " " + document.getElementById("ifecha").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+
+	function mostrar() {
+		console.log('entrando en mostrar()');
+		document.getElementById('onombre').value = document.getElementById('inombre').value
+		document.getElementById('oedad').value = document.getElementById('iedad').value
+		document.getElementById('osexo').value = document.getElementById('isexo').value
+		var i = 1
+		var csv = ''
+		var salida = 'Bla'
+		while (i < 54){
+			var valor = valuep(i)
+			csv = csv + valor + ',';
+			i = i+1;
+		}
+		console.log(csv);
+		document.getElementById('csv').innerHTML=csv;
+		document.getElementById('respuestas').innerHTML="Muchas gracias por participar."
+		document.getElementById('formulario').style.display='none';
+		document.getElementById('informe').style.display='block';
+	}
+
+	function valuep(num) {
+		var ida = 'p' + num + 'a'
+		var idb = 'p' + num + 'b'
+		var idc = 'p' + num + 'c'
+		console.log(ida + ' ' + idb + ' ' + idc)
+		if (document.getElementById(ida).checked) {
+			return 1;
+		}
+		if (document.getElementById(idb).checked) {
+			return 2;
+		}
+		if (document.getElementById(idc).checked) {
+			return 3;
+		}
+	 	var node = document.createElement("LI");
+		var textnode = document.createTextNode('Asegúrese de que ha respondido a todas las preguntas: Pregunta ' + num + ' en blanco');
+		node.appendChild(textnode);
+		document.getElementById("errores").appendChild(node);
+		return NaN;
+	}
+	
+</script>
+
+</body>
+</html>
