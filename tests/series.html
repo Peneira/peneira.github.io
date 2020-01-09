@@ -1,0 +1,436 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<!--script src="../js/jquery.drawsvg.js"></script-->
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 600px;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 650px;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+
+
+function circulo(x,y, color, radio=10){
+	im = "<circle cx="+x+" cy="+y+" r="+radio+" stroke=" + color + " stroke-width='3' fill=" + color +" />"
+	return im
+	}
+function cuadrado(x, y, color, tam=10){
+	im = "<rect x=" +(x-tam/2)+ " y=" +(y-tam/2)+ " width="+tam*1.5+" height="+tam*1.5+" style='fill:" + color + ";stroke:" + color + ";stroke-width:5; opacity:1'></rect>"
+	return im
+}
+function trianguloUp(x, y, color, tam=10){
+	x1 = x-tam
+	x2 = x+tam
+	x3 = x
+	y1 = y+tam
+	y2 = y+tam
+	y3 = y-tam
+	pts = "" + x1+','+y1+' '+x2+','+y2+' '+x3+','+y3
+	im = "<polygon points='"+pts+"'' style='fill:"+color+";stroke:"+color+";stroke-width:1' />"
+	return im
+}
+function trianguloDown(x, y, color, tam=10){
+	x1 = x-tam
+	x2 = x+tam
+	x3 = x
+	y1 = y-tam
+	y2 = y-tam
+	y3 = y+tam
+	pts = "" + x1+','+y1+' '+x2+','+y2+' '+x3+','+y3
+	im = "<polygon points='"+pts+"'' style='fill:"+color+";stroke:"+color+";stroke-width:1' />"
+	return im
+}
+function rombo(x, y, color, tam=10){
+	x1 = x+tam
+	x2 = x
+	x3 = x-tam
+	x4 = x
+	y1 = y
+	y2 = y-tam
+	y3 = y
+	y4 = y+tam
+	pts = "" + x1+','+y1+' '+x2+','+y2+' '+x3+','+y3+' '+x4+','+y4
+	im = "<polygon points='"+pts+"'' style='fill:"+color+";stroke:"+color+";stroke-width:1' />"
+	return im	
+}
+function elipseH(x, y, color, tam=10){
+	im = "<ellipse cx="+x+" cy="+y+" rx="+(tam*1.2)+" ry="+(tam*.4)+" style='fill:"+color+";stroke:"+color+";stroke-width:2' />"
+	return im
+}
+function elipseV(x, y, color, tam=10){
+	im = "<ellipse cx="+x+" cy="+y+" rx="+(tam*.4)+" ry="+(tam*1.2)+" style='fill:"+color+";stroke:"+color+";stroke-width:2' />"
+	return im
+}
+function diagonalA(x, y, color, tam=10){
+	im = "<line x1="+(x-tam)+" y1="+(y+tam)+" x2="+(x+tam)+" y2="+(y-tam)+" style='stroke:" + color + ";stroke-width:7' />"
+	return im
+}
+function diagonalD(x, y, color, tam=10){
+	im = "<line x1="+(x+tam)+" y1="+(y+tam)+" x2="+(x-tam)+" y2="+(y-tam)+" style='stroke:" + color + ";stroke-width:7' />"
+	return im
+}
+function por(x, y, color, tam=10){
+	im = "<line x1="+(x+tam)+" y1="+(y+tam)+" x2="+(x-tam)+" y2="+(y-tam)+" style='stroke:" + color + ";stroke-width:7' /><line x1="+(x-tam)+" y1="+(y+tam)+" x2="+(x+tam)+" y2="+(y-tam)+" style='stroke:" + color + ";stroke-width:7' />"
+	return im
+}
+function mas(x, y, color, tam=10){
+	im = "<line x1="+(x-tam)+" y1="+(y)+" x2="+(x+tam)+" y2="+(y)+" style='stroke:" + color + ";stroke-width:7' /><line x1="+(x)+" y1="+(y+tam)+" x2="+(x)+" y2="+(y-tam)+" style='stroke:" + color + ";stroke-width:7' />"
+	return im
+}
+
+function sr(forma, num, color, tam=10){
+	posG = [
+		[[95, 65]],
+		[[80, 65], [110, 65]],
+		[[65, 65],[95, 65],[125, 65]],
+		[[80, 50], [110, 50],[80, 80], [110, 80]],
+		[[65, 50],[95, 50],[125, 50],[80, 80], [110, 80]],
+		[[65, 50],[95, 50],[125, 50],[65, 80],[95, 80],[125, 80]]
+		]
+	im = "<svg width='"+(190*tam/10) +"' height='"+(120*tam/10)+"'>"
+	poss = posG[(num-1)]
+	poss.forEach(function(pos){
+		switch(forma){
+			case "dot": im = im + circulo(pos[0], pos[1], color, tam); break;
+			case "sqr": im = im + cuadrado(pos[0], pos[1], color, tam); break;
+			case "tr1": im = im + trianguloUp(pos[0], pos[1], color, tam); break;
+			case "tr2": im = im + trianguloDown(pos[0], pos[1], color, tam); break;
+			case "rmb": im = im + rombo(pos[0], pos[1], color, tam); break;
+			case "el1": im = im + elipseH(pos[0], pos[1], color, tam); break;
+			case "el2": im = im + elipseV(pos[0], pos[1], color, tam); break;
+			case "dg1": im = im + diagonalA(pos[0], pos[1], color, tam); break;
+			case "dg2": im = im + diagonalD(pos[0], pos[1], color, tam); break;
+			case "por": im = im + por(pos[0], pos[1], color, tam); break;
+			case "mas": im = im + mas(pos[0], pos[1], color, tam); break;
+			default: im = ""
+		}
+	})
+	im = im + "</svg>"
+	return im
+}
+
+disenosR =  [
+			[sr("por", 4, "blue"), sr("mas", 5, "blue"), sr("dg1", 6, "blue"), sr("el1", 4, "blue"), sr("el2", 5, "blue"), sr("dg2", 6, "blue")],
+			[sr("por", 4, "blue"), sr("mas", 5, "blue"), sr("dg1", 6, "blue"), sr("el1", 4, "blue"), sr("el2", 5, "blue"), sr("dg2", 6, "blue")]
+			]
+disenosP = 	[
+			["I", "III", "I", "IV", "II", "IV", "I", "II"],
+			[sr("sqr", 1, "black"),sr("sqr", 3, "black"), ]
+			]
+
+function anota(valor){
+	data = data + ","+ valor + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	lastTimestamp = Math.round(+new Date());
+	console.log(data);
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function matriz6r(num, mset) {
+	respuestas = ""
+	pregunta = ""
+	disenoR = disenosR[num-1]
+	disenoP = disenosP[num-1]
+	for (i = 0; i<6; i++){
+		matemp = "<div class=opcion><a onclick = anota(" +(i+1)+ ")>" + disenoR[i] + "</a></div>"
+		respuestas = respuestas + matemp;
+	}
+		
+	var contenido = document.createElement('m6r');
+	pregunta = pregunta + disenoP
+	contenido.innerHTML = "<div class='m6r'><h2>"+ mset + " " + num + "</h2><div class='mbig'>"+pregunta+"</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+function matriz8r(num, mset) {
+	respuestas = ""
+	disenoR = disenosR[num-1]
+	disenoP = disenosP[num-1]
+	for (i = 0; i<8; i++){
+		matemp = "<div class=opcion><a onclick = anota(" +(i+1)+ ")>" + disenoR[i] + "</a></div>"
+		respuestas = respuestas + matemp;
+	}
+		
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m8r'><h2>"+ mset + " " + num + "</h2><div class='mbig'>"+pregunta+"</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	selectedSet = setM;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();
+	if (type6.indexOf(selectedSet) != -1){  
+	   	matriz6r(loadedMatrix.toString(), selectedSet);
+	} else {
+		matriz8r(loadedMatrix.toString(), selectedSet);
+		}
+	data = data + ","+ selectedSet
+	lastTimestamp = Math.round(+new Date());
+	}
+function loadNext() {
+	loadedMatrix++;
+	if (loadedMatrix < 3){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		$(informe).show();
+		contenido = document.createElement('texto');
+		contenido.innerHTML = "<p>Resumen... blau blau </p><p>Botón de enviar</p>";
+		document.getElementById("informe").appendChild(contenido);
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("Series - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Memory</h1>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p>Versión de prueba:</p>
+			<div class="boxtst", onClick="comenzar('A')">
+				<p>Set A</p>
+			</div>
+			<div class="boxtst", onClick="comenzar('B')">
+				<p>Set B</p>
+			</div>
+			<!--div class="boxtst", onClick="comenzar('C')">
+				<p>Set C</p>
+			</div>
+			<div class="boxtst", onClick="comenzar('D')">
+				<p>Set D</p>
+			</div>
+			<div class="boxtst", onClick="comenzar('E')">
+				<p>Set E</p>
+			</div-->
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+			<p>¡Para más orientación puedes solicitar una consulta! Estaremos encantados de ayudarte.</p>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,469 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 990px;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 650px;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 32.5%;
+	min-height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+
+function anota(valor){
+	data = data + ","+ valor + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	lastTimestamp = Math.round(+new Date());
+	console.log(data);
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [["","",""],[
+		"Conciliar para mantener un buen ambiente.",
+		"Enfocarme a encontrar soluciones rápidas sin pérdida de tiempo.",
+		"Dejar en claro que tengo razones de peso y persistir hasta lograr que me den la razón."
+		],[
+		"La gente olvidará lo rápido que hiciste el trabajo, pero siempre recordará lo bien que lo hiciste.",
+		"No se puede trepar una escalera derribando a los demás.",
+		"Aún si estas en el camino justo te pasarán si te quedas sentado"
+		],[
+		"Fracasar en alguna tarea que me he propuesto.",
+		"Tener disgustos con mi familia o amigos.",
+		"Perder una discusión."
+		],[
+		"El impacto que tienen en los resultados",
+		"El impacto que tienen en los demás.",
+		"El impacto que causan en las personas más importantes de la organización."
+		],[
+		"No le digo nada, sólo dejo que se dé cuenta por mi expresión.",
+		"Se lo digo abiertamente.",
+		"No le digo nada, es mejo preservar las buenas relaciones."
+		],[
+		"Sean altas, que estén por encima de mis habilidades actuales.",
+		"Que estén en balance entre mi vida laboral y familiar.",
+		"Que me permitan ocupar posiciones importantes rápidamente."
+		],[
+		"Posibilidad de promoción.",
+		"Oportunidad para desarrollar mis habilidades y capacidades.",
+		"Tareas interesantes, retroalimentación y reconocimiento sobre mi desempeño profesional."
+		],[
+		"Respeto y reconocimiento cuando hago las cosas bien..",
+		"Posibilidad de tomar decisiones.",
+		"Posibilidad de aprender cosas nuevas."
+		],[
+		"Quien formula sus argumentos de manera consecuente, calmada y neutra, tiene la razón de su parte.",
+		"Quien refuta cada argumenta de la contraparte es quien tiene la razón.",
+		"Quien no puede tener en cuenta los argumentos de los demás, tampoco toma en serio los propios ."
+		],[
+		"Organizaba los juegos.",
+		"Buscaba romper las marcas de los juegos.",
+		"Tenía buenas amistades."
+		],[
+		"Por los resultados que he alcanzado.",
+		"Por los comentarios que otros me hacen.",
+		"Por las posiciones que he alcanzado"
+		],[
+		"Tengo confrontaciones con los demás.",
+		"No logro los resultados que me he propuesto",
+		"No reconocen mis aportes y contribuciones"
+		],[
+		"Ser admirado y respetado por otros.",
+		"Ganar dinero para alcanzar una posición económica destacadas",
+		"Lograr resultados consistentemente en el trabajo."
+		],[
+		"Más Balance entre familia, responsabilidades y más dinero",
+		"Más responsabilidades y más dinero ",
+		"Más estabilidad y más dinero."
+		],[
+		"Que mis compañeros o colaboradores se den cuenta que no soy lo que parezco.",
+		"Que los demás se disgusten conmigo.",
+		"Que el trabajo no me quede como yo lo quería"
+		],[
+		"Las cuestiones personales no cuentan.",
+		"Tiene que haber trato humano y no pasar por encima de los demás.",
+		"Los resultados son lo más  importante"
+		],[
+		"El que me quede cerca de la casa",
+		"El que me ofrezca seguridad y estabilidad .",
+		"El que reconozca mis resultados a través de un pago justo."
+		],[
+		"Desarrollarse y ser feliz con el trabajo que uno hace.",
+		"Ganar dinero y lograr resultados.",
+		"Ascender y ser reconocido por sus logros."
+		],[
+		"Sacrificar ocio y descanso para dedicarme al trabajo.",
+		"Sólo si es indispensable sacrifico algo de descanso y familia por trabajo.",
+		"Sacrifico descanso cuando hay una petición de mi jefe directo."
+		],[
+		"La mayor parte de las decisiones que se toman son sugeridas por mi.",
+		"Aporto ideas aunque no siempre son las que se aceptan.",
+		"Busco principalmente las opiniones de otros y las decisiones son del equipo."
+		],[
+		"Argumentar y persuadir a los demás ",
+		"Ser agradable y divertido en mis relaciones.",
+		"Influenciar a los demás ."
+		],[
+		"Conformar un grupo o equipo de trabajo.",
+		"Definir políticas y  procedimientos para que otros las sigan",
+		"Definir estrategias para la organización"
+		],[
+		"Dedicación y responsabilidad.",
+		"Orden y control.",
+		"No sacrificar a los demás."
+		],[
+		"Dirigir el trabajo de un equipo. ",
+		"Tener una posición de influencia en la organización",
+		"Prospectar y conseguir resultados por mi mismo"
+		],[
+		"Capaz de tomar decisiones y resolver problemas difíciles",
+		"Capaz de defender mis derechos y los de los demás.",
+		"Capaz de lograr negociaciones exitosas. "
+		],[
+		"Enfocarme a definir estrategias y lograr resultados",
+		"Tener una posición que privilegie el sentido del servicio.",
+		"Ocupar posiciones de reconocimiento e importancia"
+		],[
+		"Interactuar  con otros y lograr objetivos con el aporte de un equipo.",
+		"Fijar objetivos, delegar tareas y hacer seguimiento. ",
+		"Actuar con autoridad y firmeza cuando se requiere."
+		],[
+		"Se me baja el ánimo y la motivación",
+		"Me esfuerzo por hacerlo mejor.",
+		"Me ofende que me crean débil ."
+		],[
+		"Planificando y coordinando diversas actividades para lograr resultados",
+		"Conformando equipos para lograr resultados.",
+		"Realizando seguimiento para lograr resultados."
+		],[
+		"Lograr objetivos con las personas.",
+		"Argumentar y convencer a otros. ",
+		"Conocer las fortalezas  de las personas que trabajan conmigo."
+		],[
+		"Mandar y ser obedecido.",
+		"Comprender y ser comprendido.",
+		"Tener éxito."
+		],[
+		"Que me asignen a proyectos de alto impacto para la organización",
+		"Tener autonomía  para desarrollar las tareas que me asignan.",
+		"Crear redes de trabajo con otros para lograr resultados conjuntos."
+		],[
+		"Tener sentido del largo plazo.",
+		"Centrarse en los detalles para tener respuestas precisas cuando le preguntan ",
+		"Dar reconocimiento a los demás por un trabajo bien hecho. "
+		],[
+		"Me he esforzado por hacerlo bien .",
+		"Me he esforzado por hacerlo mejor que los demás ",
+		"Me he esforzado por involucrar a otros. "
+		]]
+	preguntas = ["",
+		"Ante los conflictos con otros prefiero",
+		"Me identifico con la siguiente frase",
+		"Lo que mayor desagrado me proporciona es",
+		"En las decisiones que tomo tengo en cuenta principalmente",
+		"Si estoy molesto con alguien",
+		"Cuándo me fijo metas busco que estas",
+		"Prefiero un tipo de trabajo que tenga",
+		"Mi trabajo debe ofrecerme",
+		"Considero que en una discusión",
+		"Durante mis años escolares yo",
+		"Siento que actualmente logro el éxito",
+		"Me doy cuenta que mi nivel de energía disminuye cuando",
+		"Para mí el éxito se representa en:",
+		"En el trabajo yo prefiero",
+		"Cuando cometo un error lo que más me preocupa es",
+		"Pienso que en el trabajo ",
+		"Al momento de elegir un trabajo, prefiero",
+		"Triunfar es",
+		"Si debo escoger estoy dispuesto a",
+		"Cuando trabajo en equipo",
+		"Mi mayor habilidad consiste en",
+		"Si tuviera que escoger  entre las siguientes opciones preferiría",
+		"En las acciones de la vida lo prioritario es",
+		"Si debo elegir entre cualquiera de las opciones que siguen me inclino por",
+		"Prefiero que me recuerden porque soy",
+		"En el trabajo prefiero",
+		"A mi me gusta más",
+		"Si alguien me dice que soy incapaz de hacer algo",
+		"Yo disfruto más",
+		"En un equipo lo más importante para mí es",
+		"Para mi ha sido importante",
+		"En mi trabajo lo que prefiero es",
+		"Creo que lo primordial en el trabajo de un líder es",
+		"Cuando he hecho algo en mi vida"
+		]
+	for (i = 0; i<3; i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +i+ ")><p>" + emociones[num][i] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><p>Escoja la alternativa con la que más se identifique...</p>" + preguntas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < 34){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		$(informe).show();
+		contenido = document.createElement('texto');
+		contenido.innerHTML = "<p>Resumen... blau blau </p><p>Botón de enviar</p>";
+		document.getElementById("informe").appendChild(contenido);
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("PERE - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Cuestionario Motivación de McClelland-34</h1>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p>Usted encontrará una serie de preguntas o afirmaciones, referentes a sus preferencias básicas en algunos aspectos o situaciones de su vida.</p>
+			<p>En cada afirmación encuentra tres (3) posibles alternativas de respuesta, de las que usted debe escoger solamente una, la que le parezca mejor o con la que más se identifique.</p>
+			<p>Trabaje rápidamente, sin detenerse demasiado en una pregunta, pues  es más representativa su primera impresión.</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+			<p>Has finalizado. Muchas gracias.</p>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,564 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 990px;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 650px;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 32.5%;
+	min-height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+
+function anota(valor){
+	data = data + ","+ valor + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	lastTimestamp = Math.round(+new Date());
+	console.log(data);
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [["","",""],[
+		"Amigos",
+		"Personas que conozcan el trabajo",
+		"Personas influyentes"
+		],[
+		"Tengo una buena discusión",
+		"Estoy conversando agradablemente",
+		"Gano un juego en el que se necesita habilidad"
+		],[
+		"Fracasé en alguna tarea que me había impuesto ",
+		"Tuve disgustos con familiares o amigos",
+		"Creía haber perdido una discusión"
+		],[
+		"Falta de voluntad y carácter",
+		"Sus relaciones de afecto hacia Eva",
+		"Falta de responsabilidad"
+		],[
+		"Controlo la discusión",
+		"Escucho para mejorar mi punto de vista",
+		"Evito llegar a herir a otra persona"
+		],[
+		"Haría amigos",
+		"Lucharía",
+		"Mandaría"
+		],[
+		"El cumpleaños de un amigo al que no quiero enojar",
+		"Una reunión política en la cual puedo llegar a ser elegido",
+		"Una conferencia útil para desempeñar mejor mi trabajo"
+		],[
+		"Dos amigos",
+		"Un jefe y un empleado",
+		"Dos empresarios"
+		],[
+		"Ordenar o dirigir",
+		"Hacer amigos",
+		"Obtener resultados"
+		],[
+		"Oro",
+		"Cobre",
+		"Hierro"
+		],[
+		"Defenderme en una discusión",
+		"Tener recompensas posteriores",
+		"Colaborar con los demás"
+		],[
+		"Su confianza en si misma",
+		"Su bondad y cooperación",
+		"Que sepa escuchar"
+		],[
+		"No darme por vencido fácilmente",
+		"Nunca demostrar que he sido vencido",
+		"Ayudar al vencido"
+		],[
+		"Una enfermera",
+		"Un negociante",
+		"Un político"
+		],[
+		"Ser un buen líder",
+		"Tener el trabajo al día",
+		"Mantener buenas relaciones"
+		],[
+		"Organizaba los juegos",
+		"Competía para ganar",
+		"Jugaba únicamente con mis amigos"
+		],[
+		"Amor y vida",
+		"Dominio y poder",
+		"Actividad y energía"
+		],[
+		"El reto",
+		"Demostrar capacidad",
+		"Caer bien"
+		],[
+		"Vivir en paz y armonía",
+		"Ser una persona importante",
+		"Realizar algo"
+		],[
+		"Aprovechar mejor el tiempo",
+		"Estar en compañías agradables",
+		"Luchar por adquirir posición"
+		],[
+		"Poder hacerlo como lo hace el mejor",
+		"Salir peleando con alguien",
+		"Poder derrotarlos a todos"
+		],[
+		"Voy a perder influencia ante mis colegas",
+		"La demás gente se va a disgustar conmigo",
+		"El trabajo no me quedo como quería"
+		],[
+		"Tomo las decisiones",
+		"Me adelanto a los acontecimientos",
+		"Me voy bien con la gente"
+		],[
+		"Rebote y náuseas",
+		"Malestar general",
+		"Que gozo de buena salud"
+		],[
+		"Un pájaro que vuela",
+		"Una fuerza que domina",
+		"Un lago en calma"
+		],[
+		"Me comentaban el resultado de mis tareas",
+		"Pegaba o insultaba a quien me ofendía",
+		"Jugaba en los recreos con mis colegas"
+		],[
+		"Me es fácil pensar sobre qué hablar",
+		"Me esfuerzo por hacer amigos",
+		"Fácilmente influyo sobre lo que hablan"
+		],[
+		"Se preocupa por la forma como se sienten los demás",
+		"Pretende que uno haga lo que ella quiere",
+		"Prefiere saber los resultados de su trabajo"
+		],[
+		"Ganar el respeto de los demás",
+		"Tener ayuda y cariño de alguien",
+		"Ser alguien de mérito por su trabajo"
+		],[
+		"Convencer a la gente",
+		"Agradar con buenos chistes",
+		"Aventajar a otras personas"
+		],[
+		"Ser querido y aceptado por la gente",
+		"Tener éxito en el mundo",
+		"Ser una persona de influencia"
+		],[
+		"Cariñosa",
+		"Respetuosa",
+		"Independiente"
+		],[
+		"Tener mucha dedicación y responsabilidad",
+		"Tener mucho orden y control",
+		"Evitar herir sentimientos ajenos"
+		],[
+		"Obtener recompensa posterior",
+		"Estar con otras personas",
+		"Convencer más tarde a otros"
+		],[
+		"Una necesidad interna del hombre",
+		"Un medio para armonizar la sociedad",
+		"Una forma de controlar la gente"
+		],[
+		"Negociante famoso",
+		"Más amigable",
+		"Que me admira"
+		],[
+		"Alguien a quien le pueda contar mis problemas íntimos",
+		"Alguien a quien tenga que dar instrucciones",
+		"Alguien con quien analizar mis opiniones "
+		],[
+		"Influencia",
+		"Amabilidad",
+		"Esfuerzo"
+		],[
+		"Contra personas hábiles",
+		"Para estar con gente agradable",
+		"Siempre y cuando gane"
+		],[
+		"Me disgusto porque ven mi debilidad",
+		"Me esfuerzo por hacer lo mejor",
+		"Me siento herido"
+		],[
+		"Si tuviera autoridad sobre otros",
+		"Si mantuviera buenas amistades",
+		"Si hiciera planes a largo plazo"
+		],[
+		"Para la paz y unión entre la gente",
+		"Para trabajar más efectivamente",
+		"Para controlar a la gente"
+		],[
+		"Oscuridad",
+		"Altura",
+		"Velocidad"
+		],[
+		"La gente me apruebe",
+		"Otras personas hagan lo que yo quiero",
+		"Mis propósitos se logren"
+		],[
+		"Conocer el mundo y salir de la rutina",
+		"Visitar amigos y parientes",
+		"Sentirme importante y poderoso"
+		],[
+		"El futuro",
+		"La amistad",
+		"El poder"
+		],[
+		"Mandar",
+		"Ayudar",
+		"Tener éxito"
+		],[
+		"Busco un culpable",
+		"Pido disculpas y explico",
+		"Intento mejorarlo"
+		],[
+		"Que me digan si lo hago bien",
+		"Decir cómo se debe hacer",
+		"Ayudar a mis compañeros"
+		],[
+		"Ayudar a quien lo necesite",
+		"Fuerantan convincentes como yo",
+		"Planeaa sus actividades"
+		],[
+		"Que la gente piense más y progrese",
+		"Tener ratos de alegría y unión",
+		"Que la gente aprenda a discutir"
+		],[
+		"Nunca me arrepiento",
+		"Me esfuerzo",
+		"Me gusta hacerlo acompañado"
+		],[
+		"Ponen metas de aprendizaje",
+		"Dan trato cordial a sus alumnos",
+		"Establecen controles estrictos"
+		]]
+	preguntas = ["",
+		"En mi actividad principal me gusta rodearme de:",
+		"Las veces que más me divierto es cuando:",
+		"Las veces que me he sentido más triste ha sido porque:",
+		"Yo creo que el pecado de Adán fue debido a:",
+		"Cuando intercambio ideas, ante todo:",
+		"En la vida yo:",
+		"Si tengo tres reuniones en el mismo día y sólo puedo asistir a una de ellas, iría a:",
+		"Al ver un retrato donde hay dos personas que desconozco, imagino que son:",
+		"Yo tengo más facilidad para:",
+		"El material que más me gusta por su apariencia es el:",
+		"Cuando yo aprendo lo hago para:",
+		"Lo que más admiro de la gente es:",
+		"Yo tengo la tendencia a:",
+		"Yo admiro más a:",
+		"Por lo general soy más capaz de:",
+		"En el colegio o escuela yo:",
+		"Para mí el sol significa:",
+		"Cuando hago algo difícil, generalmente lo hago por:",
+		"Yo creo que la vida sirve para:",
+		"La mayor parte de mi vida la he dedicado a:",
+		"Las veces que practico algún juego o deporte me preocupo más por:",
+		"Cuando acabo de cometer un error me siento incómodo porque:",
+		"Generalmente cuando estoy en grupo:",
+		"Con frecuencia siento:",
+		"El tiempo es para mí:",
+		"En el colegio me sentía satisfecho cuando:",
+		"Cuando estoy con otras personas:",
+		"Creo que la gente generalmente",
+		"Una de las metas de mi vida es:",
+		"Tengo grandes cualidades para:",
+		"Lo que más deseo en mi vida es:",
+		"La mujer ante todo debe ser:",
+		"En todas las acciones de la vida lo más importante es:",
+		"Al estudiar lo hago por:",
+		"Creo que la religión es más que todo:",
+		"Al entrar a un sitio donde hay varias personas, de las cuales conozco tres, buscaría la compañía del:",
+		"Si pudiera elegir mi compañero para un viaje, preferiría:",
+		"En la vida se consigue más por:",
+		"A mí me gusta jugar:",
+		"Cuando alguien me dice que soy incapaz de hacer algo:",
+		"Yo disfrutaría más:",
+		"La moral sirve:",
+		"A mí me produce una emoción más fuerte la:",
+		"A menudo deseo que:",
+		"Si yo viajara lejos lo haría para:",
+		"Uno debe estar orientado hacia:",
+		"Lo que más le gusta a la gente es:",
+		"Hago un trabajo en casa y daño lo que estoy haciendo, entonces:",
+		"En mi actividad lo que más me gusta es:",
+		"Me gustaría que la gente:",
+		"La radio ha servido más para:",
+		"Cuando hago alguna cosa:",
+		"Los buenos profesores:"
+		]
+	for (i = 0; i<3; i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +i+ ")><p>" + emociones[num][i] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><p>Escoja la alternativa con la que más se identifique...</p>" + preguntas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < 54){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		$(informe).show();
+		contenido = document.createElement('texto');
+		contenido.innerHTML = "<p>Resumen... blau blau </p><p>Botón de enviar</p>";
+		document.getElementById("informe").appendChild(contenido);
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("McClelland-53 - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Cuestionario Motivación de McClelland-53</h1>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p>Usted encontrará una serie de preguntas o afirmaciones, referentes a sus preferencias básicas en algunos aspectos o situaciones de su vida.</p>
+			<p>En cada afirmación encuentra tres (3) posibles alternativas de respuesta, de las que usted debe escoger solamente una, la que le parezca mejor o con la que más se identifique.</p>
+			<p>Trabaje rápidamente, sin detenerse demasiado en una pregunta, pues  es más representativa su primera impresión.</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+			<p>Has finalizado. Muchas gracias.</p>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+
+</html>

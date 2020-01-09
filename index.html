@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"> 
 <link href='https://fonts.googleapis.com/css?family=Megrim' 
 rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Poiret+One' 
@@ -17,6 +19,12 @@ rel='stylesheet' type='text/css'>
 	text-align: center;
 	font-size: 15pt;
 }
+#mondrian {
+	text-align: right;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
 </style>
 <body>
 	<div class="logo">
@@ -25,4 +33,37 @@ rel='stylesheet' type='text/css'>
 	<div class="correo">
 		peneira@openmailbox.org
 	</div>
+	<div id="mondrian">
+	</div>
+	<script type="text/javascript">
+	function minimondrian(){
+		texto = "<svg width=1500 height=500>"
+		num = 15
+		max = 5
+		size = 85
+
+		for (var i = max - 1; i >= 0; i--) {
+			for (var j = max - 1; j >= 0; j--) {
+				ii = (Math.random() * num) + 1
+				jj = (Math.random() * num) + 1
+				pd = Math.floor((Math.random() * size) + 1)
+				px = (1500*ii/num)-(pd/2)
+				py = (500*jj/num)-(pd/2)
+				ca = Math.floor((Math.random() * 255) + 1)
+				cb = Math.floor((Math.random() * 255) + 1)
+				cc = Math.floor((Math.random() * 255) + 1)
+				color = "rgba("+ca+", "+cb+", "+cc+", 1)"
+				texto = texto + "<rect x=" +px+ " y=" +py+ " width="+pd+" height="+pd+" style='fill:" +color+"; stroke:"+color+"; stroke-width:0; opacity:1'></rect>"
+			}
+		}
+		texto = texto + "</svg>"
+		return texto
+	}
+	document.getElementById("mondrian").innerHTML = minimondrian()
+	var myVar = setInterval(myTimer, 1000); 
+	function myTimer() {
+			var d = new Date();
+		document.getElementById("mondrian").innerHTML = minimondrian()
+	}
+	</script>
 </body>

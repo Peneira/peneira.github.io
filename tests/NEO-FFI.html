@@ -1,0 +1,366 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 990px;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 650px;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+
+function anota(valor){
+	data = data + ","+ valor + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	lastTimestamp = Math.round(+new Date());
+	console.log(data);
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = ["Total desacuerdo", "Desacuerdo", "Neutral", "De acuerdo", "Totalmente de acuerdo"]
+	preguntas = ["",
+		"<p>A menudo me siento inferior a los demás</p>",
+		"<p>Soy una persona alegre y animosa</p>",
+		"<p>A veces, cuando leo una poesía o contemplo una obra de arte, siento profunda emoción o excitación.</p>",
+		"<p>Tiendo a pensar lo mejor de la gente.</p>",
+		"<p>Parece que nunca soy capaz de organizarme.</p>",
+		"<p>Rara vez me siento con miedo o ansioso</p>",
+		"<p>Disfruto mucho hablando con la gente.</p>",
+		"<p>La poesía tiene poco o ningún efecto sobre mi.</p>",
+		"<p>A veces intimido o adulo a la gente para que haga lo que yo quiero</p>",
+		"<p>Tengo unos objetivos claros y me esfuerzo por alcanzarlos de forma ordenada</p>",
+		"<p>A veces me vienen a la mente pensamientos aterradores</p>",
+		"<p>Disfruto de las fiestas en las que hay mucha gente</p>",
+		"<p>Tengo gran variedad de intereses intelectuales</p>",
+		"<p>A veces consigo con artimañas que la gente haga lo que yo quiero</p>",
+		"<p>Trabajo mucho para conseguir mis metas</p>",
+		"<p>A veces me parece que no valgo absolutamente nada</p>",
+		"<p>No me considero especialmente alegre</p>",
+		"<p>Me despiertan la curiosidad las formas que encuentro en el arte y la naturaleza</p>",
+		"<p>Si alguien empieza a pelearse conmigo, yo también estoy dispuesto a pelear</p>",
+		"<p>Tengo mucha auto-disciplina</p>",
+		"<p>A veces las cosas me parecen demasiado sombrías y sin esperanza</p>",
+		"<p>Me gusta tener mucha gente alrededor</p>",
+		"<p>Encuentro aburridas las discusiones filosóficas</p>",
+		"<p>Cuando me han ofendido, lo que intento es perdonar y olvidar</p>",
+		"<p>Antes de emprender una acción, siempre considero sus consecuencias</p>",
+		"<p>Cuando estoy bajo un fuerte estrés, a veces siento que me voy a desmoronar</p>",
+		"<p>No soy tan vivo ni tan animado como otras personas.</p>",
+		"<p>Tengo mucha fantasía</p>",
+		"<p>Mi primera reacción es confiar en la gente</p>",
+		"<p>Trato de hacer mis tareas con cuidado, para que no haya que hacerlas otra vez</p>",
+		"<p>A menudo me siento tenso e inquieto</p>",
+		"<p>Soy una persona muy activa</p>",
+		"<p>Me gusta concentrarme en un ensueño o fantasía y, dejándolo crecer y desarrollarse, explorar,todas sus posibilidades.</p>",
+		"<p>Algunas personas piensan de mi que soy frío y calculador</p>",
+		"<p>Me esfuerzo por llegar a la perfección en todo lo que hago</p>",
+		"<p>A veces me he sentido amargado y resentido</p>",
+		"<p>En reuniones, por lo general prefiero que hablen otros.</p>",
+		"<p>Tengo poco interés en andar pensando sobre la naturaleza del universo o de la condición humana.</p>",
+		"<p>Tengo mucha fe en la naturaleza humana</p>",
+		"<p>Soy eficiente y eficaz en mi trabajo</p>",
+		"<p>Soy bastante estable emocionalmente</p>",
+		"<p>Huyo de las multitudes</p>",
+		"<p>A veces pierdo el interés cuando la gente habla de cuestiones muy abstractas y teóricas</p>",
+		"<p>Trato de ser humilde</p>",
+		"<p>Soy una persona productiva, que siempre termina su trabajo</p>",
+		"<p>Rara vez estoy triste o deprimido</p>",
+		"<p>A veces reboso felicidad</p>",
+		"<p>Experimento una gran variedad de emociones o sentimientos</p>",
+		"<p>Creo que la mayoría de la gente con la que trato es honrada y fidedigna</p>",
+		"<p>En ocasiones primero actúo y luego pienso</p>",
+		"<p>A veces hago las cosas impulsivamente y luego me arrepiento</p>",
+		"<p>Me gusta estar donde está la acción</p>",
+		"<p>Con frecuencia pruebo comidas nuevas o de otros países</p>",
+		"<p>Puedo ser sarcástico y mordaz si es necesario</p>",
+		"<p>Hay tantas pequeñas cosas que hacer que a veces lo que hago es no atender a ninguna</p>",
+		"<p>Es difícil que yo pierda los estribos</p>",
+		"<p>No me gusta mucho charlar con la gente</p>",
+		"<p>Rara vez experimento emociones fuertes</p>",
+		"<p>Los mendigos no me inspiran simpatía</p>",
+		"<p>Muchas veces no preparo de antemano lo que tengo que hacer.</p>"
+		]
+	for (i = 0; i<5; i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +i+ ")><p>" + emociones[i] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + preguntas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < 61){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		$(informe).show();
+		contenido = document.createElement('texto');
+		contenido.innerHTML = "<p>Resumen... blau blau </p><p>Botón de enviar</p>";
+		document.getElementById("informe").appendChild(contenido);
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("NEOFFI - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Inventario de Personalidad Reducido de Cinco Factores NEO-FFI (Paul T. Costa y Robert McCrae)</h1>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p>Este cuestionario consta de 60 afirmaciones en referencia a su forma de ser o de comportarse. Por favor, lea cada frase con atención.</p>
+			<p>Debe indicar su grado de acuerdo según el siguiente código:</p>
+			<ol>
+				<li>Total desacuerdo</li>
+				<li>Descauerdo</li>
+				<li>Neutral</li>
+				<li>De acuerdo</li>
+				<li>Totalmente de acuerdo</li>
+			</ol>
+			<p>Marque una x en el cuadrado correspondiente a la derecha de la afirmación. No hay respuestas correctas ni incorrectas, y no se necesita ser un experto para contestar a este cuestionario. Conteste de forma sincera y exprese sus opiniones de la manera más precisa posible. No hay tiempo límite, pero intente trabajar lo más deprisa posible. No se entretenga demasiado en la respuesta. No deje NINGUNA respuesta en blanco.</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+			<p>Has finalizado. Muchas gracias.</p>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+
+</html>

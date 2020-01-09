@@ -119,7 +119,22 @@
 			</script>
 		</div>
 		<div id="articles">
-			<h1>Blog</h1>
+			<h1>Wordpress</h1>
+			<div id="rss-feeds"></div>
+			<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+			<script src="https://www.jqueryscript.net/demo/Tiny-jQuery-Based-RSS-Reader-Custom-Template-RSS-js/src/jquery.rss.js?v2"></script>
+			<script>
+				    jQuery(function($) {
+				      $("#rss-feeds").rss("https://neoagnosia.wordpress.com/rss/",
+				      {
+				        entryTemplate:'<h2>{title}</h2><p><k>{shortBodyPlain}... [{date}]</k></p><a href="{url}">Artículo completo.</a></li>', 
+				        order: '-publishedDate',
+				        filterLimit: 10
+				      })
+				    })
+			</script>
+			<h1>Artículos (Github)</h1>
 			<p>Filtrar por temas:
 				<a href="#articles" onclick="$('.articulo').hide();$('.datos').show()"><span id='art'>Análisis de Datos</span></a>, 
 				<a href="#articles" onclick="$('.articulo').hide();$('.neuro').show()"><span id='neu'>Neuropsicología y Conducta</span></a>, 

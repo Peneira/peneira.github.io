@@ -1,0 +1,508 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+
+function anota(valor){
+	data = data + ","+ (valor+1) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ opciones[loadedMatrix][valor][1] + "</p><br/>";
+	document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<p>1. Estado de ánimo depresivo (*)</p><p>¿Cómo se ha sentido recientemente?</p><p>¿Se ha sentido bajo de humo r, pesimista o deprimido?</p><p>¿Qué cantidad de tiempo se ha sentido de esta manera durante la semana pasada?</p>",
+		"<p>2. Diferenciación del estado de ánimo.</p><p>¿Puede describir sus sentimientos un poco más?</p><p>¿Es este sentimiento diferente de otros que haya sentido después de leer una historia o ver una película triste?</p><p>¿Es diferente este sentimiento del que tuvo o podría haber tenido al morir alguna persona del que tuvo o podría haber tenido al morir alguna persona allegada a usted?</p>",
+		"<p>3. Falta de reactividad</p><p>¿Encuentra dificultad en prestar atención a otras cosas que no sean su estado de ánimo (depresión)?</p><p>¿Ha habido algún momento, durante la semana pasada, en que haya cambiado su estado de ánimo?</p><p>¿Ha habido momentos en los que se sintiera mejor?</p><p>¿Ha habido algo, durante la semana pasada, que le haya hecho sentirse mejor (excepto la toma de medicación)?</p><p>¿Cuánto duró ese sentimiento?</p>",
+		"<p>4. Variación diurna</p><p>¿En su depresión se siente usted peor de manera regular a alguna hora determinada del día?</p><p>¿Por la mañana, por la tarde o por la noche?</p>",	
+		"<p>5. Baja autoestima</p><p>¿Qué opina de Ud. mismo comparándose con otras personas?</p><p>¿Piensa que es Ud. mejor o peor que otras?</p><p>¿Se siente inferior o inútil en comparación con otras personas?</p><p>¿Hay algo de Ud. mismo que le guste?</p>",
+		"<p>6. Culpabilidad</p><p>¿Es Ud. crítico consigo mismo, debido a su debilidad o errores?</p><p>¿Se culpa a sí mismo por cosas que van mal, incluso cuando los demás parecen pensar que Ud. no tiene culpa de ello?</p><p>¿Piensa Ud. que su enfermedad se debe a algún castigo o algo parecido?</p><p>¿Oye voces que le amenazan o le acusan?</p>",
+		"<p>7. Indefensión</p><p>¿Siente que tiene control sobre su vida?</p><p>¿Hay cosas en su vida que le gustaría cambiar, pero se siente incapaz?</p><p>¿Ha habido veces últimamente en las que le parecería que, hiciese lo que hiciese, las cosas no iban a mejorar?</p><p>¿Siente que tiene control sobre su vida?</p><p>¿Hay cosas en su vida que le gustaría cambiar, pero se siente incapaz?</p><p>¿Ha habido veces últimamente en las que le parecería que, hiciese lo que hiciese, las cosas no iban a mejorar?</p>",
+		"<p>8. Desesperanza</p><p>¿Cómo ve el futuro?</p><p>¿Ha perdido la esperanza de que las cosas vayan a ir mejor?</p><p>¿Son estos sentimientos pasajeros, le suceden durante un rato y luego desaparecen o son continuos (no puede sacarlos de su mente)?</p><p>¿Le ayuda hablar de estos sentimientos con otras personas?¿Se tranquiliza?</p>",
+		"<p>9. Suicidio (*)</p><p>¿Cree que vale la pena vivir la vida?</p><p>¿Desearía estar muerto?</p><p>¿Ha tenido pensamientos de suicidio?</p><p>¿Ha tratado de matarse?</p>",
+		"<p>10. Insomnio</p><p>¿Tiene problemas al dormir?</p><p>A. Precoz (*)</p><p>¿Tiene problemas para conciliar el sueño?</p><p>¿Cuánto tiempo tarda en quedarse dormido?</p><p>¿Con cuánta frecuencia tiene esos problemas?</p>",
+		"<p>10. B. Medio (*)</p><p>¿Una vez dormido, se despierta durante la noche?</p><p>¿Qué hace cuando se despierta?</p><p>¿Puede volver a dormirse?.</p>",
+		"<p>10. C. Tardío (*)</p><p>¿Se despierta más temprano de la hora habitual?</p><p>¿Puede volver a dormirse?</p>",
+		"<p>11. Apetito y peso</p><p>A. Pérdida de peso</p><p>¿Es su apetito ahora similar al que tiene habitualmente?</p><p>¿Tiene problemas de estómago, intestinales o de estreñimiento?</p>",
+		"<p>11. B. Pérdida de peso (*)</p><p>¿Perdió peso el mes pasado, sin haber estado a dieta?</p>",
+		"<p>11. C. Ganancia de peso</p><p>¿Ha ganado peso durante el último mes? ¿Cuánto?</p>",
+		"<p>12. Pérdida de energía</p><p>¿Tiene menos energía de la habitual o se cansa más fácilmente?</p><p>¿De qué manera afecta a su trabajo u otras actividades?</p><p>¿Siente cansancio o dolor en su espalda, cabeza o miembros?</p>",
+		"<p>12. B. Pérdida del interés</p><p>¿Cree que ha perdido el interés o encuentra menos satisfacción en las cosas que siempre le han gustado?</p><p>¿Prefiere estar alejado de la gente?</p><p>¿Ha dejado de salir con los amigos? (Ej. ha dejado de llamarles)</p><p>¿Evita activamente a la gente cuando le invitan a salir (ej. no contesta al teléfono o no sale cuando le invitan)?</p><p>¿Ha perdido interés en su trabajo, aficiones o actividades recreativas?</p><p>¿Se ha abandonado en su cuidado personal?</p>", 
+		"<p>12. C. Trabajo y actividades (*)</p><p>¿Le cuesta hacer las cosas que debe hacer (trabajo, tareas domésticas, estudios)?</p><p>¿En qué medida ha disminuido su interés por las cosas y/o personas importantes para Ud.?</p>",
+		"<p>12. D. Pérdida de la libido</p><p>¿Durante el último mes, ha habido algún cambio en su interés por el sexo?</p><p>¿Representa esto un cambio en la forma en que habitualmente siente el sexo?</p>",
+		"<p>13. Ansiedad</p><p>A. Ansiedad psíquica (*)(ansioso, tenso, intranquilo, nervios, intranquilo, aprensivo, asustado, sobresaltado, irritable, preocupado)</p><p>¿Ha habido algún momento últimamente en el que se haya sentido ansioso o asustado?</p><p>¿Son estos sentimientos pasajeros, ocurren durante un momento y luego desaparecen, o son continuos?</p><p>¿Durante cuánto tiempo se sintió de esta manera la última semana?</p><p>¿En qué tipo de situaciones se siente ansioso?</p><p>¿Ha habido alguna situación en la que se sintiese tan ansioso que haya tenido que marcharse, correr o hacer alguna otra cosa?</p>",
+		"<p>13. B. Ansiedad somática (*) (Nota: los síntomas son evaluados sobre la base de los informes de la sintomatología en los siguientes sistemas: (a) respiratorio: respiración costosa, superficial, sensación de opresión o ahogo; (b) cardiovascular: sofocos. Tasa cardíaca acelerada, palpitaciones, desvanecimientos, dolor en el pecho o malestar, etc.; (c) gastrointestinal: empacho, estómago revuelto, acidez, retortijones, diarrea, etc, (d) frecuencia genito-urinaria; (e) sudores; (f) vértigos, visión, borrosa, zumbidos; (g) neuromuscular: temblores o sacudidas, cefaleas, tensión muscular, aturdimiento, hormigueo, etc).</p><p>¿Cómo se siente cuando está ansioso?</p><p>¿Nota que su corazón va más deprisa?(Preguntar sobre el resto de los síntomas somáticos anotados más arriba-rodear cada síntoma que está presente)</p><p>¿Han afectado estos cambios de alguna manera a su actividad?</p>",
+		"<p>14. Hipocondríasis (*)</p><p>¿Cómo es su salud física?</p><p>¿Se preocupa por su salud?</p><p>¿Se preocupa tanto por su salud que no puede pensar en otra cosa? (Imp ortante: el entrevistador evaluará hasta qué punto el paciente se centra en sus síntomas físicos, no prestando atención a otro tipo de síntomas).</p>",
+		"<p>15. “Insight” (*) (debe de tenerse en cuenta el historial del paciente)</p><p>¿Piensa que tiene algún problema?</p><p>¿Cuál cree que es su problema?</p><p>¿Podría ser que tuviese problemas emocionales?</p>",
+		"<p>16. Entorpecimiento (*) (observación directa)</p>",
+		"<p>17. Agitación (*) (observación directa)</p>"
+		]
+	opciones = [[],
+	[
+		[0, "Ausente"],
+		[1, "Leve. Actitud pesimista, puede estar acompañado de esporádicas crisis de llanto, triste, melancólico."],
+		[2, "Moderado. Puede estar acompañado de sentimientos de inadecuación, autocompadecimiento, preocupación, descenso en los intereses sociales y de nivel de actividad, pesimismo, aislamiento, llanto ocasional, apatía y disminución d las actividades gratificantes."],
+		[3, "Severo. Puede estar caracterizado por desesperanza, una mayor tendencia al aislamiento social, cercano a ausencia de interés o participación en otras actividades aparte de las imprescindibles, apenas nada produce gratificación, el llanto puede ser frecuente e intenso."],
+		[4, "Síntomas extremos. Aislamiento completo."]
+	],
+	[
+		[0, "No hay cualidades diferentes"],
+		[1, "Leve o moderada (ligeramente diferente)"],
+		[2, "Severa (marcadamente diferente)"]
+	],
+	[
+		[0, "Reactividad del estado de ánimo (el estado de ánimo varía de acuerdo con la situación)."],
+		[1, "Falta de reactividad leve a moderada (el estado de ánimo del paciente es algo reactivo, pero manteniendo siempre un tono depresivo)"],
+		[2, "Falta severa reactividad (el estado de ánimo del paciente carece de cualquier reactividad ante factores situacionales)"]
+	],
+	[
+		[0, "No hay variación en el estado de ánimo"],
+		[1, "Hay una ligera variación entre la mañana y la tarde"],
+		[2, "Hay una variación acusada entre la mañana y la tarde"]
+	],
+	[
+		[0, "No está presente"],
+		[1, "Sentimientos leves de baja autoestima que resultan evidentes sólo al preguntar"],
+		[2, "Sentimientos marcados de baja autoestima"],
+		[3, "Marcados sentimientos de baja autoestima. Se diferencia de la puntuación 2 por el grado (“no soy nada bueno”, “soy inferior a los demás”)"],
+		[4, "Ilusiones de baja autoestima (“soy un montón de basura”, “soy un pecador”)"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Sentimientos de autoreproche, autoculpa, o pone ejemplos específicos de errores"],
+		[2, "Creencia de que los acontecimientos negativos fueron causados por uno mismo, pone un ejemplo general o muchos específicos de por qué se siente culpable, tiene fuertes convicciones sobre su culpabilidad"],
+		[3, "Cree que su enfermedad podría ser debida a un castigo, posibles ilusiones de culpabilidad"],
+		[4, "Ilusiones de culpabilidad con alucinaciones"]
+	],
+	[
+		[0, "No está presente"],
+		[1, "El paciente informa de unos leves sentimientos de indefensión cuando se le pregunta ('hay algunas cosas que no puedo cambiar')"],
+		[2, "Sentimientos moderados de indefensión ('parece que no puedo cambiar la mayoría de las cosas de mi vida')"],
+		[3, "Fuertes sentimientos de indefensión ('no puedo cambiar nada de mi vida')"],
+		[4, "Fuertes sentimientos de indefensión junto con abandono de actividades rutinarias de la vida cotidiana (disminución de la higiene personal, no sale de la cama, tiene dificultades para alimentarse, etc.)"]
+	],
+	[
+		[0, "No está presente"],
+		[1, "Tiene dudas intermitentes sobre si las cosas mejorarán, pero puede tranquilizarse"],
+		[2, "Tiene frecuentemente sentimientos de desesperanza, pero llega a tranquilizarse"],
+		[3, "Expresa sentimientos de desaliento, desesperación y pesimismo sobre el futuro, que no pueden ser disipados"],
+		[4, "Persevera espontáneamente e inapropiadamente 'nunca me pondré bien' o equivalentes"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Sentimientos de que no vale la pena vivir"],
+		[2, "Desearía estar muerto o tiene pensamientos de matarse"],
+		[3, "Ideas, muestras, o planes suicidas"],
+		[4, "Intentos de suicidio (cualquier intento serio se valora como 4)"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Ocasionalmente (menos de 3 días a la semana)"], 
+		[1, "Leve (menos de 1 hora de demora)"],
+		[2, "Frecuente (3 ó más veces por semana)"], 
+		[2, "Severo (más de 1 hora de demora)"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Ocasionalmente (menos de 3 días a la semana)"], 
+		[1, "Leve (menos de 1 hora en volverse a dormir)"],
+		[2, "Frecuente (varias veces por noche con dificultad para volverse a dormir, 3 ó más veces a la semana)"],
+		[2, "Severo (1 hora ó más para volverse a dormir)"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Ocasional (menos de 3 días a la semana)"], 
+		[1, "Leve (menos de 1 hora de adelanto)"],
+		[2, "Frecuente (3 ó más días a la semana)"], 
+		[2, "Severo ( 1 hora o más de adelanto)"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Pérdida leve u ocasional del apetito"],
+		[2, "Pérdida del apetito constante o severo, estreñimiento"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Medio kilo o un kilo durante el mes pasado"],
+		[2, "Kilo y medio o más durante el mes pasado"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Ha ganado medio kilo o un kilo durante el último mes"],
+		[2, "Ha ganado kilo y medio o más durante el último mes"]
+	],
+	[
+		[0, "No hay pérdida de energía"],
+		[1, "Pérdida subjetiva de energía, sensación de cansancio"],
+		[2, "Marcada interferencia con el funcionamiento habitual (descenso en el trabajo y las actividades), sensación de cansancio o dolor"]
+	],
+	[
+		[0, "No hay pérdida de interés"],
+		[1, "Pérdida de interés leve"],
+		[2, "Pérdida severa del interés en la mayoría de las actividades, incluyendo ropa, aspecto personal y comida"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Ha decrecido algo la eficiencia y el esfuerzo y, o bien ha disminuido el interés o bien encuentra menos satisfacción en las aficiones y encuentros sociales?"],
+		[2, "Descenso de la actividad, rechaza o demora algunas cosas; desatención o abandono de las actividades no imprescindibles, disminución en la participación en las aficiones o encuentros sociales."],
+		[3, "Descenso considerable de la actividad laboral, actividades rutinarias, se rechazan muchas cosas o se posponen indefinidamente, virtualmente no productivo, evita el encuentro social, nada le parece agradable y no hay intereses."],
+		[4, "Incapacidad de trabajar, no productivo, completamente inmovilizado"]
+	],
+	[
+		[0, "No hay cambio"],
+		[1, "Leve pérdida del interés y de la actividad sexual"],
+		[2, "Pérdida casi total del interés y de la actividad sexual"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Tensión transitoria, irritabilidad ocasional, levemente preocupado"],
+		[2, "Tensión casi constante, irritabilidad más frecuente, y algo inquieto"],
+		[3, "Aprehensión generalizada, tensión, irritabilidad, preocupaciones y rumiaciones constantes"],
+		[4, "Ataques de pánico, actividades restrictivas respecto a las fobias"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Leve (uno o más síntomas, se queja de algún malestar, pero continúa con sus actividades diarias)"],
+		[2, "Moderada (ej. síntomas de más de un sistema, de manera ocasional el paciente no puede participar en determinadas actividades debido al malestar)."],
+		[3, "Severa (los síntomas son tan molestos que frecuentemente tiene problemas para seguir la actividad)"],
+		[4, "Extrema (quejas en múltiples sistemas que resultan incapacitantes, por ej. debido al malestar corporal no puede tomar parte en muchas actividades)"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Preocupado por la salud y por el funcionamiento corporal, síntomas leves o dudosos."],
+		[2, "Mucha preocupación por los síntomas físicos, piensa que tiene alguna enfermedad."],
+		[3, "Está sólidamente convencido que tiene alguna enfermedad, actitud quejumbrosa"],
+		[4, "Alucinaciones e ilusiones hipocondríacas. Ej. de pudrimiento, de obstrucción."]
+	],
+	[
+		[0, "Reconoce estar deprimido o enfermo"],
+		[1, "Reconoce estar enfermo pero lo atribuye a factores poco probables, ej. mala alimentación, clima, exceso de trabajo, etc."],
+		[2, "Niega estar enfermo"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Ligero entorpecimiento en la entrevista, inmutabilidad afectiva y expresión fija"],
+		[2, "Retardo obvio en la entrevista, inmutabilidad afectiva y expresión fija"],
+		[3, "Retardo obvio en la entrevista: voz monótona, tarda en contestar, falta de movilidad"],
+		[4, "Entrevista difícil, prolongada"],
+		[5, "Estupor completo"]
+	],
+	[
+		[0, "Ausente"],
+		[1, "Bajos niveles de agitación, incluye nerviosismo, inquietud obvia ej. juega con las manos o con la ropa, mueve las piernas), en casi toda la entrevista."],
+		[2, "Altos niveles de agitación, incluye nerviosismo, inquietud obvia así como que el paciente se levante durante la entrevista, se pasee, etc."]
+	]]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0]+ ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < 26){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		pd = answ.reduce(sum, 0)
+		sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		t = "<h2>Puntuación</h2><p>Puntuación total: " + pd + "</p><p>Desviación típica: " + sd.toFixed(3) + "</p><p>Puntuación Hamilton (17 It.): --- </p><p>"
+		if (pd > 18){ t = t + "<b>Supera puntuación de corte 18</b>"} else {t = t + "No supera puntuación de corte"}
+		t = t + "</p>"
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("NEOFFI - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Escala Modificada de Hamilton para la Evaluación de la Depresión (MHRSD)</h1>
+		<p><b>Miller, I.W.; Bishop, S.; Norman, W.H. y Maddever,H. (1985)</b></p>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p><b>Características</b></p>
+			<p>Se desarrolló con el objetivo se superar las limitaciones que los autores encontraban en la versión de 17 ítems de la escala de Hamilton.</p>
+			<p>La primera limitación que intentaron superar es la falta de precisión en la descripción de los ítems, para lo cual se modificaron las valoraciones de los mismos con el objetivo de hacerlos más lineales y específicos. En segundo lugar incrementaron el número de ítems incluyendo algunos que hacían referencia a síntomas cognitivos y melancólicos para superar el contenido restrictivo de la escala original. Finalmente añadieron preguntas concretas a las definiciones de los ítems para facilitar la cumplimentación de la escala por personal auxiliar y paraprofesional debidamente entrenado.</p>
+			<p>La escala consta de 25 ítems, como resultado de añadir a los 17 de la escala Hamilton 1 ítem de variación diurna, 3 de síntomas melancólicos, 3 de cogniciones asociadas a la depresión y 1 de ganancia de peso. Estos 25 ítems se presentan agrupados en 17 categorías.</p>
+			<p><b>Instrucciones</b></p>
+			<p>El terapeuta o auxiliar entrenado que cumplimente la escala deberá valorar cada uno de los ítems (de 0 a 2 en unos casos y de 0 a 4 en otros), eligiendo la descripción que mejor se ajuste a los síntomas que el paciente relate haber tenido durante la última semana.</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Escala Modificada de Hamilton para la Evaluación de la Depresión (MHRSD)</h1>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+</html>

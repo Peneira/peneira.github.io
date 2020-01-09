@@ -1,0 +1,409 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 990px;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	width: 650px;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+
+function anota(valor){
+	data = data + ","+ valor + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	answ.push([valor, preguntas[loadedMatrix]])
+	lastTimestamp = Math.round(+new Date());
+	console.log(data);
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = ["Nada", "Algo", "Bastante", "Mucho", "Muchísimo"]
+	preguntas = ["",
+		"Hablar delante de mucha gente",
+		"La guerra",
+		"Que alguien le ataque y le haga daño en la calle",
+		"Ver ataúdes y coches fúnebres",
+		"Separarse de los padres",
+		"Los extraterrestres",
+		"Que le humillen o se burlen de él",
+		"Los ovnis",
+		"Lugares donde ha muerto alguien",
+		"Que el maestro le pregunte en clas",
+		"Los dentistas",
+		"Los gatos",
+		"Las cuevas",
+		"Las armas",
+		"Los borrachos",
+		"Fracasar",
+		"Una habitación desconocida",
+		"Presenciar peleas familiares",
+		"La sangre",
+		"Personas que tienen mal genio",
+		"Las ratas",
+		"Los gusanos",
+		"Las películas de terror",
+		"Montar en bicicleta",
+		"Los relámpagos",
+		"Que lo ignoren",
+		"Estar entre mucha gente",
+		"La oscuridad",
+		"Ver poner inyecciones",
+		"Que le peguen",
+		"Perderse entre la gente",
+		"Ver heridas abiertas",
+		"Los entierros",
+		"Los médicos",
+		"El fuego",
+		"La gente deforme",
+		"Ser castigado por Dios",
+		"Amenazas de chicos mayores",
+		"Perder el cariño de las personas que más quiere",
+		"Los túneles y pasadizos",
+		"Ser atacado por animales",
+		"Cometer errores",
+		"Presenciar peleas en la calle",
+		"Reuniones con gente desconocida",
+		"Entrar solo en un lugar extraño",
+		"Perder juguetes u objetos queridos",
+		"El mar",
+		"Caerse",
+		"Los truenos",
+		"Viajar en avión",
+		"Ver personas muertas",
+		"Ver hospitales y clínicas",
+		"Entrar en una reunión donde ya está la gente sentada",
+		"Ver animales muertos",
+		"Ver maltratar a otras personas",
+		"Las habitaciones pequeñas y cerradas aunque sean conocidas",
+		"Cruzar las calles",
+		"Los ladrones",
+		"Las ranas",
+		"Estar enfermo",
+		"Las serpientes",
+		"Las arañas",
+		"Los ruidos fuertes",
+		"Los cementerios",
+		"Que le griten",
+		"Los fantasmas",
+		"La muerte de los padres",
+		"El ascensor",
+		"Estar solo en casa",
+		"Tomar medicinas",
+		"Verse sangrar una herida",
+		"Los perros",
+		"Estar en lugares altos",
+		"Que le pongan inyecciones",
+		"Que le saquen sangre de las venas",
+		"Que le critiquen, que le hablen mal",
+		"Las cucarachas",
+		"Las brujas",
+		"Ser sometido a operaciones quirug",
+		"La muerte",
+		"La escuela",
+		"La suciedad",
+		"Que lo consideren tonto",
+		"Ser observado",
+		"Las personas desconocidas",
+		"Sentirse rechazado",
+		"La muerte de hermanos",
+		"Mirar abajo desde lugares altos",
+		"Viajar en coche",
+		"La policía",
+		"Los cuchillos",
+		"Viajar en tren",
+		"Los caballos",
+		"Los médicos",
+		"Las tormentas",
+		"Ser observado mientras trabaja",
+		"Enfermedad de los padres",
+		"Muerte de amigos",
+		"Cuentos e historias de miedo",
+		"Al agua"
+		]
+	for (i = 0; i<5; i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +i+ ")><p>" + emociones[i] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/><br/>" + preguntas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+function loadNext() {
+	loadedMatrix++;
+	if (loadedMatrix <101){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		$(informe).show();
+		contenido = document.createElement('texto');
+		t = "<p>Resumen...</p><ul>"
+		answ.sort()
+		answ.reverse()
+		answ.reverse()
+		j = (answ.length - 1)
+		while (j > 0){
+			t = t + "<li><i>" + emociones[answ[j][0]] + "</i> - \t\t " + answ[j][1] + "</li>"
+			j = j-1
+		}
+		t = t + "</ul>"
+		contenido.innerHTML = t;
+		document.getElementById("informe").appendChild(contenido);
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("Miedos - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Inventario de Miedos</h1>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p>Indique en qué medida cada una de las siguientes situaciones, objetos o elementos le generan malestar, angustia o miedo:</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;">[Blau blau explicación blau].</div>
+			<p>Has finalizado. Muchas gracias.</p>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+
+</html>
