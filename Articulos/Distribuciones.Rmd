@@ -1,0 +1,133 @@
+---
+title: "Distribuciones de probabilidad con R"
+author: "Jorge Alonso"
+date: "3/4/2020"
+output: html_document
+---
+Los modelos de probabilidad o funciones de distribución  resultan indispensables si se pretende describir una realidad sobre la que se están realizando mediciones con interés científico. Es indispensable conocer si la variable se considera discreta o continua a fin de determinar cuál de las funciones de probabilidad conocidas resulta adecuada para la resolución del problema. 
+
+Un *experimento o fenómemo aleatorio* es aquel en el que no podemos a priori preveer con certeza los resultados pues estos dependen del azar, como cuando lanzamos una moneza, extraemos una carta de una baraja o lanzamos un dado. 
+
+El *espacio muestral* es el conjunto de todos los posibles resultados con un experimento aleatorio, y vendrá designado por $E$. Por ejemplo, el espacio muestral de un dado será $E=\{1,2, 3, 4, 5, 6\}$.
+
+Se conoce como la _*Ley de los Grandes Números*_, descrita por Jakob Bernouilli, al hecho de que al repetir un experimento aleatorio bajo idénticas condiciones el cociente entre la aparición de un suceso y el número de ensayos tiende a un número fijo.
+
+## Probabilidad ##
+
+La *probabilidad* se define de forma frecuentista como la frecuencia relativa del suceso A: $fr(A)=\frac{NúmeroDe A}{Número De Ensayos}$
+
+Con las siguientes propiedades:
+
+  - $0 \leq fr(A) \leq 1$, cualquiera que sea el suceso A  
+  - $fr(A \cup B) = fr(a) + fr(b)\ si\ A \cap B = 0$
+  - $fr(e) = 1; fr(\emptyset)=0$
+  
+La probabilidad definida según Laplace para sucesos equiprobables se define como el conciente entre los casos favorables sobre el total de resultados posibles: $si\ E = \{x_1, ... x_n\} \ y\ P(x_1)=P(x_2)=...P(x_n)\ entonces $
+$P(A) = \frac{CasosFavorables}{NºCasosPosibles}$
+
+La definición de Kolmogorov considera la frecuencia relativa de un suceso definiendo la probabilidad de un suceso dado el espacio muestral $E$ tal que verifica las siguientes propiedades:
+
+  - Cualquiera que sea el suceso A, $P(A)\geq 0$.
+  - $A \cup B = \emptyset \Rightarrow P(A \cup B) = P(A)+ P(B)$
+  - $P(E) = 1$.
+
+Con las siguientes propiedades:
+
+  - $P(\bar{A})=1-P(A)$
+  - $P(\emptyset) = 0$
+  - $Si\ A \subset B \Rightarrow P(B)=P(A)+P(B-A)$
+  - $Si \ A_1, A_2 ... A_n,$ son incompatibles dos a dos, entonces: $P(A_1 \cup A_2 ... \cup A_K)=P(A_1)+P(A_2)+...P(A_K)$
+  - $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+  - Si el espacio muestral E es finito y un suceso es $A = \{x_1... x_n\}$, entonces: $P(A) = P(x_1) + P(x_2)+...P(x_n)$
+  
+### Probabilidad Condicionada ###
+
+Sean $A$ y $B$ dos sucesos tal que $P(A)\neq 0$, entonces se llama probabilidad de $B$ condicionada a $A$, $P(B/A)$, a la probabilidad de $B$ tomando como espacio muestral $A$ , es decir, la probabilidad de que ocurra $B$ dado que ha sucedido $A$. 
+
+$P(B/A) = \frac{P(B \cap A)}{P(A)}$
+
+Generalizando para n sucesos, para tres adoptaría la forma: $P(A\cap B \cap C) = P(A)P(B/A)P(C/A\cap B)$
+
+## Combinatoria ##
+
+La combinatoria es la rama de la estadística que se encarga de contar las posibles agrupaciones de un conjunto. 
+
+Es importante dar respuesta a preguntas como:
+
+  1. ¿Importa el orden de selección?
+  2. ¿Pueden repetirse los elementos?
+  
+En función de las respuestas, cabe encontrar diferentes casos.
+
+### Variaciones ###
+
+Se llama variaciones ordinarias de $m$ elementos tomados de $n$ en $n\ (m \geq n)$ a los distintos grupos formados por $n$ elementos donde no importa el orden y no se repiten los elementos.
+
+Las variaciones se denotan por $V_m^n \ o \ V_{m,n}$ y la fórmula para calcularlas está dada por $V_m^n = M(m-1)(m-2)... (m-n+1)=\frac{m!}{(m-n)!}$
+
+Podemos pensar en las variaciones ordinarias como tener un conjunto con $m$ objetos, tomar de este todos los sobconjuntos de $n$ objetos y después ordenarlos de todas las maneras posibles cada subconjunto. 
+
+### Combinaciones ###
+
+Se llama combinaciondes de $m$ elementos tomados de $n$ en $n \ (m \geq n)$ a todas las agrupaciones posibles que pueden hacerse con los $m$ elementos de forma que que no entren todos los elementos, no se tenga en cuenta el orden.
+
+Si los elementos no pueden repetirse se denominan combinaciones sin repetición y se denotan por $C_m^n \ o \ C_{m,n} = \frac{V_m^n}{P_n} = \frac{m!}{n!(m-n)!}$
+
+En caso de que los elementos se puedan repetir se denominan combinaciones con repetición y se denotan por $CR_m^n =\binom{m+n-1}{n}= \frac{m+n-1}{n!(m-1)!}$ llamándose coeficiente binomial.
+
+### Permutaciones ###
+
+Permutar es colocar elementos en distintas posiciones, o las distintas formas en que se pueden ordenar los $m$ elementos en $n$ posiciones siempre que $m \geq n$ teniendo en cuenta que sí vamos a tener en cuenta el orden de los elementos y al intercambiar elementos iguales no se genera una nueva permutación.
+
+En caso de permutaciones sin repetición de elementos se utiliza la siguiente fórmula: $P_n^m=\frac{m!}{(m-n)!}$
+
+Dado el caso $m = n$, se utiliza la siguiente fórmula: $ P_n = n!$.
+
+En las permutaciones donde los distintos $n$ elementos se repiten $a, b, c...$ veces usaremos la fórmula: $PR_n^{a,b,c...}=\frac{P_n}{a!·b!·c!...}$
+
+## Variables ##
+
+Cada característica o atributo observado se denomina una variable. Para estudiarlas una a una se clasifican como:
+
+  1. Cualitativas: Categóricas o atributos son aquellas que no usan número para expresarse, son categorias o modalidades que se pueden presentar.
+    
+    Ordinales: Teniendo más de dos modalidades establecen un orden natural ascendente o descendente en una propiedad.
+    Cualitativas puras: No se pueden ordenar sus modalidades.
+    Dicotómicas: Tan solo plantean dos posibilidades.
+  
+  2. Cuantitativas o numéricas: aquellas que necesitan números para ser expresadas
+  
+    Discretas: Cuyos valores son aislados (enteros normalmente) de forma que pueden enumerarse y existen valores consecutivos sin puntos intermedios.
+    Continuas: Aquellas que pueden tomar cualquier valor entero o decimal.
+    
+
+## Distribuciones de frecuencia y tablas estadísticas
+
+
+
+## Función Binomial
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

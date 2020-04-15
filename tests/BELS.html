@@ -1,0 +1,747 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 32%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+tdata = ''
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = [0]
+
+function anota(valor){
+	data = data + ","+ (valor);
+	tdata = tdata + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	console.log(data);
+	console.log(tdata);
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<h2>Autocuidado</h2><p><b>1. Independencia de movimientos:</b></p><p>(Se valora la frecuencia de sus salidas y cuánto se aleja en ellas)</p><br><p><i>¿Hasta qué punto {S} es independiente para salir?</i></p><p><i>¿Hasta qué distancia se atreve a salir?, ¿Está desorientado en el espacio?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Autocuidado</h2><p><b>1. Independencia de movimientos:</b></p><p>(Se valora la frecuencia de sus salidas y cuánto se aleja en ellas)</p><br><p><i>¿Hasta qué punto {S} es independiente para salir?</i></p><p><i>¿Hasta qué distancia se atreve a salir?, ¿Está desorientado en el espacio?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Autocuidado</h2><p><b>2. Despertarse y levantarse:</b></p><p>(Se valora la rutina de despertarse y levantarse por la mañana de lunes a viernes únicamente)</p><br><p><i>¿Hasta qué punto {S} es independiente para levantarse por la mañana?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>2. Despertarse y levantarse:</b></p><p>(Se valora la rutina de despertarse y levantarse por la mañana de lunes a viernes únicamente)</p><br><p><i>¿Hasta qué punto {S} es independiente para levantarse por la mañana?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>3. Vestirse</b></p><p>(Se valora la independencia para seleccionar la ropa y vestirse)</p><br><p><i>¿Hasta qué punto {S} es independiente al vestirse?, ¿Se viste apropiadamente?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>3. Vestirse</b></p><p>(Se valora la independencia para seleccionar la ropa y vestirse)</p><br><p><i>¿Hasta qué punto {S} es independiente al vestirse?, ¿Se viste apropiadamente?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>4. Vuelta a casa por la noche</b></p><p>(Se valora la responsabilidad a su propia seguridad y la atención hacia las personas cuidadoras/familiares interesados/as)</p><br><p><i>¿Hasta qué punto se puede confiar en que {S} vuelva a la casa o a la residencia?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>4. Vuelta a casa por la noche</b></p><p>(Se valora la responsabilidad a su propia seguridad y la atención hacia las personas cuidadoras/familiares interesados/as)</p><br><p><i>¿Hasta qué punto se puede confiar en que {S} vuelva a la casa o a la residencia?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>5. Comidas</b></p><p>(Se valora la regularidad en obtener su comida diaria, incluyendo comida preparada)</p><br><p><i>¿Con qué regularidad come {S}?, ¿Se salta a menudo las comidas?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>5. Comidas</b></p><p>(Se valora la regularidad en obtener su comida diaria, incluyendo comida preparada)</p><br><p><i>¿Con qué regularidad come {S}?, ¿Se salta a menudo las comidas?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>6. Medicación</b></p><p>(Se valora la independencia y conformidad con cualquier medicación prescrita)</p><br><p><i>¿Hasta qué punto {S} es independiente para tomar la medicación?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>6. Medicación</b></p><p>(Se valora la independencia y conformidad con cualquier medicación prescrita)</p><br><p><i>¿Hasta qué punto {S} es independiente para tomar la medicación?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>7. Higiene personal</b></p><p>(Se valora la higiene corporal)</p><br><p><i>¿Hasta qué punto {S} es independiente para mantener la rutina de aseo personal diario?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>7. Higiene personal</b></p><p>(Se valora la higiene corporal)</p><br><p><i>¿Hasta qué punto {S} es independiente para mantener la rutina de aseo personal diario?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>8. Ropa</b></p><p>(Se valora la limpieza y el estado de conservación)</p><br><p><i>¿Hasta qué punto {S} es independiente para cambiarse de ropa sucia o estropeada?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>8. Ropa</b></p><p>(Se valora la limpieza y el estado de conservación)</p><br><p><i>¿Hasta qué punto {S} es independiente para cambiarse de ropa sucia o estropeada?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>9. Incontinencia</b></p><p>(Se valora la incapacidad física para controlar los esfínteres vesical y anal)</p><br><p><i>¿Es capaz {S} de controlar sus esfínteres vesical y anal?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>9. Incontinencia</b></p><p>(Se valora la incapacidad física para controlar los esfínteres vesical y anal)</p><br><p><i>¿Es capaz {S} de controlar sus esfínteres vesical y anal?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Autocuidado</h2><p><b>10. Comportamiento en el cuarto de baño</b></p><br><p><i>Independientemente de que tenga o no incontinencia, ¿Utiliza {S} el cuarto de baño de un modo apropiado?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Autocuidado</h2><p><b>10. Comportamiento en el cuarto de baño</b></p><br><p><i>Independientemente de que tenga o no incontinencia, ¿Utiliza {S} el cuarto de baño de un modo apropiado?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>11. Preparación de comidas / platos combinados / completos</b></p><p>(Se valora la organización de comidas)</p><br><p><i>¿Hasta qué punto es {S} independiente para preparar sus comidas: desayuno, almuerzo y cena?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>11. Preparación de comidas / platos combinados / completos</b></p><p>(Se valora la organización de comidas)</p><br><p><i>¿Hasta qué punto es {S} independiente para preparar sus comidas: desayuno, almuerzo y cena?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>12. Preparación de comidas simples, bocadillos, bebidas entre comidas</b></p><br><p><i>¿Hasta qué punto {S} es independiente al prepararse sus bebidas calientes o sus bocadillos?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>12. Preparación de comidas simples, bocadillos, bebidas entre comidas</b></p><br><p><i>¿Hasta qué punto {S} es independiente al prepararse sus bebidas calientes o sus bocadillos?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>13. Compra de comestibles</b></p><p>(Se valora el uso de tiendas y la variedad de productos que compra. No incluye comer en cafeterías o restaurantes al estar esto valorado en la pregunta 19)</b></p><br><p><i>¿Hasta qué punto es {S} independiente para ir a las tiendas de comestibles?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>13. Compra de comestibles</b></p><p>(Se valora el uso de tiendas y la variedad de productos que compra. No incluye comer en cafeterías o restaurantes al estar esto valorado en la pregunta 19)</b></p><br><p><i>¿Hasta qué punto es {S} independiente para ir a las tiendas de comestibles?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>14. Compras</b></p><p>(Se valora ropa, zapatos y objetos personales o de la casa)</b></p><br><p><i>¿Hasta qué punto es {S} independiente para comprar objetos personales que no sean comida?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>14. Compras</b></p><p>(Se valora ropa, zapatos y objetos personales o de la casa)</b></p><br><p><i>¿Hasta qué punto es {S} independiente para comprar objetos personales que no sean comida?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>15. Lavado de ropa</b></p><p>(Se valora ropa personal y ropa de cama)</b></p><br><p><i>¿Hasta qué punto es {S} independiente para lavar su propia ropa o ropa de cama?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>15. Lavado de ropa</b></p><p>(Se valora ropa personal y ropa de cama)</b></p><br><p><i>¿Hasta qué punto es {S} independiente para lavar su propia ropa o ropa de cama?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>16. Cuidado del espacio personal</b></p><p>(Se valora el orden de la habitación, especialmente en la zona de la cama)</p><br><p><i>¿Hasta qué punto es {S} limpio/a y ordenado/a en el espacio donde vide?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>16. Cuidado del espacio personal</b></p><p>(Se valora el orden de la habitación, especialmente en la zona de la cama)</p><br><p><i>¿Hasta qué punto es {S} limpio/a y ordenado/a en el espacio donde vide?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>17. Cuidado de la casa o zonas comunes</b></p><br><p><i>¿Hasta qué punto es {S} independiente al hacer las tareas domésticas generales?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades domésticas</h2><p><b>17. Cuidado de la casa o zonas comunes</b></p><br><p><i>¿Hasta qué punto es {S} independiente al hacer las tareas domésticas generales?</i></p><br><br><p><b>Escala de realización de actividades</b></p>", 
+		"<h2>Habilidades comunitarias</h2><p><b>18. Uso del transporte público</b></p><br><p><i>¿Hasta qué punto es {S} independiente al utilizar el transporte público?</i></p><br><br><p><b>Escala de oportunidad</b></p>", 
+		"<h2>Habilidades comunitarias</h2><p><b>18. Uso del transporte público</b></p><br><p><i>¿Hasta qué punto es {S} independiente al utilizar el transporte público?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Habilidades comunitarias</h2><p><b>19. Uso de los servicios asistenciales</b></p><p>(Sanitarios y sociales: médico general, dentista, seguridad social, vivienda y otros servicios sociales)</p><br><p><i>¿Hasta qué punto es {S} independiente para utilizar los servicios asistenciales (sanitarios y sociales)?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Habilidades comunitarias</h2><p><b>19. Uso de los servicios asistenciales</b></p><p>(Sanitarios y sociales: médico general, dentista, seguridad social, vivienda y otros servicios sociales)</p><br><p><i>¿Hasta qué punto es {S} independiente para utilizar los servicios asistenciales (sanitarios y sociales)?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Habilidades comunitarias</h2><p><b>20. Utilización de los locales y servicios públicos</b></p><p>(Se valora biblioteca, parques, bancos, oficinas de correos, bares, restaurantes, cines, teatros, club sociales, intalaciones deportivas, iglesia, etc.)</p><br><p><i>¿Hasta qué punto es {S} independiente para utilizar los locales o servicios públicos?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Habilidades comunitarias</h2><p><b>20. Utilización de los locales y servicios públicos</b></p><p>(Se valora biblioteca, parques, bancos, oficinas de correos, bares, restaurantes, cines, teatros, club sociales, intalaciones deportivas, iglesia, etc.)</p><br><p><i>¿Hasta qué punto es {S} independiente para utilizar los locales o servicios públicos?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Habilidades comunitarias</h2><p><b>21. Uso del dinero o capacidad de controlar su presupuesto</b></p><p>(Se valora la administración del dinero sin tener en cuentra la fuente de ingresos)</p><br><p><i>¿Hasta qué punto es {S} independiente para administrar su dinero?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Habilidades comunitarias</h2><p><b>21. Uso del dinero o capacidad de controlar su presupuesto</b></p><p>(Se valora la administración del dinero sin tener en cuentra la fuente de ingresos)</p><br><p><i>¿Hasta qué punto es {S} independiente para administrar su dinero?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>22. Ocupación diaria</b></p><p>(Se valora el grado en que se involucra en actividades instrumentales, excluyendo las que no tienen un objetivo)</p><br><p><i>¿Hasta qué punto es {S} una persona activa y resuelta en sus tareas diarias?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>22. Ocupación diaria</b></p><p>(Se valora el grado en que se involucra en actividades instrumentales, excluyendo las que no tienen un objetivo)</p><br><p><i>¿Hasta qué punto es {S} una persona activa y resuelta en sus tareas diarias?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>23. ctividades de tiempo libre</b></p><br><p><i>¿Cómo pasa {S} su tiempo libre?, ¿Realiza alguna actividad de ocio?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>23.Actividades de tiempo libre</b></p><br><p><i>¿Cómo pasa {S} su tiempo libre?, ¿Realiza alguna actividad de ocio?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>24. Sociabilidad</b></p><p>(Se valora la frecuencia y el nivel de relación con otras personas)</p><br><p><i>¿Hasta qué punto es {S} sociable?, ¿Busca la compañía de otras personas?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>24. Sociabilidad</b></p><p>(Se valora la frecuencia y el nivel de relación con otras personas)</p><br><p><i>¿Hasta qué punto es {S} sociable?, ¿Busca la compañía de otras personas?</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>25. Consideración y preocupación por otras personas</b></p><p>(Se valora comunicación verbal y no verbal)</p><br><p><i>¿Qué consideración y preocupación muestra {S} por otras personas? (Ej. si un/a miembro del personal/familiar o un/a compañero/a está enfermo/a ¿se preocupa?)</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>25. Consideración y preocupación por otras personas</b></p><p>(Se valora comunicación verbal y no verbal)</p><br><p><i>¿Qué consideración y preocupación muestra {S} por otras personas? (Ej. si un/a miembro del personal/familiar o un/a compañero/a está enfermo/a ¿se preocupa?)</i></p><br><br><p><b>Escala de realización de actividades</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>26. Prestar auxilio en una emergencia</b></p><br><p><i>Considerar una emergencia doméstica (Ej. desmayo de un compañero/a o familiar, fuego en la cocina, reventón de una tubería) ¿cómo respondería {S} ante esta situación?</i></p><br><br><p><b>Escala de oportunidad</b></p>",
+		"<h2>Actividad y Relaciones Sociales</h2><p><b>26. Prestar auxilio en una emergencia</b></p><br><p><i>Considerar una emergencia doméstica (Ej. desmayo de un compañero/a o familiar, fuego en la cocina, reventón de una tubería) ¿cómo respondería {S} ante esta situación?</i></p><br><br><p><b>Escala de realización de actividades</b></p>"
+		]
+	opciones = [[],
+	[
+		[2, "Alojamiento abierto"],
+		[1, "Alojamiento cerrado, pero esta persona en concreto es libre para salir, o alojamiento abierto pero este/a residente en concreto tiene que informar al personal/familiar de sus salidas"],
+		[0, "El alojamiento está cerrado para mantener dentro a esta persona en concreto o sólo se le permite salir acompañada, está incapacitada y necesita asistencia física"]
+	],
+	[
+		[4, "Totalmente independiente. Sale solo/a más allá de los límites del área local. Puede orientarse en lugares que no le son familiares"],
+		[3, "Independiente dentro del barrio. Visita uno o dos lugares conocidos fuera del área local. Sale regularmente"],
+		[2, "Sale a diferentes lugares conocidos dentro de distancias que puede recorrer a pie (p. ej., tiendas, parques, instalaciones asistenciales, visitas a amigos/as). Salidas irregulares"],
+		[1, "Encuentra su camino dentro del vecindario, pero rara vez sale. Es acompañado/a a lugares que se encuentran a mayor distancia"],
+		[0, "Nunca sale fuera sin compañía. Sin ganas o incapaz (debido a falta de movilidad u orientación pobre)"],
+		[9, "Desconocido"]
+	],
+	[
+		[2, "La persona no es despertada por el personal / familiar"],
+		[1, "Oportunidad para despertarse espontáneamente pero al final la persona es despertada por el personal / familiar"],
+		[0, "Es despertado/a por el personal / familiar sin ninguna oportunidad para despertarse espontáneamente o necesita ayuda física"]
+	],
+	[
+		[4, "Independencia total. Se despierta espontáneamente y se levanta a una hora razonable."],
+		[3, "Funciona independientemente. Ninguna supervisión, algunas veces es lento para despertarse y levantarse a una hora razonable menos de 1 vez por semana."],
+		[2, "Ocasionalmente se le sugiere que se levante a tiempo (Ej. menos de 4 veces al mes, pero no a diario). Si ningún miembro del personal / familiar intenta modificar su comportamiento no llega al desayuno u ocasionalmente se retrasa en las actividades programadas."],
+		[1, "Frecuentemente se le ayuda para que se levante a tiempo (más de 4 veces al mes pero no diariamente). Si ningún miembro del personal / familiar intenta modificar su comportamiento llega tarde a las actividades más de dos veces a la semana."],
+		[0, "Se le ayuda diariamente o tiene ayuda física para levantarse (debido a una movilidad defectuosa). Si no se le estimula se levanta todos los días tarde, a una hora no razonable."],
+		[9, "Desconocido"]
+	],
+	[
+		[2, "La persona tiene la posibilidad de seleccionar su ropa."],
+		[1, "La persona está en un alojamiento donde el personal / familiar selecciona la ropa rutinariamente."]
+	],
+	[
+		[4, "Totalmente independiente. Escoge la ropa apropiada según la temperatura o la situación y se viste correctamente."],
+		[3, "Funciona independientemente. No hay supervisión. Muestra una ligera inadecuación o descuido."],
+		[2, "Se le recuerda ocasionalmente que mantenga las normas apropiadas en el vestir (por ejemplo, menos de cuatro veces al mes, pero no diariamente). Si no se intenta modificar su conducta, muestra ocasionalmente descuido o forma inadecuada en el vestir o duerme con la ropa del día."],
+		[1, "Frecuentemente es supervisado/a para seleccionar la ropa adecuada y ponérsela correctamente (p. ej., más de cuatro veces al mes, pero no a diario). Si no se intenta modificar su conducta, se muestra ocasionalmente inadecuado/a o descuidado/a en el vestir o se viste de acuerdo con un delirio."],
+		[0, "Es supervisado/a a diario a la hora de vestirse. O necesita ayuda física."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Alojamiento o residencia abierta."],
+		[1, "Alojamiento cerrado pero este/a residente en concreto es libre para salir o alojamiento abierto pero este/a residente en concreto tiene que informar al personal / familiar si sale."],
+		[0, "El alojamiento está cerrado para impedir la salida de este/a residente en concreto / o únicamente se le permite salir acompañado/a / o está incapacitado/a y necesita ayuda física."]
+	],
+	[
+		[4, "Totalmente independiente. No necesita ser controlado/a."],
+		[3, "Funciona independientemente. De vez en cuando llega más tarde de lo que se esperaba, pero no es supervisado/a, ni es una preocupación importante para el personal / familiar."],
+		[2, "Ocasionalmente llega tarde (p. ej., menos de cuatro veces al mes) y no informa a cuidadores / familiares sobre la hora de su regreso. A veces puede ser un problema. (Casi siempre coopera bajo supervisión)."],
+		[1, "Frecuentemente llega tarde (p. ej., más de cuatro veces al mes pero no a diario) y a menudo es un problema para cuidadores y/o familiares. O se fugó o perdió en los seis últimos meses. (Bajo supervisión, la mayoría de las veces no coopera)."],
+		[0, "Problemas importantes en este área. No regresa, ausente durante días. No deja que las personas cuidadoras / familiares sepan su paradero. Estuvo perdido/a más de una vez en los 6 últimos meses (problemas importantes en aceptar o seguir orientaciones) o no se le permite salir sin compañía."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Para todos los y las residentes"],
+	],
+	[
+		[4, "Obtiene su comida diaria regularmente. O bien, prepara sus propias comidas de un modo adecuado, o si le facilitan éstas, asiste regularmente a comer."],
+		[3, "Ocasionalmente se despreocupa de conseguir la comida. Si se le sirve, falta a veces a alguna comida. No hay supervisión."],
+		[2, "Hay que recordarle ocasionalmente que asista u obtenga la comida (p. ej., menos de cuatro veces al mes). Si no se le recuerda falta a varias comidas principales en la semana o falta al desayuno todos los días."],
+		[1, "Hay que recordarle frecuentemente que asista a las comidas con regularidad (p. ej., más de cuatro veces al mes pero no a diario). Si no se le recuerda se salta una comida principal casi todos los días."],
+		[0, "Se le recuerda a diario que asista a las comidas."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Maneja y guarda su propia medicación sin supervisión."],
+		[1, "Las medicinas las tiene el personal / familiar pero la persona tiene la obligación de recordar cuándo debe tomar la medicación (bajo supervisión del personal / familiar)."],
+		[0, "Las medicinas son manejadas y administradas por el personal / familiar."]
+	],
+	[
+		[4, "Completamente responsable para tomar la medicación o asiste regularmente a ponerse las inyecciones depot o va a por las recetas."],
+		[3, "Guarda su propia medicación. Se le recuerda ocasionalmente que tome las medicinas o el personal de enfermería le administra las inyecciones en el hogar o en el trabajo. Coopera."],
+		[2, "Medicación administrada por las personas cuidadoras / familiares. Suele cooperar."],
+		[1, "Medicación administrada por las personas cuidadoras/ familiares. A menudo no coopera."],
+		[0, "Problemas graves con el cumplimiento del tratamiento. Rechaza la medicación."],
+		[9, "No tiene medicación / Desconocido."]
+	],
+	[
+		[2, "Puede usar el cuarto de baño sin restricciones o supervisión."],
+		[1, "Se baña o se ducha en días concretos o precisa ayuda física para ello."],
+		[0, "Necesita ayuda física para el aseo personal diario."]
+	],
+	[
+		[4, "Totalmente independiente. Mantiene buen nivel de higiene y aseo."],
+		[3, "Funciona independientemente. Sin supervisión. Algún descuido con la higiene."],
+		[2, "Ocasionalmente hay que recordarle que se asee (Ej. menos de cuatro veces al mes) (Ej. afeitado, cepillado de dientes). Si se le deja, presenta descuidos ocasionales con ciertos aspectos del aseo personal."],
+		[1, "Se le pide con frecuencia que mantenga un nivel aceptable de aseo personal (p. ej., más de cuatro veces al mes, pero no diariamente). Si se le deja, muestra frecuentes descuidos en el aseo personal diario."],
+		[0, "Se le pide a diario que cuide su aseo. Ningún intento espontáneo / o necesita ayuda física para el aseo personal."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Para todas las personas residentes."],
+		[1, "La persona se encuentra en un alojamiento donde el personal / familiar selecciona rutinariamente su ropa."]
+	],
+	[
+		[4, "Totalmente independiente. Se cambia de ropa regularmente. Ropa limpia, planchada, en buen estado de conservación."],
+		[3, "Funciona independientemente. Pequeños problemas con la limpieza y el estado de la ropa."],
+		[2, "De vez en cuando se le pide que se cambie la ropa sucia (menos de cuatro veces al mes). Si se le deja, se muestra descuidado con ciertos aspectos de limpieza y estado de la ropa."],
+		[1, "Se le pide frecuentemente que mantenga un nivel aceptable de limpieza (más de cuatro veces al mes, pero no diariamente). Si se le deja, se muestra muy descuidado/a."],
+		[0, "Es supervisado/a diariamente. Ningún intento espontáneo de cuidar el estado de la ropa."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Para todas las personas residentes."]
+	],
+	[
+		[4, "No existe incontinencia."],
+		[3, "Incontinencia urinaria (menos de cuatro veces al mes) pero no incontinencia fecal."],
+		[2, "Incontinencia urinaria (más de cuatro veces al mes) pero no incontinencia fecal."],
+		[1, "Incontinencia fecal (menos de cuatro veces al mes con o sin incontinencia urinaria)."],
+		[0, "Incontinencia fecal (más de cuatro veces al mes con o sin incontinencia urinaria)."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Para todas las personas residentes."]
+	],
+	[
+		[4, "Siempre."],
+		[3, "Funciona independientemente pero tiene algún descuido (Ej. olvida tirar de la cisterna, o moja la superficies del retrete o el suelo)."],
+		[2, "La ropa está mojada y/o huele mal, es necesario llamarle la atención."],
+		[1, "Orina o defeca en zonas públicas."],
+		[0, "Problema importante. La ropa está mojada y/o huele mal y orina o defeca en zonas públicas."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Puede usar la cocina sin restricciones o supervisión."],
+		[1, "Permitido el uso de la cocina sólo en ciertos momentos del día o sólo con la supervisión del personal / familiar."],
+		[0, "Nunca se permite usar la cocina o no hay cocina."]
+	],
+	[
+		[4, "Completamente independiente. Prepara todas sus comidas con variedad."],
+		[3, "Prepara la mayoría de sus comidas (Ej. almuerza en un servicio de día, pero se prepara el desayuno y la cena y las comidas del fin de semana con variedad). O toma parte activa en la cocina de la comunidad (Ej. cocina normalmente cuando le toca) con regularidad."],
+		[2, "Prepara alguna comida (Ej. el desayuno) pero las demás son proporcionadas por cuidadores/as o familiares o prepara todas sus comidas sin variedad."],
+		[1, "Ayuda con limitaciones en la cocina (Ej.. limpiar y cortar verdura)."],
+		[0, "No participa en la preparación de las comidas."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Tiene acceso a la cafetera y electrodomésticos de la cocina (Ej. tostador) sin restricción."],
+		[1, "Tiene acceso a las instalaciones arriba mencionadas únicamente a ciertas horas del día o sólo con la supervisión del personal / familiar."],
+		[0, "Nunca se le permite utilizar las instalaciones o no hay instalaciones."]
+	],
+	[
+		[4, "Prepara comidas o bebidas simples independientemente. Lo hace con regularidad."],
+		[3, "Tiene algún pequeño problema con la preparación de comidas o bebidas simples."],
+		[2, "Tiene supervisión ocasional para la preparación de comidas simples (menos de cuatro veces al mes). Si no hay supervisión, prepara comidas o bebidas solo de forma ocasional / o algunas veces las prepara de manera inapropiada."],
+		[1, "Siempre es supervisado/a en la preparación de comidas simples."],
+		[0, "Nunca prepara comidas o bebidas simples."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Puede salir sin compañía y tiene la oportunidad de cocinar algo."],
+		[1, "Puede salir sin compañía pero no tiene la oportunidad de cocinar, o va de compras sólo en grupo."],
+		[0, "No se le permite salir sin compañía."]
+	],
+	[
+		[4, "Completamente independiente. Consigue sus propias provisiones organizándose adecuadamente y utiliza las tiendas correctamente."],
+		[3, "Parcialmente independiente al comprar alimentos. Hace turnos normales en las compras. Hace la compra correctamente con una lista."],
+		[2, "Utiliza una tienda que le es familiar. Compra independientemente una gama limitada de productos, no incluyendo planificación para la preparación de la comida completa, (Ej. té, café, galletas). Recibe ayuda con otras compras. Si no se le presta ayuda, olvida cosas necesarias o hace compras inapropiadas."],
+		[1, "Sólo compra con supervisión, o cuenta con los empleados de la tienda para que le ayuden a pagar y obtener el cambio correcto. Compra pocos productos para su consumo inmediato (Ej. dulces, bebidas)."],
+		[0, "No compra en tiendas de comestibles."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Alojamiento abierto o residencia."],
+		[1, "Alojamiento cerrado pero este/a residente en concreto tiene libertad para salir, o alojamiento abierto pero este residente en concreto tiene que informar al personal o familiar si sale."],
+		[0, "Alojamiento cerrado para impedir salir a este/a residente o sólo se le permite salir acompañado/a o está incapacitado/a y necesita ayuda física."]
+	],
+	[
+		[4, "Completamente independiente."],
+		[3, "Parcialmente independiente. Recibe algo de ayuda para las compras más complejas (Ej. muebles, etc.)."],
+		[2, "Compra independientemente una gama limitada de productos (Ej. jabón o cigarrillos). Recibe ayuda con otras compras (Ej. zapatos). Si no recibe ayuda, descuida compras necesarias o hace compras inapropiadas."],
+		[1, "Sólo compra con supervisión o cuenta con ayuda del personal de la tienda para pagar y obtener el cambio correcto incluso para una compra simple."],
+		[0, "No compra nunca ningún objeto personal."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Utiliza la lavadora. Lava la ropa de cama y la ropa personal."],
+		[1, "Utiliza la lavadora pero se le proporcionan las sábanas."],
+		[0, "No tiene lavadora."]
+	],
+	[
+		[4, "Completamente independiente. Utiliza la lavadora, la lavandería y la limpieza en seco de forma autónoma y correcta."],
+		[3, "Independiente en parte. Usa la lavadora y/o lava a mano espontáneamente y con regularidad. Las personas cuidadoras o familiares le lavan algunas cosas (Ej. sábanas, etc.)"],
+		[2, "Es supervisado/a o se le recuerda que lave su ropa personal. Si no se le supervisa, muestra negligencia en esta actividad."],
+		[1, "Ayuda con la colada (Ej. recogerla), pero depende básicamente de cuidadores/as o familiares para la provisión de ropa o sábanas limpias."],
+		[0, "No hace la colada ni ayuda con el lavado de ropa."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "No hay personal de limpieza."],
+		[1, "Hay personal de limpieza pero se espera que la persona mantenga limpia su zona de la cama y armario."],
+		[0, "Hay personal de limpieza. No se espera que la persona mantenga limpia su zona de la cama y armario."]
+	],
+	[
+		[4, "Completamente independiente. Limpia y ordena su espacio personal. Mantiene un nivel correcto de limpieza."],
+		[3, "Parcialmente independiente al limpiar su espacio personal. Necesita que se le recuerde en ocasiones o está por debajo del nivel normal de limpieza (menos de cuatro veces al mes)."],
+		[2, "Se le recuerda frecuentemente que mantenga un nivel correcto de limpieza (más de cuatro veces al mes, pero no a diario) si no, se descuida."],
+		[1, "Se le sugiere a diario que cuide su espacio personal (si no, muestra muchos descuidos)."],
+		[0, "No ordena su espacio personal."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Vive en la comunidad y tiene la oportunidad de hacer tareas domésticas."],
+		[1, "Vive en el hospital o en residencias asistidas y tiene la oportunidad de hacer tareas domésticas."],
+		[0, "Ninguna oportunidad de hacer tareas domésticas (Ej. las normas del alojamiento lo impiden)."]
+	],
+	[
+		[4, "Completamente independiente para mantener limpia la casa o comparte las tareas domésticas comunes. Ninguna ayuda de nadie del personal o familia."],
+		[3, "Parcialmente independiente en la limpieza de la casa. Hace una tarea particular en la casa. Si vive independientemente, pequeños problemas con el nivel de limpieza y el orden. Ninguna ayuda del personal / familiar."],
+		[2, "En ocasiones necesita que se le recuerde que haga las tareas domésticas, (menos de cuatro veces al mes) si no, se descuida."],
+		[1, "Rara vez ayuda en las tareas domésticas o frecuentemente se le sugiere que lo haga. Si no, signos de gran descuido."],
+		[0, "No hace ni comparte tareas domésticas."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Alojamiento abierto."],
+		[1, "Alojamiento cerrado pero esta persona en concreto es libre de salir, o alojamiento abierto, pero esta persona en concreto tiene que informar al personal / familiar si sale."],
+		[0, "Alojamiento cerrado para impedir que salga esta persona, o sólo se le permite salir acompañada o discapacitada y necesita ayuda física."]
+	],
+	[
+		[4, "Utiliza diferentes transportes públicos con total independencia. Puede ir a lugares que no le son familiares en transporte público."],
+		[3, "Usa el transporte regularmente de forma independiente en líneas conocidas."],
+		[2, "Usa el transporte público independientemente para ir sólo a un sitio concreto y conocido."],
+		[1, "Es acompañado/a cuando utiliza el transporte público o usa transporte asistido."],
+		[0, "Nunca usa el transporte público independientemente. Resistencia y dificultad incluso con compañía."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Se espera que concierte todas las citas."],
+		[1, "Algunas de las citas tienen que hacerse a través del personal / familiar."],
+		[0, "Todas las citas las tienen que concertar el personal / familiar"]
+	],
+	[
+		[4, "Usa los servicios arriba mencionados bien y con total independencia."],
+		[3, "Usa algunos servicios independientemente pero necesita ayuda con otros (Ej. cumplimentar formularios más complejos)."],
+		[2, "Es ayudado/a para ponerse en contacto con los servicios apropiados (Ej. pedir cita, cumplimentar formularios). Puede verbalizar sus necesidades al personal/ familiares. Si no se le ofrece ayuda, muestra dificultades en el manejo personal (Ej. fracaso en conseguir la ayuda social, problemas de salud no atendidos)."],
+		[1, "Siempre recibe ayuda para contactar con los servicios apropiados. Escasa habilidad para reconocer y verbalizar necesidades, o se niega a utilizar los servicios a pesar de necesitarlos."],
+		[0, "No intenta comunicar espontáneamente las necesidades que tiene de estos servicios."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Alojamiento abierto o residencia."],
+		[1, "Alojamiento cerrado pero esta persona en concreto es libre para salir, o alojamiento abierto pero esta persona en concreto tiene que informar al personal/ familiar si sale."],
+		[0, "Alojamiento cerrado para impedir que salga esta persona, o sólo se le permite salir acompañada, o incapacitada y necesita ayuda física."]
+	],
+	[
+		[4, "Usa diferentes locales y servicios públicos independientemente y con alguna regularidad."],
+		[3, "Usa uno regularmente (Ej. oficina de correos) u otros ocasionalmente (menos de cuatro veces al mes)."],
+		[2, "Usa uno sólo si se le propone. Si se le deja rara vez usa servicios locales o públicos (una vez al mes)."],
+		[1, "Usa los locales o servicios públicos acompañado/a."],
+		[0, "Nunca usa ninguno de los arriba mencionados."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Se le paga el dinero a través de su propia cuenta bancaria, fuera del hospital o residencia y paga sus propias facturas."],
+		[1, "Se le paga el dinero en su cuenta personal, dentro de la institución. Pago de facturas deducido antes de que lo reciba."],
+		[0, "Recibe un paquete (Ej. un paquete que contiene productos personales como elementos de aseo, caramelos)."]
+	],
+	[
+		[4, "Administra su economía independientemente."],
+		[3, "Independiente. Ocasionalmente escasez de dinero pero no presenta problemas importantes."],
+		[2, "Para controlar el dinero tiene una asignación semanal."],
+		[1, "Para controlar el dinero tiene una asignación diaria o pequeñas sumas de dinero cada vez."],
+		[0, "Tiene problemas importantes con el concepto dinero o administración. El dinero es administrado totalmente por el personal/ familiares. O no tiene interés en el uso de dinero."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Alojamiento o residencia abierta."],
+		[1, "Alojamiento cerrado."]
+	],
+	[
+		[4, "Se mantiene apropiadamente activo/a (tiene un trabajo, trabaja como voluntario/a o asiste a algún servicio social de día sin estímulo o está involucrado/a en actividades domésticas)."],
+		[3, "Se mantiene activo/a parte del tiempo (como se menciona arriba pero con periodos ocasionales de inactividad)."],
+		[2, "Se le sugiere ocasionalmente que realice alguna actividad de este tipo, si no se intenta modificar su comportamiento, muestra periodos frecuentes de inactividad (50% del tiempo)."],
+		[1, "Se le sugiere frecuentemente que realice alguna actividad que tenga propósito, si no se modifica el comportamiento muestra diariamente periodos prologados de inactividad."],
+		[0, "Muy difícil de ocupar. No hace nada la mayor parte del tiempo."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Alojamiento o residencia abierta."],
+		[1, "Alojamiento cerrado."]
+	],
+	[
+		[4, "Sigue actividades de ocio tanto individuales como de grupo sin que haya que estimularle regularmente (visitas, salidas con amigos/as)."],
+		[3, "Se une a actividades de ocio tanto individuales como de grupo (charlando con la gente, saliendo con otros) pero necesita que le estimule para algunas actividades."],
+		[2, "Sigue actividades de ocio individuales (Ej. leer, ver la televisión, oír la radio, pasear)."],
+		[1, "Participa en actividades en solitario sólo cuando se le sugieren. Ninguna actividad de grupo."],
+		[0, "Dificultad para interesarle o engancharle en algo. Pasa el tiempo libre sin hacer nada."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Alojamiento o residencia abierta."],
+		[1, "Alojamiento cerrado."]
+	],
+	[
+		[4, "Mantiene espontáneamente contacto con parientes, amistades o personas conocidas. Se relaciona bien con los demás. Busca compañía."],
+		[3, "Mantiene contacto con varios/as amigos/as, conocidos/as o parientes. Se relaciona superficialmente con otras personas con las que tiene contacto diario."],
+		[2, "Se relaciona con pocas personas conocidas. Abierto a los acercamientos sociales de otros pero no busca compañía."],
+		[1, "Solitario/a, aislado/a o introvertido/a. Raramente se acerca a otras personas."],
+		[0, "Extremadamente aislado/a o introvertido/a. Rechaza los acercamientos sociales."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Para todas las personas residentes."]
+	],
+	[
+		[4, "Muestra consideración y preocupación por otras personas."],
+		[3, "A veces muestra consideración y preocupación por otros/a pero es inconsistente."],
+		[2, "Muestra algo de consideración y preocupación por otros/a."],
+		[1, "Difícilmente muestra cualquier consideración y preocupación por otros/a."],
+		[0, "No muestra consideración o preocupación."],
+		[9, "Desconocido."]
+	],
+	[
+		[2, "Para la mayoría de las personas residentes."],
+		[1, "Incapacitados/as, necesitan ayuda física."]
+	],
+	[
+		[4, "Acción rápida y apropiada que conlleva una respuesta independiente inmediata y una petición de ayuda."],
+		[3, "Demandaría ayuda, pero difícilmente iniciaría una acción autónoma."],
+		[2, "Poco probable que busque ayuda."],
+		[1, "Definitivamente no buscaría ayuda."],
+		[0, "No buscaría ayuda, su comportamiento sería de obstrucción (Ej. no permitiría el acceso del servicio de emergencia)."],
+		[9, "Desconocido o imposibilidad de juzgar."]
+	]]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0]+ ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < 53){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		autocuidadoO = [answ[1], answ[3], answ[5], answ[7], answ[9], answ[11], answ[13], answ[15], answ[17], answ[19]]
+		autocuidadoD = [answ[2],answ[4],answ[6],answ[8],answ[10],answ[12],answ[14],answ[16],answ[18],answ[20]]
+		domesticasO = [answ[21],answ[23],answ[25],answ[27],answ[29],answ[31],answ[33]]
+		domesticasD = [answ[22],answ[24],answ[26],answ[28],answ[30],answ[32],answ[34]]
+		comunitariasO = [answ[35],answ[37],answ[39],answ[41]]
+		comunitariasD = [answ[36],answ[38],answ[40],answ[42]]
+		actividadO = [answ[43],answ[45],answ[47],answ[49],answ[51]]
+		actividadD = [answ[44],answ[46],answ[48],answ[50],answ[52]]
+		pd = answ.reduce(sum, 0)
+		sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		t = "<p><b>Nombre: </b>"+ document.getElementById("inombre").value + "</p><p><b>Fecha:</b> "+ document.getElementById("ifecha").value +"</p><h2>Autocuidado</h2><p>Oportunidad de independencia TOTAL: " + autocuidadoO.reduce(sum, 0) + "</p><p>Promedio: " + (autocuidadoO.reduce(sum, 0)/10).toFixed(3) + "</p><p>Desempeño actual TOTAL: " + autocuidadoD.reduce(sum, 0) + "</p><p>Promedio: " + (autocuidadoD.reduce(sum, 0)/10).toFixed(3) + "</p><h2>Habilidades Domésticas</h2><p>Oportunidad de independencia TOTAL: " + domesticasO.reduce(sum, 0) + "</p><p>Promedio: " + (domesticasO.reduce(sum, 0)/7).toFixed(3) + "</p><p>Desempeño actual TOTAL: " + domesticasD.reduce(sum, 0) + "</p><p>Promedio: " + (domesticasD.reduce(sum, 0)/7).toFixed(3) + "</p><h2>Habilidades Comunitarias</h2><p>Oportunidad de independencia TOTAL: " + comunitariasO.reduce(sum, 0) + "</p><p>Promedio: " + (comunitariasO.reduce(sum, 0)/4).toFixed(3) + "</p><p>Desempeño actual TOTAL: " + comunitariasD.reduce(sum, 0) + "</p><p>Promedio: " + (comunitariasD.reduce(sum, 0)/4).toFixed(3) + "</p><h2>Actividad y relaciones sociales</h2><p>Oportunidad de independencia TOTAL: " + actividadO.reduce(sum, 0) + "</p><p>Promedio: " + (actividadO.reduce(sum, 0)/5).toFixed(3) + "</p><p>Desempeño actual TOTAL: " + actividadD.reduce(sum, 0) + "</p><p>Promedio: " + (actividadD.reduce(sum, 0)/5).toFixed(3) + "</p>"
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("BELS - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>BELS - Habilidades Básicas de la Vida Diaria </h1>
+		<p><b>Driscoll CO, Leff J. The Taps Project. 8: Design of the research study on the long-stay patients. Br J Psychiatry 1993; 162(Supl 19): 18-24</b></p>
+		<p><i>Validación y adaptación al castellano EVERYDAY LIVING SCHEDULE (BELS) Team for the Assessment of Psychiatric Services (TAPS) 1989.: Grupo Andaluz de Investigación en Salud Mental. 2000.</i></p>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p><b>Descripción del cuestionario</b></p>
+			<p>Este cuestionario ha sido diseñado para evaluar los cambios en el desempeño de las habilidades de la vida diaria en personas que sufren una enfermedad mental de larga duración. Se compone de 26 preguntas, cada una de las cuales describe un comportamiento concreto. Cada pregunta se divide en dos escalas:</p>
+			<ul>
+				<li>(a) Una escala de tres partes sobre el grado de oportunidad para la realización de actividades de forma independiente.</li>
+				<li>(b) Una escala de cinco partes sobre el nivel real de realización de cada actividad de la vida diaria.</li>
+			</ul>
+			<p><b>Instrucciones</b></p>
+			<p>Existen 3 etapas en el procedimiento:</p>
+			<ol>
+				<li>Selección de un/a informante apropiado/a.</li>
+				<li>Valoración del grado de oportunidad para que la persona ejerza de forma independiente una habilidad concreta en ese entorno.</li>
+				<li>Valoración del nivel de realización de cada una de las habilidades en la vida diaria.</li>
+			</ol>
+			<p><b>1. Selección de un/a informate</b></p>
+			<p>Hay que seleccionar un/a informante que conozca bien las habilidades de la persona en la vida diaria. Por lo común deberá ser un/a familiar o persona de referencia cercana. En el caso de personas que vivan completamente independientes, como último recurso, el mismo sujeto puede ser el informante. Sin embargo, esto requeriría alguna reformulación de las preguntas para adaptarse a la situación y la necesidad de contrastar de manera objetiva la información aportada.</p>
+			<p><b>2. Grado de oportunidad para que la persona ejerza de forma independiente una habilidad concreta en ese entorno.</b></p>
+			<p>Se le pregunta al/a la informante sobre el grado de oportunidad que tiene la persona para realizar por su cuenta cada actividad de la vida diaria.</p>
+			<p>Existen tres posibles clasificaciones o escalas, que dependerán principalmente de las características físicas y posibilidades del entorno:</p>
+			<ul>
+				<li>Total oportunidad de
+independencia 2</li>
+				<li>Alguna oportunidad de independencia 1</li>
+				<li>Ninguna oportunidad de
+independencia 0</li>
+			</ul>
+			<p><b>3. Clasificación del nivel de realización de cada una de las habilidades en la vida diaria</b></p>
+			<p>En términos generales, la clasificación se basa en el comportamiento de la persona durante el mes previo, con la excepción de las conductas poco frecuentes preguntas 4, 14, 15, 26) en cuyo caso el período de observación es de seis meses.</p>
+			<p>En primer lugar se formula la pregunta básica. Tras la respuesta inicial del/de la informante, el/la entrevistador/a podrá valorar en la escala aproximadamente el nivel de realización de la persona. Para realizar una clasificación adecuada, se hacen sugerencias que se centran en la parte de la escala en la que el/la entrevistador/a ha fijado su atención por la respuesta inicial del/de la informante. Estas sugerencias se hacen en forma de preguntas, para reformular el texto de cada punto de la escala cuando sea necesario.</p>
+			<p>En general, las clasificaciones se hacen normalmente de acuerdo con la lista que mostramos a continuación, pero hay excepciones y, por tanto, sigue siendo necesario que la escala de cada pregunta sea comprendida por el/la evaluador/a. El objetivo ha sido crear en las escalas una jerarquía basada en el nivel de realización o en la frecuencia en que las sugerencias se hacen necesarias. Los niveles más pobres de realización y los niveles en que las sugerencias sean más necesarias son las que reciben puntuaciones inferiores.</p>
+			<p>Las personas que actúan independientemente recibirán una puntuación de 3 ó 4 en cada pregunta. Las puntuaciones para el desempeño actual son las siguientes:</p>
+			<ul>
+				<li>Nivel normal de realización 4</li>
+				<li>Problemas menores que no afectan a la independencia 3</li>
+				<li>Problema moderado o necesidad ocasional de una sugerencia 2</li>
+				<li>Problema severo o necesidad frecuente de una sugerencia 1</li>
+				<li>No realiza ninguna actividad o es necesaria una supervisión diaria 0</li>
+				<li>Desconocido 9</li>
+			</ul>
+			<p><b>Nota</b>: Ocasional = menos de 4 veces al mes<br>
+Frecuente = semanalmente o más a menudo, pero no a diario.</p>
+			<p>Una vez que se han valorado las dos clasificaciones, el nivel de realización de actividades y el grado de oportunidad, el/la  evaluador/a pasa a la siguiente pregunta del cuestionario.</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>BELS - Habilidades básicas de la vida diaria </h1>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+</html>

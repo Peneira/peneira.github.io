@@ -65,7 +65,7 @@ div.m6r	{
 	float:center;
 	padding: 10px 10px 10px 10px;
 	text-align: center;
-	width: 800px;
+	width: 990px;
 	}
 div.mpeq6 {
 	width: 190px;
@@ -164,17 +164,14 @@ div.clear {
 	background-color: white;
 }
 .opcion {
-	width: 190px;
-	height: 110px;
+	width: 38px;
+	height: 38px;
 	position: relative;
 	float: left;
-	margin: 10px 5px 10px 0px;
-	border: 1px solid black;
-	border-radius: 5px;
 	text-align: center;
 	vertical-align: middle;
 	font-family: "Raleway", cursive;
-	font-size: 15pt;
+	font-size: 12pt;
 	color: black;
 	background-color: white;
 	}
@@ -185,56 +182,48 @@ div.clear {
 </style>
 <script>
 data = 'El nombre'
-tdata = ''
 lastTimestamp = Math.round(+new Date());
 loadedMatrix = 0;
 selectedSet = "A";
 
+error = 0
 type6 = ["A", "B"]
+answ = []
 
-function anota(valor){
-	data = data + ","+ valor
-	tdata= tdata + (Math.round(+new Date())-lastTimestamp).toString() + ',';
+function check(valor){
+	data = data + ","+ valor + "," + (Math.round(+new Date())-lastTimestamp).toString();
 	lastTimestamp = Math.round(+new Date());
 	console.log(data);
-	console.log(tdata);
-	document.getElementById("matrices").innerHTML = "";
-	loadNext();
+	if (document.getElementById(valor).innerHTML == "O") {
+		document.getElementById(valor).innerHTML = "";
+		document.getElementById(valor).onClick = pass;
+	} else {
+		error = error +1
 	}
+	}
+function makeid(length) {
+   var result           = '';
+   var characters       = 'PQO';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
 function matriz6r(num) {
 	respuestas = ""
-	emociones = ["En absoluto", "Levemente, no me molesta mucho", "A menudo", "Siempre o casi siempre"]
+	letras = makeid(325)
 	preguntas = ["",
-		"<p>Torpe o entumecido</p>",
-		"<p>Acalorado</p>",
-		"<p>Con temblor en las piernas</p>",
-		"<p>Incapaz de relajarse</p>",
-		"<p>Con temor a que ocurra lo peor</p>",
-		"<p>Mareado, o que se le va la cabeza</p>",
-		"<p>Con latidos del corazón fuertes y acelerados</p>",
-		"<p>Inestable</p>",
-		"<p>Atemorizado o asustado</p>",
-		"<p>Nervioso</p>",
-		"<p>Con sensación de bloqueo</p>",
-		"<p>Con temblores en las manos</p>",
-		"<p>Inquieto, inseguro</p>",
-		"<p>Con miedo a perder el control</p>",
-		"<p>Con sensación de ahogo</p>",
-		"<p>Con temor a morir</p>",
-		"<p>Con miedo</p>",
-		"<p>Con problemas digestivos</p>",
-		"<p>Con desvanecimientos</p>",
-		"<p>Con rubor facial</p>",
-		"<p>Con sudores fríos o calientes</p>"
+		"Busca la O entre las letras"
 		]
-	for (i = 0; i<4; i++){
-		matemp = "<div class = 'opcion' onclick = anota(" +i+ ")><p>" + emociones[i] + "</p></div>"
+	for (i = 0; i<325; i++){
+		matemp = "<div id = l"+i+" class = 'opcion' onclick = check(l"+i+")>" + letras[i] + "</div>"
 		respuestas = respuestas + matemp;
 	}
 	respuestas = respuestas + "</p></div>"
 
 	var contenido = document.createElement('m6r');
-	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><p>Indique cuánto le ha afectado en la última semana incluyendo hoy el sentirse...</p>" + preguntas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/><br/>" + preguntas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
 	document.getElementById("matrices").appendChild(contenido);
 	}
 
@@ -252,7 +241,7 @@ function comenzar(setM) {
 	}
 function loadNext() {
 	loadedMatrix++;
-if (loadedMatrix < 22){
+	if (loadedMatrix <101){
 		if (type6.indexOf(selectedSet) != -1){  
 		   	matriz6r(loadedMatrix.toString(), selectedSet);
 		} else {
@@ -262,7 +251,17 @@ if (loadedMatrix < 22){
 	else {
 		$(informe).show();
 		contenido = document.createElement('texto');
-		contenido.innerHTML = "<p>Resumen... blau blau </p><p>Botón de enviar</p>";
+		t = "<p>Resumen...</p><ul>"
+		answ.sort()
+		answ.reverse()
+		answ.reverse()
+		j = (answ.length - 1)
+		while (j > 0){
+			t = t + "<li><i>" + emociones[answ[j][0]] + "</i> - \t\t " + answ[j][1] + "</li>"
+			j = j-1
+		}
+		t = t + "</ul>"
+		contenido.innerHTML = t;
 		document.getElementById("informe").appendChild(contenido);
 		document.getElementById('csvp').innerHTML = data;
 		}
@@ -270,7 +269,7 @@ if (loadedMatrix < 22){
 function sendMail() {
 		var contenido = document.getElementById("csvp").innerHTML;
 		var link = "mailto:jorgealonso@openmailbox.org"
-		     + "?subject=" + escape("PERE - " + document.getElementById("inombre").value)
+		     + "?subject=" + escape("Miedos - " + document.getElementById("inombre").value)
 		     + "&body=" + escape(contenido);
 
 		window.location.href = link;
@@ -281,7 +280,7 @@ function sendMail() {
 
 <body>
 	<div id="header">
-		<h1>Inventario de Ansiedad de Beck (BAI)</h1>
+		<h1>Inventario de Miedos</h1>
 		<div id="usuario">
 			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
 			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
@@ -300,21 +299,7 @@ function sendMail() {
 	</div>
 	<div id='contenidos'>
 		<div id="articles">
-			<p><i>Descripción</i></p>
-			<p>El Inventario de Ansiedad de Beck es una herramienta útil para valorar los síntomas somáticos de ansiedad, tanto en desórdenes de ansiedad como en cuadros depresivos.</p>
-			<p>El cuestionario consta de 21 preguntas, proporcionando un rango de puntuación entre 0 y 63. Los puntos de corte sugeridos para interpretar el resultado obtenido son los siguientes:</p>
-			<ul>
-				<li>00-21 - Ansiedad muy baja</li>
-				<li>22-35 - Ansiedad moderada</li>
-				<li>más de 36 - Ansiedad severa</li>
-			</ul>
-			<p>Cada ítem se puntúa de 0 a 3, correspondiendo la puntuación 0 a "en absoluto", 1 a "levemente, no me molesta mucho", 2 a "moderadamente, fue muy desagradable pero podía soportarlo" y la puntuación 3 a "severamente, casi no podía soportarlo".</p>
-			<p>La puntuación total es la suma de las de todos los ítems. Los síntomas hacen referencia a la última semana y al momento actual.</p>
-			<p><i>Instrucciones</i></p>
-			<p>Responda este cuestionario considerando sus dificultades actuales. Considere como referencia las dificultades que ha tenido este último mes.</p>
-			<p>En el cuestionario hay una lista de síntomas comunes de la ansiedad. Lea cada uno de los ítems atentamente, e indique cuanto le ha afectado en la última semana incluyendo hoy</p>
-			<p>Por favor, contesta tan honestamente como te sea posible.</p>
-			<p>Cuando esté listo, pulse sobre el botón para comenzar:</p>
+			<p>Indique en qué medida cada una de las siguientes situaciones, objetos o elementos le generan malestar, angustia o miedo:</p>
 			<div class="opcion", onClick="comenzar('A')">
 				<p>Comenzar</p>
 			</div>

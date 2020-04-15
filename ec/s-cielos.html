@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<html lang="es-ES">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Language" content="es" />
+	<meta name="LANGUAGE" content="es" />
+	<title>Juegos de Memoria visual para adultos: Memotest online con frutas</title>
+    <meta property="og:type" content="website"/>
+
+	<style type="text/css">
+		/* Define the 3D perspective view and dimension of each card. */
+	.card {
+		-webkit-perspective: 600;
+		width: 125px;
+		height: 125px;
+		position: absolute;
+		-moz-transition: all .3s;
+		-webkit-transition: all .3s;
+		transition: all .3s;
+		cursor: pointer;
+	}
+
+	#gameIntro {
+		background:url(../jpg/16-cielos-start.png) top left no-repeat;
+		padding: 230px 0;
+		text-align: center;
+		height: 370px;
+	}
+
+	#gameIntro a.button {
+		background: #ffcc00;
+		border-radius: 45px;
+		display: block;
+		font-size: 30px;
+		margin-top: 100px;
+		margin-left: 177px;
+		padding: 10px;
+		width: 150px;
+		border: 3px solid #565656;
+		color:#565656;
+		text-decoration:none;
+	}
+	.front {
+		background: url(../jpg/16-cielos-deck.jpg) -500px -125px;
+		z-index: 10;
+	}
+	.back {
+		background: #efefef url(../jpg/16-cielos-deck.jpg);
+		-webkit-transform: rotate3d(0,1,0,-180deg);
+		z-index: 8;
+	}
+
+
+	.carta01 {background-position: 0 0;}
+	.carta02 {background-position: -125px 0;}
+	.carta03 {background-position: -250px 0;}
+	.carta04 {background-position: -375px 0;}
+	.carta05 {background-position: 0 125px;}
+	.carta06 {background-position: -125px 125px;}
+	.carta07 {background-position: -250px 125px;}
+	.carta08 {background-position: -375px 125px;}
+	</style>
+	<style type="text/css">
+		@charset "utf-8";
+	/* CSS Document */
+	* {
+		padding:0;
+		margin:0;
+	}
+
+
+
+	#container{
+		font-family: Amaranth, sans-serif;
+		margin-right: auto;
+		margin-left: auto;
+		overflow: hidden;
+		height: 100%;
+		width: 1000px;
+	}
+
+	#contenido{
+		overflow: hidden;
+		height: 100%;
+		width: 771px;
+		float: left;
+	}
+
+	#columna-der
+		{width:300px;
+		height: 600px;
+		float:left;
+		background-color: #ffffff;}
+
+	#publisky{
+		height:600px;
+		width:120px;
+		padding-left:109px;}
+
+
+
+
+
+	#marco-juego-16{
+			background-color: #ccc;
+			width:550px;
+			height:550px;
+			margin-left: auto;
+			margin-right: auto;
+
+	}
+
+	#juego-16{text-align:center;
+		width:540px;
+		height:550px;
+		background-color:#f5f5f5;
+		padding-left: 10px;
+		padding-top: 10px;
+		float: left;
+		
+	}
+
+	#marco-juego-20{
+			background-color: #ccc;
+			width:510px;
+			float: left;
+			margin-left: 40px;
+
+	}
+
+	#juego-20{
+		text-align:center;
+		width:490px;
+		height:600px;
+		background-color:#f5f5f5;
+		padding-left: 20px;
+		padding-top: 10px;
+		float: left;
+		
+	}
+	#marco-juego-30{
+			background-color: #009999;
+			width:510px;
+			float: left;
+			padding-left: 0px;
+			margin-left: 40px;
+		
+
+	}
+
+	#juego-30{text-align:center;
+		width:500px;
+		height:600px;
+		padding-left: 10px;
+		padding-top: 10px;
+		background-color:#00ae97;
+		float: left;
+		
+	}
+
+	#gameStats30{
+		background: #00ae97;;
+		width: 510px;
+		display: block;
+		overflow: auto;
+	}
+
+	#gameStats30 p#timer{
+		float: left;
+		text-align: left;
+		padding: 10px;
+		font-weight: bold;
+
+	}
+	#menuylogo{
+		width:150px;
+		height:628px;	
+		float: left;	
+	}
+	#menu{
+		width:121px;
+		padding-left: 29px;
+		padding-top: 10px;
+
+	}
+	#logo{
+		width:125px;
+		padding-left: 25px;
+
+	}
+
+	#web {
+		background-color: #00ae97;
+		width:550px;
+		height:20px;
+		text-align: center;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		float: left;
+
+	}
+
+	#web a{
+		text-decoration: none;
+		color: #565656;
+		font-size: 14px;
+	}
+	#web a:hover{
+		color: #cc3300;
+	}
+
+	#web30 {
+		background-color: #e1b134;
+		width:510px;
+		height:20px;
+		text-align: center;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		float: left;
+
+	}
+
+	#web30 a{
+		text-decoration: none;
+		color: #565656;
+		font-size: 14px;
+	}
+	#web30 a:hover{
+		color: #cc3300;
+	}
+	#espacio-150{
+		height: 150px;
+		padding-left: 15px;
+	}
+
+
+	#redesinf {
+		height: 50px;
+		padding-top: 10px;
+	}
+
+	#redesinf .fb-share-button {
+		float: left;
+		overflow: hidden;
+		 *display: inline;
+		display: inline-block;
+		
+		
+	}
+
+	#redesinf .g-plusone {
+		float: left;
+			overflow: hidden;
+	 	*display: inline;
+		display: inline-block;
+				padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	#contenido-inf{
+		padding-left: 20px;
+	}
+
+	h1 {
+		color: #d5bd5d;
+		font-size: 18px;
+		padding-bottom: 10px;
+	}
+
+	h2{
+		font-size: 18px;
+		color: #f5ad51;
+		padding-top: 10px;
+	}
+
+	a{
+		color: #FFCC00;
+		font-weight: bold;
+		font-size: 16px;
+	}
+
+	p{
+		color: #dcd9d5;
+		margin-top: 10px;
+		font-size: 14px;
+	}
+
+
+	#ad-728{
+		height: 90px;
+		width: 730px;
+		padding-left: 15px;
+		float: left;
+		background-color: aliceblue;
+	}
+
+
+	#imagen {
+		width: 710px;
+		height: 410px;
+	}
+
+	.espacio{clear:both;height:10px;}
+	.clearfloat {clear:both; height:0; font-size: 1px; line-height: 0px;}
+	</style>
+	<style type="text/css">
+	@charset "utf-8";
+	/* CSS Document */
+
+	* {
+		padding:0;
+		margin:0;
+	}
+
+	body {
+		color: #fff;
+		background: #c0c2be;
+	}
+
+	#gameStats{
+		background: #00ae97;;
+		width: 550px;
+		display: block;
+		overflow: auto;
+	}
+
+	#gameStats p#timer{
+		float: left;
+		text-align: left;
+		padding: 10px;
+		font-weight: bold;
+	}
+
+	#cards {
+		position: relative;
+		width: 730px;
+		height: 310px;
+		display: none;
+	}
+
+	#gameIntro a.button:hover {
+		background: #FFFFFF;
+		color:#565656;
+		text-decoration:none;
+		border: 3px solid #ffcc00;
+
+	}
+
+	#gameComplete p {
+		font-size: 80px;
+		text-align: center; 
+	}
+	#gameComplete a.button:hover {
+		background: #fff;
+		color:#cc3300;
+		text-decoration:none;
+		border: 3px solid #ffcc00;
+
+	}
+
+	#gameComplete a.volverMenu {
+		background: #ffcc00;
+		border-radius: 15px;
+		display: block;
+		font-size: 20px;
+		margin: 20px auto 0;
+		padding: 10px;
+		width: 250px;
+		border: 3px solid #565656;
+		color:#565656;
+		text-decoration:none;
+	}
+
+	#gameComplete a.volverMenu:hover {
+		background: #fff;
+		color:#565656;
+		text-decoration:none;
+		border: 3px solid #ffcc00;
+
+	}
+	#gameComplete p#top {
+		margin: 100px 0 0;
+		font-size: 20px;
+		color:#006438;
+	}
+
+	.face {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		/*-webkit-transition-property: opacity, transform, box-shadow;*/
+		-webkit-transition-duration: .3s;
+		-webkit-backface-visibility: hidden;
+	}
+
+	.card:hover .face, .card-flipped .face {
+		-webkit-box-shadow: 0 0 10px #aaa;
+	}
+	.card-flipped .front {
+		-webkit-transform: rotate3d(0,1,0,180deg);
+		z-index: 8;
+	}
+	.card-flipped .back {
+		-webkit-transform: rotate3d(0,1,0,0deg);
+		z-index: 10;
+	}
+	.card-removed {
+		opacity: 0;
+	}
+	#linkBack a.button {
+		background: white;
+		border-radius: 5px;
+		display: block;
+		font-size: 30px;
+		margin: 30px auto 0;
+		padding: 10px;
+		width: 250px;
+		border: 3px solid #006438;
+		color:#006438;
+		text-decoration:none;
+	}
+
+	#linkBack a.button:hover {
+		background: #006438;
+		color:#fff;
+		text-decoration:none;
+	}
+	</style>
+</head>
+
+
+<body>
+<body>
+
+    <div id="container">
+
+        <div id="marco-juego-16">
+
+            <div id="juego-16">
+
+                <section id="gameIntro">
+                    <p><a id="gamePlay" class="button" href="#">Empezar</a></p>
+                </section>
+
+                <section id="gameComplete">
+                    <p><a class="gameReset button" href="">Jugar otra vez &gt;</a></p>
+                </section>
+
+                <div id="cards">
+                    <div class="card">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                    </div>
+                    <!-- .card -->
+                </div>
+                <!-- #cards -->
+            </div>
+
+            <div class="clearfloat"></div>
+
+            <section id="gameStats">
+                <p id="timer">Tiempo: <span class="gameScore"></span></p>
+
+            </section>
+            <div class="clearfloat"></div>
+            <div id="web"><a href="../../index.html">peneira.github.io/ec/</a></div>
+        </div>
+	</div> 
+	<div class="clearfloat"></div>
+
+<script type="text/javascript">
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+</script>
+<!-- Script Memo-->
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script  type="text/javascript">
+	var snd = new Audio("../audio/pop.mp3"); 
+snd.play();
+var sonidoAcierto = new Audio("../audio/acierto.mp3"); 
+var aplausos = new Audio("../audio/jua.mp3"); 
+
+	
+
+var score;
+var cardsmatched;
+
+var ui = $("#gameUI");
+var uiIntro = $("#gameIntro");
+var uiStats = $("#gameStats");
+var uiComplete = $("#gameComplete");
+var uiCards= $("#cards");
+var uiReset = $(".gameReset");
+var uiScore = $(".gameScore");
+var uiPlay = $("#gamePlay");
+var uiTimer = $("#timer");
+
+var matchingGame = {};
+matchingGame.deck = ['carta01', 'carta01','carta02', 'carta02','carta03', 'carta03','carta04', 'carta04','carta05', 'carta05','carta06', 'carta06','carta07', 'carta07','carta08', 'carta08'];
+
+$(function(){
+	  init();
+});
+
+function init() {
+					uiComplete.hide();
+					uiCards.hide();
+					playGame = false;
+					uiPlay.click(function(e) {
+						e.preventDefault();
+						uiIntro.hide();
+						startGame();
+						snd.play();
+					});
+				
+					uiReset.click(function(e) {
+						e.preventDefault();
+						uiComplete.hide();					
+						reStartGame();
+						snd.play();
+					});
+			}
+
+function startGame(){
+				uiTimer.show();
+				uiScore.html("0 segundos");
+				uiStats.show();
+				uiCards.show();
+				score = 0;
+				cardsmatched = 0;
+			   	if (playGame == false) {
+			   			playGame = true;
+						matchingGame.deck.sort(shuffle);
+					//ACA VA UNO MENOS QUE LA CANTIDAD DE CARTAS
+						for(var i=0;i<15;i++){
+								$(".card:first-child").clone().appendTo("#cards");
+							}
+							uiCards.children().each(function(index) {
+								$(this).css({
+									"left" : ($(this).width() + 10) * (index % 4),
+									"top" : ($(this).height() + 10) * Math.floor(index / 4)
+								});
+								var pattern = matchingGame.deck.pop();
+								$(this).find(".back").addClass(pattern);
+								$(this).attr("data-pattern",pattern);
+								$(this).click(selectCard);
+								$(this).click(snd.play());
+
+							});											 
+				   	timer();
+				};			   
+			  }
+
+
+function timer() {
+				if (playGame) {
+					scoreTimeout = setTimeout(function() {
+						uiScore.html(++score + " segundos");		
+						timer();
+					}, 1000);
+				};
+		};
+
+function shuffle() {
+	return 0.5 - Math.random();
+}
+
+function selectCard() {
+	if ($(".card-flipped").size() > 1) {
+	return;
+	}
+	$(this).addClass("card-flipped");
+	if ($(".card-flipped").size() == 2) {
+	setTimeout(checkPattern,700);
+}
+	snd.play();
+}
+
+function checkPattern() {
+	if (isMatchPattern()) {
+		$(".card-flipped").removeClass("card-flipped").addClass("card-removed");
+			if(document.webkitTransitionEnd){
+				$(".card-removed").bind("webkitTransitionEnd",	removeTookCards);
+			}else{
+				removeTookCards();
+					sonidoAcierto.play();
+
+			}
+		} else {
+		$(".card-flipped").removeClass("card-flipped");
+			
+	}
+}
+
+function isMatchPattern() {
+	var cards = $(".card-flipped");
+	var pattern = $(cards[0]).data("pattern");
+	var anotherPattern = $(cards[1]).data("pattern");
+	return (pattern == anotherPattern);
+}
+
+// ACA VA UN NUMERO MENOS QUE LA CANTIDAD DE PARES
+function removeTookCards() {
+	if (cardsmatched < 7){
+		cardsmatched++;
+		$(".card-removed").remove();
+	}else{
+		$(".card-removed").remove();
+			aplausos.play();
+
+		uiCards.hide();
+		uiComplete.show();
+		clearTimeout(scoreTimeout);
+
+	}	
+}
+
+function reStartGame(){
+				playGame = false;
+				uiCards.html("<div class='card'><div class='face front'></div><div class='face back'></div></div>");
+				clearTimeout(scoreTimeout);
+matchingGame.deck = ['carta01', 'carta01','carta02', 'carta02','carta03', 'carta03','carta04', 'carta04','carta05', 'carta05','carta06', 'carta06','carta07', 'carta07','carta08', 'carta08'];
+	startGame();
+			}
+</script>
+
+
+
+
+</body>
+</html>
