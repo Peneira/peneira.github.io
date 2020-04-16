@@ -11,11 +11,12 @@
     <meta property="og:type" content="website"/>
 
 	<style type="text/css">
-		/* Define the 3D perspective view and dimension of each card. */
+		
+	/* Define the 3D perspective view and dimension of each card. */
 	.card {
 		-webkit-perspective: 600;
-		width: 125px;
-		height: 125px;
+		width: 110px;
+		height: 110px;
 		position: absolute;
 		-moz-transition: all .3s;
 		-webkit-transition: all .3s;
@@ -24,8 +25,8 @@
 	}
 
 	#gameIntro {
-		background:url(../jpg/16-cielos-start.png) top left no-repeat;
-		padding: 230px 0;
+		background:url(../jpg/20-impresionismo-start.png) top left no-repeat;
+		padding: 160px 0;
 		text-align: center;
 		height: 370px;
 	}
@@ -35,33 +36,66 @@
 		border-radius: 45px;
 		display: block;
 		font-size: 30px;
-		margin-top: 100px;
-		margin-left: 177px;
+		margin-top: 170px;
+		margin-left: 147px;
 		padding: 10px;
 		width: 150px;
 		border: 3px solid #565656;
 		color:#565656;
 		text-decoration:none;
 	}
+
+
+
+	#gameComplete {
+		background:url(../jpg/20-impresionismo-end.jpg) top left no-repeat;
+		padding: 160px 0;
+		text-align: center; 
+		height: 330px;
+	}
+
+
+	#gameComplete a.button {
+		background: #ffcc00;
+		border-radius: 15px;
+		display: block;
+		font-size: 20px;
+		margin: 180px auto 0;
+		padding: 10px;
+		width: 200px;
+		border: 3px solid #cc3300;
+		color:#cc3300;
+		text-decoration:none;
+	}
+
+
+
 	.front {
-		background: url(../jpg/16-cielos-deck.jpg) -500px -125px;
+		background: url(../jpg/20-impresionismo-deck.jpg) -550px 0;
 		z-index: 10;
 	}
 	.back {
-		background: #efefef url(../jpg/16-cielos-deck.jpg);
+		background: #efefef url(../jpg/20-impresionismo-deck.jpg);
 		-webkit-transform: rotate3d(0,1,0,-180deg);
 		z-index: 8;
 	}
 
 
 	.carta01 {background-position: 0 0;}
-	.carta02 {background-position: -125px 0;}
-	.carta03 {background-position: -250px 0;}
-	.carta04 {background-position: -375px 0;}
-	.carta05 {background-position: 0 125px;}
-	.carta06 {background-position: -125px 125px;}
-	.carta07 {background-position: -250px 125px;}
-	.carta08 {background-position: -375px 125px;}
+	.carta02 {background-position: -110px 0;}
+	.carta03 {background-position: -220px 0;}
+	.carta04 {background-position: -330px 0;}
+	.carta05 {background-position: -440px 0;}
+
+	.carta06 {background-position: 0 -110px;}
+	.carta07 {background-position: -110px -110px;}
+	.carta08 {background-position: -220px -110px;}
+	.carta09 {background-position: -330px -110px;}
+	.carta10 {background-position: -440px -110px;}
+
+
+
+
 	</style>
 	<style type="text/css">
 		@charset "utf-8";
@@ -213,7 +247,7 @@
 	}
 
 	#web30 {
-		background-color: #e1b134;
+		background-color: #00ae97;
 		width:510px;
 		height:20px;
 		text-align: center;
@@ -437,9 +471,9 @@
 
     <div id="container">
 
-        <div id="marco-juego-16">
+        <div id="marco-juego-20">
 
-            <div id="juego-16">
+            <div id="juego-20">
 
                 <section id="gameIntro">
                     <p><a id="gamePlay" class="button" href="#">Empezar</a></p>
@@ -461,12 +495,12 @@
 
             <div class="clearfloat"></div>
 
-            <section id="gameStats">
+            <section id="gameStats30">
                 <p id="timer">Tiempo: <span class="gameScore"></span></p>
 
             </section>
             <div class="clearfloat"></div>
-            <div id="web"><a href="../../index.html">peneira.github.io/ec/</a></div>
+            <div id="web30"><a href="../../index.html">peneira.github.io/ec/</a></div>
         </div>
 	</div> 
 	<div class="clearfloat"></div>
@@ -479,153 +513,176 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 <!-- Script Memo-->
 <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
 <script  type="text/javascript">
-	var snd = new Audio("../audio/pop.mp3"); 
-snd.play();
-var sonidoAcierto = new Audio("../audio/acierto.mp3"); 
-var aplausos = new Audio("../audio/jua.mp3"); 
-
-	
-
-var score;
-var cardsmatched;
-
-var ui = $("#gameUI");
-var uiIntro = $("#gameIntro");
-var uiStats = $("#gameStats");
-var uiComplete = $("#gameComplete");
-var uiCards= $("#cards");
-var uiReset = $(".gameReset");
-var uiScore = $(".gameScore");
-var uiPlay = $("#gamePlay");
-var uiTimer = $("#timer");
-
-var matchingGame = {};
-matchingGame.deck = ['carta01', 'carta01','carta02', 'carta02','carta03', 'carta03','carta04', 'carta04','carta05', 'carta05','carta06', 'carta06','carta07', 'carta07','carta08', 'carta08'];
-
-$(function(){
-	  init();
-});
-
-function init() {
-					uiComplete.hide();
-					uiCards.hide();
-					playGame = false;
-					uiPlay.click(function(e) {
-						e.preventDefault();
-						uiIntro.hide();
-						startGame();
-						snd.play();
-					});
-				
-					uiReset.click(function(e) {
-						e.preventDefault();
-						uiComplete.hide();					
-						reStartGame();
-						snd.play();
-					});
-			}
-
-function startGame(){
-				uiTimer.show();
-				uiScore.html("0 segundos");
-				uiStats.show();
-				uiCards.show();
-				score = 0;
-				cardsmatched = 0;
-			   	if (playGame == false) {
-			   			playGame = true;
-						matchingGame.deck.sort(shuffle);
-					//ACA VA UNO MENOS QUE LA CANTIDAD DE CARTAS
-						for(var i=0;i<15;i++){
-								$(".card:first-child").clone().appendTo("#cards");
-							}
-							uiCards.children().each(function(index) {
-								$(this).css({
-									"left" : ($(this).width() + 10) * (index % 4),
-									"top" : ($(this).height() + 10) * Math.floor(index / 4)
-								});
-								var pattern = matchingGame.deck.pop();
-								$(this).find(".back").addClass(pattern);
-								$(this).attr("data-pattern",pattern);
-								$(this).click(selectCard);
-								$(this).click(snd.play());
-
-							});											 
-				   	timer();
-				};			   
-			  }
-
-
-function timer() {
-				if (playGame) {
-					scoreTimeout = setTimeout(function() {
-						uiScore.html(++score + " segundos");		
-						timer();
-					}, 1000);
-				};
-		};
-
-function shuffle() {
-	return 0.5 - Math.random();
-}
-
-function selectCard() {
-	if ($(".card-flipped").size() > 1) {
-	return;
-	}
-	$(this).addClass("card-flipped");
-	if ($(".card-flipped").size() == 2) {
-	setTimeout(checkPattern,700);
-}
+	var snd = new Audio("../audio/pop.mp3"); // buffers automatically when created
 	snd.play();
-}
+	var sonidoAcierto = new Audio("../audio/acierto.mp3"); 
+	var aplausos = new Audio("../audio/jua.mp3"); 
 
-function checkPattern() {
-	if (isMatchPattern()) {
-		$(".card-flipped").removeClass("card-flipped").addClass("card-removed");
-			if(document.webkitTransitionEnd){
-				$(".card-removed").bind("webkitTransitionEnd",	removeTookCards);
-			}else{
-				removeTookCards();
-					sonidoAcierto.play();
+		
 
-			}
-		} else {
-		$(".card-flipped").removeClass("card-flipped");
-			
+	//create all the variables
+	var score;
+	var cardsmatched;
+
+	var ui = $("#gameUI");
+	var uiIntro = $("#gameIntro");
+	var uiStats = $("#gameStats");
+	var uiComplete = $("#gameComplete");
+	var uiCards= $("#cards");
+	var uiReset = $(".gameReset");
+	var uiScore = $(".gameScore");
+	var uiPlay = $("#gamePlay");
+	var uiTimer = $("#timer");
+
+	//create deck array
+	var matchingGame = {};
+	matchingGame.deck = ['carta01', 'carta01','carta02', 'carta02','carta03', 'carta03','carta04', 'carta04','carta05', 'carta05','carta06', 'carta06','carta07', 'carta07','carta08', 'carta08', 'carta09', 'carta09','carta10', 'carta10'];
+
+	//on document load the lazy way
+	$(function(){
+		  init();
+	});
+
+	//initialise game
+	function init() {
+						uiComplete.hide();
+						uiCards.hide();
+						playGame = false;
+						uiPlay.click(function(e) {
+							e.preventDefault();
+							uiIntro.hide();
+							startGame();
+							snd.play();
+						});
+					
+						uiReset.click(function(e) {
+							e.preventDefault();
+							uiComplete.hide();					
+							reStartGame();
+							snd.play();
+						});
+				}
+
+	//start game and create cards from deck array
+	function startGame(){
+					uiTimer.show();
+					uiScore.html("0 segundos");
+					uiStats.show();
+					uiCards.show();
+					score = 0;
+					cardsmatched = 0;
+				   	if (playGame == false) {
+				   			playGame = true;
+							matchingGame.deck.sort(shuffle);
+						//ACA VA UNO MENOS QUE LA CANTIDAD DE CARTAS
+							for(var i=0;i<19;i++){
+									$(".card:first-child").clone().appendTo("#cards");
+								}
+								// initialize each card's position
+								uiCards.children().each(function(index) {
+									// align the cards to be 3x6 ourselves.
+									$(this).css({
+										"left" : ($(this).width() + 10) * (index % 4),
+										"top" : ($(this).height() + 10) * Math.floor(index / 4)
+									});
+									// get a pattern from the shuffled deck
+									var pattern = matchingGame.deck.pop();
+									// visually apply the pattern on the card's back side.
+									$(this).find(".back").addClass(pattern);
+									// embed the pattern data into the DOM element.
+									$(this).attr("data-pattern",pattern);
+									// listen the click event on each card DIV element.
+									$(this).click(selectCard);
+																	$(this).click(snd.play());
+
+								});											 
+					   	timer();
+					};			   
+				  }
+
+
+	//timer for game
+	function timer() {
+					//alert("timer set")
+					if (playGame) {
+						scoreTimeout = setTimeout(function() {
+							uiScore.html(++score + " segundos");		
+							timer();
+						}, 1000);
+					};
+			};
+
+	//shuffle cards
+	function shuffle() {
+		return 0.5 - Math.random();
 	}
-}
 
-function isMatchPattern() {
-	var cards = $(".card-flipped");
-	var pattern = $(cards[0]).data("pattern");
-	var anotherPattern = $(cards[1]).data("pattern");
-	return (pattern == anotherPattern);
-}
+	//onclick function add flip class and then check to see if cards are the same
+	function selectCard() {
+		// we do nothing if there are already two cards flipped.
+		if ($(".card-flipped").size() > 1) {
+		return;
+		}
+		$(this).addClass("card-flipped");
+		// check the pattern of both flipped card 0.7s later.
+		if ($(".card-flipped").size() == 2) {
+		setTimeout(checkPattern,700);
+	}
+		snd.play();
+	}
 
-// ACA VA UN NUMERO MENOS QUE LA CANTIDAD DE PARES
-function removeTookCards() {
-	if (cardsmatched < 7){
-		cardsmatched++;
-		$(".card-removed").remove();
-	}else{
-		$(".card-removed").remove();
-			aplausos.play();
+	//if pattern is same remove cards otherwise flip back
+	function checkPattern() {
+		if (isMatchPattern()) {
+			$(".card-flipped").removeClass("card-flipped").addClass("card-removed");
+				if(document.webkitTransitionEnd){
+					$(".card-removed").bind("webkitTransitionEnd",	removeTookCards);
+				}else{
+					removeTookCards();
+						sonidoAcierto.play();
 
-		uiCards.hide();
-		uiComplete.show();
-		clearTimeout(scoreTimeout);
+				}
+			} else {
+			$(".card-flipped").removeClass("card-flipped");
+				
+		}
+	}
 
-	}	
-}
+	//put 2 flipped cards in an array then check the image to see if it's the same.
+	function isMatchPattern() {
+		var cards = $(".card-flipped");
+		var pattern = $(cards[0]).data("pattern");
+		var anotherPattern = $(cards[1]).data("pattern");
+		return (pattern == anotherPattern);
+	}
 
-function reStartGame(){
-				playGame = false;
-				uiCards.html("<div class='card'><div class='face front'></div><div class='face back'></div></div>");
-				clearTimeout(scoreTimeout);
-matchingGame.deck = ['carta01', 'carta01','carta02', 'carta02','carta03', 'carta03','carta04', 'carta04','carta05', 'carta05','carta06', 'carta06','carta07', 'carta07','carta08', 'carta08'];
-	startGame();
-			}
+	//check to see if all cardmatched variable is less than 8 if so remove card only otherwise remove card and end game 
+	// ACA VA UN NUMERO MENOS QUE LA CANTIDAD DE PARES
+	function removeTookCards() {
+		if (cardsmatched < 9){
+			cardsmatched++;
+			$(".card-removed").remove();
+		}else{
+			$(".card-removed").remove();
+				aplausos.play();
+
+			uiCards.hide();
+			uiComplete.show();
+			clearTimeout(scoreTimeout);
+
+		}	
+	}
+
+	//recreate the original card , stop the timer and re populate the array with class names
+	function reStartGame(){
+					playGame = false;
+					uiCards.html("<div class='card'><div class='face front'></div><div class='face back'></div></div>");
+					clearTimeout(scoreTimeout);
+	matchingGame.deck = ['carta01', 'carta01','carta02', 'carta02','carta03', 'carta03','carta04', 'carta04','carta05', 'carta05','carta06', 'carta06','carta07', 'carta07','carta08', 'carta08', 'carta09', 'carta09','carta10', 'carta10'];
+
+		startGame();
+				}
+					
 </script>
 
 
