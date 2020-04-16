@@ -1,0 +1,146 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+	<link rel="stylesheet" href="./css/zenburn.css">
+	<script src="http://cdn.jsdelivr.net/highlight.js/8.7/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<style type="text/css">
+
+body {
+  text-align: center;
+}
+
+.mainTitle {
+  font-family: 'Audiowide', sans-serif;
+  font-size: 2rem;
+  margin: 0.2em;
+  color: #c88;
+}
+
+.chooseTitle {
+  margin: 1em 0 0.25em;
+}
+
+table, tr, td {
+  border: 1px solid #abc;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 40px auto;
+}
+
+tr {
+  height: 25px;
+}
+
+td {
+  width: 25px;
+}
+
+input[type=number] {
+  width: 3em;
+  margin-right: 10px;
+}
+
+input[type=submit] {
+  margin-right: 2em;
+}
+
+
+@media screen and (max-width: 480px) {
+
+  .mainTitle {
+    font-size: 1.1rem;
+    display: inline;
+  }
+
+  .chooseTitle {
+    font-size: 1.1rem;
+    display: inline;
+  }
+
+  table {
+    margin: 10px auto;
+  }
+
+    tr {
+    height: 30px;
+  }
+
+  td {
+    width: 30px;
+  }
+}
+</style>
+
+</head>
+<body>
+  <div id = "container">
+    <div class = "panel">
+      <h1 class ="mainTitle">Pixel Art Maker</h1>
+
+      <h2 class = "chooseTitle">Choose Grid Size and Colors</h2>
+      <form id="sizePicker">
+        <span class = "label">Rows: </span>
+        <input type="number" required id="input_height" name="height" min="1" max="30" value="10">
+        <span class = "label">Columns: </span>
+        <input type="number" required id="input_width" name="width" min="1" max="30" value="10">
+        <input type="submit">
+        <input type="color" id="colorPicker">
+      </form>
+
+    </div>
+    <table id="pixel_canvas"></table>
+  </div>
+<script async type="text/javascript">
+/* jshint esnext: true */
+/* global document */
+let canvas = document.getElementById("pixel_canvas");
+let height = document.getElementById("input_height");
+let width = document.getElementById("input_width");
+let sizePicker = document.getElementById("sizePicker");
+let color = document.getElementById("colorPicker");
+
+color.addEventListener("click", function(){});
+
+sizePicker.onsubmit = function(event){
+    event.preventDefault();
+    clearGrid();
+    makeGrid();
+};
+
+function makeGrid() {
+    for (let r=0; r<height.value; r++){
+        const row = canvas.insertRow(r);
+        for (let c=0; c<width.value; c++){
+            const cell = row.insertCell(c);
+            cell.addEventListener("click", fillSquare);
+        }
+    }
+}
+
+function clearGrid(){
+    while (canvas.firstChild){
+         canvas.removeChild(canvas.firstChild);
+    }
+}
+// alternative code:
+// while (table.rows.length > 0) {
+//  table.deleteRow(0);
+// }
+
+function fillSquare () {
+    this.setAttribute("style", `background-color: ${color.value}`);
+}
+</script>
+</body>
+</html>
