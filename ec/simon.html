@@ -1,0 +1,2278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <title>Juego de Simón de memoria con color y sonido</title>
+  <script src="../js/mootools-core.js" type="text/javascript"></script>
+  <script src="../js/joomla-core.js" type="text/javascript"></script>
+  <script src="../js/caption.js" type="text/javascript"></script>
+  <script type="text/javascript">
+window.addEvent('load', function() {
+				new JCaption('img.caption');
+			});
+  </script>
+<style type="text/css">
+	@charset "utf-8";
+/* CSS Document */
+
+*{
+margin:0;
+padding:0;
+border:none;
+text-decoration:none;
+}
+
+
+.clearer,.clr{
+clear:both;
+}
+
+.gras,.bold{
+font-weight:bold;
+}
+
+.souligne{
+text-decoration:underline;
+}
+
+.tableau{
+border-collapse:collapse;
+}
+.tableau td{
+border:1px solid black;
+text-align:left;
+padding:10px;
+}
+
+.lien_image:link,.lien_image:visited{
+color:black;
+}
+.lien_image:hover{
+text-decoration:none;
+color:black;
+}
+
+.ilb {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: top;
+}
+
+a img{
+border:none;
+}
+
+body{
+color:#c0c2be;
+font-family:Verdana;
+font-weight:normal;
+font-size:12px;
+background-color:#c0c2be;
+
+}
+
+h1,h2,h3,h4{
+font-weight:normal;
+font-size:12px;
+}
+
+a:link,  a:visited {
+color:#810892;
+font-size:12px;
+text-decoration:none;
+}
+
+a:hover{
+color:#810892;
+font-size:12px;
+text-decoration:underline;
+}
+
+
+.non_souligne:hover{
+text-decoration:none;
+}
+
+ul {
+list-style-type:none;
+}
+
+.sub-title-home{
+font-size:16px;
+font-weight:bold;
+padding-bottom:10px;
+}
+.purple_title_home{
+			background-color:#cda1fc;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			}
+			.green_title_home{
+			background-color:#c4f182;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			}
+			.blue_title_home{
+			background-color:#6ec1e6;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			}
+			h2.new_red_title_home.h2-home{
+			background-color:#e7050f;
+			color:white;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.new_red_title_home.h2-home a{
+			color:white;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.pink_title_home.h2-home{
+			background-color:#a92088;
+			color:white;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.pink_title_home.h2-home a{
+			color:white;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.blue_title_home.h2-home{
+			background-color:#679cd1;
+			color:white;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.blue_title_home.h2-home a{
+			color:white;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.orange_title_home.h2-home{
+			background-color:#e78121;
+			color:white;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.orange_title_home.h2-home a{
+			color:white;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.green_title_home.h2-home{
+			background-color:#91c742;
+			color:white;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			font-size:18px;
+			font-weight:bold;
+			}
+			h2.green_title_home.h2-home a{
+			color:white;
+			font-size:18px;
+			font-weight:bold;
+			}
+			
+			.orange_title_home{
+			background-color:#fbd278;
+			overflow:hidden;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-khtml-border-radius: 5px;
+			border-radius: 5px;
+			padding:10px;
+			}
+			
+#body_int{
+width:100%;
+}
+
+#global{
+width:1000px;
+margin:auto;
+}
+
+	#top{
+	width:100%;
+	height:181px;
+	position:relative;
+	overflow:hidden;
+	}
+		#logo{
+		height:141px;
+		width:411px;
+		float:left;
+		}
+		#logo a{
+		display:block;
+		height:141px;
+		width:411px;
+		}
+		
+		#plusone{
+		height:50px;
+		width:60px;
+		float:right;
+		margin-right:10px;
+		margin-top:10px;
+		}
+		
+		#jaime{
+		height:50px;
+		width:160px;
+		top:50px;
+		right:5px;
+		position:absolute;
+		}
+		
+		#drapeaux{
+		height:44px;
+		width:20px;
+		top:90px;
+		right:10px;
+		position:absolute;
+		}
+		#drapeaux a{
+		display:block;
+		height:22px;
+		width:20px;
+		}
+	
+	
+	#menu{
+	width:100%;
+	padding-bottom:15px;
+	}
+	#menu ul{
+	text-align:right;
+	display:block;
+	text-align:left;
+	background-color:#312934;
+	border-bottom:1px solid #443d47;
+	border-top:1px solid #443d47;
+	z-index:1000;
+	}
+		#menu ul li {
+		display:inline-block;
+		*display:inline;
+		zoom:1;
+		letter-spacing:normal;
+		vertical-align:top;
+		font-size:13px;
+		position:relative;
+		}
+		#menu ul  li  a{
+		font-family: 'Open Sans', Arial, sans-serif;
+		font-size: 13px;
+		}
+		#menu ul > li > a{
+		display:block;
+		color:white;
+		border-right: 1px solid #443d47;
+		padding: 20px 25px;
+		text-align: center;
+		font-size: 14px;
+		font-weight:600;
+		}
+		#menu ul > li.item-262 {
+		width:65px;
+		}
+		
+		#menu ul > li.item-262 > a{
+		width:15px;
+		height:19px;
+		background-image:url(..jpg/sm/picto_home.png);
+		background-repeat:no-repeat;
+		background-position:20px 20px;
+		font-size:0;
+		}
+		#menu ul > li.active,#menu ul > li#current{
+		background-color:#854ec3;
+		}
+		#menu ul > li > ul > li.active,#menu ul > li > ul > li#current{
+		background-color:inherit;
+		}
+
+		#menu ul li a:hover{
+		text-decoration:none;
+		}
+		#menu ul > li > a:hover{background-color:#854ec3;}
+		
+		/* -----------------  ITEMS DU MENU CAS GENERAL----------------------*/
+		#menu ul > li > ul {
+		display:none;
+		position:absolute;
+		top:58px;
+		left:0px;
+		height:auto;
+		width:250px;
+		border-style:solid;
+		border-color:#443d47;
+		border-width: 1px 1px 0px 1px;
+		padding:0px;
+		text-align:left;
+		z-index:9999999810;
+		background-color: #3c323f;
+		}
+		
+		#menu ul > li > ul > li{
+		display:block;
+		width:100%;
+		margin-right:0px;
+		}
+		#menu  ul > li:hover > ul,#menu  ul > li > ul:hover{display:block;}
+		#menu ul > li > ul > li > a {
+			color: #c4b6d4;
+			display: block;
+			font-size: 14px;
+			padding: 10px 20px;
+			text-align: left;
+			border-bottom: 1px solid #443d47;
+			border-right:0;
+		}
+		#menu ul > li > ul > li > a:hover{color:white;}
+		#menu ul > li > ul > li > ul {
+			display: none;
+			position: absolute;
+			left: 250px;
+			top: 0px;
+			width: 250px;
+			padding: 0px;
+			height: auto;
+			border: 1px solid #cdc3da;
+			z-index: 10000000000;
+			background-color: #f6f3f8;
+		}
+		#menu ul > li > ul > li > ul > li > a {
+		border-bottom: 1px solid #cdc3da;
+		color: #74608b;
+		}
+		#menu ul > li > ul > li > ul > li > a:hover{background-color:#dbd0e7;color:#40275c;}		
+		#menu ul > li > ul > li:hover > ul {
+			display: block;
+		}
+		#menu ul > li > ul > li > ul > li > ul {
+		border: 1px solid #cdc3da;
+		border-color: #cdc3da;
+		background-color:white;
+		top: -1px;
+		}
+		#menu ul > li > ul > li > ul > li > ul > li > a {
+		border-bottom: 1px solid #efeeef;
+		color: #74608b;
+		}
+		#menu ul > li > ul > li > ul > li > ul > li > a:hover{background-color:#f6f3f8;color:#40275c;}		
+		
+	/* ---------------- bandeau ------------------*/		
+			#bandeau {
+			width:100%;
+			background:#170128;
+			}
+			#bandeau a,#bandeau img{display:block;width:100%;}
+			#bandeau2 {
+			width:970px;
+			padding-right:15px;
+			padding-left:15px;
+			height:90px;
+			overflow:hidden;
+			background:#170128;
+			}
+			
+				
+				#carre {
+				float:left;
+				width:231px;
+				height:50px;
+				text-align:center;
+				padding:20px;
+				}
+					#carre  h2{
+					color:#9570B6;
+					font-size:14px;
+					}
+				
+				#banniere {
+				float:left;
+				width:728px;
+				height:90px;
+				}
+				
+	/* ----------------------- FIN DU mENU ------------------------------ */
+	
+	#principal{
+	width:1000px;
+	background:#c0c2be;
+	}
+		
+			
+	
+		#gauche{
+		width:300px;
+		float:left;
+		margin-left:10px;
+		-margin-left:5px;
+		overflow:hidden;
+		}
+			#googad{
+			margin-bottom:10px;
+			margin-top:10px;
+			}
+			#googadtext{
+			margin-bottom:20px;
+			margin-top:20px;
+			}
+			
+			#pub_haut{
+			width:260px;
+			margin-bottom:20px;
+			}
+			
+			#pub_bas{
+			width:260px;
+			margin-bottom:20px;
+			}
+			
+		
+		.lien_retour {
+		text-align:center;
+		}
+
+		.lien_retour a:link, .lien_retour a:visited {
+		color:white;
+		}
+		.lien_retour a:hover {
+		color:white;
+		}
+		
+		#contenu{
+		width:666px;
+		float:left;
+		margin-left:10px;
+		overflow:hidden;
+		}
+			
+			/*  ---------------------------------------------CONTENU HOME  --------------------------------------------------------*/
+			#home_haut{
+			margin-bottom:3px;
+			margin-top:10px;
+			padding: 20px;
+			background-color: #ffffff;
+			border-radius: 10px;
+			}
+			#home_haut h1{font-size:18px;padding-bottom:20px;font-weight:bold;}
+				#home_haut_top{
+				text-align:center;
+				padding-top:25px;
+				height:62px;
+				background-image:url(../jpg/sm/home_haut_top.png);
+				background-repeat:no-repeat;
+				background-position:top left;
+				overflow:hidden;
+				}
+					#home_haut_top h1{
+					font-size:18px;
+					font-weight:bold;
+					color:#29012e;
+					}
+					
+				#home_haut_contenu{
+				padding-top:10px;
+				padding-bottom:10px;
+				padding-right:20px;
+				padding-left:20px;
+				background-image:url(../jpg/sm/home_haut_bak.png);
+				background-repeat:repeat-y;
+				background-position:top left;
+				}
+					#home_haut_contenu p{
+					margin-bottom:10px;
+					text-indent:20px;
+					text-align:justify;
+					}
+					
+				#home_haut_bottom{
+				height:15px;
+				background-image:url(../jpg/sm/home_haut_bottom.png);
+				background-repeat:no-repeat;
+				background-position:top left;
+				overflow:hidden;
+				}
+				
+			#home_milieu{
+			width:100%;
+			overflow:hidden;
+			}
+			
+				#home_milieu a{
+				color:black;
+				font-weight:bold;
+				}
+				#home_milieu h2{
+				font-size:18px;
+				font-weight:bold;
+				color:#29012e;
+				}
+			
+					/* PARTIE BLEUE */
+					#home_milieu_bleu_top{
+					text-align:center;
+					padding-top:25px;
+					height:62px;
+					background-image:url(../jpg/sm/home_milieu_bleu_top.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					}
+						
+						
+					#home_milieu_bleu_contenu{
+					padding-top:10px;
+					padding-bottom:10px;
+					padding-right:20px;
+					padding-left:20px;
+					background-image:url(../jpg/sm/home_milieu_bleu_bak.jpg);
+					background-repeat:repeat-y;
+					background-position:top left;
+					}
+						
+						
+					#home_milieu_bleu_bottom{
+					height:15px;
+					background-image:url(../jpg/sm/home_milieu_bleu_bottom.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					margin-bottom:4px;
+					}
+					
+					/* PARTIE VERTE */
+					#home_milieu_vert_top{
+					text-align:center;
+					padding-top:25px;
+					height:62px;
+					background-image:url(../jpg/sm/home_milieu_vert_top.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					}	
+						
+					#home_milieu_vert_contenu{
+					padding-top:10px;
+					padding-bottom:10px;
+					padding-right:20px;
+					padding-left:20px;
+					background-image:url(../jpg/sm/home_milieu_vert_bak_2.jpg);
+					background-repeat:repeat-y;
+					background-position:top left;
+					}
+						
+					#home_milieu_vert_bottom{
+					height:15px;
+					background-image:url(../jpg/sm/home_milieu_vert_bottom.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					margin-bottom:4px;
+					}
+					
+					/* PARTIE ORANGE */
+					#home_milieu_orange_top{
+					text-align:center;
+					padding-top:25px;
+					height:62px;
+					background-image:url(../jpg/sm/home_milieu_orange_top.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					}	
+						
+					#home_milieu_orange_contenu{
+					padding-top:10px;
+					padding-bottom:10px;
+					padding-right:20px;
+					padding-left:20px;
+					background-image:url(../jpg/sm/home_milieu_orange_bak.jpg);
+					background-repeat:repeat-y;
+					background-position:top left;
+					}
+						
+					#home_milieu_orange_bottom{
+					height:15px;
+					background-image:url(../jpg/sm/home_milieu_orange_bottom.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					margin-bottom:4px;
+					}
+					
+					.btn_all_games{
+					display:block;
+					width:315px;
+					height:35px;
+					color:white;
+					font-size:14px;
+					font-weight:bold;
+					padding:20px 0px 0px 55px;
+					}
+					a.btn_new_all_games:link,a.btn_new_all_games:visited,a.btn_new_all_games:hover{
+					font-size:13px;
+					font-weight:bold;
+					padding:20px;
+					-moz-border-radius:5px;
+					-webkit-border-radius:5px;
+					-khtml-border-radius: 5px;
+					border-radius: 5px;
+					}
+					a.btn_new_all_games:hover{text-decoration:none;}
+					.btn_new_kids,.btn_new_kids:visited{
+					background-color:#6ebbe3;
+					color:white;
+					}
+					.btn_new_kids:hover{
+					background-color: #679cd1;
+					color:white;
+					}
+					.btn_new_seniors:link,.btn_new_seniors:visited{
+					background-color:#f2b04d;
+					color:white;
+					}
+					.btn_new_seniors:hover{
+					background-color: #e78121;
+					color:white;
+					}
+					
+					.btn_new_adults:link,.btn_new_adults:visited{
+					background-color:#b8e16e;
+					color:white;
+					}
+					.btn_new_adults:hover{
+					background-color:#91c742;
+					color:white;
+					}
+					.btn_kids{
+					background-image:url(../jpg/sm/tous_jeux_enfants.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					}
+					.btn_adults{
+					background-image:url(../jpg/sm/tous_jeux_adultes.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					}
+					.btn_seniors{
+					background-image:url(../jpg/sm/tous_jeux_seniors.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					}
+				
+			#home_bas{
+			width:100%;
+			overflow:hidden;
+			margin-bottom:40px;
+			}
+			#home_bas h3{
+			font-size:12px;
+			font-weight:bold;
+			}
+				#home_gauche{
+				width:380px;
+				float:left;
+				}
+					#home_gauche_top{
+					text-align:center;
+					padding-top:25px;
+					width:380px;
+					height:58px;
+					background-image:url(../jpg/sm/home_gauche_top.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					}
+						#home_gauche_top h2{
+						font-size:18px;
+						font-weight:bold;
+						color:#890666;
+						}
+					#home_gauche_contenu{
+					width:350px;
+					padding-right:15px;
+					padding-left:15px;
+					padding-top:10px;
+					padding-bottom:0px;
+					background-image:url(../jpg/sm/home_gauche_bak.jpg);
+					background-repeat:repeat-y;
+					background-position:top left;
+					}
+						#home_gauche_image{
+						width:150px;
+						float:left;
+				
+						}
+						
+						#home_gauche_contenu .clearer{
+						height:0px;
+						}
+						#home_gauche_texte{
+						width:185px;
+						float:left;
+						}
+						
+					#home_gauche_bottom{
+					width:380px;
+					height:24px;
+					background-image:url(../jpg/sm/home_gauche_bottom.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					}
+					
+				#home_droite{
+				width:283px;
+				float:left;
+				margin-left:3px;
+				}
+					#home_droite_top{
+					text-align:center;
+					padding-top:25px;
+					width:283px;
+					height:58px;
+					background-image:url(../jpg/sm/home_droite_top.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					}
+						#home_droite_top h2{
+						font-size:18px;
+						font-weight:bold;
+						color:#467404;
+						}
+					#home_droite_contenu{
+					padding-top:10px;
+					padding-right:20px;
+					padding-left:20px;
+					width:243px;
+					background-image:url(../jpg/sm/home_droite_bak.jpg);
+					background-repeat:repeat-y;
+					background-position:top left;
+					}
+					
+					#home_droite_bottom{
+					width:283px;
+					height:24px;
+					background-image:url(../jpg/sm/home_droite_bottom.jpg);
+					background-repeat:no-repeat;
+					background-position:top left;
+					overflow:hidden;
+					}
+				
+			
+			/*  --------------------------------------------- CONTENU AUTRES PAGES ------------------------------------------------------------- */
+			#fil_ariane{
+			margin-left:31%;
+			padding:15px 15px 15px 15px;
+			width:64%;
+			color:#c49af1;
+			font-size:13px;
+			}
+			
+			#fil_ariane a{
+			color:#c49af1;
+			}
+			#fil_ariane a:hover{
+			color:white;
+			text-decoration:none;
+			}
+			
+			#gauche .menu{
+			margin-bottom:20px;
+			background-color:#170128;
+			padding:10px 8px 10px 8px;
+			}
+				
+					
+					#gauche .menu li {
+					width:100%;
+					}
+					
+					#gauche .menu li a{
+					padding-left:20px;
+					height:20px;
+					}
+					#gauche .menu li ul li a{
+					padding-left:40px;
+					}
+					#gauche .menu li ul li ul li a{
+					padding-left:60px;
+					}
+					#gauche .menu li ul li ul li ul li a{
+					padding-left:80px;
+					}
+					#gauche .menu  li.item-102 ul li a{
+					color:#3399FF;
+					}
+					#gauche .menu  li.item-102 ul li ul li a{
+					color:#98c9f9;
+					}
+					#gauche .menu  li.item-103 ul li a{
+					color:#76bc48;
+					}
+					#gauche .menu  li.item-103 ul li ul li a{
+					color:#d2f79b;
+					}
+					
+					#gauche .menu  li.item-105 ul li a{
+					color:#e1a96c;
+					}
+					#gauche .menu  li.item-105 ul li ul li a{
+					color:#fce4b0;
+					}
+						#gauche .menu  li.item9 ul li ul .item210 a,#gauche .menu  li.item9 ul li ul .item211 a{
+						height:35px;
+						}				
+					
+					#gauche .menu a{
+					display:block;
+					}
+					#gauche .menu a:link, #gauche .menu a:visited{
+					font-size:12px;
+					color:white;
+					}
+					#gauche .menu a:hover,#gauche .menu li#current.active > a{
+					font-size:12px;
+					text-decoration:none;
+					background:#370250;
+					/*color:#c49af1;*/
+					}
+					#gauche .menu  li.item87 a,#gauche .menu  li.item212 a{
+					height:35px;
+					}
+					#gauche .menu  li.item87 ul li a,#gauche .menu  li.item212 ul li a{
+					height:20px;
+					}
+			
+			
+			#content_big{
+			padding:10px;
+			background-color:#ffffff;
+			border-radius:10px;
+			width:950px;
+			margin:auto;
+			}
+			
+			#contenu_milieu{
+			padding:15px;
+			background-color:#ffffff;
+			border-radius:10px;
+			}
+
+			#big_memory{
+			width:910px;
+			padding-left:15px;
+			margin:auto;
+			background-color:white;
+			}
+			.moduletablenew-pub{
+			padding-bottom:20px;
+			padding-top:10px;
+			}
+			
+			
+				.contentheading{
+				font-weight:bold;
+				font-family:Verdana;
+				font-size:16px;
+				padding-top:6px;
+				padding-bottom:9px;
+				background-image:url(../jpg/sm/pointille.png);
+				background-repeat:repeat-x;
+				background-position:bottom left;
+				margin-bottom:20px;
+				}
+				
+				#content_big .contentheading{
+				padding-left:15px;
+				}
+				
+				object{
+				display:block;
+				background-color:white;
+				}
+				
+				
+				.bloc_article p.center{
+				text-align:center;
+				}
+				.bloc_article #description p{
+				text-indent:0px;
+				}
+				.bloc_article #illustration p{
+				text-align:center;
+				font-weight:bold;
+				color:black;
+				}
+
+				.bloc_article #description h3{
+				text-decoration:underline;
+				font-weight:bold;
+				}
+				.center{
+				text-align:center;
+				}
+					.photo_gauche{
+					width:195px;
+					float:left;
+					}
+					.texte_droite{
+					width:371px;
+					float:left;
+					margin-left:10px;
+					}
+					.texte_droite_mini{
+					width:319px;
+					float:left;
+					margin-left:10px;
+					}
+						.bleu_texte{
+						color:#1587AF;
+						}
+						.bleu_vif_texte{
+						color:#0060BF;
+						}
+						.vert_texte{
+						color:#588F00;
+						}
+						.vert_fonce_texte{
+						color:#08993c;
+						}
+						.mauve_texte{
+						color:#8b5cbe;
+						}
+						.rose_texte{
+						color:#E641AD;
+						}
+						.orange_texte{
+						color:#EF7B00;
+						}
+						.rouge_texte{
+						color:#e30414;
+						}
+						.gris_texte{
+						color:#5e6063;
+						}
+						.bleu_lien:link, .bleu_lien:visited, .bleu_lien:hover {
+						color:#1587AF;
+						}
+						.bleu_vif_lien:link, .bleu_vif_lien:visited, .bleu_vif_lien:hover {
+						color:#0060BF;
+						}
+						.bleu_fonce_lien:link, .bleu_fonce_lien:visited, .bleu_fonce_lien:hover {
+						color:#4f74e1;
+						}
+						
+						.vert_lien:link, .vert_lien:visited, .vert_lien:hover {
+						color:#588F00;
+						}
+						.vert_fonce_lien:link, .vert_fonce_lien:visited, .vert_fonce_lien:hover {
+						color:#08993c;
+						}
+						.mauve_lien:link, .mauve_lien:visited, .mauve_lien:hover {
+						color:#BA51B6;
+						}
+						.rose_lien:link, .rose_lien:visited, .rose_lien:hover {
+						color:#E641AD;
+						}
+						.orange_lien:link, .orange_lien:visited, .orange_lien:hover {
+						color:#EF7B00;
+						}
+						.rouge_lien:link, .rouge_lien:visited, .rouge_lien:hover {
+						color:#e30414;
+						}
+						.gris_lien:link, .gris_lien:visited, .gris_lien:hover {
+						color:#5e6063;
+						}
+						
+					/* mise en forme des titres utiles au referencement */
+					.titre_h1_ref{
+					/*color:#370250;
+					font-family:Verdana;*/
+					font-weight:bold;
+					font-size:16px;
+					}
+					
+					.titre_h2_ref{
+					/*color:#370250;
+					font-family:Verdana;*/
+					font-weight:bold;
+					font-size:14px;
+					}
+					
+					.ss_titre{
+					height:20px;
+					padding-top:5px;
+					margin-bottom:15px;
+					font-size:14px;
+					font-weight:bold;
+					}
+					.ss_ss_titre{
+					height:20px;
+					padding-top:5px;
+					margin-bottom:15px;
+					font-size:13px;
+					font-weight:bold;
+					}
+					.ss_titre a{
+					font-size:14px;
+					font-weight:bold;
+					text-decoration:none;
+					}
+					.ss_ss_titre a{
+					font-size:13px;
+					font-weight:bold;
+					}
+						.bleu_ss_titre{
+						color:#3399FF;
+						border-bottom:4px solid #3399FF;
+						}
+						.vert_ss_titre{
+						color:#76bc48;
+						border-bottom:4px solid #76bc48;
+						}
+						.mauve_ss_titre{
+						color:#8b5cbe;
+						border-bottom:4px solid #8b5cbe;
+						}
+						.rose_ss_titre{
+						color:#E641AD;
+						border-bottom:4px solid #E641AD;
+						}
+						.orange_ss_titre{
+						color:#FDA341;
+						border-bottom:4px solid #FDA341;
+						}
+						.gris_ss_titre{
+						color:#5e6063;
+						border-bottom:4px solid #5e6063;
+						}
+						.bleu_ss_titre a{
+						color:#3399FF;
+						}
+						.vert_ss_titre a{
+						color:#76BC48;
+						}
+						.mauve_ss_titre a{
+						color:#8b5cbe;
+						}
+						.rose_ss_titre a{
+						color:#E641AD;
+						}
+						.orange_ss_titre a{
+						color:#FDA341;
+						}
+						.gris_ss_titre a{
+						color:#5e6063;
+						}
+						
+						
+					.categorie3{
+					display:block;
+					width:136px;
+					margin-left:40px;
+					-margin-left:0px;
+					-margin-right:40px;
+					margin-bottom:20px;
+					float:left;
+					overflow:hidden;
+					}
+					.categorie4{
+					display:block;
+					width:136px;
+					margin-right:8px;
+					-margin-right:5px;
+					float:left;
+					overflow:hidden;
+					}
+					
+					#illustration {
+					width:260px;
+					float:left;
+					}
+					#illustration img {
+					width:260px;
+					}
+					
+					#description {
+					width:280px;
+					float:left;
+					margin-left:10px;
+					}
+					
+					.encadre_bleu{
+					padding:40px;
+					border:1px solid #0060BF;
+					width:500px;
+					text-align:left;
+					background-color:#c5dff9;
+					margin:auto;
+					margin-top:20px;
+					margin-bottom:20px;
+					}
+				/*---------------------------------------------------------- PAGE DE VIGNETTES DE JEUX ------------------------------------*/
+				.bloc_jeux{
+				width:100%;
+				overflow:hidden;
+				margin-bottom:15px;
+				}
+				.bloc_jeux h3{
+				text-align: center;
+				}
+				.bloc_article h3{
+				font-weight:bold;
+				font-size:13px;
+				}
+				.vignette_bloc{
+				float:left;
+				width:200px;
+				overflow:hidden;
+				text-align:center;
+				position:relative;
+				}
+				
+				.vignette_bloc .new,.list_games .ilb .new{position:absolute;top:0px; right:0px;}
+				.vignette_bloc a{
+				color:black;
+				font-weight:bold;
+				}
+				.vignette_bloc img{
+				display:block;
+				}
+				.vignette_image{
+				display:block;
+				width:200px;
+				overflow:hidden;
+				}	
+				.soon{
+				display:block;
+				width:200px;
+				height:200px;
+				position:absolute;
+				top:0px;
+				left:0px;
+				background-color:transparent;
+				background-image:url(../images/soon.png);
+				background-repeat:no-repeat;
+				background-position:top left;
+				}
+				/*  ------------------------------------------------------ PAGE DU SITEMAP  ----------------------------------------------------*/
+				.componentheading, .item-page h1{
+				font-weight:bold;
+				font-family:Verdana;
+				font-size:16px;
+				height:28px;
+				padding-top:6px;
+				background-image:url(../jpg/sm/pointille.png);
+				background-repeat:repeat-x;
+				background-position:bottom left;
+				margin-bottom:20px;
+				}
+				
+				.contentpaneopen h2{
+				font-size:16px;
+				font-weight:bold;
+				height:40px;
+				}
+				#xmap li, #xmap a{
+				display:block;
+				
+				}
+				#xmap .level_0 a{
+				font-size:14px;
+				font-weight:bold;
+				color:#54005F;
+				}
+				
+				#xmap .level_1 a{
+				padding-left:20px;
+				font-size:13px;
+				font-weight:bold;
+				color:#623e8a;
+				}
+				#xmap .level_2 a{
+				padding-left:40px;
+				font-size:12px;
+				font-weight:bold;
+				color:#178FBF;
+				}
+				#xmap .level_3 a{
+				padding-left:60px;
+				font-size:12px;
+				font-weight:normal;
+				color:#54005F;
+				}
+				
+		
+
+	#bottom{
+	width:100%;
+	background:#370250;
+	height:40px;
+	padding-top:20px;
+	}
+	#bottom_int{
+	margin-left:340px;
+	width:600px;
+	height:20px;
+	
+	}
+		#bottom li a{
+		display:block;
+		float:left;
+		height:17px;
+		padding-top:3px;
+		color:#c49af1;
+		padding-left:40px;
+		padding-right:40px;
+		}
+		#bottom li a:hover{
+		
+		color:white;
+		text-decoration:none;
+		}
+		#bottom .item13 a, #bottom .item14 a , #bottom .item15 a{
+		border-right:1px solid #c49af1;
+		}
+		
+		#bottom li{
+		display:block;
+		float:left;
+		height:20px;
+		}
+
+
+/* ******************************************* PAGE ARTICLE ********************************************** */
+#page_article{
+padding:10px;
+}
+#page_article h2{
+color:#660c79;
+font-size:16px;
+}	
+	
+
+
+/* FIL D'ARIANE */
+#fil_ariane {
+
+}
+
+
+
+	
+
+	
+/* ****************************************** FORMULAIRE INSCRIPTION ********************************************* */
+#formulaire_inscription{
+
+}
+/* ******************************************** MOT DE PASSE OUBLIE ************************************** */
+#mdp_oublie{
+
+}
+
+
+/* *******************************************  PAGE CONTACT *************************************** */
+.contact {
+padding:10px;
+font-size:11px;
+font-family:Verdana;
+color:#8b5cbe;
+font-weight:bold;
+}
+#contactez_nous{
+color:#370250;
+}
+.contact .inputbox, .contact textarea {
+background-color:#dfc9f7;
+border:1px solid #ad80de;
+}
+.contact #contactez_nous{
+font-size:14px;
+margin-bottom:20px;
+font-weight:bold;
+}
+.contact #nom_du_contact{
+font-weight:bold;
+margin-top:10px;
+margin-right:10px;
+font-size:12px;
+padding-top:10px;
+}
+
+#emailForm label {
+display:block;
+width:200px;
+float:left;
+}
+.contact_address address {
+background:#f1edee;
+margin-right:10px;
+padding:10px;
+font-weight:bold;
+}
+
+
+.moduletable_encart{
+	position:absolute;
+	top:232px;
+	left:21px;
+	width:245px;
+	height:142px;
+	padding:40px 20px;
+}
+
+/* ****************************************** BOUTONS ********************************************** */
+
+.suivant{
+background:black;
+color:white;
+width:100px;
+height:20px;
+padding-bottom:3px;
+text-align:center;
+font-weight:bold;
+font-size:11px;
+}
+
+
+.login, .envoyer, .envoyermdp, .connexion{
+background:#6ac2E7;
+color:white;
+width:100px;
+height:20px;
+padding-bottom:3px;
+text-align:center;
+font-weight:bold;
+font-size:11px;
+}
+
+.enregistrer, .minscrire{
+background:#94107e;
+color:white;
+width:100px;
+height:20px;
+padding-bottom:3px;
+text-align:center;
+font-weight:bold;
+font-size:11px;
+}
+
+.supprimer{
+background:#db0958;
+color:white;
+width:100px;
+height:20px;
+padding-bottom:3px;
+text-align:center;
+font-weight:bold;
+font-size:11px;
+}
+
+.deconnexion, .rechercher{
+background:#660c79;
+color:white;
+font-weight:bold;
+}
+
+/* bt mon compte classe sur un lien*/
+.annuler{
+display:block;
+background:#660c79;
+width:100px;
+height:17px;
+padding-top:3px;
+text-align:center;
+font-size:11px;
+}
+	.annuler:link, .annuler:visited{
+	color:white;
+	font-weight:bold;
+	text-decoration:none;
+	}
+	.annuler:hover{
+	font-weight:bold;
+	color:white;
+	text-decoration:underline;
+	}
+	
+/* bt ajouter adresse sur un lien*/
+.ajouter_adresse{
+display:block;
+background:#660c79;
+width:200px;
+height:17px;
+padding-top:3px;
+text-align:center;
+font-size:11px;
+}
+	.ajouter_adresse:link, .ajouter_adresse:visited{
+	color:white;
+	font-weight:bold;
+	text-decoration:none;
+	}
+	.ajouter_adresse:hover{
+	font-weight:bold;
+	color:white;
+	text-decoration:underline;
+	}
+	
+/* --------------------- TEST DEPISTAGE ALZHEIMER -------------------------*/
+#chronoform_test_alzheimer{
+}
+#chronoform_test_alzheimer label{
+display:inline-block;
+*display:inline;
+zoom:1;
+width:500px;
+}
+#input_submit_24_container_div input{
+background-color:#170128;
+color:white;
+display:block;
+margin-left:200px;
+width:150px;
+height:30px;
+}
+#input_submit_24_container_div input:hover{	
+cursor : pointer; 
+}
+.chronoform a{
+color:#d4a5fb;
+}
+/*---------------------------- mémory a impriimer -------------------*/
+#illustration .zoom{
+display:block;
+height:35px;
+padding:0px;
+width:237px;
+}
+.zoom:link, .zoom:hover, .zoom:visited{
+color:#c3bbcb;
+text-decoration:none;
+}
+#illustration .zoom img{
+display:inline-block;
+*display:inline;
+zoom:1;
+vertical-align:top;
+width:37px;
+height:31px;
+}
+#illustration .zoom span{
+display:inline-block;
+*display:inline;
+zoom:1;
+vertical-align:top;
+width:200px;
+height:20px;
+margin:0px;
+padding-top:5px;
+color:#370250;
+}
+.a_imprimer{
+display:block;
+float:left;
+width:200px;
+height:288px;
+}
+#illustration .image200 img{
+width:200px;
+}
+
+/* --------------- aviso legal --------------------- */
+
+.aviso_legal p{margin-bottom:10px;}
+.aviso_legal h2{
+color:black;
+}
+.aviso_legal h3{
+color:#499acd;
+margin-bottom:10px;
+font-size:14px;
+}
+.aviso_legal h4{
+color:#499acd;
+font-weight:bold;
+margin-bottom:10px;
+font-size:14px;
+}
+.aviso_legal h5{
+font-weight:bold;
+margin-bottom:10px;
+font-size:13px;
+}
+
+.padding-20{padding-left:20px;}
+
+/* ------------------------------ new games ------------------------------  */
+.list_games {
+padding:20px 0;
+text-align:left;
+}
+.list_games .ilb{
+width:30%;
+margin-right:2.5%;
+text-align:center;
+position:relative;
+}
+.list_games .ilb a,.list_games .ilb a img{
+display:block;
+width:100%;
+color:black;
+font-weight:bold;
+}
+.list_games .ilb a > h3{
+padding:5px 0 0 0;
+}
+.list_games .ilb a:link > h3,.list_games .ilb a:hover > h3,.list_games .ilb a:visited > h3{
+color:black;
+font-weight:bold;
+}
+
+/*------------------------------------------------------------------------------
+	Component - Itemlist view (category)
+--------------------------------------------------------------------------------*/
+
+div.itemListCategoriesBlock {}
+
+/* --- Category block --- */
+div.itemListCategory {background:#fafafa;border:1px solid #ddd;border-radius:4px;margin:0 0 24px 0;padding:8px;}
+	span.catItemAddLink {display:block;padding:8px 0;margin:0 0 4px 0;border-bottom:1px dotted #ccc;text-align:right;}
+	span.catItemAddLink a {padding:4px 16px;border:1px solid #ddd;background:#fafafa;text-decoration:none;}
+	span.catItemAddLink a:hover {background:#ffffcc;}
+	div.itemListCategory img {float:left;display:block;margin:0 8px 0 0;}
+	div.itemListCategory h2 {}
+	div.itemListCategory p {}
+
+/* --- Sub-category block --- */
+div.itemListSubCategories {}
+	div.itemListSubCategories h3 {}
+		div.subCategoryContainer {float:left;}
+		div.subCategoryContainerLast {} /* this class is appended to the last container on each row of items (useful when you want to set 0 padding/margin to the last container) */
+			div.subCategory {background:#fafafa;border:1px solid #ddd;margin:4px;padding:8px;}
+				div.subCategory a.subCategoryImage,
+				div.subCategory a.subCategoryImage:hover {text-align:center;display:block;}
+				div.subCategory a.subCategoryImage img,
+				div.subCategory a.subCategoryImage:hover img {margin:0 8px 0 0;}
+				div.subCategory h2 {}
+				div.subCategory h2 a {}
+				div.subCategory h2 a:hover {}
+				div.subCategory p {}
+
+.memory-k2-container .sub-cat-12 .sub-category{
+background-color:#9cb7fc;
+border-color:#5572bb;
+}
+.memory-k2-container .sub-cat-12 .sub-category:hover{
+background-color:#7a9efa;
+}
+.memory-k2-container .sub-cat-12 .sub-category:hover a:link,.memory-k2-container .sub-cat-12 .sub-category:hover a:visited,.memory-k2-container .sub-cat-12 .sub-category:hover a:hover{
+color:#294a9f;
+}
+.memory-k2-container .sub-cat-12 .sub-category h2 a:link,.memory-k2-container .sub-cat-12 .sub-category h2 a:visited,.memory-k2-container .sub-cat-12 .sub-category h2 a:hover{color:#5c7dd1;}
+
+.memory-k2-container .sub-cat-17 .sub-category{
+background-color:#c4ee5f;
+border-color:#b5da800;
+}
+.memory-k2-container .sub-cat-17 .sub-category:hover{background-color:#acdc3a}
+.memory-k2-container .sub-cat-17 .sub-category:hover a:link,.memory-k2-container .sub-cat-17 .sub-category:hover a:visited,.memory-k2-container .sub-cat-17 .sub-category:hover a:hover{color:#4d8705;}
+.memory-k2-container .sub-cat-17 .sub-category h2 a:link,.memory-k2-container .sub-cat-17 .sub-category h2 a:visited,.memory-k2-container .sub-cat-17 .sub-category h2 a:hover{color:#5da800;}
+
+.memory-k2-container .sub-cat-18 .sub-category{
+background-color:#fbd67d;
+border-color:#e47c00;
+}
+.memory-k2-container .sub-cat-18 .sub-category:hover{background-color:#f8c240;}
+.memory-k2-container .sub-cat-18 .sub-category:hover a:link,.memory-k2-container .sub-cat-18 .sub-category:hover a:visited,.memory-k2-container .sub-cat-18 .sub-category:hover a:hover{color:#c96e02;}
+.memory-k2-container .sub-cat-18 .sub-category h2 a:link,.memory-k2-container .sub-cat-18 .sub-category h2 a:visited,.memory-k2-container .sub-cat-18 .sub-category h2 a:hover{color:#e47c00;}
+
+.memory-k2-container .sub-cat-12 div.sub-category{border-width: 1px 0px 1px 1px;}
+.memory-k2-container .sub-cat-18 div.sub-category{border-width: 1px 1px 1px 1px;}
+.memory-k2-container .sub-cat-17 div.sub-category{border-width: 1px 0px 1px 1px;}
+
+.memory-k2-container div.sub-category {
+    padding: 0 10% 0 10%;
+    border-style: solid;
+    border-width: 1px 0px 0px 1px;
+    text-align: center;
+}
+
+.memory-k2-container div.sub-category h2 a {
+    display: block;
+    padding: 42px 0;
+    font-weight: 700;
+    font-size: 17px;
+    max-height: 49px;
+    height: 49px;
+    overflow: hidden;
+}
+
+</style>	
+
+	<script type="text/javascript">var gBaseUrl="";</script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-noconflict.js"></script>
+	<script type="text/javascript">
+		var gBalls = [{"x":"71","y":"137","width":"222","img1":"..\/jpg\/sm\/red_on.png","img2":"..\/jpg\/sm\/red_off.png","sound":"..\/audio\/smsound1.mp3"},{"x":"293","y":"137","width":"224","img1":"..\/jpg\/sm\/green_on.png","img2":"..\/jpg\/sm\/green_off.png","sound":"..\/audio\/smsound2.mp3"},{"x":"71","y":"273","width":"222","img1":"..\/jpg\/sm\/blue_on.png","img2":"..\/jpg\/sm\/blue_off.png","sound":"..\/audio\/smsound3.mp3"},{"x":"293","y":"273","width":"224","img1":"..\/jpg\/sm\/yellow_on.png","img2":"..\/jpg\/sm\/yellow_off.png","sound":"..\/audio\/smsound4.mp3"}];</script>
+	<script type='text/javascript'>
+		(function($) {
+     $.fn.game = function(iWidthImg,iHeightImg,iBalls,iMsgPlayer,iMsgGame,iMsgStart,iMsgGameover,iMsgReplay,iPosyMsg,iColorMsg) {  
+		
+		var width_game = 0;
+		var height_game = 0;
+		var height_main_image = 0;
+		var height_bt_start_result = 0;
+		var nb_balls = iBalls.length;
+		var balls_lighted = 0;
+		//var width_balls_percent = iBallsWidth;
+		//var height_balls_percent = iBallsHeight;
+		var msg = false;
+		if(iMsgPlayer){
+			msg = true;
+			var msgPlayer = iMsgPlayer;
+			var msgGame = iMsgGame;
+			var posy_msg= iPosyMsg;
+			var msg_color= iColorMsg;
+		}
+		var msgStart = iMsgStart;
+		var msgGameover = iMsgGameover;
+		var msgReplay = iMsgReplay;
+		//var main_image = iImg;
+		var balls = iBalls;
+		var melody = new Array();
+		var melodyPlayer = new Array();
+		var score = 0;
+		var indexGame = 0;
+		var indexPlayer = 0;
+		var currentNote = 0;
+		var currentNotePlayer = 0;
+		var timeBeforeStart = 1000;
+		var gTimeBetweenNotes = 500;
+		var timeLightUp = 500;
+		var timeLightUpPlayer = 200;
+		var high_score = 0;
+		var gAskToChangeLevel = false;
+		
+		//wait end loading image before start
+		var widthGame = $("#game").width();
+		$("#game").css({"min-height":widthGame+"px"});
+		
+		/*for(var i=0;i<balls.length;i++){
+			var width = ;
+			var height = ;
+		}*/
+		
+       var kFastClickEvt = ('ontouchstart' in document.documentElement) ? 'touchstart' : 'mousedown';
+		
+		
+		function place_balls(){
+			//main image is now included in the html for prevent display bug
+			//var main_image_html='<img src="'+main_image+'" id="main_image" style="display:block;width:100%"/>';
+			//$("#game").html(main_image_html);
+			var balls_html="";
+			setTimeout(function(){
+				for ( var i = 0 ; i < nb_balls ; i++ ) {
+					var widthRel = balls[i].width * 100/iWidthImg;
+					var xRel = balls[i].x * 100/iWidthImg;
+					var yRel = balls[i].y * 100/iHeightImg;
+					balls_html += '<div class="case hand" ball="'+(i+1)+'" style="position:absolute;top:'+yRel+'%;left:'+xRel+'%;width:'+widthRel+'%;"><img src="'+gBaseUrl+""+balls[i].img1+'" class="img_on" style="display:none;position:absolute;top:0px;left:0px;width:100%"/><img src="'+gBaseUrl+""+balls[i].img2+'" class="img_off" style="position:absolute;top:0px;left:0px;width:100%"/>';
+					balls_html +='<audio preload="auto" class="son" id="son-'+(i+1)+'" style="display:none;"><source src="'+balls[i].sound+'" type="audio/mp3"></audio></div>';
+				}
+				
+				if(msg){
+				balls_html +='<div id="generic_game_msg" style="display:none;position:absolute;text-align:center;font-weight:bold;color:'+msg_color+';width:90%;left:5%;top:'+posy_msg+'%;">'+msgGame+'</div>';
+				}
+				balls_html +='<div id="black_screen" style="display:none;position:absolute;width:100%;background-color:rgba(255,255,255,0.3);"></div>';
+				balls_html +='<div id="score_game" style="display:block;position:absolute;text-align:center;font-weight:bold;font-size:16px;color:'+msg_color+';width:100%;left:0%;bottom:5%;">Puntuación: <span class="score">0</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="high_score_text">Mejor puntuación:</span> <span class="high_score">0</span></div>';
+				balls_html +='<div id="bt_start" style="display:none;border:1px solid white;"><span>'+msgStart+'</span></div>';
+				balls_html +='<div id="bt_result" style="display:none;border:1px solid white;"><div id="bt_result_int"><span class="game_over_msg">'+msgGameover+'</span><span class="replay_msg">'+msgReplay+'</span></div></div>';
+				$(balls_html).appendTo("#game");
+				
+				height_main_image = $("#main_image").height();
+				width_main_image = $("#main_image").width();
+				$("#game,#black_screen").css({"height":height_main_image+"px"}).show();
+				$("#level_buttons div").first().addClass("active_level");
+				show_start("#bt_start");
+				active_levels();
+				
+			},200);
+			//tab_html +='<div id="black_screen" style="display:none;"></div>';
+			
+		}
+		function show_start(iBtn){
+			$("#black_screen").show();
+			$(iBtn).show().unbind().bind("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$("#black_screen").hide();
+				$(iBtn).hide();
+				$("#score_game .score").text("0");
+				$("#generic_game_msg").text(msgGame);
+				$("#generic_game_msg").show();
+				gAskToChangeLevel = false;
+				//preload sound for ios doesn't work+++
+				/*if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+					alert("ios");
+					for ( var i = 0 ; i < nb_balls ; i++ ) {
+					$('#son-'+(i+1))[0].load();
+					}
+				}*/
+				setTimeout(function(){
+				construct_melody();
+				},timeBeforeStart);
+			});
+		}
+		
+		function turn_off_light(){
+			$(".img_on").hide();
+			$(".img_off").show();
+		}
+		
+		function disable_user(){
+			//disable click  user
+			$(".case").each(function(){
+				$(this).unbind();
+			});
+		}
+		
+		function construct_melody(){
+			disable_user();
+			var nb = (Math.floor(Math.random() * nb_balls))+1;
+			melody[indexGame] = nb;
+			indexGame++;
+			currentNote = 0;
+			play_note(melody[currentNote]);
+		}
+		
+		function play_note(iLamp){
+				//light the lamp
+				$(".case[ball="+iLamp+"]").find(".img_off").hide();
+				$(".case[ball="+iLamp+"]").find(".img_on").show();
+				$(".case[ball="+iLamp+"]").find('.son')[0].play();
+				//turn off the lamp after 1 second
+				setTimeout(function(){
+				$(".case[ball="+iLamp+"]").find(".img_on").hide();
+				$(".case[ball="+iLamp+"]").find(".img_off").show();
+				currentNote++;
+				control_melody();
+				},timeLightUp);
+				
+		}
+		
+		function control_melody(){
+			//if button to change level is clicked
+			if(gAskToChangeLevel){
+				return;
+			//if other note to play
+			}else if(currentNote<melody.length){
+				setTimeout(function(){
+					play_note(melody[currentNote]);
+				},gTimeBetweenNotes);
+			}else{
+				indexPlayer = 0;
+				currentNotePlayer = 0;
+				melodyPlayer.splice(0,melodyPlayer.length);
+				$("#generic_game_msg").text(msgPlayer);
+				wait_for_player();
+			}
+		}
+		
+		function active_levels(){
+			$("#level_buttons div").each(function(){
+				$(this).unbind().bind(kFastClickEvt,function(e){
+						e.preventDefault();
+						e.stopPropagation();
+						gAskToChangeLevel = true;
+						if(score> high_score){high_score = score;}
+						$("#score_game .high_score").text(high_score);
+						$("#level_buttons div").removeClass("active_level");
+						$(this).addClass("active_level");
+						gTimeBetweenNotes = parseInt($(this).attr("level"));
+						disable_user();
+						$("#black_screen").show();
+						$("#generic_game_msg").hide();
+						init();
+						msgGame = iMsgGame;
+						$("#bt_result").hide();
+						show_start("#bt_start");
+				});
+			});
+		}
+			
+		function wait_for_player(){
+			$(".case").each(function(){
+					$(this).unbind().bind(kFastClickEvt,function(e){
+						e.preventDefault();
+						e.stopPropagation();
+						var iLamp = $(this).attr("ball");
+						//if($(this).hasClass("off")){
+						melodyPlayer[indexPlayer] = iLamp;
+						indexPlayer++;
+						$(".case").unbind();
+						$(".case[ball="+iLamp+"]").find(".img_off").hide();
+						$(".case[ball="+iLamp+"]").find(".img_on").show();
+						$(".case[ball="+iLamp+"]").find('.son')[0].play();
+						setTimeout(function(){
+						$(".case[ball="+iLamp+"]").find(".img_on").hide();
+						$(".case[ball="+iLamp+"]").find(".img_off").show();
+						control_player();
+						},timeLightUpPlayer);
+					});
+			});
+		}
+		
+		function control_player(){
+			//if good note
+			if(melodyPlayer[indexPlayer - 1]==melody[indexPlayer - 1]){
+				//if end of melody
+				if(melodyPlayer.length == melody.length){
+					score++;
+					$("#score_game .score").text(score);
+					turn_off_light();
+					$("#generic_game_msg").text(msgGame);
+					//ad other note to melody
+					setTimeout(function(){construct_melody();},1000);
+				}else{
+					wait_for_player();
+				}
+			//if error note
+			}else{
+				disable_user();
+				if(score> high_score){high_score = score;}
+				$("#score_game .high_score").text(high_score);
+				$("#black_screen").show();
+				$("#generic_game_msg").hide();
+				init();
+				show_start("#bt_result");
+			}
+		}
+		
+		function init() {
+			melodyPlayer.splice(0,melodyPlayer.length);
+			melody.splice(0,melody.length);
+			score = 0;
+			indexGame = 0;
+			indexPlayer = 0;
+			currentNote = 0;
+			currentNotePlayer = 0;
+		}
+		
+		function on_window_resized() {
+				height_main_image = $("#main_image").height();
+				height_bt_start_result = $("#bt_start").innerWidth();
+				$("#game,#black_screen").css({"height":height_main_image+"px"});
+				//$("#bt_start,#bt_result").css({"max-height":height_bt_start_result+"px"});
+		}
+		
+		function start(){
+			place_balls();
+		}
+		
+		//wait end loading image before start
+		/*if (!$("#main_image").complete){
+			$("#main_image").load(function(){
+				start();
+			});
+		}else{
+			start();
+		}*/
+		$("#main_image").on( 'load', function() {
+		}).each( function() {
+			start();
+		});
+  
+		//insertion google ad
+		//end google ad 
+		
+		/*if(loaded){
+			start();
+		}*/
+		
+		//for bug when first time on the page or when refresh
+		setTimeout(function(){on_window_resized();},100);
+		$(window).resize(on_window_resized);
+		
+     };
+})(jQuery);
+
+	</script>
+
+
+
+
+
+
+
+	<style type="text/css">
+		/* ------------------------------ game css --------------------------------------- */
+.relative_position{position:relative;}
+
+.relative_position #main_image{
+width:100%;height:auto;display:block;
+}
+
+#black_screen{position:absolute;top:0px;left:0px;width:100%;height:100%;background-color: rgba(0, 0, 0, 0.7);}
+
+#generic_game_msg{
+font-size:15px;
+color:#ffffff;
+z-index:2000;
+}
+@media (max-width: 479px) {
+#generic_game_msg{font-size:11px;}
+}
+@media (min-width: 800px) {
+#generic_game_msg{font-size:25px;}
+}
+
+.simon_game {
+width:100%;
+max-width:600px;
+margin:auto;
+}
+
+.simon_game #bt_start,.simon_game #bt_result{
+width:30%;
+top:35%;
+left:35%;
+line-height:100%;
+background-color:#06000e;
+font-size:30px;
+font-weight:bold;
+color:white;
+position:absolute;
+text-align:center;
+}
+
+.simon_game #bt_start span{
+display: block;
+padding: 30% 0 32% 0;
+width: 100%;
+text-align: center;
+}
+.simon_game #bt_start span *{vertical-align:middle;}
+
+.simon_game #bt_result_int{
+display: block;
+padding: 20% 0% 25% 0;
+width: 100%;
+height: 60%;
+text-align: center;
+}
+.simon_game #bt_result span{
+display:inline-block;
+*display:inline;
+zoom:1;
+vertical-align:top;
+}
+.simon_game #bt_result .game_over_msg{
+font-size:20px;
+margin-bottom:10px;
+}
+
+
+@media (max-width: 479px) {
+.simon_game #bt_start,.simon_game #bt_result{font-size:15px;}
+.simon_game #bt_result .game_over_msg{ font-size:12px;}
+}
+
+.simon_game #bt_start:hover,.simon_game #bt_result:hover{cursor:pointer;}
+
+#generic_bt_start {
+    width: 30%;
+    height: 30%;
+    top: 35%;
+    left: 35%;
+    line-height: 100%;
+    background-color: #06000e;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    text-align: center;
+}
+#generic_bt_start span {
+    display: block;
+    padding: 40% 0%;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+}
+#generic_bt_result {
+    width: 30%;
+    height: 30%;
+    top: 35%;
+    left: 35%;
+    line-height: 100%;
+    background-color: #06000e;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    text-align: center;
+}
+#generic_bt_result span{
+display: block;
+padding: 20% 0%;
+width: 100%;
+height: 60%;
+text-align: center;
+}
+#level_buttons{padding:20px 0 30px 0;text-align:center;}
+#level_buttons div{
+font-weight:bold;
+background-color:white;
+color:black;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+-o-border-radius: 4px;
+font-size:14px;
+width:20%;
+margin-right:5%;
+padding:2%;
+border:1px solid black;
+}
+@media (max-width: 479px) {
+#level_buttons div{font-size:12px;}
+}
+#level_buttons div:last-child{margin-right:0%;}
+#level_buttons div.active_level,#level_buttons div:hover{
+background-color:black;
+color:white;
+}
+
+#level_buttons div:hover{cursor:pointer;}
+.high_score,.high_score_text{color:#c525da;}
+
+	</style>	
+	<!-- lightbox -->
+    <script type="text/javascript" src="../js/jquery.lightbox-0.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/jquery.lightbox-0.5.css" media="screen" />
+    <style type="text/css">
+    	/* System Messages */
+#system-message {
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+#system-message > dt {
+	font-weight: bold;
+	display: none;
+}
+
+#system-message > dd {
+	margin: 0;
+	font-weight: bold;
+	text-indent: 30px;
+}
+
+#system-message > dd > ul {
+	color: #0055BB;
+	background-position: 4px top;
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+	list-style: none;
+	padding: 10px;
+	border-top: 3px solid #84A7DB;
+	border-bottom: 3px solid #84A7DB;
+}
+
+#system-message > dd > ul > li {
+	line-height: 1.5em;
+}
+
+/* System Standard Messages */
+#system-message > .message > ul {
+	background-color: #C3D2E5;
+	background-image: url(../images/notice-info.png);
+}
+
+/* System Error Messages */
+#system-message > .error > ul,
+#system-message > .warning > ul,
+#system-message > .notice > ul {
+	color: #c00;
+}
+
+#system-message > .error > ul {
+	background-color: #E6C0C0;
+	background-image: url(../images/notice-alert.png);
+	border-color: #DE7A7B;
+}
+
+/* System Warning Messages */
+#system-message > .warning > ul {
+	background-color: #E6C8A6;
+	background-image: url(../images/notice-note.png);
+	border-color: #FFBB00;
+}
+
+/* System Notice Messages */
+#system-message > .notice > ul {
+	background-color: #EFE7B8;
+	background-image: url(../images/notice-note.png);
+	border-color: #F0DC7E;
+}
+/* Unpublished */
+.system-unpublished, tr.system-unpublished {
+	background: #e8edf1;
+	border-top: 4px solid #c4d3df;
+	border-bottom: 4px solid #c4d3df;
+}
+
+span.highlight {
+	background-color:#FFFFCC;
+	font-weight:bold;
+	padding:1px 4px;
+}
+
+.img-fulltext-float-right {
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.img-fulltext-float-left {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.img-fulltext-float-none {
+}
+
+.img-intro-float-right {
+	float: right;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+.img-intro-float-left {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.img-intro-float-none {
+}
+    </style>
+
+	<!-- plus one-->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+	{lang: 'es'}
+	</script>
+	
+	<!-- cookies consent  -->
+	<!--script src="../js/cookieconsent.js"></script-->
+	
+	<script type="text/javascript">
+	  jQuery.noConflict();
+	</script>
+<head>
+<body>
+	
+	<!-- GLOBAL -->
+	<div id="body_int">
+	
+		
+				
+		<div id="global">
+		
+			<!-- TOP -->
+			<!-- PRINCIPAL -->
+			<div id="principal">
+				<!-- MENU  HORIZONTAL-->			
+				<div id="contenu">			
+					<div id="contenu_milieu">
+						<div id="system-message-container">
+						</div>
+						<div class="page">
+							<h1 class="contentheading">Juego de Simón</h1>
+							<h2 class="ss_titre mauve_ss_titre"> juego de Simón de sonidos y colores:</h2>
+							<div id="game" class="relative_position simon_game"><img src="../jpg/image_bg.png" id="main_image" style="display:block;width:100%"/></div>
+							<div id="level_buttons"><div class="ilb" level="800">LENTO</div><div class="ilb" level="500">NORMAL</div><div class="ilb" level="150">RÁPIDO</div></div>
+							<script type="text/javascript">jQuery(document).ready(function($){$("#game").game(600,600,gBalls,"JUGAR!","MIRAR!","JUGAR","Terminado!","Volver a jugar",2,"#ffffff");});</script>
+							<div class="clearer"><br /></div>
+							<div class="bloc_article">
+							<h3 class="ss_titre mauve_ss_titre">¿Cómo jugar al juego de Simón?</h3>
+							<div class="moduletable">
+								<div class="custom"  ><p>En el juego de Simón, intenta <span class = "bold"> memorizar la serie de teclas iluminadas </span> y reproducirla, en cada paso se agrega una nueva clave a la serie y el juego se vuelve más difícil. El juego termina cuando el jugador comete el primer error (cuando el jugador presiona la tecla iluminada incorrecta). <br />El propósito del juego es reproducir las series más largas de colores / sonidos generados aleatoriamente por el juego. <br /> </p><p> Puedes <span class = "bold"> cambiar el nivel de dificultad del juego </span> gracias a los botones <span class = "bold"> ubicados debajo del juego </span>. Para los principiantes, le recomendamos que comience con un juego de baja velocidad. <br /> </p></div>
+							</div>
+							<div class="clearer"><br /></div>
+							<h3 class="ss_titre mauve_ss_titre">¿Por qué jugar al juego de Simón?</h3>
+							<div class="moduletable">
+								<div class="custom"  ><p>El <strong>juego de Simón</strong> es un excelente <strong>juego de memoria</strong> para <strong>entrenar y ejercitar su memoria</strong>. Una práctica regular, permite <strong>mejorar tu memoria</strong> mientras que divertirse. Es un excelente y famoso juego de memoria. La serie de teclas iluminadas se genera aleatoriamente, por eso el juego es infinito y puedes jugar tantas veces como quieras.<br /><br /></p></div></div>
+							<div class="clearer"><br /></div> 
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="clearer"></div>
+			</div>
+		</div>
+	</div>
+		
+	<script type="text/javascript">
+	  jQuery(document).ready(function($) {
+		$('#illustration a').lightBox();
+		$('a.lightbox').lightBox();
+	  });
+	</script>
+</body>
+</html>
