@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="YES" />
+<!--link rel="stylesheet" href="/templates/memoire/css/style.css?v=119" /-->
+
+<script async src="../js/lazyload.min.js"></script>
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Juego de memoria. Recuerda la posición correcta de los cuadrados en la cuadrícula" />
+<meta name="generator" content="private" />
+<title>Cuadrícula de cuadrados</title>
+<script src="../js/jquery.min.js?220b6631845e4ef03bfc6f0d4a44993a" type="text/javascript"></script>
+
+<script>var gBaseUrl="";var gLang="es-es";</script>
+<script src="../js/jquery-ui.min.js?v=11"></script>
+<script src="../js/jquery.ui.touch-punch.min.js?v=11"></script>
+<script src="../js/jquery.countdown.js?v=11"></script>
+<script src="../js/abacus.js?v=11"></script>
+<style type="text/css">
+@font-face {
+  src: url("http://enes.in/GillSansTr-Normal.otf");
+  font-family: Gill;
+  font-weight: 300;
+}
+#main{
+	max-width:800px;
+	margin-right: auto;
+	margin-left: auto;
+	font-family: Gill, sans-serif;
+}
+body {
+  margin: 0;
+  background: #f0f0f0;
+}
+
+#game_ext{
+    padding-bottom:30px
+}
+#game{
+    width:100%;
+    margin:auto;
+    font-family:open sans,Arial,sans-serif;
+    font-weight:400;
+    background:#e0d7e3;
+    padding:40px 0;
+    border:1px solid #cabcd5
+}
+#board{
+    width:100%;
+    max-width:560px;
+    margin:auto;
+    height:auto;
+    position:relative
+}
+#control_ext{
+    width:100%;
+    max-width:560px;
+    margin:auto
+}
+#control{
+    margin:auto;
+    padding:0 0 35px
+}
+#control{
+    margin:auto
+}
+#control_left{
+    width:68%;
+    text-align:left
+}
+#countdown_ext{
+    text-align:right
+}
+#control_right{
+    width:32%;
+    text-align:right
+}
+#level,#score,#player_msg{
+    background-color:#c9bbce;
+    color:#7b6a81;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    -o-border-radius:4px
+}
+#level{
+    margin-right:15px
+}
+#level,#score{
+    background-color:#c9bbce;
+    color:#7b6a81;
+    font:25px/1.5 'Open Sans Condensed',sans-serif;
+    height:46px;
+    line-height:46px;
+    padding:0 20px
+}
+#level *,#score *{
+    vertical-align:center
+}
+#player_msg_ext{
+    margin:auto;
+    margin-top:30px
+}
+#player_msg_int{
+    padding:0 15px
+}
+#player_msg_txt{
+    width:70%;
+    font-weight:400;
+    text-align:left
+}
+#player_msg_txt span{
+    display:block
+}
+#player_msg_txt .long_text{
+    font-size:16px;
+    height:auto;
+    line-height:inherit;
+    padding:15px 0
+}
+#player_msg_txt .short_text{
+    font-size:16px;
+    height:80px;
+    line-height:80px;
+    padding:0
+}
+#player_button_ext{
+    width:30%;
+    text-align:right;
+    padding:15px 0
+}
+#player_button{
+    background-color:#443d46;
+    color:#fff;
+    font-weight:600;
+    font-size:16px;
+    padding:20px;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    -o-border-radius:4px;
+    text-align:center
+}
+@media(max-width:479px){
+    #game{
+        padding:20px 0
+    }
+    #level,#score{
+        padding:0 15px
+    }
+    #player_msg_txt{
+        width:100%
+    }
+    #player_button_ext{
+        width:100%;
+        padding:0 0 15px
+    }
+    #player_button{
+        width:85%;
+        height:80px;
+        line-height:80px;
+        font-size:20px
+    }
+    #player_msg_ext{
+        margin-top:15px
+    }
+    #control_right,#control_left{
+        width:100%
+    }
+    #control_left{
+        margin-bottom:10px
+    }
+    #control{
+        padding:0
+    }
+}
+#player_button:hover{
+    cursor:pointer
+}
+#player_msg_txt #player_msg_txt .short_text *,#player_msg_txt #player_msg_txt .long_text *,#player_button *{
+    vertical-align:middle
+}
+#cards{
+    text-align:center;
+    background:#fff;
+    border:1px solid #cabcd5;
+    padding:30px
+}
+.image_intro{
+    display:block;
+    width:100%
+}
+div.itemFullText h3.intro_game_title{
+    font-size:25px;
+    text-align:center;
+    color:#7b6a81;
+    font-weight:600;
+    padding:0 0 30px
+}
+.intro_game_subtitle{
+    font-size:20px;
+    text-align:center;
+    color:#7b6a81;
+    font-weight:400;
+    padding:30px 0 0
+}
+.semi-transparent{
+    opacity:.5;
+    filter:alpha(opacity=50)
+}
+#abacus_support,.abacus_support{
+    background-repeat:no-repeat;
+    background-size:100% 100%
+}
+#block_card_2{
+    margin-top:30px
+}
+.card{
+    display:inline-block;
+    *display:inline;
+    zoom:1;
+    vertical-align:top
+}
+.card img{
+    display:block;
+    width:100%;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none
+}
+.card_border{
+}
+.spacer_div{
+    width:5px
+}
+#player_msg_space{
+    padding:0 5px
+}
+.card_int{
+}
+.card_int.touched{
+}
+.card_int.wrong{
+    background-image:url(images/classic/white_background.png);
+    background-repeat:no-repeat;
+    background-size:100% 100%
+}
+.card_int.wrong img{
+    opacity:.2;
+    filter:alpha(opacity=20)
+}
+.card_int.good{
+}
+.card_int.player_win{
+}
+.card_int:hover{
+    cursor:pointer
+}
+.countdownHolder{
+    margin:0 auto;
+    font:30px/1.5 'Open Sans Condensed',sans-serif;
+    text-align:center;
+    letter-spacing:-3px
+}
+.position{
+    display:inline-block;
+    height:1.6em;
+    overflow:hidden;
+    position:relative;
+    width:1.05em
+}
+.digit{
+    position:absolute;
+    display:block;
+    width:1em;
+    background-color:#444;
+    border-radius:.2em;
+    text-align:center;
+    color:#fff;
+    letter-spacing:-1px
+}
+.digit.static{
+    box-shadow:1px 1px 1px rgba(4,4,4,.35);
+    background-image:linear-gradient(to bottom,#3A3A3A 50%,#444444 50%);
+    background-image:-o-linear-gradient(bottom,#3A3A3A 50%,#444444 50%);
+    background-image:-moz-linear-gradient(bottom,#3A3A3A 50%,#444444 50%);
+    background-image:-webkit-linear-gradient(bottom,#3A3A3A 50%,#444444 50%);
+    background-image:-ms-linear-gradient(bottom,#3A3A3A 50%,#444444 50%);
+    background-image:-webkit-gradient( linear,left bottom,left top,color-stop(0.5,#3A3A3A),color-stop(0.5,#444444) )
+}
+.countDiv{
+    display:inline-block;
+    width:16px;
+    height:1.6em;
+    position:relative
+}
+.countDays,.countDiv0{
+    display:none!important
+}
+.countDiv:before,.countDiv:after{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background-color:#444;
+    border-radius:50%;
+    left:50%;
+    margin-left:-3px;
+    top:.5em;
+    box-shadow:1px 1px 1px rgba(4,4,4,.5);
+    content:''
+}
+.countDiv:after{
+    top:.9em
+}
+
+</style>
+
+<script defer src="../js/global.min.js?v=17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page-690 root-110" itemscope itemtype="https://schema.org/WebPage">
+
+<div id="global">
+<div id="main">
+
+<div id="content">
+<div id="content-right">
+<div id="content_middle">
+<span id="startOfPageId46"></span>
+<div itemscope itemtype="https://schema.org/WebApplication" itemprop="mainEntity">
+<div id="webGame" class="itemView tpl-custom">
+<div class="itemHeader">
+<h1>
+Ábaco de Colores</h1>
+</div>
+<div class="clr"></div>
+
+
+<div id="game_ext"><div id="game" class="relative_position">
+<div id="control_ext"><div id="control"><div id="control_left" class="ilb"><div class="ilb spacer_div"></div><div id="level" class="ilb"><span></span></div><div id="score" class="ilb"><span></span></div></div><div id="control_right" class="ilb"><div id="countdown_ext"><div id="countdown" class="ilb countdownHolder"></div><div class="ilb spacer_div"></div></div></div></div></div>
+<div id="board">
+<div id="cards"></div>
+<div id="player_msg_ext"><div id="player_msg_space"><div id="player_msg"><div id="player_msg_int"><div id="player_msg_txt" class="ilb"></div><div id="player_button_ext" class="ilb"><div id="player_button" class="ilb"></div></div></div></div></div></div>
+</div>
+</div></div>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+$("#game").game(1,7,"colors",9);});
+</script>
+
+
+
+<div class="bloc_article">
+<h2 class="ss_titre other_ss_titre"><strong>Juego de Memoria - Ábaco de Colores </strong>:</h2>
+</div>
+<div id="description">
+<p itemprop="description">Este es un juego para entrenar la memoria. Tendrás que recolocar las bolas sobre el ábaco ordenándolas correctamente. Es un juego dificil porque hay 9 colores diferentes en el ábaco. ¡Entrena tu memoria!<br /><br /></p>
+<h3>¿Cómo se juega?</h3>
+
+
+<p>En este juego de memoria, <strong>aparecerán series de pelotitas de colores sobre el ábaco</strong> por un tiempo limitado durannte el cuál tendrás que <strong>memorizar su posición</strong>. Cuando el cronómetro desaparezca, el jugador debera recolocar las pelotitas sobre el ábaco ordenándolas correctamente pinchando sobre ellas y soltándolas donde corresponda. Puedes pulsar sobre el botón "PROSEGUIR" para saber el resultado.</p><p>Cada vez que el participante gana <strong>el nivel aumenta automáticamente</strong> y el juego se vuelve un poco más dificil por que el número de bolas se incrementa. El objetivo de este juego es finalizar todos los niveles.<br /><br /></p>
+<h3>¿Por qué jugar?</h3>
+
+
+<p>Este es un gran <strong>juego</strong> para entrenar y <strong>fortalecer tu memoria</strong> mientras te diviertes. Los jugadores habituales entrenan a su cerebro para mejorar su memoria.<br /><br />Además, cada vez que empiezas un juego nuevo las posiciones se generan <strong>aleatoriamente</strong> por lo que ¡puedes repetir cuantas veces quieras!
+</p>
+<p><br /><br /></p>
+</div>
+<div class="clearer"><br /></div>
+</div> 
+
+
+
+
+<div class="itemContentFooter">
+<p> El autor de la versión original de este juego es: Emmanuelle ROUGER</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+</div>
+</div>
+<script>
+		function createCookie(nom, valeur, jours) {
+			if (jours) {
+			var date = new Date();
+			date.setTime(date.getTime()+(jours*24*60*60*1000));
+			var expire = "; expire="+date.toGMTString();
+			}
+			else var expire = "";
+			document.cookie = nom+"="+valeur+expire+"; path=/";
+		}
+		function readCookie(nom) {
+			var nom2 = nom + "=";
+			var arrCookies = document.cookie.split(';');
+			for(var i=0;i < arrCookies.length;i++) {
+				var a = arrCookies[i];
+				while (a.charAt(0)==' ') {
+					a = a.substring(1,a.length);
+				}
+				if (a.indexOf(nom2) == 0) {
+					return a.substring(nom2.length,a.length);
+				}
+			}
+			return null;
+		}
+		
+	    jQuery(document).ready(function($) {
+			
+			/* -------------------------------------------------------------------------------------- */
+			/* ---------------------- /templates/memoire/js/menu.js --------------------------------- */
+			/* -------------------------------------------------------------------------------------- */
+			var detectTap = false;
+			var windowWidth = $(window).width();
+			var gIsMobileNav = false;
+			if ($("#button_nav").is(":visible")){
+				gIsMobileNav = true;
+			}
+			$(window).resize(function(){
+				if ($("#button_nav").is(":visible")){
+					gIsMobileNav = true;
+				}else{
+					gIsMobileNav = false;
+				}
+			 });
+			/* ----------------------------- START new jquery menu mobile --------------------------------------- */
+				$("#button_nav").on('touchstart', function() {detectTap = true;});
+				$("#button_nav").on('touchmove', function() {detectTap = false;});
+				$("#button_nav").off().on('click touchend', function(e) {
+					if(gIsMobileNav){
+						if (e.type == "click"){ detectTap = true;}
+						if (detectTap){
+							e.preventDefault();
+							e.stopPropagation();
+							if($("#navigation").is(":hidden")){
+								$("#icon_menu").hide();
+								$("#navigation,#close_menu").show();
+							}else{
+								$("#navigation,#close_menu").hide();
+								$("#icon_menu").show();
+							}
+						}
+						detectTap = false;
+					}
+				});
+				$("#navigation_menu > ul > li > a").on('touchstart', function() {detectTap = true;});
+				$("#navigation_menu > ul > li > a").on('touchmove', function() {detectTap = false;});
+				$("#navigation_menu > ul > li > a").off().on('click touchend', function(e) {
+					if(gIsMobileNav){
+						if (e.type == "click"){ detectTap = true;}
+						if (detectTap){
+							//if link is not home and is not simon
+							if(!$(this).parent().hasClass('default') && !$(this).parent().hasClass('item-563') && !$(this).parent().hasClass('item-1226') && !$(this).parent().hasClass('item-1025')){
+								e.preventDefault();
+								e.stopPropagation();
+								if($(this).parent().find("ul:first").is(":hidden")){
+									/*$(this).parent().parent().find("ul").hide();
+									$(this).parent().parent().find("a").removeClass("active_gradient");*/
+									$(this).parent().find("ul:first").slideDown();
+									$(this).addClass("active_gradient");
+								}else{
+									$(this).parent().find("ul:first").slideUp();
+									$(this).removeClass("active_gradient");
+								}
+							}
+						}
+						detectTap = false;
+					}
+				});
+			
+			/* ----------------------------- END new jquery menu mobile --------------------------------------- */
+			/*$("#mobile_nav_menu").hide();
+			$("#mobile_nav_btn").on('touchstart', function() {detectTap = true;});
+			$("#mobile_nav_btn").on('touchmove', function() {detectTap = false;});
+			$("#mobile_nav_btn").off().on('click touchend', function(e) {
+				if (e.type == "click"){ detectTap = true;}
+				if (detectTap){
+					e.preventDefault();
+					e.stopPropagation();
+					if($(".mobile_nav_menu").is(":hidden")){
+						$(".mobile_nav_menu").show();
+					}else{
+						$(".mobile_nav_menu").hide();
+					}
+				}
+				detectTap = false;
+			});
+			$(".mobile_nav_menu ul li.parent > a").on('touchstart', function() {detectTap = true;});
+			$(".mobile_nav_menu ul li.parent > a").on('touchmove', function() {detectTap = false;});
+			$(".mobile_nav_menu ul li.parent > a").off().on('click touchend', function(e) {
+				if (e.type == "click"){ detectTap = true;}
+				if (detectTap){
+					e.preventDefault();
+					e.stopPropagation();
+					if($(this).parent().find("ul:first").is(":hidden")){
+						$(this).parent().parent().find("ul").hide();
+						$(this).parent().find("ul:first").slideDown();
+					}else{
+						$(this).parent().find("ul:first").slideUp();
+					}
+				}
+				detectTap = false;
+			});*/
+			
+			
+			/* -------------------------------------------------------------------------------------- */
+			/* ---------------------- Simple Lightbox (light code) ---------------------------------- */
+			/* -------------------------------------------------------------------------------------- */
+			$('#illustration a,.illustration a,.addlightbox a').simpleLightbox();
+			
+			/* -------------------------------------------------------------------------------------- */
+			/* ----------------------- cookies consent ----------------------------------------------- */
+			/* --------------------------------------------------------------------------------------- */
+			// code for delete cookies (for tests)
+			//createCookie("memozor-cookies-accept","", -1);
+			var is_cookie_set = readCookie("memozor-cookies-accept");
+			if(!is_cookie_set){
+				$("#cookies-consent").slideDown("fast");
+				//alert("no cookies set");
+			}else{
+				$("#cookies-consent").hide();
+				//alert("cookies set");
+			};
+			$('.accept-cookies,.close-cookies').on('touchstart', function() {detectTap = true;});
+			$('.accept-cookies,.close-cookies').on('touchmove', function() {detectTap = false;});
+			$('.accept-cookies,.close-cookies').off().on('click touchend', function(e) {
+				if (e.type == "click"){ detectTap = true;}
+				if (detectTap){
+					e.preventDefault();
+					e.stopPropagation();
+					//365 days = 12 months (max is 13 months according to CNIL)
+					createCookie("memozor-cookies-accept","yes",365);
+					var cookie = readCookie("memozor-cookies-accept");
+					//alert(cookie);
+					$("#cookies-consent").slideUp("fast");
+				}
+				detectTap = false;
+			});	
+			$('.no-cookies').on('touchstart', function() {detectTap = true;});
+			$('.no-cookies').on('touchmove', function() {detectTap = false;});
+			$('.no-cookies').off().on('click touchend', function(e) {
+				if (e.type == "click"){ detectTap = true;}
+				if (detectTap){
+					e.preventDefault();
+					e.stopPropagation();
+																				//365 days = 12 months (max is 13 months according to CNIL)
+					createCookie("memozor-cookies-accept","no",365);
+					var cookie = readCookie("memozor-cookies-accept");
+					//alert(cookie);
+					$("#cookies-consent").slideUp("fast");
+					}
+				detectTap = false;
+			});	
+			
+			/* ---------------------------------------------------------------------------------------------- */
+			/* ----------------------- custom code for detect ----------------------------------------------- */
+			/* ---------------------------------------------------------------------------------------------- */
+			/*var gMyInit = {method: 'HEAD',mode: 'no-cors'};
+			var gTestURL = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+			function show_ggb_messsage(){
+				$("#content-left").prepend('<div id="ggb_msg">...</div> ');
+			    			}
+			function detect_ggb(){
+			 
+			  var myRequest = new Request(gTestURL, gMyInit);
+			  fetch(myRequest).then(function(response) {
+				return response;
+			  }).then(function(response) {
+				console.log(response);
+				
+			  //if blocked
+			  }).catch(function(){
+				console.log("BLOCKED");
+				show_ggb_messsage();
+			  });
+			  
+		   }
+		   detect_ggb();*/
+			
+	  });
+	</script>
+</body>
+</html>
