@@ -1,0 +1,497 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<script src="https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
+
+function anota(valor){
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ opciones[loadedMatrix][valor][1] + "</p><br/>";
+	document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<p>1.</p>",
+		"<p>2.</p>",
+		"<p>3.</p>",
+		"<p>4.</p>",	
+		"<p>5.</p>",
+		"<p>6.</p>",
+		"<p>7.</p>",
+		"<p>8.</p>",
+		"<p>9.</p>",
+		"<p>10.</p>",
+		"<p>11.</p>",
+		"<p>12.</p>",
+		"<p>13.</p>",
+		"<p>14.</p>",
+		"<p>15.</p>",
+		"<p>16.</p>",
+		"<p>17.</p>",
+		"<p>18.</p>",
+		"<p>19.</p>",
+		"<p>20.</p>",
+		"<p>21.</p>"
+		]
+	opciones = [[],
+	[
+		[0, "No me siento triste"],
+		[1, "Me siento triste"],
+		[2, "Me siento triste continuamente y no puedo dejar de estarlo"],
+		[3, "Me siento tan triste o tan desgraciado que no puedo soportarlo"]
+	],
+	[
+		[0, "No me siento especialmente desanimado respecto al futuro"],
+		[1, "Me siento desanimado respecto al futuro"],
+		[2, "Siento que no tengo que esperar nada"],
+		[3, "Siento que el futuro es desesperanzador y las cosas no mejorarán"]
+	],
+	[
+		[0, "No me siento fracasado"],
+		[1, "Creo que he fracasado más que la mayoría de las personas"],
+		[2, "Cuando miro atrás, sólo veo fracaso tras fracaso"],
+		[3, "Me siento una persona totalmente fracasada"]
+	],
+	[
+		[0, "Las cosas me satisfacen tanto como antes"],
+		[1, "No disfruto de las cosas tanto como antes"],
+		[2, "Ya no obtengo una satisfacción auténtica de las cosas"],
+		[3, "Estoy insatisfecho o aburrido de todo"]
+	],
+	[
+		[0, "No me siento especialmente culpable"],
+		[1, "Me siento culpable en bastantes ocasiones"],
+		[2, "Me siento culpable en la mayoría de las ocasiones"],
+		[3, "Me siento culpable constantemente"]
+	],
+	[
+		[0, "No creo que esté siendo castigado"],
+		[1, "Me siento como si fuese a ser castigado"],
+		[2, "Espero ser castigado"],
+		[3, "Siento que estoy siendo castigado"]
+	],
+	[
+		[0, "No estoy decepcionado de mí mismo"],
+		[1, "Estoy decepcionado de mí mismo"],
+		[2, "Me da vergüenza de mí mismo"],
+		[3, "Me detesto"]
+	],
+	[
+		[0, "No me considero peor que cualquier otro"],
+		[1, "Me autocritico por mis debilidades o por mis errores"],
+		[2, "Continuamente me culpo por mis faltas"],
+		[3, "Me culpo por todo lo malo que sucede"]
+	],
+	[
+		[0, "No tengo ningún pensamiento de suicidio"],
+		[1, "A veces pienso en suicidarme, pero no lo cometería"],
+		[2, "Desearía suicidarme"],
+		[3, "Me suicidaría si tuviese la oportunidad"]
+	],
+	[
+		[0, "No lloro más de lo que solía llorar"],
+		[1, "Ahora lloro más que antes"], 
+		[2, "Lloro continuamente"],
+		[3, "Antes era capaz de llorar, pero ahora no puedo, incluso aunque quiera"]
+	],
+	[
+		[0, "No estoy más irritado de lo normal en mí"],
+		[1, "Me molesto o irrito más fácilmente que antes"], 
+		[2, "Me siento irritado contínuamente"],
+		[3, "No me irrito absolutamente nada por las cosas que antes solían irritarme"]
+	],
+	[
+		[0, "No he perdido el interés por los demás"],
+		[1, "Estoy Menos interesado en los demás que antes"], 
+		[2, "He perdido la mayor parte de mi interés por los demás"],
+		[3, "He perdido todo el interés por los demás"]
+	],
+	[
+		[0, "Tomo decisiones más o menos como siempre he hecho"],
+		[1, "Evito tomar decisiones más que antes"],
+		[2, "Tomar decisiones me resulta mucho más difícil que antes"], 
+		[3, "Ya me es imposible tomar decisiones"]
+	],
+	[
+		[0, "No creo tener peor aspecto que antes"],
+		[1, "Me temo que ahora parezco más viejo o poco atractivo"],
+		[2, "Creo que se han producido cambios permanentes en mi aspecto que me hacen parecer poco atractivo"],
+		[3, "Creo que tengo un aspecto horrible"]
+	],
+	[
+		[0, "Trabajo igual que antes"],
+		[1, "Me cuesta un esfuerzo extra empezar a hacer algo"],
+		[2, "Tengo que obligarme mucho para hacer algo"], 
+		[3, "No puedo hacer nada en absoluto"]
+	],
+	[
+		[0, "Duermo tan bien como siempre"],
+		[1, "No duermo tan bien como antes"],
+		[2, "Me despierto una o dos horas de lo habitual y me resulta difícil volverme a dormir"],
+		[3, "Me despierto varias horas antes de lo habitual y no puedo volverme a dormir"]
+	],
+	[
+		[0, "No me siento más cansado de lo normal"],
+		[1, "Me canso más fácilmente que antes"],
+		[2, "Me canso en cuanto hago cualquier cosa"],
+		[3, "Estoy demasiado cansado para hacer nada"]
+	],
+	[
+		[0, "Mi apetito no ha disminuido"],
+		[1, "No tengo tan buen apetito como antes"],
+		[2, "Ahora tengo mucho menos apetito"],
+		[3, "He perdido completamente el apetito"]
+	],
+	[
+		[0, "Últimamente he perdido poco peso o no he perdido nada"],
+		[1, "He perdido más de 2 kilos y medio"],
+		[2, "He perdido más de 4 kilos"],
+		[3, "He perdido más de 7 kilos"]
+	],
+	[
+		[0, "No estoy preocupado por mi salud más de lo normal"],
+		[1, "Estoy preocupado por problemas físicos como dolores, molestias, malestar de estómago o estreñimiento"],
+		[2, "Estoy preocupado por mis problemas físicos y me resulta difícil pensar en algo más"],
+		[3, "Estoy tan preocupado por mis problemas físicos que soy incapaz de pensar en cualquier cosa"]
+	],
+	[
+		[0, "No he observado ningún cambio reciente en mi interés hacia el sexo"],
+		[1, "Estoy menos interesado en el sexo que antes"],
+		[2, "Estoy mucho menos interesado por el sexo"],
+		[3, "He perdido totalmente mi interés por el sexo"]
+	]]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0]+ ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < areas.length){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		pd = answ.reduce(sum, 0)
+		sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		t = "<h2>Puntuación</h2><p>Puntuación total: " + pd + "</p><p>Desviación típica: " + sd.toFixed(3) + "</p><p>"
+		
+		if (pd < 11){ t = t + "<b>Estos altivajos son considerados normales</b>"} else 
+		if (pd < 17){t = t + "<b>Leve perturbación del estado de ánimo</b>"} else 
+		if (pd < 21){t = t + "<b>Estados de depresión intermitentes</b>"} else 
+		if (pd < 31){t = t + "<b>Depresión moderada</b>"} else 
+		if (pd < 41){t = t + "<b>Depresión grave</b>"} else 
+			{t = t + "<b>Depresión extrema</b>"}
+		t = t + "</p><br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("BDI2 - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Inventario de depresión de Beck (BDI-II)</h1>
+		<p><b>Aaron T. Beck, Robert A. Steer y Gregory K. Brown (1996)</b></p>
+		<p>Adaptado por Jesús Sanz y Carmelo Vázquez (2011)
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<p><b>Comentarios generales</b></p>
+			<p>El Inventario de Depresión de Beck-II (BDI-II) es in autoinforme compuesto por 21 ítems tipo likert. El inventario inicialmente propuesto por Beck y sus posteriores versiones han sido los instrumentos más utilizados para detectar y evaluar la gravedad de la depresión. De hecho, es el quinto test más itilizado por los psicólogos españoles (Muñiz y Fernández-Hermida, 2010). Sus ítems no se derivan de ninguna teoría concretaacerca del constructo medido, sino que describen los síntomas clínicos más frecuentes de los pacientes psiquiátricos con depresión.</p>
+			<p>El BDI-II ha experimentado algunas modificaciones respecto a las versiones anteriores para representar mejor los criteriors para el diagnóstico de los trastornos depresivos recogidos en el DSM-IV <i>(Manual diagnóstico estadístico de los trastornos mentales</i>, cuarta edición, American Psychiatric Association, 1994) y CIE-10 <i>(Clasificación estadística internacional de enfermedades y problemas relacionados con la Salud</i>, Organización Mundial de la Salud, 1993).</p>
+			<p>La prueba ha de ser destinada preferentemente para un uso clínico, como un medio para evaluar la gravedad de la depresión en pacientes adultos y adolescentes con un diagnóstico psiquiátrico y con 13 años o más de edad.</p>
+			<p><b>Instrucciones</b></p>
+			<p>En este cuestionario aparecen varios grupos de afirmaciones. Por favor, lea con atención cada una. A continuación, señale cuál de las afirmaciones de cada grupo describe mejor cómo se ha sentido durante la última semana, incluído el día de hoy. Si dentro de un mismo grupo, hay más de una afirmación que considere aplicable a su caso, márquela también. Asegúrese de leer todas las afirmaciones dentro de cada grupo antes de efectuar la elección.</p>
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Inventario de Depresión de Beck-II (BDI-II)</h1>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+</html>

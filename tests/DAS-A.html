@@ -1,0 +1,730 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
+
+function anota(valor){
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	for (var i =0; i< opciones[loadedMatrix].length; i++){
+		if (opciones[loadedMatrix][i][0] == valor) {
+			texto = opciones[loadedMatrix][i][1]
+		}
+	}
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ texto + "</p><br/>";
+	document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<p>Es difícil ser feliz si no es atractivo, inteligente, rico y creativo.</p>",
+		"<p>La felicidad depende más de mi actitud hacia mi mismo que de la impresión que los demás tienen de mi</p>",
+		"<p>La gente probablemente me considerará menos si cometo algún fallo</p>",
+		"<p>Si hago siempre las cosas bien, la gente no me respetará</p>",
+		"<p>Correr un riesgo, incluso pequeño, es una locura, porque perder es probable que sea desastroso</p>",
+		"<p>Es posible ganar la consideración de otra persona sin estar especialmente dotado para algo</p>",
+		"<p>No puedo ser feliz a no ser que me admita la mayor parte de la gente que conozco</p>",
+		"<p>Si una persona pide ayuda, es señal de debilidad</p>",
+		"<p>Si no hago las cosas tan bien como los demás, eso significa que soy una persona inferior</p>",
+		"<p>Si fracaso en mi trabajo, seré un fracaso como persona</p>",
+		"<p>Si no puedes hacer bien una cosa, es mejor no hacerla</p>",
+		"<p>Está bien cometer fallos, porque de ellos puedo aprender</p>",
+		"<p>Si alguien no está de acuerdo conmigo, eso probablemente indica que no le agrado</p>",
+		"<p>Si fracaso en parte, eso lo considero tan malo como ser un completo fracaso</p>",
+		"<p>Si los demás saben como eres realmente, te considerarán menos</p>",
+		"<p>No soy nada si no me quiere una persona a quien quiero yo</p>",
+		"<p>Uno puede disfrutar de la actividad independientemente del resultado final</p>",
+		"<p>La gente debería tener una razonable probabilidad de éxito antes de emprender cualquier cosa</p>",
+		"<p>Mi valor como persona depende en gran medida de lo que los demás opinen de mí</p>",
+		"<p>Si no consigo el nivel máximo, es probable que acabe siendo una persona de segunda categoría</p>",
+		"<p>Para ser una persona valiosa, debo destacar de verdad por lo menos en un aspecto importante</p>",
+		"<p>Las personas a quienes se les ocurren buenas ideas valen más que aquellas a quienes no se les ocurren</p>",
+		"<p>Me encontraría incómodo si cometiera un fallo</p>",
+		"<p>Las opiniones que tengo de mi mismo son más importantes que las opiniones que los demás tienen de mi</p>",
+		"<p>Para ser una persona buena, honesta y de valía, debo ayudar a todo el que lo necesite</p>",
+		"<p>Hacer una pregunta me hace parecer inferior</p>",
+		"<p>Es horrible recibir la censura de personas importantes para uno</p>",
+		"<p>Si uno no tiene otras personas en las que confiar, está destinado a estar triste</p>",
+		"<p>Puedo alcanzar metas importantes sin exclavizarme a mi mismo</p>",
+		"<p>Es posible ser reprendido y no sentirse molesto</p>",
+		"<p>No puedo confiar en otras personas, porque podrían ser crueles conmigo</p>",
+		"<p>Si desagradas a los demás, no puedes ser feliz</p>",
+		"<p>Para agradar a otras personas lo mejor es renunciar a los propios intereses</p>",
+		"<p>Mi felicidad depende más de los demás que de mí</p>",
+		"<p>Para ser feliz no necesito la aprobación de los demás</p>",
+		"<p>Si uno evita problemas, los problemas acaban desapareciendo</p>",
+		"<p>Puedo ser feliz incluso si me faltan muchas cosas buenas de la vida</p>",
+		"<p>Es muy importante lo que otras personas piensan sobre mí</p>",
+		"<p>Estar aislado de los demás termina por llevar a la infelicidad</p>",
+		"<p>Puedo encontrar la felicidad sin ser amado por otra persona</p>"
+		]
+	opciones = [[],
+	[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[1, "Totalmente en desacuerdo"],
+		[2, "Bastante en desacuerdo"],
+		[3, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[5, "Ligeramente de acuerdo"],
+		[6, "Bastante de acuerdo"],
+		[7, "Totalmente de acuerdo"]
+	],[
+		[7, "Totalmente en desacuerdo"],
+		[6, "Bastante en desacuerdo"],
+		[5, "Ligeramente en desacuerdo"],
+		[4, "Neutral"],
+		[3, "Ligeramente de acuerdo"],
+		[2, "Bastante de acuerdo"],
+		[1, "Totalmente de acuerdo"]
+	]
+	]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < areas.length){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		pd = answ.reduce(sum, 0)
+		sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		answ = [0, ...answ]
+		f1 = [answ[20],answ[4],answ[3],answ[31],answ[9],answ[21],answ[15],answ[22],answ[11],answ[14],answ[18],answ[13],answ[33]]
+		f2 = [answ[38],answ[35],answ[28],answ[19],answ[32],answ[7],answ[39],answ[40]]
+		f3 = [answ[24],answ[29],answ[30],answ[17],answ[25],answ[2]]
+		//pd = []
+		//pd.push(...f1, ...f2, ...f3)
+		t = "<h2>Puntuación</h2>"
+		t = t + "<p><table><tr><th></th><th>Puntuación</th><th>Desviación típica</th><th>Z Total</th><th>Z Varones</th><th>Z Mujeres</th><th>Z No deprimidos</th><th>Z Deprimidos</th></tr>"
+		t = t + "<tr><td>DAS-A total</td><td>"+ pd +"</td><td>"+ sd.toFixed(2) +"</td><td>"+ ((pd - 122) / 21.7).toFixed(2) +"</td><td>"+((pd - 123) / 21.5).toFixed(2) +"</td><td>"+((pd - 121.7) / 21.8).toFixed(2) +"</td><td>"+((pd - 119.2) / 19.8).toFixed(2) +"</td><td>"+((pd - 143.8) / 26.5).toFixed(2) +"</td></tr>"
+		t = t + "<tr><td>F1 Logro</td><td>"+ f1.reduce(sum, 0) +"</td><td>"+ f1.stanDeviate().toFixed(2) +"</td><td>"+((f1.reduce(sum, 0) - 35.3) / 9.8).toFixed(2) +"</td><td>"+((f1.reduce(sum, 0) - 37.4) / 10.4).toFixed(2) +"</td><td>"+((f1.reduce(sum, 0) - 34.9) / 9.7).toFixed(2) +"</td><td>"+((f1.reduce(sum, 0) - 34.0) / 8.6).toFixed(2) +"</td><td>"+((f1.reduce(sum, 0) - 44.9) / 14.0).toFixed(2) +"</td></tr>"
+		t = t + "<tr><td>F2 Dependencia/Necesidad de aprobación</td><td>"+ f2.reduce(sum, 0) +"</td><td>"+ f2.stanDeviate().toFixed(2) +"</td><td>"+((f2.reduce(sum, 0) - 32.5) / 7.1).toFixed(2) +"</td><td>"+((f2.reduce(sum, 0) - 31.6) / 7.1).toFixed(2) +"</td><td>"+((f2.reduce(sum, 0) - 32.7) / 7.1).toFixed(2) +"</td><td>"+((f2.reduce(sum, 0) - 32.0) / 7.1).toFixed(2) +"</td><td>"+((f2.reduce(sum, 0) - 36.2) / 8.0).toFixed(2) +"</td></tr>"
+		t = t + "<tr><td>F3 Actitud autónoma</td><td>"+ f3.reduce(sum, 0) +"</td><td>"+ f3.stanDeviate().toFixed(2) +"</td><td>"+((f3.reduce(sum, 0) - 29.5) / 4.1).toFixed(2) +"</td><td>"+((f3.reduce(sum, 0) - 30.0) / 3.6).toFixed(2) +"</td><td>"+((f3.reduce(sum, 0) - 29.4) / 4.2).toFixed(2) +"</td><td>"+((f3.reduce(sum, 0) - 29.7) / 4.1).toFixed(2) +"</td><td>"+((f3.reduce(sum, 0) - 26.9) / 3.7).toFixed(2) +"</td></tr>"
+		t = t + "</table></p><br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("DAS-A - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Escala de actitudes disfuncionales (DAS)</h1>
+		<h2>(Weissman Y Beck, 1978; Sans, J. y Vázquez, C., 1993)</h2>
+		<p><b>Instrucciones:</b></p>
+		<p>Este inventario continene una lista de distintas ctitudes o creencias que tienen a veces la gente. Lea cada frase con atención y decida en qué medida está o no de acuerdo.</p>
+		<p>Para cada frase, señale su respuesta sobre el recuadro. Dado que cada persona es distinta, no existen respuestas correctas ni erroneas.</p>
+		<p>Para decidir si una determinada actitud es típica de su modo de ver las cosas, basta con que tenga presente cómo es usted la mayoría de las veces.</p>
+		<p><b>Por ejemplo:</b><i> La mayoría de las personas son buenas una vez que se las conoce</i></p>
+		<ul><i>
+			<li>Totalmente en desacuerdo</li>
+			<li>Bastante en desacuerdo</li>
+			<li>Ligeramente en desacuerdo</li>
+			<li>Neutral</li>
+			<li>Ligeramente de acuerdo</li>
+			<li>Bastante de acuerdo</li>
+			<li>Totalmente de acuerdo</li></i>
+		</ul>
+		<p>Fíjese en el ejemplo anterior. Para mostrar qué medida una frase describe su actitud, usted puede marcar cualquier pundo desde "totalmente de acuerdo" hasta "totalmente en desacuerdo". En el ejemplo anterior, seleccionando "ligeramente de acuerdo" indica que esta frase es algo típica de las actitudes de la persona que responde.</p>
+		<p>Recuerde que la respuesta de usted describe su manera de pensar la mayoría de las veces.</p>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Escala de actitudes disfuncionales (DAS)</h1>
+			<h2>(Weissman Y Beck, 1978; Sans, J. y Vázquez, C., 1993)</h2>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+</html>

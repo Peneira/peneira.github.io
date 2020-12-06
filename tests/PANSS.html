@@ -188,23 +188,35 @@ loadedMatrix = 0;
 selectedSet = "A";
 
 type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
 
 function anota(valor){
-	data = data + ","+ (valor+1) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
 	lastTimestamp = Math.round(+new Date());
+	for (var i =0; i< opciones[loadedMatrix].length; i++){
+		if (opciones[loadedMatrix][i][0] == valor) {
+			texto = opciones[loadedMatrix][i][1]
+		}
+	}
 	contenido = document.createElement('texto');
-	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b>"+ opciones[loadedMatrix][valor] + "<br/>";
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ texto + "</p><br/>";
 	document.getElementById("informe").appendChild(contenido);
 	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
 	document.getElementById("matrices").innerHTML = "";
 	loadNext();
 	}
 function matriz6r(num) {
 	respuestas = ""
-	emociones = [
-			[
-			]
-		]
+	emociones = [[]]
 	areas = ["",
 		"<p>P1. Delirios</p>",
 		"<p>P2. Desorganización conceptual</p>",
@@ -271,287 +283,287 @@ function matriz6r(num) {
 		]
 	opciones = [[],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Presencia de uno de los delirios vagos, sin cristalizar y que no se mantienen tenazmente. Los delirios no interfieren con el pensamiento, las relaciones sociales o la conducta.</p>",
-		"<p><b>4. Moderado: </b>Presencia de un conjunto caleidoscópico de delirios inestables escasamente formados e inestables, o bien de unos pocos delirios bien formados que ocasionalmente interfieren con el pensamiento, las relaciones sociales o la conducta.</p>",
-		"<p><b>5. Moderadamente grave: </b>Presencia de numerosos delirios bien formados que se mantienen tenazmente y que ocasionalmente interfieren claramente con el pensamiento, las relaciones sociales y la conducta.</p>",
-		"<p><b>6. Grave: </b>Presencia de un conjunto estable de delirios cristalizados, posiblemente sistematizados, tenazmente mantenidos y que interfieren claramente con el pensamiento, las relaciones sociales y la conducta.</p>",
-		"<p><b>7. Extremo: </b>Presencia de un conjunto estable de delirios que están altamente sistematizados o son muy numerosos, y que dominan facetas principales de la vida del paciente. Frecuentemente, esto tiene como resultado acciones inadecuadas e irresponsables, que pueden incluso poner en peligro la vida del o de la paciente o la de otras personas.</p>"
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Presencia de uno de los delirios vagos, sin cristalizar y que no se mantienen tenazmente. Los delirios no interfieren con el pensamiento, las relaciones sociales o la conducta.</p>"],
+		[4,"<p><b>4. Moderado: </b>Presencia de un conjunto caleidoscópico de delirios inestables escasamente formados e inestables, o bien de unos pocos delirios bien formados que ocasionalmente interfieren con el pensamiento, las relaciones sociales o la conducta.</p>"],
+		[5,"<p><b>5. Moderadamente grave: </b>Presencia de numerosos delirios bien formados que se mantienen tenazmente y que ocasionalmente interfieren claramente con el pensamiento, las relaciones sociales y la conducta.</p>"],
+		[6,"<p><b>6. Grave: </b>Presencia de un conjunto estable de delirios cristalizados, posiblemente sistematizados, tenazmente mantenidos y que interfieren claramente con el pensamiento, las relaciones sociales y la conducta.</p>"],
+		[7,"<p><b>7. Extremo: </b>Presencia de un conjunto estable de delirios que están altamente sistematizados o son muy numerosos, y que dominan facetas principales de la vida del paciente. Frecuentemente, esto tiene como resultado acciones inadecuadas e irresponsables, que pueden incluso poner en peligro la vida del o de la paciente o la de otras personas.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>El pensamiento es circunstancual, tangencial o paralógico. Existen algunas dificultades para dirigir el pensamiento hacia un objetivo, y puede manifestarse, bajo situaciones de presión, una cierta debilitación de las asociaciones.</p>",
-		"<p><b>4. Moderado: </b>Es capaz de concretar pensamientos cuando las comunicaciones son breves y estructuradas, pero pasa a ser vago o incoherente al afrontar comunicaciones más complejas o en situaciones de una mínima presión.</p>",
-		"<p><b>5. Moderadamente grave: </b>Generalmente tiene dificultades para organizar los pensamientos, como se pone de manifiesto en frecuentes incoherencias, incosistencias o debilitación de las asociaciones incluso en ausencia de presión.</p>",
-		"<p><b>6. Grave: </b>El pensamiento está seriamente desviado y es internamente inconsistente, lo que produce grandes incoherencias y perturbación de los procesos de pensamiento, fenómenos que aparecen casi constantemente.</p>",
-		"<p><b>7. Extremo: </b>Los pensamientos están perturbados hasta el punto de que el/la paciente resulta incoherente. Existe una notable debilitación de las asociaciones, cosa que origina una total imposibilidad de comunicación, por ejemplo, la 'ensalada de palabras' o el mutismo.</p>"
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>El pensamiento es circunstancual, tangencial o paralógico. Existen algunas dificultades para dirigir el pensamiento hacia un objetivo, y puede manifestarse, bajo situaciones de presión, una cierta debilitación de las asociaciones.</p>"],
+		[4,"<p><b>4. Moderado: </b>Es capaz de concretar pensamientos cuando las comunicaciones son breves y estructuradas, pero pasa a ser vago o incoherente al afrontar comunicaciones más complejas o en situaciones de una mínima presión.</p>"],
+		[5,"<p><b>5. Moderadamente grave: </b>Generalmente tiene dificultades para organizar los pensamientos, como se pone de manifiesto en frecuentes incoherencias, incosistencias o debilitación de las asociaciones incluso en ausencia de presión.</p>"],
+		[6,"<p><b>6. Grave: </b>El pensamiento está seriamente desviado y es internamente inconsistente, lo que produce grandes incoherencias y perturbación de los procesos de pensamiento, fenómenos que aparecen casi constantemente.</p>"],
+		[7,"<p><b>7. Extremo: </b>Los pensamientos están perturbados hasta el punto de que el/la paciente resulta incoherente. Existe una notable debilitación de las asociaciones, cosa que origina una total imposibilidad de comunicación, por ejemplo, la 'ensalada de palabras' o el mutismo.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Una o dos alucinaciones claramente formadas pero infrecuentes, o bien una serie de percepciones difusas y anormales que no provocan distorsiones del pensamiento o de la conducta.</p>",
-		"<p><b>4. Moderado: </b>Las alucinaciones se producen de manera frecuente pero no continua, y la capacidad de pensamiento y la conducta del o de la paciente se ven afectadas sólo en menor medida.</p>",
-		"<p><b>5. Moderadamente grave: </b>Las alucinaciones son frecuentes, puede intervenir en ellas más de un sentido, y tienden a distorsionar el pensamiento y/o a perturbar la conducta. El/la paciente puede plantear una interpretación delirante de estas experiencias y responder a ellas emocionalmente y, en ocasiones, también verbalmente.</p>",
-		"<p><b>6. Grave: </b>Las alucinaciones se producen de manera casi continua y causan grandes perturbaciones del pensamiento y la conducta. El/la paciente reacciona ante estas alucinaciones como si fueran percepciones, y su funcionamiento se ve dificultado por frecuentes respuestas emocionales y verbales a dichas alucinaciones</p>",
-		"<p><b>7. Extremo: </b>El/la paciente está casi totalmente obsesionado con las alucinaciones, las cuales virtualmente dominan el pensamiento y la conducta. Se da a las alucinaciones una interpretación rígida y delirante y provocan respuestas verbales y de conducta, que incluyen la obediencia a órdenes presuntamente recibidas durante las alucinaciones.</p>"
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Una o dos alucinaciones claramente formadas pero infrecuentes, o bien una serie de percepciones difusas y anormales que no provocan distorsiones del pensamiento o de la conducta.</p>"],
+		[4,"<p><b>4. Moderado: </b>Las alucinaciones se producen de manera frecuente pero no continua, y la capacidad de pensamiento y la conducta del o de la paciente se ven afectadas sólo en menor medida.</p>"],
+		[5,"<p><b>5. Moderadamente grave: </b>Las alucinaciones son frecuentes, puede intervenir en ellas más de un sentido, y tienden a distorsionar el pensamiento y/o a perturbar la conducta. El/la paciente puede plantear una interpretación delirante de estas experiencias y responder a ellas emocionalmente y, en ocasiones, también verbalmente.</p>"],
+		[6,"<p><b>6. Grave: </b>Las alucinaciones se producen de manera casi continua y causan grandes perturbaciones del pensamiento y la conducta. El/la paciente reacciona ante estas alucinaciones como si fueran percepciones, y su funcionamiento se ve dificultado por frecuentes respuestas emocionales y verbales a dichas alucinaciones</p>"],
+		[7,"<p><b>7. Extremo: </b>El/la paciente está casi totalmente obsesionado con las alucinaciones, las cuales virtualmente dominan el pensamiento y la conducta. Se da a las alucinaciones una interpretación rígida y delirante y provocan respuestas verbales y de conducta, que incluyen la obediencia a órdenes presuntamente recibidas durante las alucinaciones.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Tiende a sentirse ligeramente inquieto, en un excesivo estado de alerta, o moderadamente sobre-estimulado durante toda la entrevista, pero sin episodios claros de excitación ni una gran inestabilidad de ánimo. El habla puede ser ligeramente nerviosa.</p>",
-		"<p><b>4. Moderado: </b>El nerviosismo o sobre-estimulación es claramente evidente a lo largo de la entrevista, y afectan al habla y la movilidad general, o se producen esporádicamente accesos episódicos.</p>",
-		"<p><b>5. Moderadamente grave: </b>Se observa un grado significativo de hiperactividad o frecuentes accesos de la actividad motriz. En cualquier momento, al/ a la paciente le resulta difícil permanecer sentado y sin moverse durante más de unos pocos minutos.</p>",
-		"<p><b>6. Grave: </b>Un notable nerviosismo domina la entrevista, limita la atención y, hasta cierto punto, afecta las funciones personales, como la alimentación y el sueño.</p>",
-		"<p><b>7. Extremo: </b>Un notable nerviosismo interfiere seriamente con la alimentación y el sueño y hace virtualmente imposibles los contactos interpersonales. La aceleración del habla y la actividad motriz puede producir incoherencia y agotamiento físico.</p>"
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Tiende a sentirse ligeramente inquieto, en un excesivo estado de alerta, o moderadamente sobre-estimulado durante toda la entrevista, pero sin episodios claros de excitación ni una gran inestabilidad de ánimo. El habla puede ser ligeramente nerviosa.</p>"],
+		[4,"<p><b>4. Moderado: </b>El nerviosismo o sobre-estimulación es claramente evidente a lo largo de la entrevista, y afectan al habla y la movilidad general, o se producen esporádicamente accesos episódicos.</p>"],
+		[5,"<p><b>5. Moderadamente grave: </b>Se observa un grado significativo de hiperactividad o frecuentes accesos de la actividad motriz. En cualquier momento, al/ a la paciente le resulta difícil permanecer sentado y sin moverse durante más de unos pocos minutos.</p>"],
+		[6,"<p><b>6. Grave: </b>Un notable nerviosismo domina la entrevista, limita la atención y, hasta cierto punto, afecta las funciones personales, como la alimentación y el sueño.</p>"],
+		[7,"<p><b>7. Extremo: </b>Un notable nerviosismo interfiere seriamente con la alimentación y el sueño y hace virtualmente imposibles los contactos interpersonales. La aceleración del habla y la actividad motriz puede producir incoherencia y agotamiento físico.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Es evidente una cierta expansividad y ostentación, pero sin delirios de grandeza bien definidos.</p>",
-		"<p><b>4. Moderado: </b>Se siente clara e ilusoriamente superior a tos demás. Pueden existir algunos delirios poco definidos sobre una condición social o unas capacidades especiales, pero el/la paciente no se ve afectado/a.</p>",
-		"<p><b>5. Moderadamente grave: </b>Se expresan delirios bien definidos sobre unas capacidades y un poder y condición social extraordinarios que influyen en la actitud, pero no en la conducta.</p>",
-		"<p><b>6. Grave: </b>Se expresan delirios definidos sobre una superioridad extraordinaria que se refieren a más de un parámetro (riqueza, conocimientos, fama, etc.) e influyen en las interacciones, que pueden verse afectados.</p>",
-		"<p><b>7. Extremo: </b>El pensamiento, las interacciones y la conducta están dominados por múltiples delirios sobre capacidades, riqueza, conocimientos, fama, poder y/o talla moral extraordinarios, que pueden tomar un cariz extravagante.</p>"
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Es evidente una cierta expansividad y ostentación, pero sin delirios de grandeza bien definidos.</p>"],
+		[4,"<p><b>4. Moderado: </b>Se siente clara e ilusoriamente superior a tos demás. Pueden existir algunos delirios poco definidos sobre una condición social o unas capacidades especiales, pero el/la paciente no se ve afectado/a.</p>"],
+		[5,"<p><b>5. Moderadamente grave: </b>Se expresan delirios bien definidos sobre unas capacidades y un poder y condición social extraordinarios que influyen en la actitud, pero no en la conducta.</p>"],
+		[6,"<p><b>6. Grave: </b>Se expresan delirios definidos sobre una superioridad extraordinaria que se refieren a más de un parámetro (riqueza, conocimientos, fama, etc.) e influyen en las interacciones, que pueden verse afectados.</p>"],
+		[7,"<p><b>7. Extremo: </b>El pensamiento, las interacciones y la conducta están dominados por múltiples delirios sobre capacidades, riqueza, conocimientos, fama, poder y/o talla moral extraordinarios, que pueden tomar un cariz extravagante.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Presenta una actitud recelosa o incluso abiertamente desconfiada, pero el pensamiento, las interacciones y la conducta se ven mínimamente afectados.</p>",
-		"<p><b>4. Moderado: </b>La desconfianza as claramente evidente y se manifiesta en la entrevista y/o en la conducta, pero no hay pruebas de delirios persecutorios. Alternativamente, puede haber indicios de delirios persecutorios poco definidos, pero éstos no parecen afectar la actitud ni las relaciones interpersonales del o de la paciente.</p>",
-		"<p><b>5. Moderadamente grave: </b>El/la paciente muestra una notable desconfianza, lo que perturba gravemente las relaciones interpersonales, o bien existen delirios persecutorios bien definidos que tienen un impacto limitado en las relaciones interpersonales y la conducta.</p>",
-		"<p><b>6. Grave: </b>Delirios de persecución penetrantes y bien definidos, que pueden sistematizarse e interferir significativamente con las relaciones ínterpersonales.</p>",
-		"<p><b>7. Extremo: </b>Una red de delirios persecutorios sistematizados domina el pensamiento, las relaciones sociales y la conducta del o de la paciente.</p>"
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Presenta una actitud recelosa o incluso abiertamente desconfiada, pero el pensamiento, las interacciones y la conducta se ven mínimamente afectados.</p>"],
+		[4,"<p><b>4. Moderado: </b>La desconfianza as claramente evidente y se manifiesta en la entrevista y/o en la conducta, pero no hay pruebas de delirios persecutorios. Alternativamente, puede haber indicios de delirios persecutorios poco definidos, pero éstos no parecen afectar la actitud ni las relaciones interpersonales del o de la paciente.</p>"],
+		[5,"<p><b>5. Moderadamente grave: </b>El/la paciente muestra una notable desconfianza, lo que perturba gravemente las relaciones interpersonales, o bien existen delirios persecutorios bien definidos que tienen un impacto limitado en las relaciones interpersonales y la conducta.</p>"],
+		[6,"<p><b>6. Grave: </b>Delirios de persecución penetrantes y bien definidos, que pueden sistematizarse e interferir significativamente con las relaciones ínterpersonales.</p>"],
+		[7,"<p><b>7. Extremo: </b>Una red de delirios persecutorios sistematizados domina el pensamiento, las relaciones sociales y la conducta del o de la paciente.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Manifestaciones indirectas o reprimidas de ira, como sarcasmos, faltas de respeto, expresiones hostiles, e irritabilidad ocasional.</p>",
-		"<p><b>4. Moderado: </b>Presenta una actitud abiertamente hostil y muestra una frecuente irritabilidad y manifestaciones directas de ira o resentimiento.</p>",
-		"<p><b>5. Moderadamente grave: </b>El/la paciente es altamente irritable y, ocasionalmente, puede proferir insultos o amenazas.</p>",
-		"<p><b>6. Grave: </b>La falta de cooperación y los insultos o amenazas se manifiestan notablemente durante la entrevista y tienen un serio impacto sobre las relaciones sociales. El/la paciente puede comportarse de manera violenta y destructiva, pero no se manifiesta violencia física hacia los demás.</p>",
-		"<p><b>7. Extremo: </b>La ira es muy acusada y provoca una total falta de cooperación y el rechazo de la interacción con los demás, o bien episodio(s) de violencia física hacia los demás.</p>"
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Manifestaciones indirectas o reprimidas de ira, como sarcasmos, faltas de respeto, expresiones hostiles, e irritabilidad ocasional.</p>"],
+		[4,"<p><b>4. Moderado: </b>Presenta una actitud abiertamente hostil y muestra una frecuente irritabilidad y manifestaciones directas de ira o resentimiento.</p>"],
+		[5,"<p><b>5. Moderadamente grave: </b>El/la paciente es altamente irritable y, ocasionalmente, puede proferir insultos o amenazas.</p>"],
+		[6,"<p><b>6. Grave: </b>La falta de cooperación y los insultos o amenazas se manifiestan notablemente durante la entrevista y tienen un serio impacto sobre las relaciones sociales. El/la paciente puede comportarse de manera violenta y destructiva, pero no se manifiesta violencia física hacia los demás.</p>"],
+		[7,"<p><b>7. Extremo: </b>La ira es muy acusada y provoca una total falta de cooperación y el rechazo de la interacción con los demás, o bien episodio(s) de violencia física hacia los demás.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Los cambios en la expresión facial y en los gestos de comunicación parecen ser rígidos, forzados, artificiales, o faltos de modulación.</p>",
-		"<p><b>4. Moderado: </b>Rango disminuido de expresión facial y unos pocos gestos expresivos que resultan en una apariencia apagada.</p>",
-		"<p><b>5. Severamente moderado: </b>El afecto es generalmente “apático” con cambios sólo ocasionalmente en la expresión facial y una infrecuencia de los gestos de comunicación.</p>",
-		"<p><b>6. Severo: </b>Marcada apatía y déficit emocional presente la mayor parte del tiempo. Pueden existir descargas afectivas extremas no moduladas, tales como excitación, rabia, o risas inapropiadas e incontroladas.</p>",
-		"<p><b>7. Extremo: </b>Virtualmente ausentes los cambios de expresión facial o evidencia de gestos comunicativos. El/la paciente parece presentar constantemente una expresión impávida o de “madera’.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Los cambios en la expresión facial y en los gestos de comunicación parecen ser rígidos, forzados, artificiales, o faltos de modulación.</p>"],
+		[4,"<p><b>4. Moderado: </b>Rango disminuido de expresión facial y unos pocos gestos expresivos que resultan en una apariencia apagada.</p>"],
+		[5,"<p><b>5. Severamente moderado: </b>El afecto es generalmente “apático” con cambios sólo ocasionalmente en la expresión facial y una infrecuencia de los gestos de comunicación.</p>"],
+		[6,"<p><b>6. Severo: </b>Marcada apatía y déficit emocional presente la mayor parte del tiempo. Pueden existir descargas afectivas extremas no moduladas, tales como excitación, rabia, o risas inapropiadas e incontroladas.</p>"],
+		[7,"<p><b>7. Extremo: </b>Virtualmente ausentes los cambios de expresión facial o evidencia de gestos comunicativos. El/la paciente parece presentar constantemente una expresión impávida o de “madera’.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Habitualmente le falta iniciativa y ocasionalmente puede mostrar un interés decreciente en los hechos que le rodean.</p>",
-		"<p><b>4. Moderado: </b>El/la paciente está generalmente emocionalmente distante de su entorno y de sus competencias, pero con motivación, puede ser incorporado al entorno.</p>",
-		"<p><b>5. Severamente moderada: </b>El/la paciente s está claramente alejado emocionalmente de las personas y de los sucesos a su alrededor, resistiendo cualquier esfuerzo de participación. El/la paciente aparece distante, dócil y sin propósito pero puede ser involucrado en la comunicación, al menos de forma breve, y tiende a preocuparse de su persona, algunas veces con ayuda.</p>",
-		"<p><b>6. Severa: </b>Marcado déficit de interés y de compromisos emocionales que resultan en una conversación limitada con los demás, y negligencia frecuente de sus funciones personales, para lo cual, el/la paciente necesita supervisión</p>",
-		"<p><b>7. Extrema: </b>Paciente casi totalmente aislado/a, incomunicativo/a, y no presta  atención a sus necesidades personales como resultado de una profunda falta de interés y compromiso emocional.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Habitualmente le falta iniciativa y ocasionalmente puede mostrar un interés decreciente en los hechos que le rodean.</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la paciente está generalmente emocionalmente distante de su entorno y de sus competencias, pero con motivación, puede ser incorporado al entorno.</p>"],
+		[5,"<p><b>5. Severamente moderada: </b>El/la paciente s está claramente alejado emocionalmente de las personas y de los sucesos a su alrededor, resistiendo cualquier esfuerzo de participación. El/la paciente aparece distante, dócil y sin propósito pero puede ser involucrado en la comunicación, al menos de forma breve, y tiende a preocuparse de su persona, algunas veces con ayuda.</p>"],
+		[6,"<p><b>6. Severa: </b>Marcado déficit de interés y de compromisos emocionales que resultan en una conversación limitada con los demás, y negligencia frecuente de sus funciones personales, para lo cual, el/la paciente necesita supervisión</p>"],
+		[7,"<p><b>7. Extrema: </b>Paciente casi totalmente aislado/a, incomunicativo/a, y no presta  atención a sus necesidades personales como resultado de una profunda falta de interés y compromiso emocional.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>La conversación se caracteriza por un tono artificial, tenso. Puede faltar profundidad emocional o tiende a permanecer en un plano intelectual impersonal.</p>",
-		"<p><b>4. Moderado: </b>El/la paciente es típicamente reservado, con una distancia interpersonal evidente. El/la paciente puede responder a las preguntas mecánicamente, actuar con aburrimiento o expresar desinterés.</p>",
-		"<p><b>5. Severamente moderada: </b>La falta de participación es obvia e impide claramente la productividad de la entrevista. El/la paciente puede tender a evitar el contacto con el rostro u ojos.</p>",
-		"<p><b>6. Severa: </b>El/la paciente es sumamente indiferente, con una marcada distancia interpersonal. Las respuestas son superficiales y hay una pequeña evidencia no verbal de implicación. El contacto cara a cara o con los ojos se evita frecuentemente.</p>",
-		"<p><b>7. Extremo: </b>Falta de implicación total con el entrevistador. El/la paciente parece ser completamente indiferente y constantemente evita interacciones verbales y no verbales durante la entrevista.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>La conversación se caracteriza por un tono artificial, tenso. Puede faltar profundidad emocional o tiende a permanecer en un plano intelectual impersonal.</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la paciente es típicamente reservado, con una distancia interpersonal evidente. El/la paciente puede responder a las preguntas mecánicamente, actuar con aburrimiento o expresar desinterés.</p>"],
+		[5,"<p><b>5. Severamente moderada: </b>La falta de participación es obvia e impide claramente la productividad de la entrevista. El/la paciente puede tender a evitar el contacto con el rostro u ojos.</p>"],
+		[6,"<p><b>6. Severa: </b>El/la paciente es sumamente indiferente, con una marcada distancia interpersonal. Las respuestas son superficiales y hay una pequeña evidencia no verbal de implicación. El contacto cara a cara o con los ojos se evita frecuentemente.</p>"],
+		[7,"<p><b>7. Extremo: </b>Falta de implicación total con el entrevistador. El/la paciente parece ser completamente indiferente y constantemente evita interacciones verbales y no verbales durante la entrevista.</p>"]
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Ocasionalmente muestra interés en actividades sociales pero con poca iniciativa. Normalmente conecta con otros solamente cuando ellos se han acercado primero.</p>",
-		"<p><b>4. Moderado: </b>Pasivamente va con las actividades sociales pero de una forma desinteresada o mecánica. Tiende a alejarse del fondo.</p>",
-		"<p><b>5. Severamente moderada: </b>Participa pasivamente solamente en una minoría de actividades, y virtualmente muestra desinterés o falta de iniciativa. Generalmente pasa poco tiempo con los demás.</p>",
-		"<p><b>6. Severa: </b>Tiende a ser apático y a estar aislado, participando raramente en actividades sociales, y ocasionalmente muestra dejadez en las necesidades personales. Tiene escasos y espontáneos contactos sociales.</p>",
-		"<p><b>7. Extremo: </b>Profundamente apático, socialmente aislado y personalmente dejado.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Ocasionalmente muestra interés en actividades sociales pero con poca iniciativa. Normalmente conecta con otros solamente cuando ellos se han acercado primero.</p>"],
+		[4,"<p><b>4. Moderado: </b>Pasivamente va con las actividades sociales pero de una forma desinteresada o mecánica. Tiende a alejarse del fondo.</p>"],
+		[5,"<p><b>5. Severamente moderada: </b>Participa pasivamente solamente en una minoría de actividades, y virtualmente muestra desinterés o falta de iniciativa. Generalmente pasa poco tiempo con los demás.</p>"],
+		[6,"<p><b>6. Severa: </b>Tiende a ser apático y a estar aislado, participando raramente en actividades sociales, y ocasionalmente muestra dejadez en las necesidades personales. Tiene escasos y espontáneos contactos sociales.</p>"],
+		[7,"<p><b>7. Extremo: </b>Profundamente apático, socialmente aislado y personalmente dejado.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Tiende a dar interpretaciones personales o literales a los proverbios más difíciles y puede tener problemas con conceptos completamente abstractos o relatados remotamente.</p>",
-		"<p><b>4. Moderado: </b>Normalmente utiliza un modo concreto. Tiene problemas con la mayoría de los proverbios y con varias categorías. Tiende a ser distraído en los aspectos funcionales y rasgos destacados.</p>",
-		"<p><b>5. Severamente moderada: </b>Trata primariamente de un modo concreto, mostrando dificultad con la mayoría de los proverbios y varias categorías.</p>",
-		"<p><b>6. Severa: </b>Incapaz de comprender el sentido abstracto de cualquier proverbio o expresiones figurativas y puede clasificar solamente por la más simple de las similitudes. El pensamiento es bien vacuo o cerrado dentro de los aspectos funcionales, rasgos destacados e interpretaciones idiosincráticas</p>",
-		"<p><b>7. Extremo: </b>Solamente puede utilizar modos concretos de pensamiento. Muestra incomprensión por los proverbios, metáforas comunes, similitudes y categorías simples. Incluso los atributos destacados y funcionales no sirven como base de clasificación. Esta valoración se puede aplicar a aquellos que no pueden interactuar siquiera un mínimo con el examinador debido a un marcado deterioro cognitivo.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Tiende a dar interpretaciones personales o literales a los proverbios más difíciles y puede tener problemas con conceptos completamente abstractos o relatados remotamente.</p>"],
+		[4,"<p><b>4. Moderado: </b>Normalmente utiliza un modo concreto. Tiene problemas con la mayoría de los proverbios y con varias categorías. Tiende a ser distraído en los aspectos funcionales y rasgos destacados.</p>"],
+		[5,"<p><b>5. Severamente moderada: </b>Trata primariamente de un modo concreto, mostrando dificultad con la mayoría de los proverbios y varias categorías.</p>"],
+		[6,"<p><b>6. Severa: </b>Incapaz de comprender el sentido abstracto de cualquier proverbio o expresiones figurativas y puede clasificar solamente por la más simple de las similitudes. El pensamiento es bien vacuo o cerrado dentro de los aspectos funcionales, rasgos destacados e interpretaciones idiosincráticas</p>"],
+		[7,"<p><b>7. Extremo: </b>Solamente puede utilizar modos concretos de pensamiento. Muestra incomprensión por los proverbios, metáforas comunes, similitudes y categorías simples. Incluso los atributos destacados y funcionales no sirven como base de clasificación. Esta valoración se puede aplicar a aquellos que no pueden interactuar siquiera un mínimo con el examinador debido a un marcado deterioro cognitivo.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>La conversación muestra un poco de iniciativa. Las respuestas de los/as pacientes tiende a ser breve y sin adornos, requiriendo preguntas directas y dirigidas por el investigador.</p>",
-		"<p><b>4. Moderado: </b>Falta de fluidez en la conversación, aparece desigualdad y vacilación. Normalmente se necesitan preguntas dirigidas para dilucidar respuestas adecuadas y proceder con la conversación.</p>",
-		"<p><b>5. Severamente moderada: </b>El/la paciente muestra una marcada falta de espontaneidad y apertura, respondiendo a las preguntas del investigador con una o dos breves frases.</p>",
-		"<p><b>6. Severa: </b>Las respuestas del o de la paciente están limitadas principalmente a pocas palabras o frases cortas, intencionadas para evitar o impedir la comunicación (ej: “no se, no tengo libertad para opinar”). Como consecuencia, la conversación está seriamente dificultada, y la entrevista es altamente insatisfactoria.</p>",
-		"<p><b>7. Extremo: </b>La respuesta verbal se restringe a: lo máximo, murmullos ocasionales, haciendo que la conversación sea imposible.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>La conversación muestra un poco de iniciativa. Las respuestas de los/as pacientes tiende a ser breve y sin adornos, requiriendo preguntas directas y dirigidas por el investigador.</p>"],
+		[4,"<p><b>4. Moderado: </b>Falta de fluidez en la conversación, aparece desigualdad y vacilación. Normalmente se necesitan preguntas dirigidas para dilucidar respuestas adecuadas y proceder con la conversación.</p>"],
+		[5,"<p><b>5. Severamente moderada: </b>El/la paciente muestra una marcada falta de espontaneidad y apertura, respondiendo a las preguntas del investigador con una o dos breves frases.</p>"],
+		[6,"<p><b>6. Severa: </b>Las respuestas del o de la paciente están limitadas principalmente a pocas palabras o frases cortas, intencionadas para evitar o impedir la comunicación (ej: “no se, no tengo libertad para opinar”). Como consecuencia, la conversación está seriamente dificultada, y la entrevista es altamente insatisfactoria.</p>"],
+		[7,"<p><b>7. Extremo: </b>La respuesta verbal se restringe a: lo máximo, murmullos ocasionales, haciendo que la conversación sea imposible.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Leve: </b>Alguna rigidez mostrada en actitudes o creencias. El/la paciente puede negarse a considerar posiciones alternativas o tener resultando difícil cambiar de una idea a otra.</p>",
-		"<p><b>4. Moderado: </b>La conversación gira alrededor de un tema recurrente, resultando difícil cambiar de nuevo a un tópico.</p>",
-		"<p><b>5. Severa moderadamente: </b>El pensamiento es rígido y repetitivo hasta tal punto que, a pesar del esfuerzo del entrevistador, la conversación se limita solamente a dos o tres temas dominantes.</p>",
-		"<p><b>6. Severa: </b>Repetición incontrolada de demandas, afirmaciones, ideas o preguntas que dificultan severamente la conversación.</p>",
-		"<p><b>7. Extremo: </b>Pensamiento, comportamiento y conversación dominados por una constante repetición de ideas fijas o frases limitadas, dirigiéndose a una rigidez grotesca, inapropiada y restrictiva de la comunicación del o de la paciente.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología cuestionable; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Leve: </b>Alguna rigidez mostrada en actitudes o creencias. El/la paciente puede negarse a considerar posiciones alternativas o tener resultando difícil cambiar de una idea a otra.</p>"],
+		[4,"<p><b>4. Moderado: </b>La conversación gira alrededor de un tema recurrente, resultando difícil cambiar de nuevo a un tópico.</p>"],
+		[5,"<p><b>5. Severa moderadamente: </b>El pensamiento es rígido y repetitivo hasta tal punto que, a pesar del esfuerzo del entrevistador, la conversación se limita solamente a dos o tres temas dominantes.</p>"],
+		[6,"<p><b>6. Severa: </b>Repetición incontrolada de demandas, afirmaciones, ideas o preguntas que dificultan severamente la conversación.</p>"],
+		[7,"<p><b>7. Extremo: </b>Pensamiento, comportamiento y conversación dominados por una constante repetición de ideas fijas o frases limitadas, dirigiéndose a una rigidez grotesca, inapropiada y restrictiva de la comunicación del o de la paciente.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Ligero: </b>Preocupaciones a cerca de la salud o sobre problemas somáticos, tal y como se evidencia por preguntas ocasionales y por demandas de tranquilización.</p>",
-		"<p><b>4. Moderado: </b>Quejas a cerca de mala salud o de disfunción corporal, pero no hay convicción delirante, y las preocupaciones pueden ser aliviadas mediante tranquilización.</p>",
-		"<p><b>5. Moderado severo: </b>El/la paciente expresa numerosas o frecuentemente preocupaciones a cerca de presentar una enfermedad física o de disfunción corporal, o bien el/la paciente manifiesta uno o dos claros delirios sobre estos temas, pero sin estar preocupado por ello.</p>",
-		"<p><b>6. Severo: </b>El/la paciente manifiesta uno o más delirios somáticos pero no está muy implicado efectivamente en ellos, y con algún esfuerzo, el entrevistador puede desviar la atención del o de la paciente sobre estos temas.</p>",
-		"<p><b>7. Extremo: </b>Numerosos y frecuentemente referidos delirios somáticos, o sólo algún delirio somático pero de naturaleza catastrófica que domina totalmente el afecto y pensamiento del o de la paciente.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Ligero: </b>Preocupaciones a cerca de la salud o sobre problemas somáticos, tal y como se evidencia por preguntas ocasionales y por demandas de tranquilización.</p>"],
+		[4,"<p><b>4. Moderado: </b>Quejas a cerca de mala salud o de disfunción corporal, pero no hay convicción delirante, y las preocupaciones pueden ser aliviadas mediante tranquilización.</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la paciente expresa numerosas o frecuentemente preocupaciones a cerca de presentar una enfermedad física o de disfunción corporal, o bien el/la paciente manifiesta uno o dos claros delirios sobre estos temas, pero sin estar preocupado por ello.</p>"],
+		[6,"<p><b>6. Severo: </b>El/la paciente manifiesta uno o más delirios somáticos pero no está muy implicado efectivamente en ellos, y con algún esfuerzo, el entrevistador puede desviar la atención del o de la paciente sobre estos temas.</p>"],
+		[7,"<p><b>7. Extremo: </b>Numerosos y frecuentemente referidos delirios somáticos, o sólo algún delirio somático pero de naturaleza catastrófica que domina totalmente el afecto y pensamiento del o de la paciente.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Ligero: </b>Expresa alguna intranquilidad, preocupación excesiva o inquietud subjetiva, pero las repercusiones somáticas o conductuales no son evidentes.</p>",
-		"<p><b>4. Moderado: </b>El/la paciente refiere varios síntomas de nerviosismo los cuales se reflejan en ligeras manifestaciones físicas, tales como un temblor fino en manos y sudoración excesiva.</p>",
-		"<p><b>5. Moderado severo: </b>El/la paciente refiere marcados problemas de ansiedad los cuales tienen importantes manifestaciones físicas y conductuales, tales como tensión, escasa capacidad de concentración, palpitaciones o insomnio.</p>",
-		"<p><b>6. Severo: </b>Estado subjetivo prácticamente constante de temor asociado con fobias, marcada inquietud, o numerosas manifestaciones somáticas.</p>",
-		"<p><b>7. Extremo: </b>La vida del o de la paciente está seriamente alterada por la ansiedad, la cual esta casi siempre presente y a veces alcanza el grado de pánico, o se manifiesta en una crisis de pánico en la actualidad.</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Ligero: </b>Expresa alguna intranquilidad, preocupación excesiva o inquietud subjetiva, pero las repercusiones somáticas o conductuales no son evidentes.</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la paciente refiere varios síntomas de nerviosismo los cuales se reflejan en ligeras manifestaciones físicas, tales como un temblor fino en manos y sudoración excesiva.</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la paciente refiere marcados problemas de ansiedad los cuales tienen importantes manifestaciones físicas y conductuales, tales como tensión, escasa capacidad de concentración, palpitaciones o insomnio.</p>"],
+		[6,"<p><b>6. Severo: </b>Estado subjetivo prácticamente constante de temor asociado con fobias, marcada inquietud, o numerosas manifestaciones somáticas.</p>"],
+		[7,"<p><b>7. Extremo: </b>La vida del o de la paciente está seriamente alterada por la ansiedad, la cual esta casi siempre presente y a veces alcanza el grado de pánico, o se manifiesta en una crisis de pánico en la actualidad.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Ligero: </b>Las  preguntas  al  respecto,  ponen  de  manifiesto  vagos  sentimientos  de  culpa  o  autorreproches por un incidente mínimo, pero el/la paciente no está claramente afectado</p>",
-		"<p><b>4. Moderado: </b>El/la  paciente  expresa  preocupación  sobre  su  responsabilidad  por  un  incidente  real  en  su  vida,  pero  no  está  preocupado  por  ello  y  su  conducta  no  está  manifiestamente afectada</p>",
-		"<p><b>5. Moderado severo: </b>El/la   expresa   un   fuerte   sentimiento   de   culpa   asociado   con   autodesprecio  o  con  la  creencia  de  que  merece  un  castigo.  Los  sentimientos  de  culpa  pueden  tener  una  base  delirante,  pueden  ser  referidos  espontáneamente,  pueden  ser  fuente de preocupación y/o humor depresivo, y no se alivian mediante la tranquilización por parte del entrevistador. </p>",
-		"<p><b>6. Severo: </b>Intensas  ideas  de  culpa  que  toman  un  carácter  delirante  y  se  reflejan  en  una  actitud  de  desvalimiento  o  inutilidad.  El/la  paciente  cree  que  debería  recibir  un  severo  castigo por hechos pasados, pudiendo considerar su situación actual como un castigo</p>",
-		"<p><b>7. Extremo: </b>La vida del o de la paciente está dominada por firmes delirios de culpa por los que  se  siente  merecedor  de  grandes  castigos  tales  como  encarcelamiento,  tortura  o  muerte.  Puede  haber  pensamientos  autolíticos,  o  la  atribución  de  los  problemas  de  los  demás a actos realizados por el/la propio/a paciente</p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Ligero: </b>Las  preguntas  al  respecto,  ponen  de  manifiesto  vagos  sentimientos  de  culpa  o  autorreproches por un incidente mínimo, pero el/la paciente no está claramente afectado</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la  paciente  expresa  preocupación  sobre  su  responsabilidad  por  un  incidente  real  en  su  vida,  pero  no  está  preocupado  por  ello  y  su  conducta  no  está  manifiestamente afectada</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la   expresa   un   fuerte   sentimiento   de   culpa   asociado   con   autodesprecio  o  con  la  creencia  de  que  merece  un  castigo.  Los  sentimientos  de  culpa  pueden  tener  una  base  delirante,  pueden  ser  referidos  espontáneamente,  pueden  ser  fuente de preocupación y/o humor depresivo, y no se alivian mediante la tranquilización por parte del entrevistador. </p>"],
+		[6,"<p><b>6. Severo: </b>Intensas  ideas  de  culpa  que  toman  un  carácter  delirante  y  se  reflejan  en  una  actitud  de  desvalimiento  o  inutilidad.  El/la  paciente  cree  que  debería  recibir  un  severo  castigo por hechos pasados, pudiendo considerar su situación actual como un castigo</p>"],
+		[7,"<p><b>7. Extremo: </b>La vida del o de la paciente está dominada por firmes delirios de culpa por los que  se  siente  merecedor  de  grandes  castigos  tales  como  encarcelamiento,  tortura  o  muerte.  Puede  haber  pensamientos  autolíticos,  o  la  atribución  de  los  problemas  de  los  demás a actos realizados por el/la propio/a paciente</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>La  postura  y  los  movimientos  indican  un  ligero  temor,  así  como  alguna  tensión  motora, inquietud ocasional, cambios de postura, o un fino temblor de manos</p>",
-		"<p><b>4. Moderado: </b>Clara  apariencia  nerviosa,  tal  y  como  se  deduce  por  un  comportamiento  inquieto, manifiesto temblor de manos, sudoración excesiva o tics nerviosos</p>",
-		"<p><b>5. Moderado severo: </b>Marcada  tensión  que  se  evidencia  por  sacudidas  nerviosas,  sudoración profusa e inquietud, pero la conducta en la entrevista no está significativamente alterada.</p>",
-		"<p><b>6. Severo: </b>Marcada   tensión   que   interfiere   con   las   relaciones   interpersonales.   El/la   paciente,  por  ejemplo,  puede  estar  constantemente  inquieto,  es  incapaz  de  permanecer  sentado durante un rato o presenta hiperventilación</p>",
-		"<p><b>7. Extremo: </b>La  marcada  tensión  se  manifiesta  por  síntomas  de  pánico  o  por  una  gran  hiperactividad motora, tal como marcha acelerada o incapacidad para permanecer sentado más de un minuto, lo que hace imposible una conversación mantenida</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>La  postura  y  los  movimientos  indican  un  ligero  temor,  así  como  alguna  tensión  motora, inquietud ocasional, cambios de postura, o un fino temblor de manos</p>"],
+		[4,"<p><b>4. Moderado: </b>Clara  apariencia  nerviosa,  tal  y  como  se  deduce  por  un  comportamiento  inquieto, manifiesto temblor de manos, sudoración excesiva o tics nerviosos</p>"],
+		[5,"<p><b>5. Moderado severo: </b>Marcada  tensión  que  se  evidencia  por  sacudidas  nerviosas,  sudoración profusa e inquietud, pero la conducta en la entrevista no está significativamente alterada.</p>"],
+		[6,"<p><b>6. Severo: </b>Marcada   tensión   que   interfiere   con   las   relaciones   interpersonales.   El/la   paciente,  por  ejemplo,  puede  estar  constantemente  inquieto,  es  incapaz  de  permanecer  sentado durante un rato o presenta hiperventilación</p>"],
+		[7,"<p><b>7. Extremo: </b>La  marcada  tensión  se  manifiesta  por  síntomas  de  pánico  o  por  una  gran  hiperactividad motora, tal como marcha acelerada o incapacidad para permanecer sentado más de un minuto, lo que hace imposible una conversación mantenida</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición..</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>Ligera apariencia forzada de los movimientos o ligera rigidez en la postura</p>",
-		"<p><b>4. Moderado: </b>La apariencia forzada e inarmónica de los movimientos es notable y durante breves momentos el/la paciente mantiene una postura artificial</p>",
-		"<p><b>5. Moderado severo: </b>Se  observan  rituales  extravagantes  o  una  postura  deformada  de  forma  ocasional,  o  bien  se  mantiene  una  postura  anómala  durante  largos  periodos  de  tiempo</p>",
-		"<p><b>6. Severo: </b>Frecuente  repetición  de  rituales  extravagantes,  manierisrnos  o  movimientos  estereotipados,  o  bien  se  mantiene  una  postura  deformada  durante  largos  periodos  de  tiempo. </p>",
-		"<p><b>7. Extremo: </b>El  funcionamiento  está  seriamente  alterado  por  la  implicación  prácticamente  constante  del  o  de  la  paciente  en  movimientos  rituales,  manierísticos  o  estereotipados,  o  por una postura fija y artificial que es mantenida durante la mayor parte del tiempo</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición..</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>Ligera apariencia forzada de los movimientos o ligera rigidez en la postura</p>"],
+		[4,"<p><b>4. Moderado: </b>La apariencia forzada e inarmónica de los movimientos es notable y durante breves momentos el/la paciente mantiene una postura artificial</p>"],
+		[5,"<p><b>5. Moderado severo: </b>Se  observan  rituales  extravagantes  o  una  postura  deformada  de  forma  ocasional,  o  bien  se  mantiene  una  postura  anómala  durante  largos  periodos  de  tiempo</p>"],
+		[6,"<p><b>6. Severo: </b>Frecuente  repetición  de  rituales  extravagantes,  manierisrnos  o  movimientos  estereotipados,  o  bien  se  mantiene  una  postura  deformada  durante  largos  periodos  de  tiempo. </p>"],
+		[7,"<p><b>7. Extremo: </b>El  funcionamiento  está  seriamente  alterado  por  la  implicación  prácticamente  constante  del  o  de  la  paciente  en  movimientos  rituales,  manierísticos  o  estereotipados,  o  por una postura fija y artificial que es mantenida durante la mayor parte del tiempo</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>El/la paciente expresa algo de tristeza o desánimo solo cuando se le pregunta, pero no hay evidencia de depresión en su actitud o conducta</p>",
-		"<p><b>4. Moderado: </b>Claros  sentimientos  de  tristeza  o  desánimo  que  pueden  ser  referidos  de  forma  espontánea,  pero  el  humor  depresivo  no  tiene  importantes  repercusiones  sobre  la  conducta o el funcionamiento social y generalmente se puede animar a el/la paciente</p>",
-		"<p><b>5. Moderado severo: </b>Claro  humor  depresivo  que  está  asociado  con  marcada  tristeza,  pesimismo,  pérdida  del  interés  social,  inhibición  psicomotriz  y  afectación  del  apetito  y  del  sueño. No se puede animar fácilmente al/ a la paciente</p>",
-		"<p><b>6. Severo: </b>Marcado  humor  depresivo  que  está  asociado  con  continuos  sentimientos  de  sufrimiento,  desvalimiento,  inutilidad  y  llanto  ocasional.  Además,  existe  una  importante  alteración  del  apetito  y/o  del  sueño,  así  corno  de  la  motricidad  y  de  la  funciones  sociales  con posibles signos de autoabandono</p>",
-		"<p><b>7. Extremo: </b>Los  sentimientos  depresivos  interfieren  de  manera  muy  marcada  en  la  mayoría  de  las  áreas.  Las  manifestaciones  incluyen  llanto  frecuente,  marcados  síntomas  somáticos,   trastorno   de   la   concentración,   inhibición   psicomotriz,   desinterés   social,   autoabandono,  posible  presencia  de  delirios  depresivos  o  nihilistas,  y/o  posibles  ideas  o  conductas suicidas</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>El/la paciente expresa algo de tristeza o desánimo solo cuando se le pregunta, pero no hay evidencia de depresión en su actitud o conducta</p>"],
+		[4,"<p><b>4. Moderado: </b>Claros  sentimientos  de  tristeza  o  desánimo  que  pueden  ser  referidos  de  forma  espontánea,  pero  el  humor  depresivo  no  tiene  importantes  repercusiones  sobre  la  conducta o el funcionamiento social y generalmente se puede animar a el/la paciente</p>"],
+		[5,"<p><b>5. Moderado severo: </b>Claro  humor  depresivo  que  está  asociado  con  marcada  tristeza,  pesimismo,  pérdida  del  interés  social,  inhibición  psicomotriz  y  afectación  del  apetito  y  del  sueño. No se puede animar fácilmente al/ a la paciente</p>"],
+		[6,"<p><b>6. Severo: </b>Marcado  humor  depresivo  que  está  asociado  con  continuos  sentimientos  de  sufrimiento,  desvalimiento,  inutilidad  y  llanto  ocasional.  Además,  existe  una  importante  alteración  del  apetito  y/o  del  sueño,  así  corno  de  la  motricidad  y  de  la  funciones  sociales  con posibles signos de autoabandono</p>"],
+		[7,"<p><b>7. Extremo: </b>Los  sentimientos  depresivos  interfieren  de  manera  muy  marcada  en  la  mayoría  de  las  áreas.  Las  manifestaciones  incluyen  llanto  frecuente,  marcados  síntomas  somáticos,   trastorno   de   la   concentración,   inhibición   psicomotriz,   desinterés   social,   autoabandono,  posible  presencia  de  delirios  depresivos  o  nihilistas,  y/o  posibles  ideas  o  conductas suicidas</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>Ligera  pero  apreciable  disminución  de  la  frecuencia  de  los  movimientos  y  del  habla. El/la paciente puede ser poco productivo/a tanto en el habla como en los gestos</p>",
-		"<p><b>4. Moderado: </b>El/la  paciente  tiene  claramente  enlentecidos  los  movimientos  y  el  habla  puede estar caracterizada por su baja productividad, incluyendo un aumento de la latencia en las respuestas, pausas prolongadas y ritmo enlentecido</p>",
-		"<p><b>5. Moderado severo: </b>Una  marcada  reducción  de  la  actividad  motora  que  provoca  una  importante incapacidad en la comunicación o limita el funcionamiento social y laboral. El/a paciente se encuentra habitualmente sentado/a o tumbado/a. </p>",
-		"<p><b>6. Severo: </b>Los  movimientos  son  extremadamente  lentos,  lo  que  resulta  en  un  mínimo  de  actividad y de habla. El/la paciente se pasa la mayor parte del día sentado o tumbado, sin realizar actividad productiva alguna</p>",
-		"<p><b>7. Extremo: </b>El/la  paciente  está  casi  totalmente  inmóvil  y  apenas  si  responde  a  estímulos  externos.</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>Ligera  pero  apreciable  disminución  de  la  frecuencia  de  los  movimientos  y  del  habla. El/la paciente puede ser poco productivo/a tanto en el habla como en los gestos</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la  paciente  tiene  claramente  enlentecidos  los  movimientos  y  el  habla  puede estar caracterizada por su baja productividad, incluyendo un aumento de la latencia en las respuestas, pausas prolongadas y ritmo enlentecido</p>"],
+		[5,"<p><b>5. Moderado severo: </b>Una  marcada  reducción  de  la  actividad  motora  que  provoca  una  importante incapacidad en la comunicación o limita el funcionamiento social y laboral. El/a paciente se encuentra habitualmente sentado/a o tumbado/a. </p>"],
+		[6,"<p><b>6. Severo: </b>Los  movimientos  son  extremadamente  lentos,  lo  que  resulta  en  un  mínimo  de  actividad y de habla. El/la paciente se pasa la mayor parte del día sentado o tumbado, sin realizar actividad productiva alguna</p>"],
+		[7,"<p><b>7. Extremo: </b>El/la  paciente  está  casi  totalmente  inmóvil  y  apenas  si  responde  a  estímulos  externos.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>Actitud  de  resentimiento,  impaciencia  o  sarcasmo.  Puede  poner  reparos  a  colaborar a lo largo de la entrevista</p>",
-		"<p><b>4. Moderado: </b>Ocasionalmente  rehusa  colaborar  en  las  demandas  sociales  normales,  así  como  hacer  su  propia  cama,  acudir  a  actividades  programadas,  etc.  El/la  paciente  puede  manifestar  una  actitud  hostil,  defensiva  o  negativista,  pero  generalmente  puede  ser  manejable</p>",
-		"<p><b>5. Moderado severo: </b>El/la paciente frecuentemente no colabora con las demandas de su ambiente  y  puede  ser  considerado  por  otras  personas  como  “indeseable”  o  de  tener  “dificultades  de  trato”.  La  falta  de  colaboración  se  manifiesta  por  una  marcada  actitud  defensiva  o  de  irritabilidad  con  el  entrevistador  y  una  escasa  disposición  a  contestar  a  muchas de las preguntas</p>",
-		"<p><b>6. Severo: </b>El/la  paciente  colabora  muy  poco,  se  muestra  negativista  y  posiblemente  también  beligerante.  Rehusa  colaborar  con  la  mayoría  de  las  demandas  sociales  y  puede  negarse a iniciar o a completar la totalidad de la entrevista</p>",
-		"<p><b>7. Extremo: </b>La   resistencia   activa   perturba   seriamente   casi   todas   las   áreas   de   funcionamiento. El/la paciente puede rehusar el implicarse en cualquier actividad social, el aseo  personal,  conversar  con  la  familia  o  el  personal  sanitario,  y  a  participar  aunque  sólo  sea brevemente en la entrevista</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>Actitud  de  resentimiento,  impaciencia  o  sarcasmo.  Puede  poner  reparos  a  colaborar a lo largo de la entrevista</p>"],
+		[4,"<p><b>4. Moderado: </b>Ocasionalmente  rehusa  colaborar  en  las  demandas  sociales  normales,  así  como  hacer  su  propia  cama,  acudir  a  actividades  programadas,  etc.  El/la  paciente  puede  manifestar  una  actitud  hostil,  defensiva  o  negativista,  pero  generalmente  puede  ser  manejable</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la paciente frecuentemente no colabora con las demandas de su ambiente  y  puede  ser  considerado  por  otras  personas  como  “indeseable”  o  de  tener  “dificultades  de  trato”.  La  falta  de  colaboración  se  manifiesta  por  una  marcada  actitud  defensiva  o  de  irritabilidad  con  el  entrevistador  y  una  escasa  disposición  a  contestar  a  muchas de las preguntas</p>"],
+		[6,"<p><b>6. Severo: </b>El/la  paciente  colabora  muy  poco,  se  muestra  negativista  y  posiblemente  también  beligerante.  Rehusa  colaborar  con  la  mayoría  de  las  demandas  sociales  y  puede  negarse a iniciar o a completar la totalidad de la entrevista</p>"],
+		[7,"<p><b>7. Extremo: </b>La   resistencia   activa   perturba   seriamente   casi   todas   las   áreas   de   funcionamiento. El/la paciente puede rehusar el implicarse en cualquier actividad social, el aseo  personal,  conversar  con  la  familia  o  el  personal  sanitario,  y  a  participar  aunque  sólo  sea brevemente en la entrevista</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>El  contenido  del  pensamiento  es  peculiar  o  idiosicrático,  o  bien  las  ideas  normales son referidas en un contexto extraño</p>",
-		"<p><b>4. Moderado: </b>Las  ideas  están  frecuentemente  distorsionadas  y  ocasionalmente  son  bizarras</p>",
-		"<p><b>5. Moderado severo: </b>El/la   paciente   manifiesta   muchos   pensamientos   extraños   y   fantásticos  (p.e.  ser  el  hijo  adoptado  de  un  rey)  o  algunos  que  son  marcadamente  absurdos  (p.e. tener cientos de hijos, recibir mensajes de radio desde el espacio exterior a través de un diente empastado).</p>",
-		"<p><b>6. Severo: </b>El/la paciente expresa muchas ideas absurdas o ilógicas, o algunas que tienen un marcado matiz grotesco (p.e. tener tres cabezas, ser un extraterrestre).</p>",
-		"<p><b>7. Extremo: </b>El pensamiento está repleto de ideas absurdas bizarras y grotescas.</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>El  contenido  del  pensamiento  es  peculiar  o  idiosicrático,  o  bien  las  ideas  normales son referidas en un contexto extraño</p>"],
+		[4,"<p><b>4. Moderado: </b>Las  ideas  están  frecuentemente  distorsionadas  y  ocasionalmente  son  bizarras</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la   paciente   manifiesta   muchos   pensamientos   extraños   y   fantásticos  (p.e.  ser  el  hijo  adoptado  de  un  rey)  o  algunos  que  son  marcadamente  absurdos  (p.e. tener cientos de hijos, recibir mensajes de radio desde el espacio exterior a través de un diente empastado).</p>"],
+		[6,"<p><b>6. Severo: </b>El/la paciente expresa muchas ideas absurdas o ilógicas, o algunas que tienen un marcado matiz grotesco (p.e. tener tres cabezas, ser un extraterrestre).</p>"],
+		[7,"<p><b>7. Extremo: </b>El pensamiento está repleto de ideas absurdas bizarras y grotescas.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>La orientación general es adecuada, pero existe dificultad en áreas especificas. Por ejemplo, el/la paciente sabe donde está, pero desconoce el nombre de la calle, sabe el nombre del personal sanitario pero no sus funciones, sabe el mes pero confunde el día de la  semana  con  el  anterior  o  el  posterior,  o  se  equivoca  en  la  fecha  en  mas  de  dos  días.  Puede haber una restricción del interés, tal y como se manifiesta por la familiaridad con el ambiente  inmediato,  pero  no  con  otro  mas  general.  Así  p.e.,  conoce  los  nombres  del  personal  sanitario,  pero  no  los  del  alcalde,  presidente  de  la  comunidad  autónoma  o  presidente del estado.</p>",
-		"<p><b>4. Moderado: </b>Moderada  desorientación  en  espacio,  tiempo  y  persona.  Por  ejemplo,  el/la  paciente  sabe  que  está  en  un  hospital  pero  desconoce  su  nombre,  sabe  el  nombre  de  la  ciudad pero no el barrio, sabe el nombre de su médico, pero no el de otros colaboradores, conoce el año y la estación pero no el mes</p>",
-		"<p><b>5. Moderado severo: </b>Considerable  desorientación  en  espacio,  tiempo  y  persona.  El/la  paciente tiene solo una vaga noción de donde está y no se encuentra familiarizado con su ambiente inmediato. Puede identificar el año adecuadamente o de forma aproximada pero desconoce el día, mes y estación</p>",
-		"<p><b>6. Severo: </b>Marcada  desorientación  en  espacio,  tiempo  y  persona.  Por  ejemplo,  el/la  paciente no sabe donde está, confunde la fecha en más de un año, y solo puede nombrar a una o dos personas de su vida actual</p>",
-		"<p><b>7. Extremo: </b>El/la  paciente  está  totalmente  desorientado  en  espacio,  tiempo  y  persona.  Existe  una  total  confusión  o  una  ignorancia  total  a  cerca  de  donde  está,  del  año  actual,  y  aún de las personas más allegadas, tales como parientes, esposa/o, amigos o su médico</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>La orientación general es adecuada, pero existe dificultad en áreas especificas. Por ejemplo, el/la paciente sabe donde está, pero desconoce el nombre de la calle, sabe el nombre del personal sanitario pero no sus funciones, sabe el mes pero confunde el día de la  semana  con  el  anterior  o  el  posterior,  o  se  equivoca  en  la  fecha  en  mas  de  dos  días.  Puede haber una restricción del interés, tal y como se manifiesta por la familiaridad con el ambiente  inmediato,  pero  no  con  otro  mas  general.  Así  p.e.,  conoce  los  nombres  del  personal  sanitario,  pero  no  los  del  alcalde,  presidente  de  la  comunidad  autónoma  o  presidente del estado.</p>"],
+		[4,"<p><b>4. Moderado: </b>Moderada  desorientación  en  espacio,  tiempo  y  persona.  Por  ejemplo,  el/la  paciente  sabe  que  está  en  un  hospital  pero  desconoce  su  nombre,  sabe  el  nombre  de  la  ciudad pero no el barrio, sabe el nombre de su médico, pero no el de otros colaboradores, conoce el año y la estación pero no el mes</p>"],
+		[5,"<p><b>5. Moderado severo: </b>Considerable  desorientación  en  espacio,  tiempo  y  persona.  El/la  paciente tiene solo una vaga noción de donde está y no se encuentra familiarizado con su ambiente inmediato. Puede identificar el año adecuadamente o de forma aproximada pero desconoce el día, mes y estación</p>"],
+		[6,"<p><b>6. Severo: </b>Marcada  desorientación  en  espacio,  tiempo  y  persona.  Por  ejemplo,  el/la  paciente no sabe donde está, confunde la fecha en más de un año, y solo puede nombrar a una o dos personas de su vida actual</p>"],
+		[7,"<p><b>7. Extremo: </b>El/la  paciente  está  totalmente  desorientado  en  espacio,  tiempo  y  persona.  Existe  una  total  confusión  o  una  ignorancia  total  a  cerca  de  donde  está,  del  año  actual,  y  aún de las personas más allegadas, tales como parientes, esposa/o, amigos o su médico</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>Limitada  capacidad  de  concentración,  tal  y  como  se  manifiesta  por  distracción  ocasional o atención vacilante hacia el final de la entrevista</p>",
-		"<p><b>4. Moderado: </b>La  conversación  está  afectada  por  una  fácil  tendencia  a  la  distraibilidad,  dificultad  en  mantener  una  concentración  continuada  sobre  un  determinado  asunto,  o  problemas en cambiar la atención a nuevos temas</p>",
-		"<p><b>5. Moderado severo: </b>La   conversación   está   seriamente   alterada   por   la   escasa   concentración, la marcada distraibilidad y la dificultad en cambiar el foco de la atención</p>",
-		"<p><b>6. Severo: </b>El/la  paciente  puede  mantener  la  atención  sólo  por  breves  momentos  o  con  gran esfuerzo, debido a una marcada distracción por estímulos internos y externos</p>",
-		"<p><b>7. Extremo: </b>La  atención  está  tan  alterada  que  imposibilita  el  mantener  una  mínima  conversación.</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>Limitada  capacidad  de  concentración,  tal  y  como  se  manifiesta  por  distracción  ocasional o atención vacilante hacia el final de la entrevista</p>"],
+		[4,"<p><b>4. Moderado: </b>La  conversación  está  afectada  por  una  fácil  tendencia  a  la  distraibilidad,  dificultad  en  mantener  una  concentración  continuada  sobre  un  determinado  asunto,  o  problemas en cambiar la atención a nuevos temas</p>"],
+		[5,"<p><b>5. Moderado severo: </b>La   conversación   está   seriamente   alterada   por   la   escasa   concentración, la marcada distraibilidad y la dificultad en cambiar el foco de la atención</p>"],
+		[6,"<p><b>6. Severo: </b>El/la  paciente  puede  mantener  la  atención  sólo  por  breves  momentos  o  con  gran esfuerzo, debido a una marcada distracción por estímulos internos y externos</p>"],
+		[7,"<p><b>7. Extremo: </b>La  atención  está  tan  alterada  que  imposibilita  el  mantener  una  mínima  conversación.</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>El/la   paciente   reconoce   tener   un   trastorno   psiquiátrico,   pero   claramente   subestima su importancia. La necesidad de tratamiento, o la necesidad de tomar medidas para evitar las recaídas. Los proyectos futuros pueden estar escasamente planificados</p>",
-		"<p><b>4. Moderado: </b>El/la   paciente   reconoce   tener   un   trastorno   psiquiátrico,   pero   claramente   subestima su importancia. La necesidad de tratamiento, o la necesidad de tomar medidas para evitar las recaídas. Los proyectos futuros pueden estar escasamente planificados</p>",
-		"<p><b>5. Moderado severo: </b>Reconoce  trastornos  psiquiátricos  pasados,  pero  no  los  presentes.  Si  se  le  confronta,  el/la  paciente  puede  reconocer  la  existencia  de  síntomas  menores,  los  cuales  tiende  a  explicar  mediante  interpretaciones  equivocas  o  delirantes.  De  manera  similar, no reconoce la necesidad de tratamiento</p>",
-		"<p><b>6. Severo: </b>El/la paciente niega siempre que haya presentado trastorno psiquiátrico alguno. Niega  le  presencia  de  cualquier  tipo  de  síntomas psiquiátricos en el pasado o presente, y aunque   colabore   en   la   toma   de   medicación,   niega   la   necesidad   de   tratamiento   y   hospitalización</p>",
-		"<p><b>7. Extremo: </b>Niega   enfáticamente   los   trastornos   psiquiátricos   pasados   o   presentes.   Interpreta  delirantemente  tanto  el  tratamiento  como  la  hospitalización  actual  (p.e.  como  castigo  o  persecución),  y  el/la  paciente  puede  rehusar  a  cooperar  con  el/la  médico/a,  la  toma de la medicación o con otros aspectos del tratamiento</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>El/la   paciente   reconoce   tener   un   trastorno   psiquiátrico,   pero   claramente   subestima su importancia. La necesidad de tratamiento, o la necesidad de tomar medidas para evitar las recaídas. Los proyectos futuros pueden estar escasamente planificados</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la   paciente   reconoce   tener   un   trastorno   psiquiátrico,   pero   claramente   subestima su importancia. La necesidad de tratamiento, o la necesidad de tomar medidas para evitar las recaídas. Los proyectos futuros pueden estar escasamente planificados</p>"],
+		[5,"<p><b>5. Moderado severo: </b>Reconoce  trastornos  psiquiátricos  pasados,  pero  no  los  presentes.  Si  se  le  confronta,  el/la  paciente  puede  reconocer  la  existencia  de  síntomas  menores,  los  cuales  tiende  a  explicar  mediante  interpretaciones  equivocas  o  delirantes.  De  manera  similar, no reconoce la necesidad de tratamiento</p>"],
+		[6,"<p><b>6. Severo: </b>El/la paciente niega siempre que haya presentado trastorno psiquiátrico alguno. Niega  le  presencia  de  cualquier  tipo  de  síntomas psiquiátricos en el pasado o presente, y aunque   colabore   en   la   toma   de   medicación,   niega   la   necesidad   de   tratamiento   y   hospitalización</p>"],
+		[7,"<p><b>7. Extremo: </b>Niega   enfáticamente   los   trastornos   psiquiátricos   pasados   o   presentes.   Interpreta  delirantemente  tanto  el  tratamiento  como  la  hospitalización  actual  (p.e.  como  castigo  o  persecución),  y  el/la  paciente  puede  rehusar  a  cooperar  con  el/la  médico/a,  la  toma de la medicación o con otros aspectos del tratamiento</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>Hay evidencia de una ligera indecisión en la conversación y en el pensamiento, lo cual puede impedir ligeramente los procesos cognitivos y verbales.</p>",
-		"<p><b>4. Moderado: </b>El/la paciente está a menudo ambivalente y muestra una clara dificultad en tomar decisiones. La conversación puede estar afectada por el trastorno del pensamiento y corno consecuencia de ello el funcionamiento cognitivo y verbal está claramente alterado</p>",
-		"<p><b>5. Moderado severo: </b>El trastorno de la volición interfiere tanto en el pensamiento como en la  conducta.  El/la  paciente  manifiesta  una  marcada  indecisión  que  impide  la  iniciación  y  continuación  de  actividades  sociales  y  motoras  que  también  puede  evidenciarse  por  pausas en el habla.</p>",
-		"<p><b>6. Severo: </b>Los  trastornos  de  la  volición  interfieren  con  la  ejecución  de  funciones  motoras  simples y automáticas, con el vestirse y aseo, y afectan marcadamente al habla</p>",
-		"<p><b>7. Extremo: </b>Existe  un  grave  trastorno  de  la  volición  que  se  manifiesta  por  una  gran  inhibición de los movimientos y el habla, lo que resulta en inmovilidad y/o mutismo</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>Hay evidencia de una ligera indecisión en la conversación y en el pensamiento, lo cual puede impedir ligeramente los procesos cognitivos y verbales.</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la paciente está a menudo ambivalente y muestra una clara dificultad en tomar decisiones. La conversación puede estar afectada por el trastorno del pensamiento y corno consecuencia de ello el funcionamiento cognitivo y verbal está claramente alterado</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El trastorno de la volición interfiere tanto en el pensamiento como en la  conducta.  El/la  paciente  manifiesta  una  marcada  indecisión  que  impide  la  iniciación  y  continuación  de  actividades  sociales  y  motoras  que  también  puede  evidenciarse  por  pausas en el habla.</p>"],
+		[6,"<p><b>6. Severo: </b>Los  trastornos  de  la  volición  interfieren  con  la  ejecución  de  funciones  motoras  simples y automáticas, con el vestirse y aseo, y afectan marcadamente al habla</p>"],
+		[7,"<p><b>7. Extremo: </b>Existe  un  grave  trastorno  de  la  volición  que  se  manifiesta  por  una  gran  inhibición de los movimientos y el habla, lo que resulta en inmovilidad y/o mutismo</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>El/la paciente tiende a mostrarse fácilmente colérico ante estrés o frustraciones, pero raramente presenta actos impulsivos</p>",
-		"<p><b>4. Moderado: </b>El/la   paciente   manifiesta   cólera   y   agresividad   verbal   ante   mínimas   frustraciones.   Puede   mostrarse   ocasionalmente   amenazante,   presentar   conductas   destructivas, o tener uno o dos episodios de confrontación física o una reyerta menor</p>",
-		"<p><b>5. Moderado severo: </b>El/la  paciente  presenta  episodios  impulsivos  repetidos  con  abuso  verbal, destrucción de la propiedad, o amenazas físicas. Puede haber uno o dos episodios de serios ataques violentos que requieren aislamiento, contención física o sedación</p>",
-		"<p><b>6. Severo: </b>El/la  paciente  presenta  frecuentemente  agresividad,  amenazas,  exigencias  y  violencia   de   carácter   impulsivo,   sin   ninguna   consideración   por   sus   consecuencias.   Presenta  ataques  de  violencia,  incluso  sexual,  y  puede  responder  violentamente  a  voces  alucinatorias</p>",
-		"<p><b>7. Extremo: </b>El/la paciente realiza ataques homicidas, asaltos sexuales, brutalidad repetida o   conductas   autodestructivas.   Requiere   una   supervisión   directa   y   constante   o   una   contención externa debido a su incapacidad para controlar los impulsos violentos</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>El/la paciente tiende a mostrarse fácilmente colérico ante estrés o frustraciones, pero raramente presenta actos impulsivos</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la   paciente   manifiesta   cólera   y   agresividad   verbal   ante   mínimas   frustraciones.   Puede   mostrarse   ocasionalmente   amenazante,   presentar   conductas   destructivas, o tener uno o dos episodios de confrontación física o una reyerta menor</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la  paciente  presenta  episodios  impulsivos  repetidos  con  abuso  verbal, destrucción de la propiedad, o amenazas físicas. Puede haber uno o dos episodios de serios ataques violentos que requieren aislamiento, contención física o sedación</p>"],
+		[6,"<p><b>6. Severo: </b>El/la  paciente  presenta  frecuentemente  agresividad,  amenazas,  exigencias  y  violencia   de   carácter   impulsivo,   sin   ninguna   consideración   por   sus   consecuencias.   Presenta  ataques  de  violencia,  incluso  sexual,  y  puede  responder  violentamente  a  voces  alucinatorias</p>"],
+		[7,"<p><b>7. Extremo: </b>El/la paciente realiza ataques homicidas, asaltos sexuales, brutalidad repetida o   conductas   autodestructivas.   Requiere   una   supervisión   directa   y   constante   o   una   contención externa debido a su incapacidad para controlar los impulsos violentos</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>Excesiva implicación en problemas o necesidades personales, de forma que la conversación se dirige hacia temas egocéntricos a la vez que disminuye el interés por los demás</p>",
-		"<p><b>4. Moderado: </b>El/la  paciente  se  muestra  ocasionalmente  ensimismado,  como  soñando  despierto  o  abstraído  por  experiencias  internas,  lo  que  interfiere  ligeramente  en  la  comunicación</p>",
-		"<p><b>5. Moderado severo: </b>El/la paciente parece a menudo absorto en experiencias autistas, tal y  como  se  evidencia  por  conductas  que  afectan  significativamente  a  las  funciones  relacionases  y  comunicativas:  mirada  vacía,  musitación  o  soliloquios,  o  implicación  con  patrones motores estereotipados</p>",
-		"<p><b>6. Severo: </b>Marcada  preocupación  con  experiencias  autistas,  lo  que  limita  seriamente  la  capacidad de concentración, la capacidad para conversar, y la orientación en su ambiente inmediato.  Se  puede  observar  que  el/la  paciente  se  ríe  sin  motivo  aparente,  vocifera,  musita o habla consigo mismo</p>",
-		"<p><b>7. Extremo: </b>El/la  paciente  está  casi  siempre  absorto/a  en  experiencias  autistas,  lo  que  repercute en casi todas las áreas de su conducta. El/la paciente puede responder verbal y conductualmente  de  forma  continua  a  alucinaciones  y  apenas  si  muestra  interés  por  el  ambiente que le rodea</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>Excesiva implicación en problemas o necesidades personales, de forma que la conversación se dirige hacia temas egocéntricos a la vez que disminuye el interés por los demás</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la  paciente  se  muestra  ocasionalmente  ensimismado,  como  soñando  despierto  o  abstraído  por  experiencias  internas,  lo  que  interfiere  ligeramente  en  la  comunicación</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la paciente parece a menudo absorto en experiencias autistas, tal y  como  se  evidencia  por  conductas  que  afectan  significativamente  a  las  funciones  relacionases  y  comunicativas:  mirada  vacía,  musitación  o  soliloquios,  o  implicación  con  patrones motores estereotipados</p>"],
+		[6,"<p><b>6. Severo: </b>Marcada  preocupación  con  experiencias  autistas,  lo  que  limita  seriamente  la  capacidad de concentración, la capacidad para conversar, y la orientación en su ambiente inmediato.  Se  puede  observar  que  el/la  paciente  se  ríe  sin  motivo  aparente,  vocifera,  musita o habla consigo mismo</p>"],
+		[7,"<p><b>7. Extremo: </b>El/la  paciente  está  casi  siempre  absorto/a  en  experiencias  autistas,  lo  que  repercute en casi todas las áreas de su conducta. El/la paciente puede responder verbal y conductualmente  de  forma  continua  a  alucinaciones  y  apenas  si  muestra  interés  por  el  ambiente que le rodea</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No cumple la definición.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>",
-		"<p><b>3. Ligero: </b>El/la  paciente  parece  molesto/a  por  la  presencia  de  la  gente  y  prefiere  permanecer solitario/a, si bien participa en actividades sociales cuando se le requiere</p>",
-		"<p><b>4. Moderado: </b>El/la paciente acude de mala gana a la mayoría de las actividades sociales, para lo cual puede que sea necesario persuadirle, o bien las deja prematuramente debido a ansiedad, suspicacia u hostilidad</p>",
-		"<p><b>5. Moderado severo: </b>El/la  paciente  se  mantiene  alejado/a,  con  temor  o  enojo,  de  las  actividades sociales a pesar de los esfuerzos por implicarle en las mismas. Tiende a pasar la mayor parte del tiempo en soledad sin realizar actividad productiva alguna</p>",
-		"<p><b>6. Severo: </b>El/la  paciente  participa  en  muy  pocas  actividades  sociales  debido  a  temor,  hostilidad o recelo. Cuando se le aborda el/la paciente tiende a impedir las interacciones y generalmente se aísla</p>",
-		"<p><b>7. Extremo: </b>No  se  puede  implicar  al/  a  la  paciente  en  actividades  sociales  debido  a  marcado  temor,  hostilidad  o  delirios  de  persecución.  En  la  medida  que  puede  evita  todas  las relaciones y permanece aislado/a de los demás</p>",
+		[1,"<p><b>1. Ausente: </b>No cumple la definición.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede ser el límite superior de la normalidad.</p>"],
+		[3,"<p><b>3. Ligero: </b>El/la  paciente  parece  molesto/a  por  la  presencia  de  la  gente  y  prefiere  permanecer solitario/a, si bien participa en actividades sociales cuando se le requiere</p>"],
+		[4,"<p><b>4. Moderado: </b>El/la paciente acude de mala gana a la mayoría de las actividades sociales, para lo cual puede que sea necesario persuadirle, o bien las deja prematuramente debido a ansiedad, suspicacia u hostilidad</p>"],
+		[5,"<p><b>5. Moderado severo: </b>El/la  paciente  se  mantiene  alejado/a,  con  temor  o  enojo,  de  las  actividades sociales a pesar de los esfuerzos por implicarle en las mismas. Tiende a pasar la mayor parte del tiempo en soledad sin realizar actividad productiva alguna</p>"],
+		[6,"<p><b>6. Severo: </b>El/la  paciente  participa  en  muy  pocas  actividades  sociales  debido  a  temor,  hostilidad o recelo. Cuando se le aborda el/la paciente tiende a impedir las interacciones y generalmente se aísla</p>"],
+		[7,"<p><b>7. Extremo: </b>No  se  puede  implicar  al/  a  la  paciente  en  actividades  sociales  debido  a  marcado  temor,  hostilidad  o  delirios  de  persecución.  En  la  medida  que  puede  evita  todas  las relaciones y permanece aislado/a de los demás</p>"],
 		],
 		[
-		"<p><b>1. Ausente: </b>No aplicable.</p>",
-		"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>",
-		"<p><b>3. Ligero: </b></p>",
-		"<p><b>4. Moderado: </b></p>",
-		"<p><b>5. Moderado severo: </b></p>",
-		"<p><b>6. Severo: </b></p>",
-		"<p><b>7. Extremo: </b></p>",
+		[1,"<p><b>1. Ausente: </b>No aplicable.</p>"],
+		[2,"<p><b>2. Mínimo: </b>Patología dudosa; puede estar en el extremo superiorde los límites normales.</p>"],
+		[3,"<p><b>3. Ligero: </b></p>"],
+		[4,"<p><b>4. Moderado: </b></p>"],
+		[5,"<p><b>5. Moderado severo: </b></p>"],
+		[6,"<p><b>6. Severo: </b></p>"],
+		[7,"<p><b>7. Extremo: </b></p>"],
 		]
 	]
 	for (i = 0; i<5; i++){
-		matemp = "<div class = 'opcion' onclick = anota(" +i+ ")><p>" + opciones[num][i] + "</p></div>"
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"
 		respuestas = respuestas + matemp;
 	}
 	respuestas = respuestas + "</p></div>"
@@ -561,6 +573,9 @@ function matriz6r(num) {
 	document.getElementById("matrices").appendChild(contenido);
 	}
 
+function sum(a, b) { 
+	return (a + b) 
+}
 
 function comenzar(setM) {
 	var nom=document.getElementById('inombre').value;
@@ -575,7 +590,7 @@ function comenzar(setM) {
 	}
 function loadNext() {
 	loadedMatrix++;
-if (loadedMatrix < 31){
+if (loadedMatrix < areas.length){
 		if (type6.indexOf(selectedSet) != -1){  
 		   	matriz6r(loadedMatrix.toString(), selectedSet);
 		} else {
@@ -583,6 +598,29 @@ if (loadedMatrix < 31){
 			}
 		}
 	else {
+		told = document.getElementById('informe').innerHTML
+		answ = [0, ...answ]
+		panssp = [answ[1],answ[2],answ[3],answ[4],answ[5],answ[6],answ[7]].reduce(sum, 0)
+		panssn = [answ[8],answ[9],answ[10],answ[11],answ[12],answ[13],answ[14]].reduce(sum, 0)
+		panssc = panssp - panssn
+		pansspg = [answ[15],answ[16],answ[17],answ[18],answ[19],answ[20],answ[21],answ[22],answ[23],answ[24],answ[25],answ[26],answ[27],answ[28],answ[29],answ[30]].reduce(sum, 0)
+		zpanssp = 3.65*panssp - 43.40
+		zpanssn = 2.72*panssn - 21.34
+		zpanssc = 2.15*panssc + 51.72
+		zpansspg = 2.85*pansspg -77.89
+		t = "<h2>Puntuación</h2>"
+		t = t + "<p><table><tr><th></th><th>Puntuación directa</th><th>Percentil</th></tr>"
+		t = t + "<tr><td>PANNS-P</td><td>"+ panssp.toFixed(2) +"</td><td>"+ zpanssp.toFixed(2) +"</td></tr>"
+		t = t + "<tr><td>PANNS-N</td><td>"+ panssn.toFixed(2) +"</td><td>"+ zpanssn.toFixed(2) +"</td></tr>"
+		t = t + "<tr><td>PANNS-C</td><td>"+ panssc.toFixed(2) +"</td><td>"+ zpanssc.toFixed(2) +"</td></tr>"
+		t = t + "<tr><td>PANNS-PG</td><td>"+ pansspg.toFixed(2) +"</td><td>"+ zpansspg.toFixed(2) +"</td></tr>"
+		t = t + "</table></p><br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
 		$(informe).show();
 		document.getElementById('csvp').innerHTML = data;
 		}
@@ -590,7 +628,7 @@ if (loadedMatrix < 31){
 function sendMail() {
 		var contenido = document.getElementById("csvp").innerHTML;
 		var link = "mailto:jorgealonso@openmailbox.org"
-		     + "?subject=" + escape("NEOFFI - " + document.getElementById("inombre").value)
+		     + "?subject=" + escape("PANSS - " + document.getElementById("inombre").value)
 		     + "&body=" + escape(contenido);
 
 		window.location.href = link;
@@ -601,7 +639,7 @@ function sendMail() {
 
 <body>
 	<div id="header">
-		<h1>Inventario de Personalidad Reducido de Cinco Factores NEO-FFI (Paul T. Costa y Robert McCrae)</h1>
+		<h1>Escala para el Síndrome Positivo y Negativo de la Esquizofrenia (PANSS) (KaySR, A. Fiszbein L, Opler A., 1987)</h1>
 		<div id="usuario">
 			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
 			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
@@ -620,16 +658,90 @@ function sendMail() {
 	</div>
 	<div id='contenidos'>
 		<div id="articles">
-			<p>Este cuestionario consta de 60 afirmaciones en referencia a su forma de ser o de comportarse. Por favor, lea cada frase con atención.</p>
-			<p>Debe indicar su grado de acuerdo según el siguiente código:</p>
-			<ol>
-				<li>Total desacuerdo</li>
-				<li>Descauerdo</li>
-				<li>Neutral</li>
-				<li>De acuerdo</li>
-				<li>Totalmente de acuerdo</li>
-			</ol>
-			<p>Marque una x en el cuadrado correspondiente a la derecha de la afirmación. No hay respuestas correctas ni incorrectas, y no se necesita ser un experto para contestar a este cuestionario. Conteste de forma sincera y exprese sus opiniones de la manera más precisa posible. No hay tiempo límite, pero intente trabajar lo más deprisa posible. No se entretenga demasiado en la respuesta. No deje NINGUNA respuesta en blanco.</p>
+			<b>Normas de administración y puntuación </b>
+			<p>En Bobes García, J; G.-Portilla, MP; Bascarán Fernández, MT, Saiz Martínez; PA, Bousoño García, M. Banco de instrumentos básicos para la práctica de la psiquiatría clínica 3ª edición. Barcelona: Ars Médica. 2004.</p>
+			<p>Administración</p>
+			<ul>
+				<li>Ha de ser administrada por un/a clínico, utilizando la técnica de la entrevista semiestructurada</li>
+				<li>El tiempo aproximado de administración es de 30-40 minutos.</li>
+			</ul>
+			<p>Puntuación</p>
+			<ul>
+				<li>Proporciona cuatro puntuaciones dimensionales
+					<ul>
+						<li>Síndrome positivo</li>
+						<li>Síndrome negativo</li>
+						<li>Escala compuesta</li>
+						<li>Psicopatología general</li>
+					</ul>
+				</li>
+				<li>La puntuación en las escalas positiva (PANSS-P), negativa (PANSS-N), y psicopatología general (PANSS-PG) se obtiene sumando las puntuaciones de cada ítem. Las puntuaciones oscilarán por tanto entre 7 y 49 para las escalas positiva y negativa, y entre 16 y 112 para la psicopatología general.</li>
+				<li>La puntuación en la escala compuesta (PANNS-C) se obtiene restando la puntuación en la escala negativa a la puntuación en la escala positiva. Esta escala puede tener valencia positiva o negativa, oscilando sus valores entre -42 y +42.</li>
+				<li>No existen puntos de corte para las puntuaciones directas obtenidas, sino que éstas se transforman mediante una tabla de conversión en percentiles. En la siguiente tabla se representan las puntuaciones directas que corresponden a los percentiles 5, 25, 50, 75 y 95</li>
+			</ul>
+			<table>
+				<tr>
+					<th>Percentil</th>
+					<th>PANSS-P</th>
+					<th>PANSS-N</th>
+					<th>PANSS-C</th>
+					<th>PANSS-PG</th>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>12</td>
+					<td>9</td>
+					<td>-24</td>
+					<td>28</td>
+				</tr>
+				<tr>
+					<td>25</td>
+					<td>21</td>
+					<td>19</td>
+					<td>-10</td>
+					<td>38</td>
+				</tr>
+				<tr>
+					<td>50</td>
+					<td>26</td>
+					<td>25</td>
+					<td>1</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>75</td>
+					<td>31</td>
+					<td>35</td>
+					<td>10</td>
+					<td>52</td>
+				</tr>
+				<tr>
+					<td>95</td>
+					<td>38</td>
+					<td>43</td>
+					<td>19</td>
+					<td>61</td>
+				</tr>
+			</table>
+			<ul>
+				<li>Además de la puntuación dimensional comentada en los puntos anteriores, la PANSS proporciona también una información categorial, indicando si el trastorno esquizofrénico es positivo, negativo o mixto. Para ello, existen dos sistemas más o menos restrictivos.
+				<ul>
+					<li>El más restrictivo: para establecer el tipo de trastorno esquizofrénico utiliza las puntuaciones obtenidas en los ítems de la escala positiva y negativa. Considera que el trastorno esquizofrénico es:
+					<ul>
+						<li>Positivo: cuando en la escala positiva más de 2 ítems obtienen una puntuación superior a 3 y en la escala negativa menos de 3 ítems obtienen una puntuación superior a 3.</li>
+						<li>Negativo: cuando en la escala negativa más de 2 ítems obtienen una puntuaciín superior a 3 y en la escala positiva menos de 3 ítems obtienen una puntuación superior a 3.</li>
+						<li>Mixto: cuando en ambas escalas hay más de 2 ítems que obtienen puntuaciones superiores a 3.</li>
+					</ul>
+					</li>
+					<li>El menos restictivo o inclusivo; para establecer el tipo utiliza la puntuación obtenida en la escala compuesta, y más en concreto su valencia, de forma que considera que el trastorno esquizofrénico es:
+					<ul>
+						<li>Positivo cuando la valencia en la escala compuesta es +</li>
+						<li>Negativo cuando la valencia en la escala compuesta es -</li>
+					</ul>
+					</li>
+				</ul>
+				</li>
+			</ul>
 			<div class="opcion", onClick="comenzar('A')">
 				<p>Comenzar</p>
 			</div>
@@ -639,7 +751,7 @@ function sendMail() {
 		<div id="matrices">
 		</div>
 		<div id="informe">
-			<h1>Inventario de Personalidad Reducido de Cinco Factores NEO-FFI (Paul T. Costa y Robert McCrae)</h1>
+			<h1>Escala para el Síndrome Positivo y Negativo de la Esquizofrenia (PANSS) (KaySR, A. Fiszbein L, Opler A., 1987)</h1>
 			<h2>Resultados</h2>
 			<div id='csvp' style="display: none;"></div>
 			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>

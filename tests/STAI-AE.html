@@ -1,0 +1,486 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
+
+function anota(valor){
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	for (var i =0; i< opciones[loadedMatrix].length; i++){
+		if (opciones[loadedMatrix][i][0] == valor) {
+			texto = opciones[loadedMatrix][i][1]
+		}
+	}
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ texto + "</p><br/>";
+	document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<p>Me siento calmado</p>",
+		"<p>Me siento seguro</p>",
+		"<p>Estoy tenso</p>",
+		"<p>Estoy contrariado</p>",
+		"<p>Me siento cómodo (estoy a gusto)</p>",
+		"<p>Me siento alterado</p>",
+		"<p>Estoy preocupado por posibles desgracias futuras</p>",
+		"<p>Me siento descansado</p>",
+		"<p>Me siento angustiado</p>",
+		"<p>Me siento confortable</p>",
+		"<p>Tengo confianza en mí mismo</p>",
+		"<p>Me siento nervioso</p>",
+		"<p>Estoy desasosegado</p>",
+		"<p>Me siento muy 'atado' (como oprimido)</p>",
+		"<p>Estoy relajado</p>",
+		"<p>Me siento satisfecho</p>",
+		"<p>Estoy preocupado</p>",
+		"<p>Me siento aturdido y sobreexcitado</p>",
+		"<p>Me siento alegre</p>",
+		"<p>En este momento me siento bien</p>",
+		]
+	opciones = [[],
+	[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Algo"],
+		[2, "Bastante"],
+		[3, "Mucho"],
+	]
+	]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < areas.length){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		//pd = answ.reduce(sum, 0)
+		//sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		answ = [0, ...answ]
+		directo = [answ[3],answ[4],answ[6],answ[7],answ[9],answ[12],answ[13],answ[14],answ[17],answ[18]]
+		indirecto = [answ[1],answ[2],answ[5],answ[8],answ[10],answ[11],answ[15],answ[16],answ[19],answ[20]]
+		pd = directo.reduce(sum, 0) - indirecto.reduce(sum, 0) + 30
+		pZHadolescentes = (pd - 22.35) / 11.03
+		pZMadolescentes = (pd - 23.28) / 10.56
+		pZHadultos = (pd - 20.54) / 10.56
+		pZMadultos = (pd - 23.30) / 8.89
+		pTHadolescentes = pZHadolescentes*10 +50
+		pTMadolescentes = pZMadolescentes*10 +50
+		pTHadultos = pZHadultos*10 +50
+		pTMadultos = pZMadultos*10 +50
+		//f1 = [answ[20],answ[4],answ[3],answ[31],answ[9],answ[21],answ[15],answ[22],answ[11],answ[14],answ[18],answ[13],answ[33]]
+		//f2 = [answ[38],answ[35],answ[28],answ[19],answ[32],answ[7],answ[39],answ[40]]
+		//f3 = [answ[24],answ[29],answ[30],answ[17],answ[25],answ[2]]
+		//pd = []
+		//pd.push(...f1, ...f2, ...f3)
+		t = "<h2>Puntuación</h2>"
+		t = t + "<p><table><tr><th></th><th>Puntuación directa</th><th>Hombre (Adol.)</th><th>Mujer (Adol.)</th><th>Hombre (Adult.)</th><th>Mujer (Adult.)</th></tr>"
+		t = t + "<tr><td>Z</td><td>"+ pd +"</td><td>"+ pZHadolescentes.toFixed(2) +"</td><td>"+ pZMadolescentes.toFixed(2) +"</td><td>"+pZHadultos.toFixed(2) +"</td><td>"+pZMadultos.toFixed(2) +"</td></tr>"
+		t = t + "<tr><td>T</td><td>"+ pd +"</td><td>"+ pTHadolescentes.toFixed(2) +"</td><td>"+ pTMadolescentes.toFixed(2) +"</td><td>"+pTHadultos.toFixed(2) +"</td><td>"+pTMadultos.toFixed(2) +"</td></tr>"
+		t = t + "</table></p><br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("STAI-AE - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Inventario de Ansiedad Estado-Rasgo: Ansiedad Estado (STAI-AE)</h1>
+		<p><b>Instrucciones:</b></p>
+		<p>A continuación encontrará unas frases que se utilizan corrientemente para describirse a sí mismo.</p>
+		<p>Lea cada frase y señale la puntuación de 0 a 3 que indique mejor cómo se siente usted ahora mismo, en este momento.</p>
+		<p>No hay respuestas buenas ni malas.</p>
+		<p>No emplee demasiado tiempo en cada frase y conteste señalando la respuesta que mejor describa su situación presente.</p>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Inventario de Ansiedad Estado-Rasgo: Ansiedad Estado (STAI-AE)</h1>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+</html>

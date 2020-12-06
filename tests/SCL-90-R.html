@@ -1,0 +1,1211 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
+
+function anota(valor){
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	for (var i =0; i< opciones[loadedMatrix].length; i++){
+		if (opciones[loadedMatrix][i][0] == valor) {
+			texto = opciones[loadedMatrix][i][1]
+		}
+	}
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ texto + "</p><br/>";
+	document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<p>Dolores de cabeza</p>",
+		"<p>Nerviosismo</p>",
+		"<p>Pensamientos desagradables que no se iban de mi cabeza</p>",
+		"<p>Sensación de mareo o desmayo</p>",
+		"<p>Falta de interés en las relaciones sexuales</p>",
+		"<p>Criticar a los demás</p>",
+		"<p>Sentir que otro puede controlar mis pensamientos</p>",
+		"<p>Sentir que otros son culpables de lo que me pasa</p>",
+		"<p>Tener dificultad para memorizar cosas</p>",
+		"<p>Estar preocupado/a por mi falta de ganas para hacer algo</p>",
+		"<p>Sentirme enojado/a, malumorado/a</p>",
+		"<p>Dolores en el pecho</p>",
+		"<p>Miedo a los espacios abiertos o las calles</p>",
+		"<p>Sentirme con muy pocas energías</p>",
+		"<p>Pensar en quitarme la vida</p>",
+		"<p>Escuchar voces que otras personas no oyen</p>",
+		"<p>Temblores en mi cuerpo</p>",
+		"<p>Perder la confianza en la mayoría de las personas</p>",
+		"<p>No tener ganas de comer</p>",
+		"<p>Llorar por cualquier cosa</p>",
+		"<p>Sentirme incomodo/a con personas del otro sexo</p>",
+		"<p>Sentirme atrapado/a o encerrado/a</p>",
+		"<p>Asustarme de repente sin razón alguna</p>",
+		"<p>Explotar y no poder controlarme</p>",
+		"<p>Tener miedo de salir solo/a de mi casa</p>",
+		"<p>Sentirme culpable por cosas que ocurren</p>",
+		"<p>Dolores en la espalda</p>",
+		"<p>No poder terminar las cosas que empecé a hacer</p>",
+		"<p>Sentirme solo/a</p>",
+		"<p>Sentirme triste</p>",
+		"<p>Procuparme demasiado por todo lo que pasa</p>",
+		"<p>No tener interés por nada</p>",
+		"<p>Tener miedos</p>",
+		"<p>Sentirme herido/a en mis sentimientos</p>",
+		"<p>Creer que la gente sabe qué estoy pensando</p>",
+		"<p>Sentir que no me comprenden</p>",
+		"<p>Sentir que no caigo bien a la gente, que no les gusto</p>",
+		"<p>Tener que hacer las cosas muy despacio para estar seguro/a de que están bien hechas</p>",
+		"<p>Mi corazón late muy fuerte, se acelera</p>",
+		"<p>Nauseas o dolor de estómago</p>",
+		"<p>Sentirme inferior a los demás</p>",
+		"<p>Calambres en las manos, brazos o piernas</p>",
+		"<p>Sentir que me vigilan o que hablan de mi</p>",
+		"<p>Tener problemas para dormirme</p>",
+		"<p>Tener que controlar una o más veces lo que hago</p>",
+		"<p>Tener dificultades para tomar decisiones</p>",
+		"<p>Tener miedo de viajar en tren, ómnibus o subterráneos</p>",
+		"<p>Tener dificultades para respirar bien</p>",
+		"<p>Ataques de frío o de calor</p>",
+		"<p>Tener que evitar acercarme a algunos lugares o actividades porque me dan miedo</p>",
+		"<p>Sentir que mi mente queda en blanco</p>",
+		"<p>Hormigueos en alguna parte del cuerpo</p>",
+		"<p>Tener un nudo en la garganta</p>",
+		"<p>Perder las esperanzas en el futuro</p>",
+		"<p>Dificultades para concentrarme en lo que estoy haciendo</p>",
+		"<p>Sentir flojedad, debilidad en partes de mi cuerpo</p>",
+		"<p>Sentirme muy nervioso/a, agitado/a</p>",
+		"<p>Sentir mis brazos y piernas muy pesados</p>",
+		"<p>Pensar que estoy por morir</p>",
+		"<p>Comer demasiado</p>",
+		"<p>Sentirme incómodo/a cuando me miran o hablan de mi</p>",
+		"<p>Tener ideas, pensamientos que no son míos</p>",
+		"<p>Necesitar golpear o lastimar a alguien</p>",
+		"<p>Despertarme muy temprano por la mañana sin necesidad</p>",
+		"<p>Repetir muchas veces algo que hago: contar, lavarme, tocar cosas</p>",
+		"<p>Dormir con problemas, muy inquieto/a</p>",
+		"<p>Necesitar romper o destrozar cosas</p>",
+		"<p>Tener ideas, pensamientos que los demás no entienden</p>",
+		"<p>Estar muy pendiente de lo que los demás puedan pensar de mi</p>",
+		"<p>Sentirme incómodo/a en lugares donde hay mucha gente</p>",
+		"<p>Sentir que todo me cuesta mucho esfuerzo</p>",
+		"<p>Tener ataques de mucho miedo o de pánico</p>",
+		"<p>Sentirme mal si estou comiendo o bebiendo en público</p>",
+		"<p>Meterme muy seguido en discusiones</p>",
+		"<p>Ponerme nervioso/a cuando estoy solo/a</p>",
+		"<p>Sentir que los demás no me valoran como merezco</p>",
+		"<p>Sentirme solo/a aún estando con gente</p>",
+		"<p>Estar inquieto/a; no poder estar sentado/a sin moverme</p>",
+		"<p>Sentirme un/a inútil</p>",
+		"<p>Sentir que algo malo me va a pasar</p>",
+		"<p>Gritar o tirar cosas</p>",
+		"<p>Miedo a desmayarme en medio de la gente</p>",
+		"<p>Sentir que se aprovechan de mí si los dejo</p>",
+		"<p>Pensar cosas sobre el sexo que me molestan</p>",
+		"<p>Sentir que debo ser castigado/a por mis pecados</p>",
+		"<p>Tener imágenes y pensamientos que me dan miedo</p>",
+		"<p>Sentir que algo anda mal en mi cuerpo</p>",
+		"<p>Sentirme alejado/a de las demás personas</p>",
+		"<p>Sentirme culpable</p>",
+		"<p>Pensar que en mi cabeza hay algo que no funciona</p>",
+		]
+	opciones = [[],
+	[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	],[
+		[0, "Nada"],
+		[1, "Muy poco"],
+		[2, "Poco"],
+		[3, "Bastante"],
+		[4, "Mucho"],
+	]
+	]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < areas.length){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		//pd = answ.reduce(sum, 0)
+		//sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		answ = [0, ...answ]
+		som = [answ[1],answ[4],answ[12],answ[27],answ[40],answ[42],answ[48],answ[49],answ[52],answ[53],answ[56],answ[58]]
+		obs = [answ[3],answ[9],answ[10],answ[28],answ[38],answ[45],answ[46],answ[51],answ[55],answ[65]]
+		si = [answ[6],answ[21],answ[34],answ[36],answ[37],answ[41],answ[61],answ[69],answ[73]]
+		dep = [answ[5],answ[14],answ[15],answ[20],answ[22],answ[26],answ[29],answ[30],answ[31],answ[32],answ[54],answ[71],answ[79]]
+		ans = [answ[2],answ[17],answ[23],answ[33],answ[39],answ[57],answ[72],answ[78],answ[80],answ[86]]
+		hos = [answ[11],answ[24],answ[63],answ[67],answ[74],answ[81]]
+		fob = [answ[13],answ[25],answ[47],answ[50],answ[70],answ[75],answ[82]]
+		par = [answ[8],answ[18],answ[43],answ[68],answ[76],answ[83]]
+		psic = [answ[7],answ[16],answ[35],answ[62],answ[77],answ[84],answ[85],answ[87],answ[88],answ[90]]
+		adic = [answ[19],answ[44],answ[59],answ[60],answ[64],answ[66],answ[89]]
+		isg = answ.reduce(sum, 0)/90
+		tsp = answ.filter(function(x){return x>0}).length
+		imsp = answ.reduce(sum, 0)/tsp
+
+		zfasom = (som.reduce(sum, 0)/som.length - 1.28)/0.78
+		zfaobs = (obs.reduce(sum, 0)/obs.length - 1.22)/0.78 
+		zfasi = (si.reduce(sum, 0)/si.length - 0.92)/0.69
+		zfadep = (dep.reduce(sum, 0)/dep.length - 1.19)/0.80
+		zfaans = (ans.reduce(sum, 0)/ans.length - 1.08)/0.82
+		zfahos = (hos.reduce(sum, 0)/hos.length - 1.10)/0.90
+		zfafob = (fob.reduce(sum, 0)/fob.length - 0.52)/0.60
+		zfapar = (par.reduce(sum, 0)/par.length - 1.07)/0.90
+		zfapsic = (psic.reduce(sum, 0)/psic.length - 0.70)/0.65
+		zfaisg = (isg - 0.93)/0.58
+		zfatsp = (tsp - 42.90)/18.95
+		zfaimsp = (imsp - 1.82)/0.52
+
+		zhasom = (som.reduce(sum, 0)/ som.length - 0.99)/0.72
+		zhaobs = (obs.reduce(sum, 0)/ obs.length - 0.75)/0.57
+		zhasi = (si.reduce(sum, 0)/ si.length - 0.47)/0.47
+		zhadep = (dep.reduce(sum, 0)/ dep.length - 0.67)/0.55
+		zhaans = (ans.reduce(sum, 0)/ ans.length - 0.56)/0.54
+		zhahos = (hos.reduce(sum, 0)/ hos.length - 0.92)/0.80
+		zhafob = (fob.reduce(sum, 0)/ fob.length - 0.27)/0.44
+		zhapar = (par.reduce(sum, 0)/ par.length - 0.77)/0.72
+		zhapsic = (psic.reduce(sum, 0)/ psic.length - 0.42)/0.47
+		zhaisg = (isg - 0.59)/0.40
+		zhatsp = (tsp - 30.60)/16.43
+		zhaimsp = (imsp - 1.64)/0.5
+
+		zfnsom = (som.reduce(sum, 0)/som.length - 0.85)/0.62
+		zfnobs = (obs.reduce(sum, 0)/obs.length - 1.12)/0.70 
+		zfnsi = (si.reduce(sum, 0)/si.length - 0.85)/0.63
+		zfndep = (dep.reduce(sum, 0)/dep.length - 1.05)/0.69
+		zfnans = (ans.reduce(sum, 0)/ans.length - 0.96)/0.64
+		zfnhos = (hos.reduce(sum, 0)/hos.length - 0.80)/0.66
+		zfnfob = (fob.reduce(sum, 0)/fob.length - 0.41)/0.51
+		zfnpar = (par.reduce(sum, 0)/par.length - 0.90)/0.78
+		zfnpsic = (psic.reduce(sum, 0)/psic.length - 0.52)/0.49
+		zfnisg = (isg - 0.16)/0.09
+		zfntsp = (tsp - 38.78)/16.71
+		zfnimsp = (imsp - 1.90)/0.48
+
+		zhnsom = (som.reduce(sum, 0)/ som.length - 0.57)/0.48
+		zhnobs = (obs.reduce(sum, 0)/ obs.length - 1.00)/0.69
+		zhnsi = (si.reduce(sum, 0)/ si.length - 0.69)/0.59
+		zhndep = (dep.reduce(sum, 0)/ dep.length - 0.81)/0.59
+		zhnans = (ans.reduce(sum, 0)/ ans.length - 0.74)/0.56
+		zhnhos = (hos.reduce(sum, 0)/ hos.length - 0.78)/0.65
+		zhnfob = (fob.reduce(sum, 0)/ fob.length - 0.29)/0.39
+		zhnpar = (par.reduce(sum, 0)/ par.length - 0.85)/0.71
+		zhnpsic = (psic.reduce(sum, 0)/ psic.length - 0.46)/0.47
+		zhnisg = (isg - 0.13)/0.07
+		zhntsp = (tsp - 33.82)/17.05
+		zhnimsp = (imsp - 1.81)/0.45
+		//pd = []
+		//pd.push(...f1, ...f2, ...f3)
+		t = "<h2>Puntuación</h2>"
+		t = t + "<p><table><tr><th></th><th>Puntuación directa</th><th>Promedio</th><th>z Femenino (Adol.)</th><th>z Masculino (Adol.)</th><th>z Femenino (Adult.)</th><th>z Masculino (Adult.)</th></tr>"
+		t = t + "<tr><td>SOM</td><td>"
+		t = t + som.reduce(sum, 0) +"</td><td>"
+		t = t + ((som.reduce(sum, 0)/som.length)).toFixed(2) +"</td><td>"
+		t = t + zfasom.toFixed(2) +"</td><td>"
+		t = t + zhasom.toFixed(2) +"</td><td>"
+		t = t + zfnsom.toFixed(2) +"</td><td>"
+		t = t + zhnsom.toFixed(2) +"</td></tr>"
+		
+		t = t + "<tr><td>OBS</td><td>"
+		t = t + obs.reduce(sum, 0) +"</td><td>"
+		t = t + (obs.reduce(sum, 0)/obs.length).toFixed(2) +"</td><td>"
+		t = t + zfaobs.toFixed(2) +"</td><td>"
+		t = t + zhaobs.toFixed(2) +"</td><td>"
+		t = t + zfnobs.toFixed(2) +"</td><td>"
+		t = t + zhnobs.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>SI</td><td>"
+		t = t + si.reduce(sum, 0) +"</td><td>"
+		t = t + (si.reduce(sum, 0)/si.length).toFixed(2) +"</td><td>"
+		t = t + zfasi.toFixed(2) +"</td><td>"
+		t = t + zhasi.toFixed(2) +"</td><td>"
+		t = t + zfnsi.toFixed(2) +"</td><td>"
+		t = t + zhnsi.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>DEP</td><td>"
+		t = t + dep.reduce(sum, 0) +"</td><td>"
+		t = t + (dep.reduce(sum, 0)/dep.length).toFixed(2) +"</td><td>"
+		t = t + zfadep.toFixed(2) +"</td><td>"
+		t = t + zhadep.toFixed(2) +"</td><td>"
+		t = t + zfndep.toFixed(2) +"</td><td>"
+		t = t + zhndep.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>ANS</td><td>"
+		t = t + ans.reduce(sum, 0) +"</td><td>"
+		t = t + (ans.reduce(sum, 0)/ans.length).toFixed(2) +"</td><td>"
+		t = t + zfaans.toFixed(2) +"</td><td>"
+		t = t + zhaans.toFixed(2) +"</td><td>"
+		t = t + zfnans.toFixed(2) +"</td><td>"
+		t = t + zhnans.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>HOS</td><td>"
+		t = t + hos.reduce(sum, 0) +"</td><td>"
+		t = t + (hos.reduce(sum, 0)/hos.length).toFixed(2) +"</td><td>"
+		t = t + zfahos.toFixed(2) +"</td><td>"
+		t = t + zhahos.toFixed(2) +"</td><td>"
+		t = t + zfnhos.toFixed(2) +"</td><td>"
+		t = t + zhnhos.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>FOB</td><td>"
+		t = t + fob.reduce(sum, 0) +"</td><td>"
+		t = t + (fob.reduce(sum, 0)/fob.length).toFixed(2) +"</td><td>"
+		t = t + zfafob.toFixed(2) +"</td><td>"
+		t = t + zhafob.toFixed(2) +"</td><td>"
+		t = t + zfnfob.toFixed(2) +"</td><td>"
+		t = t + zhnfob.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>PAR</td><td>"
+		t = t + par.reduce(sum, 0) +"</td><td>"
+		t = t + (par.reduce(sum, 0)/par.length).toFixed(2) +"</td><td>"
+		t = t + zfapar.toFixed(2) +"</td><td>"
+		t = t + zhapar.toFixed(2) +"</td><td>"
+		t = t + zfnpar.toFixed(2) +"</td><td>"
+		t = t + zhnpar.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>PSIC</td><td>"
+		t = t + psic.reduce(sum, 0) +"</td><td>"
+		t = t + (psic.reduce(sum, 0)/psic.length).toFixed(2) +"</td><td>"
+		t = t + zfapsic.toFixed(2) +"</td><td>"
+		t = t + zhapsic.toFixed(2) +"</td><td>"
+		t = t + zfnpsic.toFixed(2) +"</td><td>"
+		t = t + zhnpsic.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>ISG</td><td>"
+		t = t + isg +"</td><td>"
+		t = t + "</td><td>"
+		t = t + zfaisg.toFixed(2) +"</td><td>"
+		t = t + zhaisg.toFixed(2) +"</td><td>"
+		t = t + zfnisg.toFixed(2) +"</td><td>"
+		t = t + zhnisg.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>TSP</td><td>"
+		t = t + tsp +"</td><td>"
+		t = t + "</td><td>"
+		t = t + zfatsp.toFixed(2) +"</td><td>"
+		t = t + zhatsp.toFixed(2) +"</td><td>"
+		t = t + zfntsp.toFixed(2) +"</td><td>"
+		t = t + zhntsp.toFixed(2) +"</td></tr>"
+
+		t = t + "<tr><td>IMSP</td><td>"
+		t = t + imsp +"</td><td>"
+		t = t + "</td><td>"
+		t = t + zfaimsp.toFixed(2) +"</td><td>"
+		t = t + zhaimsp.toFixed(2) +"</td><td>"
+		t = t + zfnimsp.toFixed(2) +"</td><td>"
+		t = t + zhnimsp.toFixed(2) +"</td></tr>"
+
+		t = t + "</table></p><br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:info.peneira@gmail.com"
+		     + "?subject=" + escape("SCL90R - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Inventario de síntomas SCL-90-R de L. Derogatis (2008)</h1>
+		<p><b>Instrucciones:</b></p>
+		<p>A continuación le presentamos una lista de problemas que tiene la gente</p>
+		<p>Lea cada uno de ellos y marque su respuesta en la casilla correspondiente, pensando en cómo se sintió, en qué medida ese problema le ha preocupado o molestado durante la última semana (7 días).</p>
+		<p>Tiene cinco (5) posibilidades de respuesta:</p>
+		<ul>
+			<li>Nada</li>
+			<li>Muy poco</li>
+			<li>Poco</li>
+			<li>Bastante</li>
+			<li>Mucho</li>
+		</ul>
+		<p>No hay respuestas buenas o malas: todas sirven. No deje frases sin responder.</p>
+		<p><b>Bibliografía:</b></p>
+		<ul><i>	
+		<li>Beaglehole,  R.;  Bonita,  R.  y  Kjellstrom,  T.  (1994).  Epidemiología  Básica.  Washington:  Oficina  Panamericana de la Salud,</li>
+		<li>Casullo,   M.   M.   y   Castro   Solano,   A.   (1999).   Síntomas   psicopatológicos   en   estudiantes   adolescentes  argentinos.  Anuario  de  Investigaciones,  Facultad  de  Psicología,  Universidad  de  Buenos Aires, 7, 147-157</li>
+		<li>Casullo,  M.M.  y  Fernández  Liporace,  M.  (  2001).  Malestares  psicológicos  en  estudiantes  adolescentes. PSYKHE, 10 (1) 155- 162. </li>
+		<li>Casullo, M. M., Cruz, M. S.; González, R y Maganto, C. ( 2003). Síntomas psicopatológicos en adolescentes.  Estudio  comparativo.  Revista  Iberoamericana  de  Diagnóstico  y  Evaluación  Psicológica,  16, (2), 135-149</li>
+		<li>Derogatis,   L.   (1994).   SCL-90-R.   Symptom   Checklist-90-R.   Administration,   Scoring   and   Procedures Manual.  Minneapolis: National Computer System. </li>
+		<li>Friedman, G. ( 1975). Principios de Epidemiología. Buenos Aires: Panamericana</li>
+		<li>Valsiner,  J.  (  2004).  Culture  in  Psychology.  Between  social  positioning  and  producing  new  knowledge. Culture & Psychology, 10, (1), 5-27. </li>
+		</i>
+		</ul>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Inventario de síntomas SCL-90-R de L. Derogatis (2008)</h1>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+			<p>Este inventario ha sido desarrollado para evaluar patrones de síntomas presentes en individuos y puede ser utilizado tanto en tareas comunitarias como de diagnóstico clínico. </p>
+			<p>Cada  uno  de  los  90  ítems  que  lo  integran  se  responde  sobre  la  base  de  una  escala  de  cinco  puntos  (  0-4).  Se  lo  evalúa  e  interpreta  en  función  de  nueve  dimensiones  primarias  y  tres  índices globales de malestar psicológico:</p>
+			<ol>
+				<li>Somatizaciones (SOM)</li>
+				<li>Obsesiones y compulsiones (OBS)</li>
+				<li>Sensitividad interpersonal (SI)</li>
+				<li>Depresión (DEP)</li>
+				<li>Ansiedad (ANS)</li>
+				<li>Hostilidad (HOS)</li>
+				<li>Ansiedad fóbica (FOB)</li>
+				<li>Ideación paranoide (PAR)</li>
+				<li>Psicoticismo (PSIC) </li>
+			</ol>
+			<br>
+			<ol>
+				<li>Indice global de severidad (IGS)</li>
+				<li>Total de síntomas positivos (TSP)</li>
+				<li>Índice Malestar Sintomático Positivo (IMSP)</li>
+			</ol>
+			<p>Estos tres indicadores reflejan aspectos diferenciales de los trastornos a ser evaluados.</p>
+			<h3>Las nueve dimensiones de síntomas: </h3>
+			<p>Estas dimensiones se definieron sobre la base de criterios clínicos, racionales y empíricos</p>
+			<p><b>Somatizaciones: </b>Evalúa  la  presencia  de  malestares  que  la  persona  percibe  relacionados  con  diferentes  disfunciones corporales (cardiovasculares, gastrointestinales, respiratorios). </p>
+			<p><b>Obsesiones y compulsiones: </b>Incluye síntomas que se identifican con el síndrome clínico del mismo nombre: Pensamientos,  acciones  e  impulsos  que  son  vivenciados  como  imposibles  de  evitar  o  no  deseados. </p>
+			<p><b>Sensitividad interpersonal: </b>Se  focaliza  en  detectar  la  presencia  de  sentimientos  de  inferioridad  e    inadecuación,  en  especial cuando la persona se compara con sus semejantes</p>
+			<p><b>Depresión: </b>Los  ítems  que  integran  esta  subescala  representan  una  muestra  representativa  de  las  principales  manifestaciones  clínicas  de  una  trastorno  de  tipo  depresivo:  estado  de  ánimo  disfórico,  falta  de  motivación,  poca  energía  vital,  sentimientos  de  desesperanza,  ideaciones  suicidas. </p>
+			<p><b>Ansiedad: </b>Evalúa  la  presencia  de    signos  generales  de  ansiedad  tales  como  nerviosismo,  tensión,  ataques de pánico, miedos. </p>
+			<p><b>Hostilidad: </b>Esta dimensión hace referencia a  pensamientos, sentimientos y acciones  característicos de la presencia de afectos negativos de enojo. </p>
+			<p><b>Ansiedad fóbica: </b>Este  malestar  alude  a  una  respuesta  persistente  de  miedo  (  a  personas  específicas,  lugares,  objetos,  situaciones)    que  es  en  sí  misma  irracional  y  desproporcionada  en  relación  con  el  estímulo que la provoca. </p>
+			<p><b>Ideación paranoide: </b>Evalúa comportamientos paranoides fundamentalmente en tanto desórdenes del pensamiento: pensamiento proyectivo, suspicacia, temor a la pérdida de autonomía.</p>
+			<p><b>Psicoticismo: </b>Esta  dimensión  se  ha  construido  con  la  intensión  que  represente  el  constructo  en  tanto  dimensión  contínua  de  la  experiencia  humana.  Incluye  síntomas  referidos  a  estados  de  soledad, estilo de vida esquizoide, alucinaciones y control del pensamiento</p>
+			<h3>Ítems adicionales</h3>
+			<p>El   SCL-90-R   incluye   siete   ítems      que   no   se   incorporan   a   las   nueve   dimensiones   ya   mencionadas pero que tienen relevancia clínica: </p>
+			<ul>
+				<li>19: Poco apetito </li>
+				<li>44: Problemas para dormir </li>
+				<li>59: Pensamientos acerca de la muerte o el morirse 
+				<li>60: Comer en exceso morirse</li>
+				<li>64: Despertarse muy temprano. </li>
+				<li>66: Sueño intranquilo. </li>
+				<li>89: Sentimientos de culpa.</li>
+			</ul>
+			<h3>Índices globales:</h3>
+			<p><b>Índice de Severidad Global (ISG): </b>es  un  muy  buen  indicador  del  nivel  actual  de  la  severidad  del  malestar.  Combina  el  número  de  síntomas  reconocidos  como  presentes  con  la  intensidad del  malestar percibido</p>
+			<p><b>Total de síntomas positivos (TSP): </b>se  estima  contando  el  total  de  ítems  que  tienen  una respuesta positiva (mayor que cero).En sujetos de población general, puntuaciones brutas iguales  o  inferiores  a  3    en  varones  e  iguales  o  inferiores  a  4  en  mujeres  son  consideradas  como  indicadoras  de  un  intento  consciente  de  mostrarse  mejores  de  lo  que  realmente  están.  (imagen positiva). Puntuaciones brutas superiores a 50 en varones y a 60 en mujeres indican lo contrario: tendencia a exagerar sus patologías</p>
+			<p><b>Índice de Malestar Sintomatológico Positivo (IMSP): </b>pretende evaluar el estilo de respuesta  indicando si la persona tiende a exagerar o a minimizar los malestares que lo aquejan. Puntuaciones extremas en este índice también sugieren patrones de respuestas que deben analizarse en términos de actitudes de fingimiento.</p>
+		</div>
+	</div>
+</body>
+</html>

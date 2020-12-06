@@ -1,0 +1,890 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
+
+function anota(valor){
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	for (var i =0; i< opciones[loadedMatrix].length; i++){
+		if (opciones[loadedMatrix][i][0] == valor) {
+			texto = opciones[loadedMatrix][i][1]
+		}
+	}
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<p>"+ texto + "</p><br/>";
+	// document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = []
+	opciones = [[],
+	[
+		[1, "Le gusta resolver problemas de matemáticas"],
+		[2, "Prefiere diseñar el modelo de casas, edificios, parques, etc"],
+	],[
+		[1, "Le agrada observar la conducta de las personas y opinar sobre su personalidad"],
+		[2, "Prefiere expresar un fenómemo concreto en una ecuación matemática"],
+	],[
+		[1, "Le gusta caminar por los cerros buscando piedras raras"],
+		[2, "Prefiere determinar la resistencia de los materiales para una construcción"],
+	],[
+		[1, "Le gusta escribir artículos deportivos"],
+		[2, "Prefiere determinar la resistencia de los materiales para una construccion"],
+	],[
+		[1, "Le gusta hacer tallado en madera"],
+		[2, "Prefiere calcular la cantidad de materiales para una construcción"],
+	],[
+		[1, "Le gusta ordenar y archivar documentos"],
+		[2, "Prefiere proyectar el sistema eléctrico para una construcción"],
+	],[
+		[1, "Le agrada dedicar su tiempo en el estudio de teorías económicas"],
+		[2, "Prefiere dedicar su tiempo en la lectura de revistas sobre mecánica"],
+	],[
+		[1, "Le gusta mucho la vida militar"],
+		[2, "Prefiere diseñar máquinas, motores, etc. de alto rendimiento"],
+	],[
+		[1, "Le gusta estudiar acerca de cómo formar una cooperativa"],
+		[2, "Prefiere estudiar el lenguaje computacional IBM"],
+	],[
+		[1, "Le agrada estudiar la gramática"],
+		[2, "Prefiere estudiar las matemáticas"],
+	],[
+		[1, "Le interesa mucho ser abogado"],
+		[2, "Preferiría dedicarse a escribir un tratado de física-matemática"],
+	],[
+		[1, "Le cuenta a su madre y a su padre todas sus cosas"],
+		[2, "Prefiere ocultar algunas cosas para usted solo/a"],
+	],[
+		[1, "Le agrada estudiar la estructura atómica de los cuerpos"],
+		[2, "Prefiere asumir la defensa legal de alguna persona acusada por algún delito"],
+	],[
+		[1, "Le interesa mucho estudiar cómo funciona un computador"],
+		[2, "Prefiere el estudio de las leyes y principios de la conducta psicológica"],
+	],[
+		[1, "Le agrada analizar la forma como se organiza un pueblo"],
+		[2, "Prefiere el estudio de las leyes y principios de la conducta psicológica"],
+	],[
+		[1, "Le gusta analizar las rocas, piedras, tierra para averiguar su composición mineral"],
+		[2, "Prefiere el estudio de las organizaciones, sean: campesinas, laborales, políticas, económicas o religiosas"],
+	],[
+		[1, "Le gusta escribir artículos culturales para un diario"],
+		[2, "Prefiere pensar largamente acerca de la forma como el hombre podría mejorar su existencia"],
+	],[
+		[1, "Le agrada diseñar: muebles, puertas, ventanas, etc."],
+		[2, "Prefiere dedicar su tiempo a conocer las costumbres y tradiciones de los pueblos"],
+	],[
+		[1, "Le gusta mucho conocer el trámite documentario de un ministerio público"],
+		[2, "Prefiere el estudio de las religiones"],
+	],[
+		[1, "Le interesa mucho conocer los mecanismos de la economía nacional"],
+		[2, "Prefiere ser guía espiritual de las personas"],
+	],[
+		[1, "Le interesa mucho tener bajo su mando a un grupo de soldados"],
+		[2, "Prefiere senseñar lo que sabe a un grupo de compañeros"],
+	],[
+		[1, "Le gusta ser parte de la administración de una cooperativa"],
+		[2, "Prefiere el estudio de las formas más efectivas para la enseñanza de jóvenes y niños"],
+	],[
+		[1, "Le interesa mucho estudiar la raíz gramatical de las palabras de su idioma"],
+		[2, "Prefiere dedicar su tiempo en la búsqueda de huacos y ruínas"],
+	],[
+		[1, "Le agrada mucho estudiar el código de derecho civil"],
+		[2, "Prefiere el estudio de las culturas peruanas y de otras naciones"],
+	],[
+		[1, "Le agrada que sus hermanos o familiares lo vigilen constantemente"],
+		[2, "Prefiere que confíen en su buen criterio"],
+	],[
+		[1, "Le gustaría escribir un tratado acerca de la historia de Perú"],
+		[2, "Prefiere asumir la defensa legal de un acusado por narcotráfico"],
+	],[
+		[1, "Le gusta proyectar las redes de agua y desagüe de una ciudad"],
+		[2, "Prefiere estudiar acerca de las enfermedades de la dentadura"],
+	],[
+		[1, "Le gusta vistar museo arqueológicos y conocer la vivienda y otros utensilios de nuestros antepasados"],
+		[2, "Prefiere hacer moldes para una dentadura postiza"],
+	],[
+		[1, "Le gusta recolectar plantas y clasificarlas por especies"],
+		[2, "Prefiere leer sobre el origen y funcionamiento de las plantas y animales"],
+	],[
+		[1, "Le gusta saber cómo se organiza una editorial periodística"],
+		[2, "Prefiere conocer las características de los órganos humanos y cómo funcionan"],
+	],[
+		[1, "Le agrada construir muebles, puertas, ventanas, etc."],
+		[2, "Prefiere estudiar acerca de las enfermedades de las personas"],
+	],[
+		[1, "Le agradaría trabajar en la recepción y trámite documentario de una oficina pública"],
+		[2, "Prefiere experimentar con las plantas para obtener nuevas especies"],
+	],[
+		[1, "Le gusta proyectar los mecanismos de inversión económica de una empresa"],
+		[2, "Prefiere analizar las tierras para obtener mayor producción agropecuaria"],
+	],[
+		[1, "Le agrada recibir y ejecutar órdenes de un superior"],
+		[2, "Prefiere el estudio de los órganos de los animales y su funcionamiento"],
+	],[
+		[1, "Le gusta saber mucho sobre los principios económicos de una cooperativa"],
+		[2, "Prefiere conocer las enfermedades que aquejan ganado, aves, perros, etc."],
+	],[
+		[1, "Le agrada estudiar los fenómenos (sonidos verbales) de su idioma o de otros"],
+		[2, "Prefiere dedicar mucho de su tiempo en el estudio de la química"],
+	],[
+		[1, "Le agrada defender pleitos judiciales de recuperación de tierras"],
+		[2, "Prefiere hacer mezclas de sustancias químicas para obtener derivados con fines productivos"],
+	],[
+		[1, "Sus amigos saben todo de usterd, para ellos no tiene secretos"],
+		[2, "Prefiere reservar algo para usted solo/a. Tiene algunos secretos"],
+	],[
+		[1, "Le gusta investigar acerca de los recursos naturales de nuestro país (su fauna, flora y suelo)"],
+		[2, "Prefiere estudiar derecho internacional"],
+	],[
+		[1, "Le gusta desarrollar programas de computación para proveer de información rápida y eficiente a una empresa, institución, etc."],
+		[2, "Prefiere obtener fotografías que hagan noticia"],
+	],[
+		[1, "Le gusta mucho conocer el problema de las personas y tramitar su solución"],
+		[2, "Prefiere dedicar su tiempo a la búsqueda de personajes que hacen noticia"],
+	],[
+		[1, "Le gusta estudiar las características territoriales de los continentes"],
+		[2, "Prefiere entrevistar a políticos con el propósito de establecer su posición frente a un problema"],
+	],[
+		[1, "Le gusta conocer el funcionamiento de las máquinas impresoras de periódicos"],
+		[2, "Prefiere trabajar en el montaje fotográfico de un diario o revista"],
+	],[
+		[1, "Le gusta redactar cartas comeerciales, al igual que oficios y solicitudes"],
+		[2, "Prefiere averiguar lo que opina el público respecto a un producto"],
+	],[
+		[1, "Le gusta estudiar las leyes de la oferta y la demanda"],
+		[2, "Prefiere redactar el tema para un anuncio publicitario"],
+	],[
+		[1, "Le gusta organizar el servicio de inteligencia de un cuartel"],
+		[2, "Prefiere trabajar en una agencia de publicidad"],
+	],[
+		[1, "Le gusta trabajar buscando casas de alquiler para ofrecerlas al público"],
+		[2, "Prefiere estudiar las características psicológicas para lograr un buen impacto publicitario"],
+	],[
+		[1, "Le interesa investigar acerca de cómo se originaron los idiomas"],
+		[2, "Prefiere preparar y ejecutar encuestas para conocer la opinión de las personas"],
+	],[
+		[1, "Le agrada hacer los trámites legales de un juicio de divorcio"],
+		[2, "Prefiere trabajar estableciendo contactos entre una empresa y otra"],
+	],[
+		[1, "Cuando está realizando un examen y tiene la oportunidad de verificar una respuesta nunca lo hace"],
+		[2, "Prefiere aprovechar la seguridad que la ocasión le confiere"],
+	],[
+		[1, "Le interesa investigar sobre los problemas del lenguaje en la comunicación masiva"],
+		[2, "Prefiere redactar documentos legales para contratos internacionales"],
+	],[
+		[1, "Le gusta trabajar haciendo instalaciones eléctricas"],
+		[2, "Prefiere dedicar su tiempo en la lectura de las novedades de decoración de ambientes"],
+	],[
+		[1, "Le agrada mucho visitar el hogar de los trabajadores con el fin de verificar su verdadera situación social y económica"],
+		[2, "Prefiere trabajar en el decorado de tiendas y vitrinas"],
+	],[
+		[1, "Le gusta estudiar los recursos geográficos"],
+		[2, "Prefiere observar el comportamiento de las personas e imitarlas"],
+	],[
+		[1, "Le gustaría dedicar su tiempo a la organización de eventos deportivos entre dos o más centros laborales"],
+		[2, "Preferiría dedicarse al estudio de la vida y obra de los grandes actores de cine y teatro"],
+	],[
+		[1, "Le gustaría estudiar escultura en la escuela de bellas artes"],
+		[2, "Preferiría ser parte de un electo de teatro"],
+	],[
+		[1, "Le gusta trabajar de mecanógrafo/a"],
+		[2, "Le gusta más dar forma a objetos moldeables, sea plastilina, migas, arcilla, piedras, etc."],
+	],[
+		[1, "Le agrada mucho estudiar los fundamentos por los que una moneda se devalúa"],
+		[2, "Prefiere la lectura acerca de la vida y obra de los grandes escultores como Miguel Ángel, Leonardo da Vinci, etc."],
+	],[
+		[1, "Le agrada mucho la vida del marinero"],
+		[2, "Prefiere combinar colores para expresar con naturalidad y belleza un paisaje"],
+	],[
+		[1, "Le gustaría trabajar tramitando la compra-venta de inmuebles"],
+		[2, "Prefiere utilizar las líneas de colores para expresar un sentimiento"],
+	],[
+		[1, "Le gusta estudiar las lenguas y dialectos aborígenes"],
+		[2, "Prefiere combinar sonidos para obtener una nueva melodía"],
+	],[
+		[1, "Le agrada tramitar judicialmente el reconocimiento de sus hijos"],
+		[2, "Le agrada más aprender a tocar algún instrumento musical"],
+	],[
+		[1, "Si pasa por un cine y descubre que no hay vigilancia, no se aprovecha de la situación"],
+		[2, "Previere aprovechar la ocasión para entrar sin pagar"],
+	],[
+		[1, "Le interesa más diseñar y/o confeccionar artículos de cuero"],
+		[2, "Prefiere asumir la defensa legal en la demarcación de fronteras territoriales"],
+	],[
+		[1, "Prefiere estudiar acerca de cómo la energía se transforma en imágenes de radio, televisión, etc."],
+		[2, "Le gusta tomar apuntes textuales o didácticos de otras personas"],
+	],[
+		[1, "Le gusta leer sobre la vida y obra de los santos religiosos"],
+		[2, "Prefiere hacer catálogos o listados de los libros de una biblioteca"],
+	],[
+		[1, "Le gusta dedicar mucho de su tiempo en la lectura de la astronomía"],
+		[2, "Prefiere trabajar clasificando los libros por autores"],
+	],[
+		[1, "Le gusta trabajar defendiendo el prestigio de su centro laboral"],
+		[2, "Prefiere trabajar recibiendo y entregando documentos valorados como: cheques, giros, libretas de ahorro, etc."],
+	],[
+		[1, "Le interesa mucho leer sobre la vida y obra de músicos famosos"],
+		[2, "Prefiere el tipo de trabajo de un empleado bancario"],
+	],[
+		[1, "Le interesa mucho conseguir un trabajo en un banco comercial"],
+		[2, "Prefiere dedicarse a clasificar libros por especialidades"],
+	],[
+		[1, "Le gusta dedicar su tiempo en el conocimiento del por qué ocurre la inflacción económica"],
+		[2, "Prefiere dedicarse al estudio de cómo se organiza una biblioteca"],
+	],[
+		[1, "Le interesa mucho el conocimiento de la organización de un buque de guerra"],
+		[2, "Prefiere dedicarse a la recepción y comunicación de mensajes, sean verbales o por escrito"],
+	],[
+		[1, "Le gusta trabajar tramitando la compra-venta de vehículos motorizados"],
+		[2, "Prefiere transcribir los documentos de la administración pública"],
+	],[
+		[1, "Le gusta dedicar gran parte de su tiempo al estudio de las normas y reglas para el uso adecuado del lenguaje"],
+		[2, "Prefiere trabajar como secretario adjunto al jefe"],
+	],[
+		[1, "Le gusta dedicar su tiempo planteando la defensa de un juicio de alquiler"],
+		[2, "Prefiere asesorar y aconsejar en torno a trámites documentarios"],
+	],[
+		[1, "Si en la calle se encuentra dinero, sin documento alguno, acude a la radio, TV para buscar al infortunado"],
+		[2, "Preferiría quedarse con el dinero, pues no conoce al dueño"],
+	],[
+		[1, "Le interesa trabajar en la implementación de bibliotecas distritales"],
+		[2, "Prefiere asumir la responsabilidad legal para que un fugitivo, con residencia en otro país, sea devuelto a su país"],
+	],[
+		[1, "Le gusta estudiar acerca de cómo la energía se transforma en movimiento"],
+		[2, "Preferiría hacer una tesis sobre manejo económico del país"],
+	],[
+		[1, "Le agrada leer sobre la vida y obra de grandes personajes de la educación, sean profesores, filósofos, psicólogos, etc."],
+		[2, "Prefiere estudiar acerca de las bases económicas de un país"],
+	],[
+		[1, "Le gusta estudiar los astros; sus características, origen y evolución"],
+		[2, "Prefiere establecer comparaciones entre los sistemas y modelos económicos del mundo"],
+	],[
+		[1, "Le gustaría trabajar exclusivamente promocionando la imagen de su centro laboral"],
+		[2, "Prefiere estudiar las grandes corrientes ideólogicas del mundo"],
+	],[
+		[1, "Le gusta y practica el baile como expresión artística"],
+		[2, "Prefiere estudiar las bases de la organización política del Tahuantisuvo"],
+	],[
+		[1, "Le gusta mucho saber sobre el manejo de los archivos públicos"],
+		[2, "Prefiere establecer diferencias entre los distintos modelos políticos"],
+	],[
+		[1, "Le gusta investigar sobre las características de los regímenes totalitarios, democráticos, republicanos, etc."],
+		[2, "Prefiere ser el representante de su país en el extranjero"],
+	],[
+		[1, "Le gusta ser capitán de un buque de guerra"],
+		[2, "Le interesa más formar y conducir grupos con fines políticos"],
+	],[
+		[1, "Le agrada ser visitador médico"],
+		[2, "Prefiere dedicar su tiempo en la lectura de la vida y obra de grandes políticos"],
+	],[
+		[1, "Siente placer buscando en el diccionario el significado de palabras nuevas"],
+		[2, "Prefiere dedicar todo su tiempo en aras de la paz entre las naciones"],
+	],[
+		[1, "Le interesa mucho estudiar el código penal"],
+		[2, "Prefiere estudiar los sistemas políticos de otros países"],
+	],[
+		[1, "Le agrada que le dejen muchas tareas para su casa"],
+		[2, "Prefiere que estas sean lo necesario para aprender"],
+	],[
+		[1, "Le agrada ser miembro activo de una agrupación política"],
+		[2, "Prefiere escuchar acusaciones y defensas para sancionar de acuerdo a lo que la ley señala"],
+	],[
+		[1, "Le gusta hacer los cálculos para el diseño de telas a gran escala"],
+		[2, "Le interesa más la mecánica de los barcos y submarinos"],
+	],[
+		[1, "Le agrada observar y evaluar cómo se desarrolla la inteligencia y la personalidad"],
+		[2, "Prefiere ser aviador"],
+	],[
+		[1, "Le gustaría dedicar su tiempo en el descubrimiento de nuevos medicamentos"],
+		[2, "Prefiere dedicarse a la lectura acerca de la vida y obra de reconocidos militares, que han aportado en la organización de su institución"],
+	],[
+		[1, "Le gusta la aventura cuando está dirigida a descubrir algo que haga noticia"],
+		[2, "Prefiere conocer el mecanismo de los aviones de guerra"],
+	],[
+		[1, "Le gusta ser parte de una agrupación de baile y danza"],
+		[2, "Preferiría pertenecer a la Fuerza Aérea"],
+	],[
+		[1, "Le gusta el trabajo de llevar mensajes de una dependenca a otra"],
+		[2, "Prefiere ser miembro de la Policía"],
+	],[
+		[1, "Le gustaría trabajar estableciendo vínculos culturales con otros países"],
+		[2, "Prefiere el trabajo en la detección y comprobación del delito"],
+	],[
+		[1, "Le gustaría trabajar custodiando el orden público"],
+		[2, "Prefiere ser vigilante receloso de nuestras fronteras"],
+	],[
+		[1, "Le gusta persuadir a los boticarios en la compra de nuevos medicamentos"],
+		[2, "Prefiere trabajar vigilando a los presos en las prisiones"],
+	],[
+		[1, "Le apasiona leer de escritores serios y famosos"],
+		[2, "Prefiere organizar el servicio de inteligencia en la destrucción del narcotráfico"],
+	],[
+		[1, "Le gusta asumir la defensa legal de una persona acusada de robo"],
+		[2, "Prefiere conocer el mecanismo de las armas de fuego"],
+	],[
+		[1, "Se aleja usted cuando sus amistades cuentan 'chistes colorados'"],
+		[2, "Prefiere quedarse gozando de la ocasión"],
+	],[
+		[1, "Le interesa mucho saber cómo se organiza un ejercito"],
+		[2, "Prefiere participar como jurado de un juicio"],
+	],[
+		[1, "Le gusta proyectar la extracción de metales de una mina"],
+		[2, "Prefiere estudiar el nombre de los medicamentos y su ventaja comercial"],
+	],[
+		[1, "Le gusta descifrar los diseños gráficos y escritos de culturas muy antiguas"],
+		[2, "Prefiere persuadir a la gente para que compre un producto"],
+	],[
+		[1, "Le agrada el estudio de los mecanismos de la visión y de sus enfermedades"],
+		[2, "Prefiere vender cosas"],
+	],[
+		[1, "Le gustaría ganarse la vida escribiendo para un diario o revista"],
+		[2, "Prefiere estudiar el mercado y descubrir el producto de mayor demanda"],
+	],[
+		[1, "Le gusta actuar, representando a distintos personajes"],
+		[2, "Le agrada más tener su propio negocio"],
+	],[
+		[1, "Le gusta sentirse importante sabiendo que de usted depende la rapidez o la lentitud de una solicitud"],
+		[2, "Prefiere trabajar en un bazar"],
+	],[
+		[1, "Le gusta planificar sea para una empresa local o a nivel nacional"],
+		[2, "Prefiere el negocio de una bodega o tienda de abarrotes"],
+	],[
+		[1, "Le interesa mucho utilizar sus conocimientos en la construcción de armamentos"],
+		[2, "Prefiere organizar empresas de finanzas y comercio"],
+	],[
+		[1, "Le agrada llevar la contabilidad de una empresa o negocio"],
+		[2, "Prefiere hacer las planillas de pago para los trabajadores de una empresa o institución"],
+	],[
+		[1, "Le agrada escribir cartas y luego hacer tantas correcciones como sean necesarias"],
+		[2, "Prefiere ser incorporado como miembro de la corporación nacional de comercio"],
+	],[
+		[1, "Le agrada vestir todos los días muy formalmente (con terno y corbata, por ejemplo)"],
+		[2, "Prefiere reservar esa vestimenta para ciertas ocasiones"],
+	],[
+		[1, "Le gusta evaluar la producción laboral de un grupo de trabajadores"],
+		[2, "Prefiere plantear, previa ivestigación, la acusación de un sujeto que ha actuado en contra de la ley"],
+	],[
+		[1, "Le gusta estudiar acerca de los reactores atómicos"],
+		[2, "Prefiere el estudio de las distintas formas literarias"],
+	],[
+		[1, "Le agrada estudiar en torno a la problemática social de Perú"],
+		[2, "Prefiere escribir cuidando mucho ser comprendido al tiempo que sus escritos resulten agradables al lector"],
+	],[
+		[1, "Le gustaría escribir un tratado sobre anatomía humana"],
+		[2, "Prefiere recitar sus propios poemas"],
+	],[
+		[1, "Le gustaría incorporarse al colegio de periodistas de Perú"],
+		[2, "Prefiere aprender otro idioma"],
+	],[
+		[1, "Le gusta diseñar u/o confeccionar adornos, utensilios, etc., en cerámica, vidrio etc."],
+		[2, "Prefiere traducir textos escritos en otros idiomas"],
+	],[
+		[1, "Le gustaría desarrollar técnicas de mayor eficiencia en el trámite documentario de un ministerio público"],
+		[2, "Prefiere escribir en otro idioma"],
+	],[
+		[1, "Le agradaría mucho ser secretario general de una central sindical"],
+		[2, "Prefiere dedicar su tiempo al estudio de lenguas extintas (muertas)"],
+	],[
+		[1, "Le gustarúa dedicarse al estudio de normas de alta peligrosidad"],
+		[2, "Prefiere trabajar como traductor"],
+	],[
+		[1, "Le gusta llevar la estadística de ingresos y egresos mensuales de una empresa o tal vez de una nación"],
+		[2, "Prefiere los cursos de idiomas: Inglés, Francés, Italianos, etc."],
+	],[
+		[1, "Le gustaría ser incorporado como miembro de la Real Academia de la Lengua Española"],
+		[2, "Prefiere ser incorporado al Instituto Nacional del Idioma"],
+	],[
+		[1, "Le interesaría ser el asesor legal de un ministro de estado"],
+		[2, "Prefiere aquellas situaciones que le inspiran a escribir"],
+	],[
+		[1, "Nunca ha bebido licor, aún en ciertas ocasiones lo ha rechazado"],
+		[2, "Por lo contrario se ha adecuado a las circunstancias"],
+	],[
+		[1, "Le agrada dedicar mucho de su tiempo en la escritura de poemas, cuentos, etc."],
+		[2, "Prefiere sentirse importante al saber que de su defensa legal depende la libertad de una persona"],
+	],[
+		[1, "Le agrada estudiar la estructura atómica de los cuerpos"],
+		[2, "Prefiere asumir la defensa legal de una persona acusada por algún delito"],
+	],[
+		[1, "Le gustaría escribir un tratado acerca de la historia de Perú"],
+		[2, "Prefiere asumir la defensa legal de un acusado por narcotráfico"],
+	],[
+		[1, "Le gusta investigar los recursos naturales de nuestro país (fauna, flora, suelo, etc.)"],
+		[2, "Prefiere estudiar derecho internacional"],
+	],[
+		[1, "Le interesa investigar sobre los porblemas del lenguaje en la comunicación masiva"],
+		[2, "Prefiere redactar documentos legales para contratos internacionales"],
+	],[
+		[1, "Le interesa diseñar y/o confeccionar artículos de cuero"],
+		[2, "Prefiere asumir la defensa legal en la demarcación de fronteras territoriales"],
+	],[
+		[1, "Le interesa trabajer en la implementación de bibliotecas distrales"],
+		[2, "Prefiere asumir la responsabilidad legal para que un fugitivo con residencia en otro país sea devuelto a su país"],
+	],[
+		[1, "Le agrada ser miembro activo de una agrupación política"],
+		[2, "Prefiere escuchar acusaciones y defensas para sancionar de acuerdo a lo que la ley señala"],
+	],[
+		[1, "Le interesa mucho saber cómo se organiza un ejercito"],
+		[2, "Prefiere participar como jurado en un juicio"],
+	],[
+		[1, "Le gusta evaluar la producción laboral de un grupo de trabajadores"],
+		[2, "Prefiere plantear previa investigación la acusación de un sujeto que ha ido en contra de la ley"],
+	],[
+		[1, "Pe gusta dedicar mucho de su tiempo en la escritura de poemas, cuentos"],
+		[2, "Prefiere sentirse importante al saber que de su defensa legal depende la libertad de una persona"],
+	],[
+		[1, "Le gustaría dedicarse a la legalización de documentos (contratos, cartas, partidas, títulos, etc.)"],
+		[2, "Prefiere ser incorporado en una comisión para redactar un proyecto de ley"],
+	],[
+		[1, "Le agrada viajar en un microbús repleto de gente aún cuando no tiene ningún apuro"],
+		[2, "Prefiere esperar otro vehículo"],
+	],[
+		[1, "Le gusta resolver problemas matemáticos"],
+		[2, "Prefiere diseñar el modelo de casas, edificios, parques, etc."],
+	]
+	]
+
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix);
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < opciones.length){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		//pd = answ.reduce(sum, 0)
+		//sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		answ = [0, ...answ]
+		answA = [0]
+		answB = [0]
+		for (i=0; i<answ.length; i++){
+			if (answ[i] == 1){
+				answA.push(1)
+			} else{
+				answA.push(0)
+			}
+		}
+		for (i=0; i<answ.length; i++){
+			if (answ[i] == 2){
+				answB.push(1)
+			} else{
+				answB.push(0)
+			}
+		}
+		ccfm = answA[1] + answA[2] + answA[3] + answA[4] + answA[5] + answA[6] + answA[7] + answA[8] + answA[9] + answA[10] + answA[11] + answB[1]  + answB[14] + answB[27] + answB[40] + answB[53] + answB[66] + answB[79] + answB[92] + answB[105] + answB[118] + answB[131]
+		ccss = answA[14]+ answA[15]+ answA[16]+ answA[17]+ answA[18]+ answA[19]+ answA[20]+ answA[21]+ answA[22]+ answA[23]+ answA[24]+ answB[2]+ answB[15]+ answB[28]+ answB[41]+ answB[54]+ answB[67]+ answB[80]+ answB[93]+ answB[106]+ answB[119]+ answB[132]
+
+		ccna = answA[27]+ answA[28]+ answA[29]+ answA[30]+ answA[31]+ answA[32]+ answA[33]+ answA[34]+ answA[35]+ answA[36]+ answA[37]+ answB[3]+ answB[16]+ answB[29]+ answB[42]+ answB[55]+ answB[68]+ answB[81]+ answB[94]+ answB[107]+ answB[120]+ answB[133]
+
+		ccco = answA[40]+ answA[41]+ answA[42]+ answA[43]+ answA[44]+ answA[45]+ answA[46]+ answA[47]+ answA[48]+ answA[49]+ answA[50]+ answB[4]+ answB[17]+ answB[30]+ answB[43]+ answB[56]+ answB[69]+ answB[82]+ answB[95]+ answB[108]+ answB[121]+ answB[134]
+
+		arte = answA[53]+ answA[54]+ answA[55]+ answA[56]+ answA[57]+ answA[58]+ answA[59]+ answA[60]+ answA[61]+ answA[62]+ answA[63]+ answB[5]+ answB[18]+ answB[31]+ answB[44]+ answB[57]+ answB[70]+ answB[83]+ answB[96]+ answB[109]+ answB[122]+ answB[135]
+
+		buro = answA[66]+ answA[67]+ answA[68]+ answA[69]+ answA[70]+ answA[71]+ answA[72]+ answA[73]+ answA[74]+ answA[75]+ answA[76]+ answB[6]+ answB[19]+ answB[32]+ answB[45]+ answB[58]+ answB[71]+ answB[84]+ answB[97]+ answB[110]+ answB[123]+ answB[136]
+
+		ccep = answA[79]+ answA[80]+ answA[81]+ answA[82]+ answA[83]+ answA[84]+ answA[85]+ answA[86]+ answA[87]+ answA[88]+ answA[89]+ answB[7]+ answB[20]+ answB[33]+ answB[46]+ answB[59]+ answB[72]+ answB[85]+ answB[98]+ answB[111]+ answB[124]+ answB[137]
+
+		haa = answA[92]+ answA[93]+ answA[94]+ answA[95]+ answA[96]+ answA[97]+ answA[98]+ answA[99]+ answA[100]+ answA[101]+ answA[102]+ answB[8]+ answB[21]+ answB[34]+ answB[47]+ answB[60]+ answB[73]+ answB[86]+ answB[99]+ answB[112]+ answB[125]+ answB[138]
+
+		fina = answA[105]+ answA[106]+ answA[107]+ answA[108]+ answA[109]+ answA[110]+ answA[111]+ answA[112]+ answA[113]+ answA[114]+ answA[115]+ answB[9]+ answB[22]+ answB[35]+ answB[48]+ answB[61]+ answB[74]+ answB[87]+ answB[100]+ answB[113]+ answB[126]+ answB[139]
+
+		ling = answA[118]+ answA[119]+ answA[120]+ answA[121]+ answA[122]+ answA[123]+ answA[124]+ answA[125]+ answA[126] + answA[127]+ answA[128]+ answB[10]+ answB[23]+ answB[36]+ answB[49]+ answB[62]+ answB[75]+ answB[88]+ answB[101]+ answB[114]+ answB[127]+ answB[140]
+
+		juri = answA[131]+ answA[132]+ answA[133]+ answA[134]+ answA[135]+ answA[136]+ answA[137]+ answA[138]+ answA[139]+ answA[140]+ answA[141]+ answB[11]+ answB[24]+ answB[37]+ answB[50]+ answB[63]+ answB[76]+ answB[89]+ answB[102]+ answB[115]+ answB[128]+ answB[141]
+
+		vera = answA[12]+ answA[25]+ answA[38]+ answA[51]+ answA[64]+ answA[77]+ answA[90]+ answA[103]+ answA[116]+ answA[129]+ answA[142]
+
+		pMccfm = 5.14118372379778*ccfm-24.4673242909988;
+		pMccss = 4.91316685584563*ccss-17.1940976163451;
+		pMccna = 5.05437352245863*ccna-24.0236406619385;
+		pMccco = 4.40814479638009*ccco-6.43710407239819;
+		pMarte = 3.44983050847458*arte+9.08745762711864;
+		pMburo = 4.77067669172932*buro-12.6766917293233;
+		pMccep = 4.65466531440162*ccep-13.2794117647059;
+		pMhaa = 4.65466531440162*haa-13.2794117647059;
+		pMfina = 4.49141221374046*fina-6.11736641221374;
+		pMling = 4.54827586206897*ling-5.45960591133006;
+		pMjuri = 3.04447174447174*juri+5.86314496314496;
+
+		pFccfm = 4.37444345503117*ccfm-7.29697239536954;
+		pFccss = 4.86153846153846*ccss-23.4901098901099;
+		pFccna = 4.65466531440162*ccna-13.2794117647059;
+		pFccco = 4.46707431796802*ccco-7.11900282220132;
+		pFarte = 4.46707431796802*arte-7.11900282220132;
+		pFburo = 4.86153846153846*buro-23.4901098901099;
+		pFccep = 4.52480916030534*ccep-11.0190839694657;
+		pFhaa = 4.54827586206897*haa-5.45960591133006;
+		pFfina = 4.52480916030534*fina-11.0190839694657;
+		pFling = 4.52480916030534*ling-11.0190839694657;
+		pFjuri = 4.46707431796802*juri-7.11900282220132;
+
+		//pd = []
+		//pd.push(...f1, ...f2, ...f3)
+		t = "<h2>Puntuación</h2>"
+		t = t + "<p><table><tr><th></th><th>Puntuación directa</th><th>Percentil Masculino</th><th>Percentil Femenino</th></tr>"
+		t = t + "<tr><td>CCFM</td><td>"
+		t = t + ccfm +"</td><td>"
+		t = t + pMccfm.toFixed(2) +"</td><td>"
+		t = t + pFccfm.toFixed(2) +"</td><tr>"
+		
+		t = t + "<tr><td>CCSS</td><td>"
+		t = t + ccss +"</td><td>"
+		t = t + pMccss.toFixed(2) +"</td><td>"
+		t = t + pFccss.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>CCNA</td><td>"
+		t = t + ccna +"</td><td>"
+		t = t + pMccna.toFixed(2) +"</td><td>"
+		t = t + pFccna.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>CCCO</td><td>"
+		t = t + ccco +"</td><td>"
+		t = t + pMccco.toFixed(2) +"</td><td>"
+		t = t + pFccco.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>ARTE</td><td>"
+		t = t + arte +"</td><td>"
+		t = t + pMarte.toFixed(2) +"</td><td>"
+		t = t + pFarte.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>BURO</td><td>"
+		t = t + buro +"</td><td>"
+		t = t + pMburo.toFixed(2) +"</td><td>"
+		t = t + pFburo.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>CCEP</td><td>"
+		t = t + ccep +"</td><td>"
+		t = t + pMccep.toFixed(2) +"</td><td>"
+		t = t + pFccep.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>HAA</td><td>"
+		t = t + haa +"</td><td>"
+		t = t + pMhaa.toFixed(2) +"</td><td>"
+		t = t + pFhaa.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>FINA</td><td>"
+		t = t + fina +"</td><td>"
+		t = t + pMfina.toFixed(2) +"</td><td>"
+		t = t + pFfina.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>LING</td><td>"
+		t = t + ling +"</td><td>"
+		t = t + pMling.toFixed(2) +"</td><td>"
+		t = t + pFling.toFixed(2) +"</td><tr>"
+
+		t = t + "<tr><td>JURI</td><td>"
+		t = t + juri +"</td><td>"
+		t = t + pMjuri.toFixed(2) +"</td><td>"
+		t = t + pFjuri.toFixed(2) +"</td><tr>"
+
+		t = t + "</table></p><br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:info.peneira@gmail.com"
+		     + "?subject=" + escape("CASM83-R91 - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Inventario de intereses vocacionales y ocupacionales CASM83-R91</h1>
+		<p>Este es un cuestionario de Intereses Vocacionales y Ocupacionales, en el que usted encontrará un conjunto de pares de preguntas, mermitiéndole obtener su perfil de preferencias Profesionales y Ocupacionales. Para ello solo tiene que elegir entre dos alternativas.</p>
+		<p>Como nota cabe señalar que <b>no hay respuestas buenas ni malas</b>; y su usted desa un resultado confiable, procure contestar en función de lo que a usted realmente le interesa y no en base a lo que otros podrían opinar (criterios ajenos a los suyos).</p>
+
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Inventario de intereses vocacionales y ocupacionales CASM83-R91</h1>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+			
+		</div>
+	</div>
+</body>
+</html>

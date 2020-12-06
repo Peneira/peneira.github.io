@@ -1,0 +1,509 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
+
+function anota(valor){
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	for (var i =0; i< opciones[loadedMatrix].length; i++){
+		if (opciones[loadedMatrix][i][0] == valor) {
+			texto = opciones[loadedMatrix][i][1]
+		}
+	}
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ texto + "</p><br/>";
+	document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<p><b>Ámbito sociosanitario</b></p><p>Grao de facilidade no acceso aos servicios sanitarios</p>",
+		"<p><b>Ámbito sociosanitario</b></p><p>Grao de seguimiento dos tratamentos e prescripcións médicas</p>",
+		"<p><b>Ámbito sociosanitario</b></p><p>Realízase controis de saúde perioódicos (xinecolóxicos, dentais, etc.)</p>",
+		"<p><b>Ámbito sociosanitario</b></p><p>Realiza aos seus fillos/as controis pediátricos, vacinacións, nutricionais</p>",
+		"<p><b>Ámbito sociosanitario</b></p><p>Grao de motivación e interese pola súa formación para a saúde</p>",
+		"<p><b>Ámbito sociosanitario</b></p><p>Valoración xeral do aspecto persoal</p>",
+		"<p><b>Ámbito sociosanitario</b></p><p>Valoración xeral dos deus hábitos de alimentación e saúde</p>",
+		"<p><b>Ámbito sociosanitario</b></p><p>Valoración das condicións de habitabilidade da vivenda</p>",
+		"<p><b>Ámbito educativo</b></p><p>Asistencia ou seguemento de actividades formativo-culturais</p>",
+		"<p><b>Ámbito educativo</b></p><p>Grao de adaptación ás normas de convivencia</p>",
+		"<p><b>Ámbito educativo</b></p><p>Grao de atención dos fillos e fillas en idade escolar</p>",
+		"<p><b>Ámbito educativo</b></p><p>Frecuencia de lectura de libros, xormais, reportaxes ou artigos especializados, etc.</p>",
+		"<p><b>Ámbito educativo</b></p><p>Asistencia/seguemento de actividades relacionadas co coidado dos fillos en idade escolar</p>",
+		"<p><b>Contorno e participación social</b></p><p>Amplitude da rede de apoio</p>",
+		"<p><b>Contorno e participación social</b></p><p>Calidade de rede de apoio</p>",
+		"<p><b>Contorno e participación social</b></p><p>Relacións familiares</p>",
+		"<p><b>Contorno e participación social</b></p><p>Ausencia de conductas delictivas ou asociais no presente</p>",
+		"<p><b>Contorno e participación social</b></p><p>Grao de participación en actividades sociais e comunitarias</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Valoración xeral da súa comunicación verbal</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Valoración xeral da súa comunicación non verbal</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Grao de responsabilidade nas súas tarefas</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Capacidade de resolución de conflictos e negociación</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Motivación</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Autonomía persoal</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Autoestima, confianza en sí mesmo/a</p>",
+		"<p><b>Competencias e habilidades persoais</b></p><p>Organización de tarefas: xestión do tempo, administración do diñeiro, etc.</p>"
+		]
+	opciones = [[],
+	[
+		[3, "A - Sin dificultade"],
+		[2, "B - Con dificultade só nos especializados"],
+		[1, "C - Con dificultade"]
+	],
+	[
+		[3, "A - Alto - Sempre"],
+		[2, "B - Medio - Ás veces"],
+		[1, "C - Baixo - Nunca"]
+	],
+	[
+		[3, "A - Todos os recomendados"],
+		[2, "B - Algúns dos recomendados"],
+		[1, "C - Ningún dos recomendados"]
+	],
+	[
+		[3, "A - Todos os recomendados"],
+		[2, "B - Algúns dos recomendados"],
+		[1, "C - Ningún dos recomendados"],
+		[0, "Non ten fillos/as a cargo"]
+	],
+	[
+		[3, "A - Alto - Sempre"],
+		[2, "B - Medio - Ás veces"],
+		[1, "C - Baixo - Nunca"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"]
+	],
+	[
+		[3, "A - Frecuente"],
+		[2, "B - Ocasional"],
+		[1, "C - Nula"]
+	],
+	[
+		[3, "A - Alto"],
+		[2, "B - Medio"],
+		[1, "C - Baixo"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"],
+		[0, "Non ten fillos/as a cargo"]
+	],
+	[
+		[3, "A - Todos os días"],
+		[2, "B - Ocasionalmente"],
+		[1, "C - Nunca"]
+	],
+	[
+		[3, "A - Frecuentemente"],
+		[2, "B - Algunha vez"],
+		[1, "C - Nunca"],
+		[0, "Non ten fillos/as a cargo"]
+	],
+	[
+		[3, "A - Máis de 20 persoas"],
+		[2, "B - Entre 10 e 20 persoas"],
+		[1, "C - Menos de 10 persoas"]
+	],
+	[
+		[3, "A - Alta"],
+		[2, "B - Media"],
+		[1, "C - Baixa"]
+	],
+	[
+		[3, "A - Fortes"],
+		[2, "B - Normáis"],
+		[1, "C - Débiles ou conflitivas"]
+	],
+	[
+		[3, "A - Total"],
+		[2, "B - Parcial"],
+		[1, "C - Nula"]
+	],
+	[
+		[3, "A - Alto"],
+		[2, "B - Medio"],
+		[1, "C - Baixo"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"],
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"],
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"],
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"],
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"]
+	],
+	[
+		[3, "A - Boa"],
+		[2, "B - Regular - Mellorable"],
+		[1, "C - Mala"]
+	]
+	]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < areas.length){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		pd = answ.reduce(sum, 0)
+		sd = answ.stanDeviate()
+		pF1 = answ.slice(0,8)
+		pF2 = answ.slice(8,13)
+		pF3 = answ.slice(13,18)
+		pF4 = answ.slice(18,26)
+		told = document.getElementById('informe').innerHTML
+		t = "<h2>Puntuación</h2>"
+		t = t + "<p><table><tr><th></th><th>Puntuación</th><th>Desviación típica</th></tr>"
+		t = t + "<tr><td>Puntuación total</td><td>"+pd+"</td><td>"+sd.toFixed(3)+"</td></tr>"
+		t = t + "<tr><td>Ámbito Sociosanitario</td><td>"+pF1.reduce(sum, 0)+"</td><td>"+pF1.stanDeviate().toFixed(3)+"</td></tr>"
+		t = t + "<tr><td>Ámbito Socioeducativo</td><td>"+pF2.reduce(sum, 0)+"</td><td>"+pF2.stanDeviate().toFixed(3)+"</td></tr>"
+		t = t + "<tr><td>Contorno e participación social</td><td>"+pF3.reduce(sum, 0)+"</td><td>"+pF3.stanDeviate().toFixed(3)+"</td></tr>"
+		t = t + "<tr><td>Competencias e habilidades persoais</td><td>"+pF4.reduce(sum, 0)+"</td><td>"+pF4.stanDeviate().toFixed(3)+"</td></tr>"
+		t = t + "</table></p><br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:jorgealonso@openmailbox.org"
+		     + "?subject=" + escape("IIPGIS - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Formulario de Seguemento da Inserción Social</h1>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Formulario de seguemento da Inserción Social</h1>
+			<h2>Resultados</h2>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+		</div>
+	</div>
+</body>
+</html>
