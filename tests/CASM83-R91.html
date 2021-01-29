@@ -337,7 +337,7 @@ function matriz6r(num) {
 		[1, "Le agrada defender pleitos judiciales de recuperación de tierras"],
 		[2, "Prefiere hacer mezclas de sustancias químicas para obtener derivados con fines productivos"],
 	],[
-		[1, "Sus amigos saben todo de usterd, para ellos no tiene secretos"],
+		[1, "Sus amigos saben todo de usted, para ellos no tiene secretos"],
 		[2, "Prefiere reservar algo para usted solo/a. Tiene algunos secretos"],
 	],[
 		[1, "Le gusta investigar acerca de los recursos naturales de nuestro país (su fauna, flora y suelo)"],
@@ -354,6 +354,9 @@ function matriz6r(num) {
 	],[
 		[1, "Le gusta conocer el funcionamiento de las máquinas impresoras de periódicos"],
 		[2, "Prefiere trabajar en el montaje fotográfico de un diario o revista"],
+	],[
+		[1, "Le gusta proyectar el tipo de muebles, cortinas y adornos sea para una oficina o para un hogar"],
+		[2, "Prefiere trabajar como redactor en un diario o revista"],
 	],[
 		[1, "Le gusta redactar cartas comeerciales, al igual que oficios y solicitudes"],
 		[2, "Prefiere averiguar lo que opina el público respecto a un producto"],
@@ -565,6 +568,9 @@ function matriz6r(num) {
 		[1, "Le agrada escribir cartas y luego hacer tantas correcciones como sean necesarias"],
 		[2, "Prefiere ser incorporado como miembro de la corporación nacional de comercio"],
 	],[
+		[1, "Le gusta asumir la defensa legal de una persona acusada de asesinato"],
+		[2, "Prefiere ser incorporado como miembro de una corporación nacional de comercio"],
+	],[
 		[1, "Le agrada vestir todos los días muy formalmente (con terno y corbata, por ejemplo)"],
 		[2, "Prefiere reservar esa vestimenta para ciertas ocasiones"],
 	],[
@@ -649,7 +655,7 @@ function matriz6r(num) {
 		[1, "Le gusta resolver problemas matemáticos"],
 		[2, "Prefiere diseñar el modelo de casas, edificios, parques, etc."],
 	]
-	]
+	]	
 
 	for (i = 0; i<(opciones[num].length); i++){
 		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"

@@ -1,0 +1,636 @@
+﻿<html>
+
+<head>
+	<meta name="author" content="pysdp" />
+	<meta name="generator" content="notepad++"/>
+	<script src="../js/jquery-latest.js"></script>
+	<script src="../js/md5-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+#header, #articles, #formulario, #informe {
+	float: center;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	padding: 1ex 2ex 1ex 1ex;
+	max-width: 1000px;
+	min-width: 600px;
+	}
+#articles {
+	margin-bottom: 300px ;  
+	}
+
+#articles, #formulario, #informe {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 100px;
+	}
+#nombre, #edad, #sexo, #fecha {	
+	float:right; margin-left:10px;
+	margin-right:10px;
+	}
+div.opc {
+	width: 100%;
+	height: 40px;
+	}
+	
+input.opc{
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: gray;
+	color: gray;
+	}
+
+#informe {
+	display: none;
+	}
+
+body {
+	background: white;
+	}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	color:black;
+	}
+
+div.m6r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq6 {
+	width: 190px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.m8r	{
+	margin: auto auto auto auto;
+	float:center;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	}
+div.mpeq8 {
+	width: 160px;
+	height: 110px;
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	}
+
+div.error {
+	font: 90%  'Raleway', arial, sans-serif, helvetica, verdana;
+	color: red;
+	}	
+
+div.clear {
+	clear: both;
+	}
+
+/* ##### COLORES ##### */
+#header {
+	background: none;
+	 }
+#contenidos {
+	color: black;
+	background: none;
+	}
+#contenidos a:hover, #formulario a:hover, #informe a:hover {
+	color:rgba(54, 54, 54, 0.7);
+	}
+#contenidos a, #formulario a, #informe a {
+	color: orange;
+	}
+
+.boton, .boton a {
+	background: gray;
+	color: white;
+	}
+#articles, #formulario, #informe {
+	color: black;
+	}
+#aboutme {
+	background: none;
+	}
+
+.footBar { 
+	color: orange;
+	background-color: white; 
+	}
+
+.boxtst{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	float: left;
+	margin: 15px 15px 15px 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 1ex 2ex 1ex 1ex;
+	text-align: center;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: orange;
+	background-color: rgba(54, 54, 54, 0.9);
+	
+	}
+.boxtst:hover{
+	color: white;
+	background-color: orange;
+	border: 1px solid orange;
+	}
+.mbig{
+	min-height: 200px;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+}
+.opcion {
+	width: 49%;
+	min-height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 5px 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Raleway", cursive;
+	font-size: 15pt;
+	color: black;
+	background-color: white;
+	}
+.opcion:hover {
+	color: white;
+	background-color: rgba(54, 54, 54, 0.9);
+ 	}
+</style>
+<script>
+data = 'El nombre'
+lastTimestamp = Math.round(+new Date());
+loadedMatrix = 0;
+selectedSet = "A";
+
+type6 = ["A", "B"]
+answ = []
+puntuaciones = []
+tiempos = []
+
+function anota(valor){
+	data = data + ","+ (valor) + "," + (Math.round(+new Date())-lastTimestamp).toString();
+	puntuaciones.push(valor)
+	tiempos.push(Math.round(+new Date())-lastTimestamp)
+	answ.push(valor)
+	lastTimestamp = Math.round(+new Date());
+	for (var i =0; i< opciones[loadedMatrix].length; i++){
+		if (opciones[loadedMatrix][i][0] == valor) {
+			texto = opciones[loadedMatrix][i][1]
+		}
+	}
+	contenido = document.createElement('texto');
+	contenido.innerHTML = "<b>" + areas[loadedMatrix] + "</b><p>"+ texto + "</p><br/>";
+	document.getElementById("informe").appendChild(contenido);
+	console.log(data);
+	console.log("Puntuaciones:")
+	console.log(puntuaciones.join(", "))
+	console.log("Tiempos:")
+	console.log(tiempos.join(", "))
+	document.getElementById("matrices").innerHTML = "";
+	loadNext();
+	}
+function sum(a, b) { 
+	return (a + b) 
+}
+function matriz6r(num) {
+	respuestas = ""
+	emociones = [
+			[
+			]
+		]
+	areas = ["",
+		"<p>1. A menudo tengo la sensación de que no puedo manejar bien las cosas</p>",
+		"<p>2. Estoy entregando mucho de mi vida para cubrir las necesidades que siempre esperé para mi hijo</p>",
+		"<p>3. Me siento atrapado con las responsabilidades como padre/madre</p>",
+		"<p>4. Desde que tuve a mi hijo no he hecho cosas nuevas y diferentes</p>",
+		"<p>5. Desde que tengo a mi hijo siento que casi nunca puedo hacer las cosas que me gustaría hacer</p>",
+		"<p>6. No estoy contento/a con las últimas compras de ropa que he hecho para mí.</p>",
+		"<p>7. Hay bastantes cosas que me preocupan acerca de mi vida</p>",
+		"<p>8. Tener a mi hijo ha causado más problemas de los que esperaba en mi relación de pareja</p>",
+		"<p>9. Me siento solo/a y sin amigos</p>",
+		"<p>10. Cuando voy a una fiesta normalmente creo que no voy a disfrutar</p>",
+		"<p>11. No estoy tan interesado en la gente como solía estar acostumbrado</p>",
+		"<p>12. No disfruto con las cosas como acostumbraba</p>",
+		"<p>13. Mi hijo rara vez hace cosas por mí que me hagan sentir bien</p>",
+		"<p>14. La mayoría de las veces siento que mi hijo me quiere y desea estar cerca de mí</p>",
+		"<p>15. Mi hijo me sonríe mucho menos de lo que yo esperaba.</p>",
+		"<p>16. Cuando hago cosas por mi hijo tengo la sensación de que mis esfuerzos no son muy apreciados</p>",
+		"<p>17. Cuando mi hijo juega no se ríe mucho.</p>",
+		"<p>18. Mi hijo no aprende tan rápido como la mayoría de los niños</p>",
+		"<p>19. Mi hipo parece que no sonríe mucho como la mayoría de los niños.</p>",
+		"<p>20. Mi hijo no es capaz de hacer tantas cosas como yo esperaba</p>",
+		"<p>21. Se necesita mucho tiempo y trabajo duro para que mi hijo se acostumbre a cosas nuevas.</p>",
+		"<p>22. Para responder a esta formulación elija una de las cinco frases que se presentan a continuación y que mejor refleje su sentimiento como padre/madre</p>",
+		"<p>23. Esperaba ser más cercano/a y tener sentimientos más tienos de los que tengo hacia mi hijo/a</p>",
+		"<p>24. Muchas veces mi hijo hace cosas que me preocupan porque no son buenas</p>",
+		"<p>25. Mi hijo tiene rabietas y grita más a menudo que la mayoría de niños</p>",
+		"<p>26. La mayoría de las veces mi hijo despierta de muy mal humor</p>",
+		"<p>27. Siento que mi hijo tiene un humor muy cambiante y se altera fácilmente</p>",
+		"<p>28. Mi hijo hace cosas que me molestan mucho</p>",
+		"<p>29. Mi hijo reacciona bruscamente cuando sucede algo que no le gusta.</p>",
+		"<p>30. Mi hijo se altera fácilmente con las cosas más pequeñas.</p>",
+		"<p>31. El horario de comidas y de sueño es más difícil de estrablecer de lo que yo pensaba</p>",
+		"<p>32. Elija una de las cinco frases</p>",
+		"<p>33. De las cinco posibilidades de respuesta elija la que mejor se adapte a lo que usted cree</p><p>Piense con cuidado y cuente el número de cosas que le molestan de su hijo.</p><p><i>Por ejemplo: que se entretenga con todo, que no escuche, muy hiperactivo, los gritos, las interrupciones, resistencia y oposición, lloriqueos.</i></p>",
+		"<p>34. Hay algunas cosas que hace mi hijo que realmente me preocupan bastante</p>",
+		"<p>35. Tener a mi hijo ha dado lugar a más problemas de los que yo esperaba</p>",
+		"<p>36. Mi hijo me plantea más demandas que la mayoría de los niños</p>",
+		]
+	opciones = [[],
+	[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy buen padre/madre"],
+		[4, "Superior a la media"],
+		[3, "En la media"],
+		[2, "Cometo muchos errores siendo padre/madre"],
+		[1, "No soy muy buen padre/madre"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Mucho más difícil"],
+		[4, "Algo más difícil"],
+		[3, "Tan difícil como pensaba"],
+		[2, "Algo más fácil"],
+		[1, "Mucho más fácil"],
+	],[
+		[5, "De 1 a 3"],
+		[4, "De 4 a 5"],
+		[3, "de 6 a 7"],
+		[2, "De 8 a 9"],
+		[1, "10 o más"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	],[
+		[5, "Muy de acuerdo"],
+		[4, "De acuerdo"],
+		[3, "Inseguro/a"],
+		[2, "En desacuerdo"],
+		[1, "Muy en desacuerdo"],
+	]
+	]
+	for (i = 0; i<(opciones[num].length); i++){
+		matemp = "<div class = 'opcion' onclick = anota(" +opciones[num][i][0] + ")><p>" + opciones[num][i][1] + "</p></div>"
+		respuestas = respuestas + matemp;
+	}
+	respuestas = respuestas + "</p></div>"
+
+	var contenido = document.createElement('m6r');
+	contenido.innerHTML = "<div class='m6r'><h2>"+ num + "</h2><div class='mbig'><br/>" + areas[num] + "</div><div class='mresps'>"+ respuestas +"</div><div class='clear'></div>";
+	document.getElementById("matrices").appendChild(contenido);
+	}
+
+
+function comenzar(setM) {
+	var nom=document.getElementById('inombre').value;
+	var eda=document.getElementById('iedad').value;
+	var sex=document.getElementById('isexo').value;
+	loadedMatrix = 1;
+	data = nom + "," + eda + "," + sex;
+	$(articles).hide();
+	$(header).hide();  
+	matriz6r(loadedMatrix.toString());
+	lastTimestamp = Math.round(+new Date());
+	}
+Array.prototype.stanDeviate = function(){
+   var i,j,total = 0, mean = 0, diffSqredArr = [];
+   for(i=0;i<this.length;i+=1){
+       total+=this[i];
+   }
+   mean = total/this.length;
+   for(j=0;j<this.length;j+=1){
+       diffSqredArr.push(Math.pow((this[j]-mean),2));
+   }
+   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
+            return firstEl + nextEl;
+          })/this.length));
+};
+function loadNext() {
+	loadedMatrix++;
+if (loadedMatrix < areas.length){
+		if (type6.indexOf(selectedSet) != -1){  
+		   	matriz6r(loadedMatrix.toString(), selectedSet);
+		} else {
+			matriz8r(loadedMatrix.toString(), selectedSet);
+			}
+		}
+	else {
+		//pd = answ.reduce(sum, 0)
+		//sd = answ.stanDeviate()
+		told = document.getElementById('informe').innerHTML
+		answ = [0, ...answ]
+		mp = answ.slice(1, 13)
+		idph = answ.slice(13, 25)
+		nd = answ.slice(25, 37)
+		//dep = [answ[5],answ[14],answ[15],answ[20],answ[22],answ[26],answ[29],answ[30],answ[31],answ[32],answ[54],answ[71],answ[79]]
+		eg = answ.reduce(sum, 0)
+
+		//pd = []
+		//pd.push(...f1, ...f2, ...f3)
+		t = "<h2>Puntuación</h2>"
+		t = t + "<p>Malestar paterno: " + (mp.reduce(sum, 0)-12) +"/48</p>"
+		t = t + "<p>Interacción discuncional padres-hijo: " + (idph.reduce(sum, 0)-12) +"/48</p>"
+		t = t + "<p>Niño difícil: " + (nd.reduce(sum, 0)-12) +"/48</p>"
+		
+		t = t + "<br/>"
+		t = t + "<p><b>Puntuaciones</b></p><p>" + puntuaciones.join("\t") + "</p>"
+		t = t + "<p><b>Tiempos</b></p><p>" + tiempos.join("\t") + "</p>"
+
+		t = t + "<p><a href='data:application/csv;charset=UTF-8," + puntuaciones.concat(tiempos).join(", ") + "'>Descargar como CSV</a></p>"
+
+		document.getElementById('informe').innerHTML = told + t
+		$(informe).show();
+		document.getElementById('csvp').innerHTML = data;
+		}
+	}
+function sendMail() {
+		var contenido = document.getElementById("csvp").innerHTML;
+		var link = "mailto:info.peneira@gmail.com"
+		     + "?subject=" + escape("SCL90R - " + document.getElementById("inombre").value)
+		     + "&body=" + escape(contenido);
+
+		window.location.href = link;
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>Índice de estrés parental PSI-SF de Abidin (1992)</h1>
+		<p>Adaptación al español por Díaz-Herrero,  Brito,  López,  Pérez-López  y  Martínez-Fuentes  (2010)</p>
+		<p><b>Instrucciones:</b></p>
+		<p>Lea cuidadosamente cada declaración. En cada declaración, enfóquese únicamente en el hijo qe más le preocupa; y seleccione la respuesta que mejor refleje su opinión. <b>Responda a todas las preguntas sobre el mismo hijo</b></p>
+		<p><b>Bibliografía:</b></p>
+		<ul><i>	
+		<li>Abidin, R. R. (1992). The determinants of parenting behavior. Journal of Clinical Child Psychology, 21, 407-412. </li>
+		<li>Abidin, R. R. (1995). Parenting Stress Index (Short Form). Odessa: Psychological Assessment Resource</li>
+		<li>Abidin, R. R. (1997). Parenting Stress Index: A measure of the parent-child system. En Zalaquett, C. P. & Wood, R. (Eds), Evaluating stress: A book of resources (pp. 277-291). Scarecrow Press, Inc: Lanham, MD</li>
+		<li>Díaz-Herrero, A., Brito, A., López, J. A., Pérez-López, J., & Martínez-Fuentes, M. T. (2010). Estructura factorial y consistencia interna de la versión española del Parenting Stress Index - Short Form. Psicothema, 22(4), 1033-1038.</li>
+		<li>Solis, M. L. & Abidin, R. R. (1991). The Spanish version of Parenting Stress Index: a psychometric. Journal of Clinical Child Psychology, 20(4), 372-378 </li>
+		</i>
+		</ul>
+		<div id="usuario">
+			<div id="nombre"><label>Nombre:</label><input  class='opc' type="text" id="inombre" size="50"></div>
+			<div id="edad"><label>Edad:</label><input  class='opc' type="text" id="iedad" size="3"></div>
+			<div id="sexo"><label>Sexo:</label><select  class='opc' id="isexo">
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select></div>
+			<div id="fecha"><label>Fecha:</label><input  class='opc' type="text" id="ifecha" value="dd/mm/aaaa"></div>
+			<script>
+				var fecha = new Date()
+				document.getElementById("ifecha").value = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+
+			</script>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div id='contenidos'>
+		<div id="articles">
+			<div class="opcion", onClick="comenzar('A')">
+				<p>Comenzar</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+
+		<div id="matrices">
+		</div>
+		<div id="informe">
+			<h1>Índice de estrés parental PSI-SF de Abidin (1992)</h1>
+            <p>Adaptación al español por Díaz-Herrero,  Brito,  López,  Pérez-López  y  Martínez-Fuentes  (2010)</p>
+			<div id='csvp' style="display: none;"></div>
+			<p><a href="#" onclick="sendMail()">Enviar estos resultados!</a></p>
+			<p>A partir de la versión original de esta prueba (120 ítems) suautordesarrollóuna escala reducida que evalúa el grado de estrés asociado a la maternidad o la paternidad (Abidin, 1995, 1997). Este instrumento está indicado para utilizarse con progenitores que tengan hijos de entre 3 y 12 años, siendo necesario aplicarlo una vez por cada hijo. Utilizando la traducción al español de la escala  completa  (Solis  y  Abidin,  1991),  Díaz-Herrero,  Brito,  López,  Pérez-López  y  Martínez-Fuentes  (2010)  han  examinado  la  estructura  factorial  de  la  versión  breve  en  nuestro  país  y proponen trabajar, además de con la puntuación final, con dos subescalas que se corresponden con la propuesta teórica original del autor de la prueba (Abidin, 1992). </p>
+			<h2>Resultados</h2>
+			<p>Consta de tres subescalas</p>
+			<ul>
+                <li>Malestar paterno (12 ítems): determina  el  malestar  que experimentan los progenitores al ejercer el papel de padres, provocado  por  factores  personales  que  están  directamente  relacionados con el ejercicio de las funciones derivadas de este papel (sentido  de  competencia,  tensiones  asociadas  con  las  restricciones  impuestas  a  otras  funciones  que  desarrollamos  en  la  vida,  confl ictos con el otro padre del niño, falta de apoyo social, depresión, etc.).</li>
+                <li>Interacción disfuncional padres-hijo (12 ítems): se  centra  en  la  percepción  que  los  padres  tienen del grado en que su hijo satisface o no las expectativas que tenían sobre él o ella y del grado de reforzamiento que su hijo les proporciona  en  tanto  que  padres.</li>
+                <li>Niño difícil (12 ítems): es una escala que ofrece una valoración de cómo perciben los progenitores la facilidad o dificultad de  controlar  a  sus  hijos  en  función  de  los  rasgos  conductuales  que  poseen.  Pero  también  se  incluyen  una  serie  de  patrones  o  pautas aprendidas de conducta desafi ante y de desobediencia. Las puntuaciones altas en esta variable sugieren que los niños pueden estar sufriendo problemas importantes en los procesos y mecanismos de autorregulación</li>
+			</ul>
+			<p>A  partir  de  la  suma  de  estas  tres  subescalas  se  obtiene  una  puntuación fi  nal  global  que  se  denomina  Estrés  Total.  La  pun-tuación en esta variable indica el grado de estrés que los proge-nitores experimentan al desempeñar su papel como padres. Más concretamente, esta valoración refl eja las tensiones que se regis-tran en las áreas de malestar personal de los padres, las tensiones derivadas de las interacciones que mantienen con el hijo, y aque-llas otras que tienen su origen en las características conductuales del niño</p>
+			<p><b>Bibliografía:</b></p>
+		<ul><i>	
+		<li>Abidin, R. R. (1992). The determinants of parenting behavior. Journal of Clinical Child Psychology, 21, 407-412. </li>
+		<li>Abidin, R. R. (1995). Parenting Stress Index (Short Form). Odessa: Psychological Assessment Resource</li>
+		<li>Abidin, R. R. (1997). Parenting Stress Index: A measure of the parent-child system. En Zalaquett, C. P. & Wood, R. (Eds), Evaluating stress: A book of resources (pp. 277-291). Scarecrow Press, Inc: Lanham, MD</li>
+		<li>Díaz-Herrero, A., Brito, A., López, J. A., Pérez-López, J., & Martínez-Fuentes, M. T. (2010). Estructura factorial y consistencia interna de la versión española del Parenting Stress Index - Short Form. Psicothema, 22(4), 1033-1038.</li>
+		<li>Solis, M. L. & Abidin, R. R. (1991). The Spanish version of Parenting Stress Index: a psychometric. Journal of Clinical Child Psychology, 20(4), 372-378 </li>
+		</i>
+		</ul>
+		</div>
+	</div>
+</body>
+</html>
